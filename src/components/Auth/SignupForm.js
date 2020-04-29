@@ -7,6 +7,7 @@ const SignupForm = ({history}) =>{
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password } = event.target.elements;
+        
         try {
           await app
             .auth()
@@ -24,12 +25,12 @@ const SignupForm = ({history}) =>{
             <form onSubmit={handleSignUp}>
                 <div className="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
                 </div>
                 <div className="form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
