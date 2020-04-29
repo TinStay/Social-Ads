@@ -41,4 +41,4 @@ const SignupForm = ({history}) =>{
     )
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
