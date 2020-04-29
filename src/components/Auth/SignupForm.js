@@ -1,32 +1,42 @@
-import React from 'react';
-import {Form, Button} from 'react-bootstrap';
+import React, { useCallback } from "react";
+import { withRouter } from "react-router";
+import app from "../../base";
 
-const SignupForm = props =>{
+const SignupForm = ({history}) =>{
+
+    const handleSignUp = useCallback(async event => {
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+        try {
+          await app
+            .auth()
+            .createUserWithEmailAndPassword(email.value, password.value);
+          history.push("/");
+        } catch (error) {
+          alert(error);
+        }
+      }, [history]);
 
 
     return(
         <div className="container">
             <h1>Signup</h1>
-            <Form>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+            <form onSubmit={handleSignUp}>
+                <div className="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div className="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                </div>
+                <div className="form-check">
+                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" className="btn btn-primary">Sign up</button>
+            </form>
         </div>
     )
 }
