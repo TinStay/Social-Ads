@@ -1,0 +1,90 @@
+// .App{
+//     background: url('./assets/bgImg.jpg') no-repeat center;
+//     height: 100vh;
+// }
+
+.navbar{
+    background-color: #fff;
+    // background: #DA4453;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to left, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to left, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}    
+
+.navbar-nav{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+
+    .nav-item{
+        font-size: 1.2rem;
+        font-weight: 600;
+        
+        text-decoration: none;
+        margin: 5px 20px;
+
+        .nav-link{
+            color: #2f3542;
+            border-bottom: 2px solid transparent;
+            border-radius: 2px;
+
+            &:hover{
+                color: #6F1E51;
+                border-bottom: 2px solid #6F1E51;
+            }
+        }
+    }
+}
+
+.homepage{
+    background: url('./assets/bgImg.jpg') no-repeat center;
+
+}
+
+.gradient-bgc{
+    padding: 20px 0 10px 0;
+    // background: #FC466B;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to top, rgba(63, 94, 251, 0.37), rgba(252, 70, 106, 0.205));  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to top, rgba(46, 78, 238, 0.411), rgba(235, 28, 69, 0.575)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background: #C33764;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, rgba(29, 37, 113, 0.671), rgba(153, 25, 66, 0.787));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, rgba(29, 37, 113, 0.671), rgba(153, 25, 66, 0.787)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.jumbotron{
+    background-color: transparent;
+    color: white;
+    padding: 40px 0 0 0;
+    margin: none;
+
+    h1{
+        font-weight: bold;
+        margin: 20px 0 60px 0;
+        font-size: 4rem;
+        letter-spacing: 2px ;
+    }
+
+    p{
+        margin: 40px auto;
+        width: 80%;
+        font-size: 1.3rem;
+    }
+
+    .btn-signup{
+        font-size: 1.4rem;
+        margin-top: 30px;
+        position: relative;
+        bottom: 0;
+        padding: 10px;
+        width: 150px;
+        color: white;
+       
+        background-color: #fc5c65;
+
+        &:hover{
+            background-color: #e7474f;
+            // border: 1px solid #6F1E51;
+        }
+    }
+}

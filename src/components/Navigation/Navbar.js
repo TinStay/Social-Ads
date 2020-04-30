@@ -1,6 +1,7 @@
 import React,{ useContext } from 'react';
 import {Link} from "react-router-dom";
 import { AuthContext } from '../Auth/Auth';
+import app from '../../base';
 
 
 const Navbar = () =>{
@@ -10,17 +11,17 @@ const Navbar = () =>{
 
     let navbarItems = (
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <Link to='/' class="nav-link">Home <span class="sr-only">(current)</span></Link>
+            <li class="nav-item ">
+                <Link to='/' class="nav-link">Home </Link>
             </li>
             <li class="nav-item">
-                <Link to='/' class="nav-link" href="#">How does it work?</Link>
+                <Link to='/' class="nav-link">How does it work?</Link>
             </li>
             <li class="nav-item">
-                <Link to='/login' class="nav-link" href="#">Login</Link>
+                <Link to='/login' class="nav-link">Login</Link>
             </li>
             <li class="nav-item">
-                <Link to='/signup' class="nav-link" href="#">Sign up</Link>
+                <Link to='/signup' class="nav-link">Sign up</Link>
             </li>
         </ul>
     );
@@ -28,25 +29,25 @@ const Navbar = () =>{
     if(currentUser){
         navbarItems = (
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <Link to='/' class="nav-link">Home <span class="sr-only">(current)</span></Link>
+                <li class="nav-item ">
+                    <Link to='/' class="nav-link">Home</Link>
                 </li>
                 <li class="nav-item">
-                    <Link to='/' class="nav-link" href="#">How does it work?</Link>
+                    <Link to='/' class="nav-link">How does it work?</Link>
                 </li>
                 <li class="nav-item">
-                    <Link to='/' class="nav-link" href="#">Profile</Link>
+                    <Link to='/' class="nav-link">Profile</Link>
                 </li>
                 <li class="nav-item">
-                    <Link to='/signup' class="nav-link" href="#">Log out</Link>
+                    <a onClick={() => app.auth().signOut()} class="nav-link" >Log out</a>
                 </li>
             </ul>
         )
     }
 
     return(
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand">SocialAds</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
