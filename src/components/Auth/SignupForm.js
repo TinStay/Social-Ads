@@ -21,7 +21,7 @@ const SignupForm = ({history}) =>{
 
     return(
         <div className="container">
-            <h1>Signup</h1>
+            <h1>Sign up</h1>
             <form onSubmit={handleSignUp}>
                 <div className="form-group">
                     <label for="exampleInputEmail1">Email address</label>

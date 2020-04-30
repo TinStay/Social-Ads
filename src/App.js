@@ -5,6 +5,7 @@ import { AuthProvider } from './components/Auth/Auth'
 import SignupForm from  './components/Auth/SignupForm';
 import LoginForm from  './components/Auth/LoginForm';
 import HomePage from './components/Home/index';
+import Navbar from './components/Navigation/Navbar';
 
 // Containers
 import PrivateRoute from './containers/User/PrivateRoute';
@@ -18,10 +19,11 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <div className="">
-          {/* <Route exact path="/" component={HomePage} /> */}
-          <PrivateRoute exact path="/" component={HomePage} />
+          <Navbar />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} />
+          <PrivateRoute exact path="/profile" component={SignupForm}/>
         </div>
       </BrowserRouter>
     </AuthProvider>

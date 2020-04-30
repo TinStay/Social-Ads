@@ -6,10 +6,9 @@ const HomePage = props =>{
 
     return(
         <div className="container">
-            <h1>Login</h1>
-           <p>Lorem, ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quaerat, 
-            minus, quam a ratione soluta odit placeat quasi velit aliquam repellat sequi iste sapiente veritatis id excepturi laboriosam? Quasi.</p>
-            <button onClick={() => app.auth().signOut()} className="btn btn-danger">Sign out</button>
+            <h1>Welcome to SocialAds</h1>
+           <p>We run and Facebook, Instagram and Google ads for you. Sign up and choose your audience.</p>
+            <button onClick={() => app.auth().signOut()} className="btn btn-danger">Sign Up</button>
         </div>
     )
 }
