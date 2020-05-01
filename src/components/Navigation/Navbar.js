@@ -1,13 +1,31 @@
-import React,{ useContext } from 'react';
+import React,{ useContext, useState } from 'react';
 import {Link} from "react-router-dom";
+import {Button, Modal} from 'react-bootstrap';
 import { AuthContext } from '../Auth/Auth';
 import app from '../../base';
+import LoginForm from '../Auth/LoginForm';
+import SignupForm from '../Auth/SignupForm';
 
 
 const Navbar = () =>{
 
+    const [show, setShow] = useState(false);
+    const [isSignup, setIsSignup] = useState(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const { currentUser } = useContext(AuthContext);
-    console.log(currentUser)
+    // console.log(currentUser)
+
+    const openSignUpModal = () =>{
+        setIsSignup(true);
+        handleShow();
+    }
+
+    const openLoginModal = () =>{
+        setIsSignup(false);
+        handleShow();
+    }
 
     let navbarItems = (
         <ul class="navbar-nav">
@@ -18,10 +36,10 @@ const Navbar = () =>{
                 <Link to='/' class="nav-link">How does it work?</Link>
             </li>
             <li class="nav-item">
-                <Link to='/login' class="nav-link">Login</Link>
+                <a onClick={openLoginModal} class="nav-link">Login</a>
             </li>
             <li class="nav-item">
-                <Link to='/signup' class="nav-link">Sign up</Link>
+                <a onClick={openSignUpModal} class="nav-link">Sign up</a>
             </li>
         </ul>
     );
@@ -45,8 +63,15 @@ const Navbar = () =>{
         )
     }
 
+    let authType = <LoginForm show={show} handleClose={handleClose}/>;
+
+    if(isSignup){
+        authType = <SignupForm show={show} handleClose={handleClose}/>;
+    }
+
     return(
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand">SocialAds</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,6 +80,10 @@ const Navbar = () =>{
                 {navbarItems}
             </div>
         </nav>
+
+        {authType}
+
+        </div>
     )
 }
 
