@@ -157,14 +157,15 @@ $purple: #6F1E51;
 
 
 .profile-page{
-    height: 90vh;
+    // height: 90vh;
     
    
     .profile-card{
+        position: relative;
         background-color: white;
-        height:700px;
         width: 90%;
-        margin: 0 auto;
+        margin: 50px auto;
+        padding: 120px 30px 40px 30px;
         border-radius: 20px;
         
 
@@ -172,11 +173,44 @@ $purple: #6F1E51;
             width: 60%;
         }
 
-        .profile-pic{
-            width: 150px;
-           
+
+
+    .profile-pic{
+        position: absolute;
+        left: 50%;
+        top: -60px;
+        margin-left: -85px;
+        
+
+        border-radius: 50%;
+        width: 170px;
+        height: 170px;
+        
+
+    }
+
+    .profile-info{
+        width: 90%;
+        margin: 0 auto;
+        
+       
+    
+
+        .profile-heading{
+            display: inline;
+            font-size: 3.4rem;
+            vertical-align: middle;
             
         }
+        .profile-form{
+            margin: 20px 0;
+            padding: 25px 0;
+            border-top: 1px solid #a5b1c2;
+            border-bottom: 1px solid #a5b1c2;
+
+        }
+    
+    } 
     }
 }
     
