@@ -2,10 +2,9 @@ import React from 'react';
 import { AuthProvider } from './components/Auth/Auth'
 
 // Componenets
-import SignupForm from  './components/Auth/SignupForm';
-import LoginForm from  './components/Auth/LoginForm';
 import HomePage from './components/Home/HomePage';
 import Navbar from './components/Navigation/Navbar';
+import Profile from './components/Profile/Profile';
 
 // Containers
 import PrivateRoute from './containers/User/PrivateRoute';
@@ -23,7 +22,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           {/* <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} /> */}
-          <PrivateRoute exact path="/profile" component={SignupForm}/>
+          <PrivateRoute exact path="/profile" component={Profile}/>
         </div>
         
       </BrowserRouter>

@@ -25,31 +25,36 @@ const SignupForm = ({history, ...props}) =>{
 
     return(
         <div className="container">
-          <Modal show={props.show} onHide={props.handleClose}>
-                <Modal.Header>
-                <h1>Sign up</h1>
+          <Modal className="" show={props.show} onHide={props.handleClose}>
+                <div className="modal-body ">
+                <Modal.Header >
+                    <h1 className="mx-auto purple">Sign up</h1>
                 </Modal.Header>
                 <Modal.Body>
-                {error ? <p className="errorMsg">{error}</p> : null}
-                  <form onSubmit={handleSignUp}>
-                    <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <form onSubmit={handleSignUp}>
+                        {error ? <p className="errorMsg">{error}</p> : null}
+                        <div className="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        
+                        <div className="form-group mt-3">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        </div>
+                        <button type="submit" className="btn btn-lg btn-login mt-3">Sign up</button>
+                        <a href="" className="small align-bottom ml-2 mb-4"><h7 onClick={props.changeToLogin}>Already have an account?</h7></a>
+
+                    </form>
+                    <p className="border-bottom mt-4 text-center purple">Sign up via social media</p>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
+                        <button className="btn btn-lg btn-google mt-3 ml-3">Google</button>
                     </div>
-                    <div className="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                    </div>
-                    <div className="form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                        <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Sign up</button>
-                  </form>
-                </Modal.Body>
-                
-        </Modal>      
+                </Modal.Body> 
+                </div>
+        </Modal>  
         </div>
     )
 }

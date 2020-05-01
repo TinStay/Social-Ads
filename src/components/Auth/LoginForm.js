@@ -33,9 +33,10 @@ const LoginForm = ({history, ...props}) =>{
 
     return(
         <div className="container">
-            <Modal show={props.show} onHide={props.handleClose}>
-                <Modal.Header>
-                    <h1>Login</h1>
+            <Modal className="" show={props.show} onHide={props.handleClose}>
+                <div className="modal-body ">
+                <Modal.Header >
+                    <h1 className="mx-auto purple">Login</h1>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSignUp}>
@@ -43,21 +44,24 @@ const LoginForm = ({history, ...props}) =>{
                         <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <small id="emailHelp" className="form-text text-muted small">We'll never share your email with anyone else.</small>
                         </div>
                         
-                        <div className="form-group">
+                        <div className="form-group mt-3">
                             <label for="exampleInputPassword1">Password</label>
-                            <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                            <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password" />
                         </div>
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                            <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-lg btn-login mt-3">Login</button>
+                        <a href="" className="small align-bottom ml-2"><h7 onClick={props.changeToSignup}>Don't have an account?</h7></a>
+
                     </form>
-                </Modal.Body>
-                
+                    <p className="border-bottom mt-4 text-center purple">Login via social media</p>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
+                        <button className="btn btn-lg btn-google mt-3 ml-3">Google</button>
+                    </div>
+                </Modal.Body> 
+                </div>
         </Modal>   
         </div>
     )

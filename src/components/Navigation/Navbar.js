@@ -54,7 +54,7 @@ const Navbar = () =>{
                     <Link to='/' class="nav-link">How does it work?</Link>
                 </li>
                 <li class="nav-item">
-                    <Link to='/' class="nav-link">Profile</Link>
+                    <Link to='/profile' class="nav-link">Profile</Link>
                 </li>
                 <li class="nav-item">
                     <a onClick={() => app.auth().signOut()} class="nav-link" >Log out</a>
@@ -63,14 +63,26 @@ const Navbar = () =>{
         )
     }
 
-    let authType = <LoginForm show={show} handleClose={handleClose}/>;
+    const changeToSignup = e =>{
+        e.preventDefault();
+
+        setIsSignup(true);
+    }
+
+    const changeToLogin = e =>{
+        e.preventDefault();
+
+        setIsSignup(false);
+    }
+
+    let authType = <LoginForm show={show} handleClose={handleClose} changeToSignup={changeToSignup}/>;
 
     if(isSignup){
-        authType = <SignupForm show={show} handleClose={handleClose}/>;
+        authType = <SignupForm show={show} handleClose={handleClose} changeToLogin={changeToLogin}/>;
     }
 
     return(
-        <div>
+        <div className="sticky-navbar">
             <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand">SocialAds</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
