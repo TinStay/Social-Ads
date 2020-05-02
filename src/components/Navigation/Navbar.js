@@ -28,36 +28,36 @@ const Navbar = () =>{
     }
 
     let navbarItems = (
-        <ul class="navbar-nav">
-            <li class="nav-item ">
-                <Link to='/' class="nav-link">Home </Link>
+        <ul className="navbar-nav">
+            <li className="nav-item ">
+                <Link to='/' className="nav-link">Home </Link>
             </li>
-            <li class="nav-item">
-                <Link to='/' class="nav-link">How does it work?</Link>
+            <li className="nav-item">
+                <Link to='/' className="nav-link">How does it work?</Link>
             </li>
-            <li class="nav-item">
-                <a onClick={openLoginModal} class="nav-link">Login</a>
+            <li className="nav-item">
+                <a onClick={openLoginModal} className="nav-link">Login</a>
             </li>
-            <li class="nav-item">
-                <a onClick={openSignUpModal} class="nav-link">Sign up</a>
+            <li className="nav-item">
+                <a onClick={openSignUpModal} className="nav-link">Sign up</a>
             </li>
         </ul>
     );
 
     if(currentUser){
         navbarItems = (
-            <ul class="navbar-nav">
-                <li class="nav-item ">
-                    <Link to='/' class="nav-link">Home</Link>
+            <ul className="navbar-nav">
+                <li className="nav-item ">
+                    <Link to='/' className="nav-link">Home</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to='/' class="nav-link">How does it work?</Link>
+                <li className="nav-item">
+                    <Link to='/' className="nav-link">How does it work?</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to='/profile' class="nav-link">Profile</Link>
+                <li className="nav-item">
+                    <Link to='/profile' className="nav-link">Profile</Link>
                 </li>
-                <li class="nav-item">
-                    <a onClick={() => app.auth().signOut()} class="nav-link" >Log out</a>
+                <li className="nav-item">
+                    <a onClick={() => app.auth().signOut()} className="nav-link" >Log out</a>
                 </li>
             </ul>
         )
@@ -83,12 +83,12 @@ const Navbar = () =>{
 
     return(
         <div className="sticky-navbar">
-            <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand">SocialAds</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light ">
+            <a className="navbar-brand">SocialAds</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div className="collapse navbar-collapse" id="navbarNav">
                 {navbarItems}
             </div>
         </nav>

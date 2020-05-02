@@ -28,7 +28,6 @@ const LoginForm = ({history, ...props}) =>{
     const signInWithFacebook = useCallback(async event => {
         event.preventDefault();
        
-        
         try {
             await doSignInWithFacebook().then(
                 // props.handleClose()
@@ -39,7 +38,10 @@ const LoginForm = ({history, ...props}) =>{
           }
       }, [history]);
 
+
       const { currentUser } = useContext(AuthContext)
+
+      
 
       if(currentUser){
           return <Redirect to="/" />
