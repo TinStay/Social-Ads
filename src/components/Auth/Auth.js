@@ -4,28 +4,34 @@ import app from "../../base";
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-//   const [pending, setPending] = useState(true);
+    const [currentUser, setCurrentUser] = useState(null);
+    //   const [pending, setPending] = useState(true);
 
-//   useEffect(() => {
-//     app.auth().onAuthStateChanged((user) => {
-//       setCurrentUser(user)
-//       setPending(false)
-//     });
-//   }, []);
+    //   useEffect(() => {
+    //     app.auth().onAuthStateChanged((user) => {
+    //       setCurrentUser(user)
+    //       setPending(false)
+    //     });
+    //   }, []);
 
-useEffect(() => {
-        app.auth().onAuthStateChanged(setCurrentUser);
-      }, []);
+    useEffect(() => {
+            app.auth().onAuthStateChanged(setCurrentUser);
+          }, [currentUser]);
 
-//   if(pending){
-//     return <>Loading...</>
-//   }
+    const setNewUserData = (newData) => {
+      setCurrentUser(newData);
+    }
+
+
+    //   if(pending){
+    //     return <>Loading...</>
+    //   }
 
   return (
     <AuthContext.Provider
       value={{
-        currentUser
+        currentUser,
+        setNewUserData: setNewUserData
       }}
     >
       {children}
