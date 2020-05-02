@@ -3,11 +3,13 @@ import { withRouter, Redirect } from "react-router";
 import { Modal } from 'react-bootstrap';
 import { AuthContext } from './Auth';
 import app from "../../base";
+import { doSignInWithFacebook } from '../../base';
 
 const LoginForm = ({history, ...props}) =>{
 
     const [error, setError] = useState(null)
-
+    
+ 
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password } = event.target.elements;
@@ -21,6 +23,20 @@ const LoginForm = ({history, ...props}) =>{
         } catch (error) {
           setError(error.message);
         }
+      }, [history]);
+
+    const signInWithFacebook = useCallback(async event => {
+        event.preventDefault();
+       
+        
+        try {
+            await doSignInWithFacebook().then(
+                // props.handleClose()
+                  history.push("/")
+            )
+          } catch (error) {
+            setError(error.message);
+          }
       }, [history]);
 
       const { currentUser } = useContext(AuthContext)
@@ -57,7 +73,7 @@ const LoginForm = ({history, ...props}) =>{
                     </form>
                     <p className="border-bottom mt-4 text-center purple">Login via social media</p>
                     <div className="d-flex justify-content-center">
-                        <button className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
+                        <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
                         <button className="btn btn-lg btn-google mt-3 ml-3">Google</button>
                     </div>
                 </Modal.Body> 

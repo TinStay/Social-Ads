@@ -13,6 +13,11 @@ const app = firebase.initializeApp({
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 });
 
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+export const doSignInWithFacebook = () =>
+    app.auth().signInWithPopup(facebookProvider);
+
 // firebase.analytics();
 
 
