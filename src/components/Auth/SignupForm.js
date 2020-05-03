@@ -30,7 +30,8 @@ const SignupForm = ({history, ...props}) =>{
                   firstName: firstName,
                   lastName: lastName,
                   country: '',
-                  city: ''
+                  city: '',
+                  photoUrl: ''
                 }
 
                 db.ref("users/"+ registeredUser.user.uid).set(userData)

@@ -2,11 +2,12 @@ import React, { useContext, useCallback, useState } from 'react';
 import { withRouter, Redirect } from "react-router";
 import { Modal } from 'react-bootstrap';
 import { AuthContext } from './Auth';
-import app from "../../base";
+import app,{ db } from "../../base";
 import { doSignInWithFacebook } from '../../base';
 
 const LoginForm = ({history, ...props}) =>{
 
+    const { currentUser } = useContext(AuthContext)
     const [error, setError] = useState(null)
     
  
@@ -18,6 +19,7 @@ const LoginForm = ({history, ...props}) =>{
           await app
             .auth()
             .signInWithEmailAndPassword(email.value, password.value);
+            
             props.handleClose();
         //   history.push("/");
         } catch (error) {
@@ -29,7 +31,20 @@ const LoginForm = ({history, ...props}) =>{
         event.preventDefault();
        
         try {
-            await doSignInWithFacebook().then(
+            await doSignInWithFacebook()
+            .then( registeredUser => {
+                const userData = { 
+                  uid: registeredUser.user.uid,
+                  email: registeredUser.user.email,
+                  firstName: registeredUser.user.displayName.split(" ")[0],
+                  lastName:  registeredUser.user.displayName.split(" ")[1],
+                  country: '',
+                  city: '',
+                  photoUrl: `${registeredUser.user.photoURL}?width=400&height=400`
+                }
+                db.ref("users/"+ registeredUser.user.uid).set(userData)
+              }
+            ).then(
                 // props.handleClose()
                   history.push("/")
             )
@@ -38,8 +53,6 @@ const LoginForm = ({history, ...props}) =>{
           }
       }, [history]);
 
-
-      const { currentUser } = useContext(AuthContext)
 
       
 

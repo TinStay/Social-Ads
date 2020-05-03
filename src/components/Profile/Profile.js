@@ -3,18 +3,13 @@ import React,{ useContext, useState, useEffect } from 'react';
 import accPic from '../../assets/accPic.png';
 import changePictureIcon from '../../assets/changePic.png';
 import { AuthContext } from '../Auth/Auth';
+import app,{ db } from "../../base";
 import axios from '../../axios';
 
 
 const Profile = props =>{
 
     const { currentUser, setNewUserData } = useContext(AuthContext)
-
-    // let user = firebase.auth().currentUser;
-
-
-    // let firstName = currentUser.displayName.split(" ")[0];
-    // let lastName = currentUser.displayName.split(" ")[1];
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
@@ -27,18 +22,20 @@ const Profile = props =>{
     
 
     useEffect(() => {
-        if(currentUser.displayName !== null){
-            setFirstName(currentUser.displayName.split(" ")[0])
-            setLastName(currentUser.displayName.split(" ")[1])
-            setPhotoUrl(`${currentUser.photoURL}?width=400&height=400`);
-        }
+        // if(currentUser.displayName !== null){
+        //     setFirstName(currentUser.displayName.split(" ")[0])
+        //     setLastName(currentUser.displayName.split(" ")[1])
+        //     setPhotoUrl(`${currentUser.photoURL}?width=400&height=400`);
+        // }
         axios.get(`/users/${uid}.json`)
         .then(response =>{
             // console.log("res profile", response.data)
-            setFirstName(response.data.firstName);
-            setLastName(response.data.lastName);
-            setCity(response.data.city);
-            setCountry(response.data.country);
+            const profile = response.data
+            setFirstName(profile.firstName);
+            setLastName(profile.lastName);
+            setPhotoUrl(`${currentUser.photoURL}?width=400&height=400`);
+            setCity(profile.city);
+            setCountry(profile.country);
         })
     }, [])
 
@@ -63,33 +60,27 @@ const Profile = props =>{
 
         }
 
-        // setNewUserData(newData);
+        // Update displayName in the firebase authentication account
         currentUser.updateProfile({
             displayName: e.target[0].value + e.target[1].value,
         })
         .then(function() {
-            console.log("successful update")
+            console.log("successful update of displayName")
           }).catch(function(error) {
             console.log(error)
           });
 
-          currentUser.updateEmail(newEmail).then(function() {
-            console.log("successful update of email")
-          }).catch(function(error) {
-            console.log("error in email update", error)
-          });
+        // Update email 
+        //   currentUser.updateEmail(newEmail).then(function() {
+        //     console.log("successful update of email")
+        //   }).catch(function(error) {
+        //     console.log("error in email update", error)
+        //   });
           
-          
-          console.log('currentUser', currentUser)
-
-        
-
-        // console.log('first value', e.target[0].value)
-        // console.log('first value', e.target[1].value)
-        // console.log('sec value', e.target[2].value)
-        // console.log('t value', e.target[3].value)
-        // console.log('f value', e.target[4].value)
-        
+        var updates = {};
+        updates['/users/' + uid] = newData;
+           
+        db.ref().update(updates);
     }
 
     let accountImage = accPic;
@@ -132,11 +123,11 @@ const Profile = props =>{
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputAddress">Country</label>
-                                        <input type="text" value={country} className="form-control" id="inputAddress" placeholder="Your country"/>
+                                        <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} className="form-control" id="inputAddress" placeholder="Your country"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">City</label>
-                                        <input type="text" value={city} className="form-control" id="inputCity"  placeholder="Your city"/>
+                                        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} className="form-control" id="inputCity"  placeholder="Your city"/>
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Save changes</button>
