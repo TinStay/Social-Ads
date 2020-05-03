@@ -3,6 +3,7 @@ import React,{ useContext, useState, useEffect } from 'react';
 import accPic from '../../assets/accPic.png';
 import changePictureIcon from '../../assets/changePic.png';
 import { AuthContext } from '../Auth/Auth';
+import axios from '../../axios';
 
 
 const Profile = props =>{
@@ -18,6 +19,9 @@ const Profile = props =>{
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState(currentUser.email);
+    const [uid, setUid] = useState(currentUser.uid);
+    const [city, setCity] = useState();
+    const [country, setCountry] = useState();
     const [photoUrl, setPhotoUrl] = useState();
 
     
@@ -28,6 +32,14 @@ const Profile = props =>{
             setLastName(currentUser.displayName.split(" ")[1])
             setPhotoUrl(`${currentUser.photoURL}?width=400&height=400`);
         }
+        axios.get(`/users/${uid}.json`)
+        .then(response =>{
+            // console.log("res profile", response.data)
+            setFirstName(response.data.firstName);
+            setLastName(response.data.lastName);
+            setCity(response.data.city);
+            setCountry(response.data.country);
+        })
     }, [])
 
     // console.log("currentUser", currentUser)
@@ -35,14 +47,16 @@ const Profile = props =>{
     const saveChanges = (e) =>{
         e.preventDefault();
 
-        const newDisplayName = e.target[0].value + e.target[1].value
+        const firstName = e.target[0].value;
+        const lastName = e.target[1].value;
         const newEmail = e.target[2].value;
         const newCountry = e.target[3].value;
         const newCity = e.target[4].value;
         
 
-        let newData= {...currentUser,
-            displayName: newDisplayName,
+        let newData= {
+            firstName: firstName,
+            lastName: lastName,
             email: newEmail,
             country: newCountry,
             city: newCity
@@ -50,7 +64,9 @@ const Profile = props =>{
         }
 
         // setNewUserData(newData);
-        currentUser.updateProfile(newData)
+        currentUser.updateProfile({
+            displayName: e.target[0].value + e.target[1].value,
+        })
         .then(function() {
             console.log("successful update")
           }).catch(function(error) {
@@ -116,11 +132,11 @@ const Profile = props =>{
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputAddress">Country</label>
-                                        <input type="text" className="form-control" id="inputAddress" placeholder="Your country"/>
+                                        <input type="text" value={country} className="form-control" id="inputAddress" placeholder="Your country"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">City</label>
-                                        <input type="text" className="form-control" id="inputCity"  placeholder="Your city"/>
+                                        <input type="text" value={city} className="form-control" id="inputCity"  placeholder="Your city"/>
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Save changes</button>

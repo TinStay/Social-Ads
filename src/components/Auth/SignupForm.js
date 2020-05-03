@@ -1,7 +1,12 @@
 import React, { useCallback, useState } from "react";
 import { withRouter } from "react-router";
 import { Modal } from 'react-bootstrap';
-import app from "../../base";
+import axios from '../../axios';
+
+import * as firebase from 'firebase/app';
+import app,{ db } from "../../base";
+import 'firebase/firestore'
+
 
 const SignupForm = ({history, ...props}) =>{
   const [error, setError] = useState(null)
@@ -9,11 +14,29 @@ const SignupForm = ({history, ...props}) =>{
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password } = event.target.elements;
+        const firstName = event.target.firstName.value
+        const lastName = event.target.lastName.value
+        // console.log("e target", event.target.email)
+
         
         try {
           await app
             .auth()
-            .createUserWithEmailAndPassword(email.value, password.value);
+            .createUserWithEmailAndPassword(email.value, password.value)
+            .then( registeredUser => {
+                let userData = { 
+                  uid: registeredUser.user.uid,
+                  email: email.value,
+                  firstName: firstName,
+                  lastName: lastName,
+                  country: '',
+                  city: ''
+                }
+
+                db.ref("users/"+ registeredUser.user.uid).set(userData)
+              }
+            )
+            
             props.handleClose();
           // history.push("/");
         } catch (error) {
@@ -33,6 +56,14 @@ const SignupForm = ({history, ...props}) =>{
                 <Modal.Body>
                     <form onSubmit={handleSignUp}>
                         {error ? <p className="errorMsg">{error}</p> : null}
+                        <div className="form-group mt-3">
+                            <label for="exampleInputPassword1">First Name</label>
+                            <input name="firstName" type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter your first name" />
+                        </div>
+                        <div className="form-group mt-3">
+                            <label for="exampleInputPassword1">Last Name</label>
+                            <input name="lastName" type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter your last name" />
+                        </div>
                         <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />

@@ -1,5 +1,7 @@
-import * as firebase from 'firebase/app'
+import * as firebase from 'firebase/app';
+import 'firebase/firestore'
 import 'firebase/auth';
+import 'firebase/database';
 
 
 const app = firebase.initializeApp({
@@ -15,10 +17,12 @@ const app = firebase.initializeApp({
 
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
+export const db = firebase.database();
+console.log("db",db)
+
 export const doSignInWithFacebook = () =>
     app.auth().signInWithPopup(facebookProvider);
 
-// firebase.analytics();
 
 
 export default app;
