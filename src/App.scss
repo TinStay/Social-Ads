@@ -174,18 +174,43 @@ $purple: #6F1E51;
         }
 
 
-        .profile-pic-bubble{
-            position: absolute;
-            left: 50%;
-            top: -60px;
-            margin-left: -85px;
-            border-radius: 50%;
-            width: 170px;
-            height: 170px;
-            background-color: $white;            
-        }
+        
 
         .profile-pic{
+            &-bubble{
+                position: absolute;
+                left: 50%;
+                top: -60px;
+                margin-left: -85px;
+                border-radius: 50%;
+                width: 170px;
+                height: 170px;
+                background-color: $white;
+                z-index: 5;   
+                &:hover{
+                   
+                    
+                    .profile-pic-change{
+                        opacity: 1;
+                    }
+                    .profile-pic-img{
+                        filter: blur(3px);
+                    }
+                    
+                }
+            }
+
+            &-change{
+                opacity: 0;
+                position: absolute;
+                left: 50%;
+                top: 30px; 
+                margin-left: -32px;
+                border-radius: 50%;
+                width: 70px;
+                height: 70px;
+                z-index: 100;
+            }
 
             &-img{
                 position: absolute;
@@ -196,31 +221,14 @@ $purple: #6F1E51;
                 width: 170px;
                 height: 170px;
                 z-index: 10;
-        
-               
-            }
-            &-change{
-                opacity: 0;
-               
+
             }
             
-
-            &:hover{
-                filter: blur(2px);
-                
-                &-change{
-                    opacity: 1;
-                    position: absolute;
-                    left: 50%;
-                    top: -20px;
-                    margin-left: -40px;
-                    border-radius: 50%;
-                    width: 80px;
-                    height: 80px;
-                    z-index: 100;
-                }
-            }
-
+            // &:hover{
+            //     .profile-pic-change{
+            //         opacity: 1;
+            //     }
+            // }
         }
         
 

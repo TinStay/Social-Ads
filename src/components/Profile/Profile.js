@@ -8,16 +8,6 @@ import axios from '../../axios';
 
 
 class Profile extends PureComponent{
-
-   
-
-    // const [firstName, setFirstName] = useState();
-    // const [lastName, setLastName] = useState();
-    // const [email, setEmail] = useState(currentUser.email);
-    // const [uid, setUid] = useState(currentUser.uid);
-    // const [city, setCity] = useState();
-    // const [country, setCountry] = useState();
-    // const [photoUrl, setPhotoUrl] = useState();
     static contextType = AuthContext;
 
     state= {
@@ -121,12 +111,12 @@ class Profile extends PureComponent{
                 <div className="profile-page">
                     <div className="profile-card">
 
-                    <div className="profile-pic-bubble">
-                        <div className="profile-pic">
+                    <span className="profile-pic-bubble">    
+                        <a href="">
                             <img className="profile-pic-img" onMouseEnter={this.hoverOnPicture} src={userData.photoUrl } alt="profile pic"/>
                             <img className="profile-pic-change" src={changePictureIcon} alt="changeProfilePic" />
-                        </div>
-                    </div>
+                        </a>
+                    </span>
                     
                    
 
