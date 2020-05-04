@@ -1,6 +1,7 @@
 $white: #f5f6fa;
 $black: #2f3542;
 $purple: #6F1E51;
+$gray: #576574;
 
 .white{
     color: $white;
@@ -8,6 +9,9 @@ $purple: #6F1E51;
 
 .purple{
     color: $purple;
+}
+.gray{
+    color: $gray;
 }
 
 
@@ -191,10 +195,12 @@ $purple: #6F1E51;
                    
                     
                     .profile-pic-change{
+                        
                         opacity: 1;
                     }
                     .profile-pic-img{
-                        filter: blur(3px);
+                        background-color: rgb(255, 255, 255);
+                        filter: blur(4px);
                     }
                     
                 }
@@ -210,6 +216,7 @@ $purple: #6F1E51;
                 width: 70px;
                 height: 70px;
                 z-index: 100;
+                transition: all 0.3s ease-out;
             }
 
             &-img{
@@ -221,14 +228,8 @@ $purple: #6F1E51;
                 width: 170px;
                 height: 170px;
                 z-index: 10;
-
+                transition: all 0.2s ease-out;
             }
-            
-            // &:hover{
-            //     .profile-pic-change{
-            //         opacity: 1;
-            //     }
-            // }
         }
         
 
@@ -238,19 +239,60 @@ $purple: #6F1E51;
 
         .profile-heading{
             display: inline;
-            font-size: 3.4rem;
+            font-size: 3.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
             vertical-align: middle;
             
         }
         .profile-form{
             margin: 20px 0;
-            padding: 25px 0;
+            padding: 45px 0;
             border-top: 1px solid #a5b1c2;
             border-bottom: 1px solid #a5b1c2;
 
         }
+        .btn-save-changes{
+            border: 2px solid #54a0ff;
+            color: #54a0ff;
+            &:hover{
+                color: $white;
+                background-color: #2e86de;
+            }
+        }
     
     } 
     }
+    .Ads-profile{
+        // width: 90%;
+        
+        margin: 20px auto;
+        padding: 0 30px 40px 30px;
+
+        .ads-heading{
+            font-size: 3.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+        .ads-add-button{
+            color: white;
+            padding: 15px;
+            background: #DA4453; 
+            background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 106));  
+            background: linear-gradient(to right, #89216B, rgb(218, 68, 106));
+            transition: all 0.3s ease-out;
+            &:hover{
+                background: #89216B;  
+                background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 88));
+                background: linear-gradient(to right, rgb(137, 33, 97), rgb(218, 68, 88))
+              
+            }
+        }
+    }
+    
+
 }
+
+
+
     

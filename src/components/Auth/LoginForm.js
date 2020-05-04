@@ -32,7 +32,7 @@ const LoginForm = ({history, ...props}) =>{
        
         try {
             await doSignInWithFacebook()
-            .then( registeredUser => {
+            .then( async registeredUser => {
                 const userData = { 
                   email: registeredUser.user.email,
                   firstName: registeredUser.user.displayName.split(" ")[0],
@@ -41,7 +41,7 @@ const LoginForm = ({history, ...props}) =>{
                   city: '',
                   photoUrl: `${registeredUser.user.photoURL}?width=400&height=400`
                 }
-                db.ref("users/"+ registeredUser.user.uid).set(userData)
+                await db.ref("users/"+ registeredUser.user.uid).set(userData)
               }
             ).then(
                 // props.handleClose()
