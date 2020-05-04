@@ -184,44 +184,49 @@ $purple: #6F1E51;
             height: 170px;
             background-color: $white;            
         }
-        
-        .profile-pic-change{
-            visibility: hidden;
-            position: absolute;
-            left: 50%;
-            top: -20px;
-            margin-left: -40px;
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            z-index: 100;
-        }
 
         .profile-pic{
-        position: absolute;
-        left: 50%;
-        top: -60px;
-        margin-left: -85px;
-        border-radius: 50%;
-        width: 170px;
-        height: 170px;
-        z-index: 10;
 
-        &:hover{
-            background-color: black;
-            opacity: 0.4;
+            &-img{
+                position: absolute;
+                left: 50%;
+                // top: 0;
+                margin-left: -85px;
+                border-radius: 50%;
+                width: 170px;
+                height: 170px;
+                z-index: 10;
+        
+               
+            }
+            &-change{
+                opacity: 0;
+               
+            }
+            
+
+            &:hover{
+                filter: blur(2px);
+                
+                &-change{
+                    opacity: 1;
+                    position: absolute;
+                    left: 50%;
+                    top: -20px;
+                    margin-left: -40px;
+                    border-radius: 50%;
+                    width: 80px;
+                    height: 80px;
+                    z-index: 100;
+                }
+            }
 
         }
         
-
-    }
 
     .profile-info{
         width: 90%;
         margin: 0 auto;
-        
-       
-    
 
         .profile-heading{
             display: inline;

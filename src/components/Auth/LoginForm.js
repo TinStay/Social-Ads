@@ -11,7 +11,7 @@ const LoginForm = ({history, ...props}) =>{
     const [error, setError] = useState(null)
     
  
-    const handleSignUp = useCallback(async event => {
+    const handleSignIn = useCallback(async event => {
         event.preventDefault();
         const { email, password } = event.target.elements;
         
@@ -34,7 +34,6 @@ const LoginForm = ({history, ...props}) =>{
             await doSignInWithFacebook()
             .then( registeredUser => {
                 const userData = { 
-                  uid: registeredUser.user.uid,
                   email: registeredUser.user.email,
                   firstName: registeredUser.user.displayName.split(" ")[0],
                   lastName:  registeredUser.user.displayName.split(" ")[1],
@@ -70,7 +69,7 @@ const LoginForm = ({history, ...props}) =>{
                     <h1 className="mx-auto purple">Login</h1>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={handleSignUp}>
+                    <form onSubmit={handleSignIn}>
                         {error ? <p className="errorMsg">{error}</p> : null}
                         <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>

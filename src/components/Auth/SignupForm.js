@@ -25,13 +25,12 @@ const SignupForm = ({history, ...props}) =>{
             .createUserWithEmailAndPassword(email.value, password.value)
             .then( registeredUser => {
                 let userData = { 
-                  uid: registeredUser.user.uid,
                   email: email.value,
                   firstName: firstName,
                   lastName: lastName,
                   country: '',
                   city: '',
-                  photoUrl: ''
+                  photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Microsoft_Account.svg/1200px-Microsoft_Account.svg.png'
                 }
 
                 db.ref("users/"+ registeredUser.user.uid).set(userData)
