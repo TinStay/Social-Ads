@@ -5,7 +5,8 @@ import changePictureIcon from '../../assets/changePic.png';
 import { AuthContext } from '../Auth/Auth';
 import app,{ db } from "../../base";
 import axios from '../../axios';
-
+import _ from "lodash";
+import { Alert } from 'react-bootstrap';
 import UserAds from './UserAds';
 
 
@@ -22,7 +23,10 @@ class Profile extends PureComponent{
             country: '',
             photoUrl: '',
         },
-        currentUser: {}
+        currentUser: {},
+        showAlert: false,
+        alertType: '',
+        errorMsg: null
 
     }
 
@@ -53,6 +57,8 @@ class Profile extends PureComponent{
 
     // console.log("currentUser", currentUser)
     updateStateFromInput = (value, name) => {
+
+        
         this.setState({
            userData: {
                ...this.state.userData,
@@ -61,6 +67,18 @@ class Profile extends PureComponent{
         })
        
     }
+
+    setErrorAlert = error => {
+        this.setState({
+            showAlert: true,
+            alertType: 'danger',
+            errorMsg: error.message
+        })
+    }
+    setSuccessAlert = error => {
+        this.setState({showAlert: true, alertType: "success"})
+    }
+    
 
     
     saveChanges = (e) =>{
@@ -82,33 +100,73 @@ class Profile extends PureComponent{
             photoUrl: this.state.userData.photoUrl
         }
 
-        // Update displayName in the firebase authentication account
-        currentUser.updateProfile({
-            displayName: e.target[0].value + e.target[1].value,
-            photoURL: this.state.userData.photoUrl
+        axios.get(`/users/${currentUser.uid}.json`)
+        .then(response =>{
+            
+            const noChanges = _.isEqual(response.data, newData);
+            console.log(noChanges)
+            if(noChanges === false){
+                // Update displayName in the firebase authentication account
+                currentUser.updateProfile({
+                    displayName: firstName + " " + lastName,
+                    photoURL: this.state.userData.photoUrl
+                })
+                .then(() => {
+                    var updates = {};
+                    updates['/users/' + currentUser.uid] = newData;
+                    
+                    db.ref().update(updates);
+
+                    this.setState({showAlert: true, alertType: "success"});
+                }).catch(error => {
+                    this.setState({
+                        showAlert: true,
+                        alertType: 'danger',
+                        errorMsg: error.message
+                    })
+                });
+            }
+            else{
+                this.setState({ showAlert: true,  alertType: "noChanges"})
+            }
+
         })
-        .then(function() {
-            console.log("successful update of displayName")
-          }).catch(function(error) {
-            console.log(error)
-          });
-          
-        var updates = {};
-        updates['/users/' + currentUser.uid] = newData;
-           
-        db.ref().update(updates);
-    }
 
-    hoverOnPicture = () => {
-        // profilePicClasses.push("blur")
+        
     }
-
 
    
     render(){
+
         // let profilePicClasses = ["profile-pic", ]
         const userData = this.state.userData;
-        console.log(this.context.currentUser)
+        // console.log(this.context.currentUser)
+
+        let alert;
+        if(this.state.showAlert){
+            if(this.state.alertType === "noChanges"){
+                alert = (
+                    <Alert variant='warning' onClose={() => this.setState({showAlert: false})} dismissible>
+                    There are no changes detected
+                    </Alert>
+                )
+            }
+            if(this.state.alertType === "success"){
+                alert = (
+                    <Alert variant='success' onClose={() => this.setState({showAlert: false})} dismissible>
+                    Successfully updated profile information
+                    </Alert>
+                )
+            }
+            if(this.state.alertType === "danger"){
+                alert = (
+                    <Alert variant='danger' onClose={() => this.setState({showAlert: false})} dismissible>
+                    {this.state.errorMsg}
+                    </Alert>
+                )
+            }
+        }
+      
 
         return(
 
@@ -117,51 +175,67 @@ class Profile extends PureComponent{
                     <div className="profile-card">
                     <span className="profile-pic-bubble">    
                         <a href="">
-                            <img className="profile-pic-img" onMouseEnter={this.hoverOnPicture} src={userData.photoUrl } alt="profile pic"/>
+                            <img className="profile-pic-img" src={userData.photoUrl } alt="profile pic"/>
                             <img className="profile-pic-change" src={changePictureIcon} alt="changeProfilePic" />
                         </a>
                     </span>
                     
-                   
-
                     <div className="profile-info">
-                        <div className="text-center">
-                        <h1 className="profile-heading purple">My Profile</h1>
+                        <div className="text-center mb-4">
+                            <h1 className="profile-heading purple">My Profile</h1>
                         </div>
-                       
-                        <div className="email-info d-md-flex mt-4">
-                            <h4 className="mr-3">Email address:</h4>
-                            <p className="gray">{userData.email}</p>
-                        </div>
-                        <div className="profile-form">
-                            <form onSubmit={this.saveChanges}>
-                                <div className="form-row">
-                                    <div className="form-group col-md-6">
+                        
+                        
+                        
+                        <div className="profile-form row">
+                            <form onSubmit={this.saveChanges} className="col-lg-6">
+                            <div className="row justify-content-center">
+                                <h1 className="purple">Info</h1>
+                            </div>
+
+                                {alert}
+
+                                <div className="email-info d-md-flex mt-4 ">
+                                    <p className="mr-3 h4 align-text-bottom">Email address:</p>
+                                    <p className="gray ">{userData.email}</p>
+                                </div>
+                                <div className="form-row mb-2">
+                                    <div className="form-group col-md-12">
                                         <label for="inputFirstName">First name</label>
                                         <input type="text" name="firstName" onChange={(e) => this.updateStateFromInput(e.target.value, e.target.name)} className="form-control" id="inputFirstName" value={userData.firstName} placeholder="Your first name"/>
                                     </div>
-                                    <div className="form-group col-md-6">
+                                    
+                                </div>
+                                <div className="form-row mb-2">
+                                    <div className="form-group col-md-12">
                                         <label for="inputEmail4">Last name</label>
                                         <input type="text"  name="lastName" onChange={(e) => this.updateStateFromInput(e.target.value, e.target.name)} className="form-control" id="inputLastName" value={userData.lastName} placeholder="Your last name"/>
                                     </div>
                                 </div>
-                                <div className="form-row">
-                                    <div className="form-group col-md-6">
+                                <div className="form-row mb-2">
+                                    <div className="form-group col-md-12">
                                         <label for="inputAddress">Country</label>
                                         <input type="text" name="country" value={userData.country} onChange={(e) => this.updateStateFromInput(e.target.value, e.target.name)} className="form-control" id="inputAddress" placeholder="Your country"/>
                                     </div>
-                                    <div className="form-group col-md-6">
+                                </div>
+                                <div className="form-row mb-2">
+                                    <div className="form-group col-md-12">
                                         <label for="inputCity">City</label>
                                         <input type="text" name="city" value={userData.city} onChange={(e) => this.updateStateFromInput(e.target.value, e.target.name)} className="form-control" id="inputCity"  placeholder="Your city"/>
                                     </div>
-                                    
                                 </div>
-                                <button type="submit" className="btn btn-save-changes">Save changes</button>
+                                <div className="text-center mt-4">
+                                <button type="submit" className="btn btn-save-changes ">Save changes</button>
+                                </div>
                             </form>
+                            <div className="col-lg-6 mb-4 mx-none">
+                                <UserAds />
+                            </div>
+                            
                         </div>
                     </div>
                     
-                    <UserAds />
+                   
                         
                     </div>
                     

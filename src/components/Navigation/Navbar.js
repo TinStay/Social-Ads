@@ -82,7 +82,8 @@ const Navbar = () =>{
     }
 
     return(
-        <div className="sticky-navbar">
+        // sticky-navbar class
+        <div className=""> 
             <nav className="navbar navbar-expand-lg navbar-light ">
             <a className="navbar-brand">SocialAds</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

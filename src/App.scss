@@ -2,6 +2,7 @@ $white: #f5f6fa;
 $black: #2f3542;
 $purple: #6F1E51;
 $gray: #576574;
+$dark-gray: #353b48;
 
 .white{
     color: $white;
@@ -167,14 +168,14 @@ $gray: #576574;
     .profile-card{
         position: relative;
         background-color: white;
-        width: 90%;
+        width: 97%;
         margin: 50px auto;
         padding: 120px 30px 40px 30px;
-        border-radius: 20px;
+        border-radius: 5px;
         
 
         @media screen and (min-width: 1199px){
-            width: 60%;
+            width: 90%;
         }
 
 
@@ -247,13 +248,15 @@ $gray: #576574;
         }
         .profile-form{
             margin: 20px 0;
-            padding: 45px 0;
+            padding: 50px 0;
             border-top: 1px solid #a5b1c2;
             border-bottom: 1px solid #a5b1c2;
 
         }
         .btn-save-changes{
             border: 2px solid #54a0ff;
+            font-weight: 500;
+            font-size: 1.2rem;
             color: #54a0ff;
             &:hover{
                 color: $white;
@@ -264,10 +267,27 @@ $gray: #576574;
     } 
     }
     .Ads-profile{
-        // width: 90%;
-        
-        margin: 20px auto;
-        padding: 0 30px 40px 30px;
+        width: inherit;
+        height: 100%;
+        margin: 30px 0;
+       
+        padding-bottom: 55px;
+
+        .ads-profile-container{
+            border: 1px solid $purple;
+            height: 100%;
+           
+
+            .ads-profile-content{
+                height: inherit;
+                margin: auto auto;
+                background-color: #ebeef1;
+                &-noads{
+                    position: relative;
+                    padding: 40px 0;
+                }
+            }
+        }
 
         .ads-heading{
             font-size: 3.1rem;
@@ -277,6 +297,8 @@ $gray: #576574;
         .ads-add-button{
             color: white;
             padding: 15px;
+            position: relative;
+            bottom: 0;
             background: #DA4453; 
             background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 106));  
             background: linear-gradient(to right, #89216B, rgb(218, 68, 106));

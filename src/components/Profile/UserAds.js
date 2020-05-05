@@ -6,16 +6,21 @@ const UserAds = () => {
 
   let ads = null;
   ads = (
-    <div className="col-md-12 text-center mt-4">
-      <h4>You don't have any ads</h4>
-      <button className="btn ads-add-button btn-lg mt-3">Create new ad campaign</button>
+    <div className="ads-profile-content col-md-12 text-center">
+      <div className="ads-profile-content-noads">
+        <h4>You don't have any ads</h4>
+        <button className="btn ads-add-button btn-lg mt-3">Create new ad campaign</button>
+      </div>
     </div>
     );
 
   return (
-    <div className="Ads-profile">
-      <h1 className="ads-heading text-center purple">My ads</h1>
-      {ads}
+    <div className="Ads-profile m-none">
+      <h1 className="text-center purple">My ads</h1>
+      <div className="ads-profile-container mt-4">
+        {ads}
+      </div>
+      
     </div>
   );
 };

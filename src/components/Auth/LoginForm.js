@@ -3,6 +3,7 @@ import { withRouter, Redirect } from "react-router";
 import { Modal } from 'react-bootstrap';
 import { AuthContext } from './Auth';
 import app,{ db } from "../../base";
+import axios from '../../axios';
 import { doSignInWithFacebook } from '../../base';
 
 const LoginForm = ({history, ...props}) =>{
@@ -33,17 +34,23 @@ const LoginForm = ({history, ...props}) =>{
         try {
             await doSignInWithFacebook()
             .then( async registeredUser => {
+              // const name =  registeredUser.user.displayName.split(/(?=[A-Z])/);
+              axios.get(`/users/${registeredUser.user.uid}.json`)
+            .then(response =>{
+              if(response.data === null){
                 const userData = { 
-                  email: registeredUser.user.email,
                   firstName: registeredUser.user.displayName.split(" ")[0],
                   lastName:  registeredUser.user.displayName.split(" ")[1],
+                  email: registeredUser.user.email,
                   country: '',
                   city: '',
                   photoUrl: `${registeredUser.user.photoURL}?width=400&height=400`
                 }
-                await db.ref("users/"+ registeredUser.user.uid).set(userData)
+  
+                db.ref("users/"+ registeredUser.user.uid).set(userData)
               }
-            ).then(
+            })
+          }).then(
                 // props.handleClose()
                   history.push("/")
             )
@@ -82,7 +89,7 @@ const LoginForm = ({history, ...props}) =>{
                             <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password" />
                         </div>
                         <button type="submit" className="btn btn-lg btn-login mt-3">Login</button>
-                        <a href="" className="small align-bottom ml-2"><h7 onClick={props.changeToSignup}>Don't have an account?</h7></a>
+                        <a href="" className="small align-bottom ml-2"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a>
 
                     </form>
                     <p className="border-bottom mt-4 text-center purple">Login via social media</p>
