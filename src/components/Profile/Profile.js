@@ -65,25 +65,27 @@ class Profile extends PureComponent{
     
     saveChanges = (e) =>{
         e.preventDefault();
+        const { currentUser } = this.context;
 
         const firstName = e.target[0].value;
         const lastName = e.target[1].value;
-        const newEmail = e.target[2].value;
-        const newCountry = e.target[3].value;
-        const newCity = e.target[4].value;
+        const newCountry = e.target[2].value;
+        const newCity = e.target[3].value;
         
 
         let newData= {
             firstName: firstName,
             lastName: lastName,
-            email: newEmail,
+            email: currentUser.email,
             country: newCountry,
             city: newCity,
+            photoUrl: this.state.userData.photoUrl
         }
 
         // Update displayName in the firebase authentication account
-        this.state.currentUser.updateProfile({
+        currentUser.updateProfile({
             displayName: e.target[0].value + e.target[1].value,
+            photoURL: this.state.userData.photoUrl
         })
         .then(function() {
             console.log("successful update of displayName")
@@ -92,7 +94,7 @@ class Profile extends PureComponent{
           });
           
         var updates = {};
-        updates['/users/' + this.state.uid] = newData;
+        updates['/users/' + currentUser.uid] = newData;
            
         db.ref().update(updates);
     }
@@ -106,6 +108,7 @@ class Profile extends PureComponent{
     render(){
         // let profilePicClasses = ["profile-pic", ]
         const userData = this.state.userData;
+        console.log(this.context.currentUser)
 
         return(
 
