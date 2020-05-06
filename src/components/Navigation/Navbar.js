@@ -1,16 +1,18 @@
 import React,{ useContext, useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {Button, Modal} from 'react-bootstrap';
 import { AuthContext } from '../Auth/Auth';
 import app from '../../base';
 import LoginForm from '../Auth/LoginForm';
 import SignupForm from '../Auth/SignupForm';
+import homePic from '../../assets/home.png'
 
 
 const Navbar = () =>{
 
     const [show, setShow] = useState(false);
     const [isSignup, setIsSignup] = useState(true);
+    // const [showMenu, setShowMenu] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -29,9 +31,6 @@ const Navbar = () =>{
 
     let navbarItems = (
         <ul className="navbar-nav">
-            <li className="nav-item ">
-                <Link to='/' className="nav-link">Home </Link>
-            </li>
             <li className="nav-item">
                 <Link to='/' className="nav-link">How does it work?</Link>
             </li>
@@ -47,11 +46,11 @@ const Navbar = () =>{
     if(currentUser){
         navbarItems = (
             <ul className="navbar-nav">
-                <li className="nav-item ">
-                    <Link to='/' className="nav-link">Home</Link>
+                <li className="nav-item">
+                    <Link to='/how-does-it-work' className="nav-link">How does it work?</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='/' className="nav-link">How does it work?</Link>
+                    <Link to='/manage-ads' className="nav-link">Manage Ads</Link>
                 </li>
                 <li className="nav-item">
                     <Link to='/profile' className="nav-link">Profile</Link>
@@ -83,9 +82,11 @@ const Navbar = () =>{
 
     return(
         // sticky-navbar class
-        <div className=""> 
+        <div className="sticky-navbar"> 
             <nav className="navbar navbar-expand-lg navbar-light ">
-            <a className="navbar-brand">SocialAds</a>
+            {/* <li className="nav-item "> */}
+                  <Link to='/'  className="nav-link"><img src={homePic} className="homeBtn" alt="homePic"/></Link>
+                {/* </li> */}
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

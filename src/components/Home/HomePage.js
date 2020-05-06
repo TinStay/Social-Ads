@@ -1,15 +1,18 @@
 import React from 'react';
-import app from "../../base";
 import Jumbotron from './Jumbrotron';
+import InfoSection from './InfoSection';
 
 const HomePage = props =>{
 
 
     return(
         <div className="homepage">
-            <div className="gradient-bgc">
-                <Jumbotron />
-           </div>
+            <div className="jumbotron-bg">
+                <div className="gradient-bgc">
+                    <Jumbotron />
+                </div>
+            </div>
+            <InfoSection/>
         </div>
     )
 }
