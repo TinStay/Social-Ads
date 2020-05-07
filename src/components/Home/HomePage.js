@@ -1,6 +1,7 @@
 import React from 'react';
 import Jumbotron from './Jumbrotron';
 import InfoSection from './InfoSection';
+import SubscriptionPlans from './SubscriptionPlans';
 
 const HomePage = props =>{
 
@@ -13,6 +14,7 @@ const HomePage = props =>{
                 </div>
             </div>
             <InfoSection/>
+            <SubscriptionPlans/>
         </div>
     )
 }

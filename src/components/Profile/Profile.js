@@ -170,7 +170,7 @@ class Profile extends PureComponent{
 
         return(
 
-            <div className="gradient-bgc">
+            <div className="profile-bgc">
                 <div className="profile-page">
                     <div className="profile-card">
                     <span className="profile-pic-bubble">    

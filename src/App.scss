@@ -11,6 +11,9 @@ $dark-gray: #353b48;
 .purple{
     color: $purple;
 }
+.purple-bgc{
+    background-color: #7678ed;
+}
 .gray{
     color: $gray;
 }
@@ -33,6 +36,7 @@ $dark-gray: #353b48;
     // background-color: #ffffff;
     // border-bottom: 1px solid #b7a6f3;
    background-color: #7f80ec;
+   border-bottom: 1px solid #7779e6;
    .homeBtn{
     width: 45px;
     height: 40px;
@@ -113,7 +117,7 @@ $dark-gray: #353b48;
 }
 
 .jumbotron-bg{
-    background: url('./assets/bgImg.jpg') no-repeat center;
+    background: url('./assets/bgImgBlurred.jpg') no-repeat center;
 }
 
 .gradient-bgc{
@@ -174,22 +178,26 @@ $dark-gray: #353b48;
     background-size: cover;
 
     &-row{
-        margin: 50px auto 100px auto;
-
+        margin: 50px auto 150px auto;
+       
         
         .social-pic{
-            width: 400px;
+            width: 350px;
         }
     }
 
     .info-text-container{
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         // background-color: red;
+        @media screen and (min-width: 1199px){
+            width: 90%;
+        }
+
         &-heading{
             font-size: 3rem;
             font-weight: 600;
-            margin: 30px 0;
+            margin-bottom: 30px;
         }
         &-paragraph{
             font-size: 1.5rem;
@@ -202,21 +210,34 @@ $dark-gray: #353b48;
             margin-top: 20px;
             padding: 13px;
             background-color: #7678ed;
-            border-radius: 1px;
+            border-radius: 5px;
             color: white;
             &:hover{
                 background-color: #6769d8;
+            }
+            &-border{
+                font-size: 1.5rem;
+                font-weight: 400;
+                margin-top: 20px;
+                padding: 13px;
+                border: 2px solid #7678ed;
+                border-radius: 5px;
+                color:  #6769d8;
+                &:hover{
+                    background-color: #7678ed;
+                    color: $white;
+                }
             }
         }
 
         &-icons{
             display: flex;
             list-style-type: none;
-            justify-content: center;
+            justify-content: space-evenly;
 
             img{
                 width: 100px;
-                margin-right: 25px;
+                // margin-right: 60%;
             }
         }
         
@@ -231,7 +252,12 @@ $dark-gray: #353b48;
 
 .profile-page{
     // height: 90vh;
-    
+     padding: 20px 0 50px 0;
+    //  background-color: #8f90eb;
+    background: #642B73;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #C6426E, #7f80ec); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
    
     .profile-card{
         position: relative;
@@ -381,6 +407,32 @@ $dark-gray: #353b48;
     }
     
 
+}
+
+.subscription-section{
+    background-color: #7678ed;
+    color: $white;
+    height: 100vh;
+    padding: 50px;
+
+    .subscription-jumbotron{
+        width: 96%;
+        margin: 0 auto;
+
+        h1{
+            font-size: 3.5rem;
+            font-weight: 500;
+        }
+        h2{
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        @media screen and (min-width: 1199px){
+            width: 60%;
+            margin: 0 auto;
+        }
+    }
 }
 
 
