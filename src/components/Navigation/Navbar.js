@@ -32,7 +32,7 @@ const Navbar = () =>{
     let navbarItems = (
         <ul className="navbar-nav">
             <li className="nav-item">
-                <Link to='/' className="nav-link">How does it work?</Link>
+                <Link to='/' className="nav-link">How to run ads?</Link>
             </li>
             <li className="nav-item">
                 <a onClick={openLoginModal} className="nav-link">Login</a>
@@ -50,7 +50,7 @@ const Navbar = () =>{
                     <Link to='/how-does-it-work' className="nav-link">How does it work?</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='/manage-ads' className="nav-link">Manage Ads</Link>
+                    <Link to='/ad-manager' className="nav-link">Ad manager</Link>
                 </li>
                 <li className="nav-item">
                     <Link to='/profile' className="nav-link">Profile</Link>

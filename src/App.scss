@@ -77,21 +77,19 @@ $dark-gray: #353b48;
 
     .btn-facebook{
         font-size: 1.5rem;
-        color: #54a0ff;
-        border: 2px solid #54a0ff;
+        color: $white;
+        background-color: #4267B2;
         &:hover{
-            color: $white;
-            background-color: #54a0ff;
+            background-color: rgb(49, 85, 156);
         }
     }
 
     .btn-google{
         font-size: 1.5rem;
-        color: #EA2027;
-        border: 2px solid #EA2027;
+        color: $white;
+        background-color: #DB4437;
         &:hover{
-            color: $white;
-            background-color: #EA2027;
+            background-color: rgb(177, 51, 39);
         }
     }
 
@@ -121,7 +119,7 @@ $dark-gray: #353b48;
 .gradient-bgc{
     padding: 20px 0 50px 0;
     background: #C33764;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, rgba(29, 37, 113, 0.671), rgba(153, 25, 65, 0.65));  /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(39, 71, 134, 0.486),  #88205b6e);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, rgba(39, 71, 134, 0.486),  #88205b6e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     -webkit-box-shadow: 0px 12px 36px -17px rgba(29,38,114,1);
@@ -177,6 +175,11 @@ $dark-gray: #353b48;
 
     &-row{
         margin: 50px auto 100px auto;
+
+        
+        .social-pic{
+            width: 400px;
+        }
     }
 
     .info-text-container{
@@ -191,7 +194,7 @@ $dark-gray: #353b48;
         &-paragraph{
             font-size: 1.5rem;
             font-weight: 400;
-            margin: 30px 0;
+            margin: 30px auto;
         }
         &-button{
             font-size: 1.5rem;
@@ -213,7 +216,7 @@ $dark-gray: #353b48;
 
             img{
                 width: 100px;
-                margin: 0 10px;
+                margin-right: 25px;
             }
         }
         

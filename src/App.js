@@ -24,6 +24,7 @@ function App() {
           {/* <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} /> */}
           <PrivateRoute exact path="/profile" component={Profile}/>
+          {/* <PrivateRoute exact path="/ad-manager" component={Profile}/> */}
         </div>
         
       </BrowserRouter>
