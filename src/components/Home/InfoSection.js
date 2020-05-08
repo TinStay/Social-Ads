@@ -44,7 +44,7 @@ const InfoSection = props =>{
                 <div className="col-xl-1 text-center ml-xl-4 mb-4">
                     <img src={iconsPic} className="social-pic" alt="iconsPic"/>
                </div>
-               <div className="col-xl-8  text-center">
+               <div className="col-xl-8  offset-xl-1 text-center">
                    <div className="info-text-container">
                         <h2 className="info-text-container-heading">Keep track of your running ads</h2>
                         <p className="info-text-container-paragraph col-lg-8">With the online Ad Manager you can create, run and track your social media advertising. 

@@ -3,6 +3,7 @@ $black: #2f3542;
 $purple: #6F1E51;
 $gray: #576574;
 $dark-gray: #353b48;
+$navbar-purple:  #7678ed;
 
 .white{
     color: $white;
@@ -11,7 +12,7 @@ $dark-gray: #353b48;
 .purple{
     color: $purple;
 }
-.purple-bgc{
+.navbar-purple{
     background-color: #7678ed;
 }
 .gray{
@@ -178,11 +179,21 @@ $dark-gray: #353b48;
     background-size: cover;
 
     &-row{
-        margin: 50px auto 150px auto;
+        margin: 0 auto 80px auto;
        
         
         .social-pic{
             width: 350px;
+            
+        }
+
+        @media screen and (min-width: 1199px){
+            margin: 50px auto 100px auto;
+
+            .social-pic{
+                
+                margin-top: 40px;
+            }
         }
     }
 
@@ -197,12 +208,13 @@ $dark-gray: #353b48;
         &-heading{
             font-size: 3rem;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-top: 40px;            
+            margin-bottom: 40px;
         }
         &-paragraph{
             font-size: 1.5rem;
             font-weight: 400;
-            margin: 30px auto;
+            margin: 40px auto;
         }
         &-button{
             font-size: 1.5rem;
@@ -410,10 +422,13 @@ $dark-gray: #353b48;
 }
 
 .subscription-section{
-    background-color: #7678ed;
+    background-color: #7d7fee;
     color: $white;
-    height: 100vh;
-    padding: 50px;
+    padding: 20px;
+
+    @media screen and (min-width: 1199px){
+        padding: 50px;
+    }
 
     .subscription-jumbotron{
         width: 96%;
@@ -431,6 +446,29 @@ $dark-gray: #353b48;
         @media screen and (min-width: 1199px){
             width: 60%;
             margin: 0 auto;
+        }
+    }
+
+    .subscription-row{
+        display: flex;
+        justify-content: space-between;
+        margin: 50px auto;
+
+        .subscription-card{
+            padding: 25px 40px;
+            margin: 20px 25px;
+            width: 30%;
+            border-radius: 5px;
+            background-color: $white;
+            color: $navbar-purple;
+
+            &-list{
+                margin: 65px auto;
+
+                li{
+                    margin: 15px auto;
+                }
+            }
         }
     }
 }
