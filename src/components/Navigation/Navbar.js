@@ -47,7 +47,7 @@ const Navbar = () =>{
         navbarItems = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to='/how-does-it-work' className="nav-link">How does it work?</Link>
+                    <Link to='/how-does-it-work' className="nav-link">How to run ads?</Link>
                 </li>
                 <li className="nav-item">
                     <Link to='/ad-manager' className="nav-link">Ad manager</Link>

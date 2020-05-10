@@ -1,13 +1,12 @@
 import React,{ PureComponent } from 'react';
-// import app from "../../base";
-import accPic from '../../assets/accPic.png';
+// import { withRouter } from 'react-router';
 import changePictureIcon from '../../assets/changePic.png';
-import { AuthContext } from '../Auth/Auth';
+import { AuthContext } from '../../components/Auth/Auth';
 import app,{ db } from "../../base";
 import axios from '../../axios';
 import _ from "lodash";
 import { Alert } from 'react-bootstrap';
-import UserAds from './UserAds';
+import UserAds from '../../components/Profile/UserAds';
 
 
 class Profile extends PureComponent{
@@ -137,7 +136,7 @@ class Profile extends PureComponent{
 
    
     render(){
-
+        
         // let profilePicClasses = ["profile-pic", ]
         const userData = this.state.userData;
         // console.log(this.context.currentUser)

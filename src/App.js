@@ -5,10 +5,11 @@ import { AuthProvider } from './components/Auth/Auth'
 // Componenets
 import HomePage from './components/Home/HomePage';
 import Navbar from './components/Navigation/Navbar';
-import Profile from './components/Profile/Profile';
+import Profile from './containers/User/Profile';
 
 // Containers
 import PrivateRoute from './containers/User/PrivateRoute';
+import AdManager from './containers/AdManager/AdManager'; 
 
 // Router
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -24,7 +25,7 @@ function App() {
           {/* <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} /> */}
           <PrivateRoute exact path="/profile" component={Profile}/>
-          {/* <PrivateRoute exact path="/ad-manager" component={Profile}/> */}
+          <PrivateRoute exact path="/ad-manager" component={AdManager}/>
         </div>
         
       </BrowserRouter>
