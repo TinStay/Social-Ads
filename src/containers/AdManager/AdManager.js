@@ -8,14 +8,20 @@ class AdManager extends PureComponent{
 //   static contextType = AuthContext;
 
     state = {
-        ads: {}
+        ads: {},
+        showForm: false
     }
+
+    showForm = () => {
+        this.setState({ showForm: true})
+    }
+
   render(){
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
                 <h2 className="">You have no running ads at the moment</h2>
-                <button className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
+                <button onClick={this.showForm} className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
             </div>
             
             <div className="col-md-6 second">
@@ -24,8 +30,12 @@ class AdManager extends PureComponent{
             </div>
           </div>
       ); 
-    if(this.state.ads){
-        /// ads.map
+    if(this.state.showForm){
+        adSection =(
+            <div>
+                <h1>Start an ad campaign</h1>
+            </div>
+        )
     }
 
     return (
