@@ -7,9 +7,9 @@ const GoalCard = (props) => {
 
 
     return(
-        <div className="goals-card text-center">
-        <i class="fas fa-mouse-pointer"></i>
-        <h4>Traffic</h4>
+        <div className="goals-card text-center" onClick={() => props.selectGoal(props.title)}>
+        <i class={props.iconClass}></i>
+        <h4>{props.title}</h4>
        
         
         </div>

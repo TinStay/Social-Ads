@@ -6,6 +6,7 @@ $dark-gray: #353b48;
 $navbar-purple:  #7678ed;
 $bgc-white: #fafaff;
 $font-color: #7662b6;
+$dark-blue: #273469;
 
 .white{
     color: $white;
@@ -682,7 +683,7 @@ $font-color: #7662b6;
            
             .add-form{
                 &-group{
-                    margin: 20px auto 120px auto;
+                    margin: 30px auto 125px auto;
                 }
 
                 &-label{
@@ -744,21 +745,31 @@ $font-color: #7662b6;
                 // border: 1px solid #5c687554;
 
                 &-row{
-                    margin: 25px auto;
+                    margin: 35px auto;
+
+                    .active{
+                        border: 1px solid #d0d6fd;
+                        background-color: #d7dcff;
+                    }
                 }
                 &-card{
                     color: $gray;
                     margin: 15px 10px;
                     padding: 15px 20px;
-                    background-color: rgb(240, 239, 239);
+                    border-radius: 3px;
+                    background-color: #e8eafb;
+                    border: 1px solid #e6e8fb;
+                    transition: all 0.1s ease-out;
 
                     // i{
                     //     padding: 10px;
                     //     border-radius: 50%;
                     //     background-color:$purple;
                     // }
+                    
                     &:hover{
-                        background-color: rgb(231, 231, 231);
+                        border: 1px solid #d0d6fd;
+                        background-color: #d7dcff;
                     }
                 }
                

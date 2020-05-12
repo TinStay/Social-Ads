@@ -61,9 +61,23 @@ class AdManager extends PureComponent{
 
     }
 
+    selectMarketingGoal = (title) => {
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    marketingGoal: title
+                }
+            }
+        }
+        )
+    }
+
 
   render(){
-      console.log("state", this.state)
+    //   console.log("goal", this.state.order.adInfo)
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
@@ -97,7 +111,7 @@ class AdManager extends PureComponent{
                         
                        <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
 
-                        <MarketingGoal />
+                        <MarketingGoal selectGoal={this.selectMarketingGoal}/>
 
 
                         {/* <div className="d-flex justify-content-end">
