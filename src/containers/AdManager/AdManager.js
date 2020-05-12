@@ -2,10 +2,10 @@ import React, {  PureComponent } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../../components/Auth/Auth";
 import { Form } from 'react-bootstrap';
-import facebookAds from '../../assets/facebookAds.png'
-import instagramAds from '../../assets/instagramAds.png'
-import googleAds from '../../assets/adsGoogle.png'
-import twitterAds from '../../assets/twitterAds.png'
+
+// Components
+import SocialPlatforms from '../../components/AdManager/SocialPlatforms';
+import MarketingGoal from '../../components/AdManager/MarketingGoal';
 
 class AdManager extends PureComponent{
 //   const {currentUser} = this.context;
@@ -13,6 +13,13 @@ class AdManager extends PureComponent{
 
     state = {
         ads: {},
+        order: {
+            adInfo: {
+                
+            },
+            demographics: {},
+            payment: {},
+        },
         showForm: false
     }
 
@@ -20,8 +27,43 @@ class AdManager extends PureComponent{
         this.setState({ showForm: true})
     }
 
+    changeAdInfo = (e) => {
+        // console.log(e.target.value, e.target.name)
+        const value = e.target.value
+        this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        [e.target.name]: value
+                    }
+                }
+            }
+            )
+    }
+
+    // Social Media Platforms
+    changeSMPInfo = e => {
+        // console.log(e.target.checked)
+        const checked = e.target.checked
+        this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        [e.target.name]: checked
+                    }
+                }
+            }
+            )
+
+    }
+
 
   render(){
+      console.log("state", this.state)
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
@@ -36,70 +78,32 @@ class AdManager extends PureComponent{
           </div>
       ); 
 
+      const adInfo = this.state.order.adInfo;
       
     if(this.state.showForm){
         adSection =(
-            <div className=" manager-ad-form-row">
+            <div className="manager-ad-form-row">
                 {/* <div className="d-block mb-5">
                     <h1 className="text-center purple border-bottom pb-2 mb-4">Start an ad campaign</h1>
                 </div> */}
                 <div className="ad-container">
-                    <Form className="first-form">
+                    <Form className="add-form">
 
-                        <Form.Group className="first-form-group text-center" controlId="formGroupEmail">
-                            <h3 className="first-form-label">Choose a name for your campaign</h3>
-                            <Form.Control className="first-form-input-name " type="text" size="lg" placeholder="Enter name" />
+                        <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
+                            <h3 className="add-form-label">Name your ad campaign</h3>
+                            <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
                         </Form.Group>
 
-                        <h3 className="border-bottom first-form-label">Choose social media platforms</h3>
-                        <div className="social-media-selection d-md-flex justify-content-between">
-                            <div className="social-media-box">
-                                <Form.Check
-                                    custom
-                                    inline
-                                    label=""
-                                    type="checkbox"
-                                    id={`custom-inline-checkbox-facebook`}
-                                />
-                                <img className="img-slim" src={facebookAds} alt="Facebook ads"/>
-                            </div>
-                            <div className="social-media-box">
-                                <Form.Check
-                                    custom
-                                    inline
-                                    label=""
-                                    type="checkbox"
-                                    id={`custom-inline-checkbox-insta`}
-                                />
-                                <img className="img-slim" src={instagramAds} alt="Instagram Ads"/>
-                            </div>
-                            <div className="social-media-box">
-                                <Form.Check
-                                    custom
-                                    inline
-                                    label=""
-                                    type="checkbox"
-                                    id={`custom-inline-checkbox-google`}
-                                />
-                                 <img className="img-box" src={googleAds} alt="Google Ads"/>
-                            </div>
-                            <div className="social-media-box">
-                                <Form.Check
-                                    custom
-                                    inline
-                                    label=""
-                                    type="checkbox"
-                                    id={`custom-inline-checkbox-twitter`}
-                                />
-                                <img className="img-box"src={twitterAds} alt="Twitter Ads"/>
-                            </div>
-                            
-                        </div>
+                        
+                       <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
 
-                        <div className="d-flex justify-content-end">
-                            {/* <button className="btn btn-cancel">Cancel</button> */}
+                        <MarketingGoal />
+
+
+                        {/* <div className="d-flex justify-content-end">
+                            <button className="btn btn-cancel">Cancel</button>
                             <button className="btn btn-next">Next</button>
-                        </div>
+                        </div> */}
                     </Form>
 
                 </div>

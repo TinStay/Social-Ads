@@ -570,7 +570,7 @@ $font-color: #7662b6;
         min-height: 300px;
         margin: 30px auto;
         background-color: $bgc-white;
-        padding: 20px;
+        padding: 5px 10px 20px 10px;
         border-radius: 4px;
         
 
@@ -680,16 +680,16 @@ $font-color: #7662b6;
 
             
            
-            .first-form{
+            .add-form{
                 &-group{
-                    margin: 0px auto 100px auto;
+                    margin: 20px auto 120px auto;
                 }
 
                 &-label{
                     color: $font-color;
                     font-weight: 600;
                     font-size: 2rem;
-                    padding-bottom: 10px;
+                    padding-bottom: 20px;
                     margin: 20px auto 30px auto;
                     text-align: center;
                     letter-spacing: 1px;
@@ -712,6 +712,15 @@ $font-color: #7662b6;
                 margin: 10px auto 30px auto;
 
                 .social-media-box{
+
+                    .checkbox-big{
+                        transform: scale(1.5);
+                        -ms-transform: scale(1.5); /* IE */
+                        -moz-transform: scale(1.5); /* FF */
+                        -webkit-transform: scale(1.5); /* Safari and Chrome */
+                        -o-transform: scale(1.5); /* Opera */
+                        
+                    }
                     .img-slim{
                         width: 170px;
                         // height: 80px;
@@ -725,6 +734,36 @@ $font-color: #7662b6;
                     }
                 }
             }
+
+            .goals{
+                border-radius: 5px;
+                
+                padding: 20px;
+                color: $dark-gray;
+                font-size: 2rem;
+                // border: 1px solid #5c687554;
+
+                &-row{
+                    margin: 25px auto;
+                }
+                &-card{
+                    color: $gray;
+                    margin: 15px 10px;
+                    padding: 15px 20px;
+                    background-color: rgb(240, 239, 239);
+
+                    // i{
+                    //     padding: 10px;
+                    //     border-radius: 50%;
+                    //     background-color:$purple;
+                    // }
+                    &:hover{
+                        background-color: rgb(231, 231, 231);
+                    }
+                }
+               
+            }
+            
         }
     }
 }
