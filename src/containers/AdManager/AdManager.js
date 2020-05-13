@@ -4,8 +4,9 @@ import { AuthContext } from "../../components/Auth/Auth";
 import { Form } from 'react-bootstrap';
 
 // Components
-import SocialPlatforms from '../../components/AdManager/SocialPlatforms';
-import MarketingGoal from '../../components/AdManager/MarketingGoal';
+import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms';
+import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal';
+import Audience from '../../components/AdManager/CreateAd/Audience';
 
 class AdManager extends PureComponent{
 //   const {currentUser} = this.context;
@@ -111,13 +112,13 @@ class AdManager extends PureComponent{
                         
                        <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
 
-                        <MarketingGoal selectGoal={this.selectMarketingGoal}/>
+                        <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
+                        <Audience />
 
-
-                        {/* <div className="d-flex justify-content-end">
+                        <div className="d-flex justify-content-end">
                             <button className="btn btn-cancel">Cancel</button>
                             <button className="btn btn-next">Next</button>
-                        </div> */}
+                        </div>
                     </Form>
 
                 </div>

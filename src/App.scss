@@ -687,13 +687,13 @@ $dark-blue: #273469;
                 }
 
                 &-label{
-                    color: $font-color;
+                    color: $dark-blue;
                     font-weight: 600;
                     font-size: 2rem;
                     padding-bottom: 20px;
                     margin: 20px auto 30px auto;
-                    text-align: center;
-                    letter-spacing: 1px;
+                    // text-align: center;
+                    // letter-spacing: 1px;
                     
                     @media screen and (min-width: 1199px){
                         font-size: 2.3rem;
@@ -760,19 +760,67 @@ $dark-blue: #273469;
                     background-color: #e8eafb;
                     border: 1px solid #e6e8fb;
                     transition: all 0.1s ease-out;
+                    cursor: pointer;
 
-                    // i{
-                    //     padding: 10px;
-                    //     border-radius: 50%;
-                    //     background-color:$purple;
-                    // }
+                    
                     
                     &:hover{
                         border: 1px solid #d0d6fd;
                         background-color: #d7dcff;
                     }
                 }
+
+                .active{
+                    background-color: #d0d7fd;
+                }
                
+            }
+
+            .audience-form{
+
+                label{
+                    margin: 15px 10px;
+                    font-size: 1.5rem;
+
+                }
+
+                &-gender{
+                    margin: 20px 0;
+                    width: 40%;
+                    // text-align: left;
+                    
+
+
+                    .form-control {
+                        margin: 0 10px;
+                    }
+                }
+
+                &-age{
+                    margin: 20px 0;
+                    
+                    .form-control {
+                        margin: 0 10px;
+                    }
+                    .wrapper{
+                        width:100px;
+                        padding:20px;
+                        height: 50px;
+                    }
+                }
+
+                
+                &-select{
+                   size: 5;
+
+                   &:focus{
+                    size: 1;
+                   }
+                }
+                &-option{
+                    height: 20px;
+                }
+                
             }
             
         }
