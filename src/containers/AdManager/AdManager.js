@@ -18,7 +18,7 @@ class AdManager extends PureComponent{
             adInfo: {
                 
             },
-            demographics: {},
+            audience: {},
             payment: {},
         },
         showForm: false
@@ -76,9 +76,36 @@ class AdManager extends PureComponent{
         )
     }
 
+    updateAgeFrom = option => {
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                audience:{
+                    ...this.state.order.audience,
+                    ageFrom: option.value
+                }
+            }
+        }
+        )
+    }
+    updateAgeTo = option => {
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                audience:{
+                    ...this.state.order.audience,
+                    ageTo: option.value
+                }
+            }
+        }
+        )
+    }
+
 
   render(){
-    //   console.log("goal", this.state.order.adInfo)
+      console.log("audience", this.state.order.audience)
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
@@ -113,7 +140,9 @@ class AdManager extends PureComponent{
                        <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
 
                         <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
-                        <Audience />
+                        <Audience 
+                        updateAgeFrom={(option) => this.updateAgeFrom(option)}
+                        updateAgeTo={(option) => this.updateAgeTo(option)}/>
 
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-cancel">Cancel</button>

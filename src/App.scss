@@ -779,47 +779,33 @@ $dark-blue: #273469;
             .audience-form{
 
                 label{
-                    margin: 15px 10px;
-                    font-size: 1.4rem;
+                    margin: 15px 0;
+                    font-size: 1.6rem;
 
                 }
 
                 &-gender{
                     margin: 20px 0;
-                    width: 40%;
-                    // text-align: left;
-                    
-
-
-                    .form-control {
-                        margin: 0 10px;
+                    // width: 40%;
+                    .audience-form-select{
+                        margin: 5px 0px;
                     }
                 }
 
                 &-age{
                     margin: 20px 0;
-                    
-                    .form-control {
-                        margin: 0 10px;
-                    }
-                    .wrapper{
-                        width:100px;
-                        padding:20px;
-                        height: 50px;
+
+                    p{
+                        font-size: 1.3rem;
+                        margin: 5px 10px;
                     }
                 }
 
                 
                 &-select{
-                    width: 20px;
+                    width: 160px;
+                    margin: 5px 10px;
 
-                   &:focus{
-                    size: 1;
-                   }
-                }
-                &-option{
-                    font-size: 1rem;
-                    
                 }
                 
             }
