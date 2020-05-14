@@ -1,14 +1,21 @@
 import React,{ useState, useEffect } from 'react';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
+import { countriesData } from '../CountriesData';
+
 // import  Select  from 'react-bootstrap-select';
 // import Auxilliary from '../../../hoc/Auxilliary';
+import axios from "axios";
 
+axios.get("https://graph.facebook.com/API_VERSION/search?type=adgeolocation&location_types=['country']&fields=key,name&limit=1000")
+.then(response =>{
+    console.log(response.data)
+}).catch( err => console.log(err))
 
 const Audience = (props) => {
 
-    // const [isAgeFrom, setIsAgeFrom] = useState(false);
-
+    // Age
     let ageFrom = [];
     for(let i = 13; i <= 65; i++){
         ageFrom.push({ 
@@ -27,11 +34,24 @@ const Audience = (props) => {
     ageTo[0] = {value: '13+', label: "13+"}
     ageTo[ageTo.length - 1] = {value: '65+', label: "65+"}
 
+    // Gender
     let genderOptions = [
         {label: "All", value: 'All'},
         {label: "Men", value: 'men'},
         {label: "Women", value: 'women'},
     ]  
+
+    // Counteries and states
+    const countries = countriesData.map( country => {
+        return {
+            ...country,
+            label: country.value + country.code
+        }
+    })
+
+    const animatedComponents = makeAnimated();
+
+    console.log("countries", countries)
 
     return(
         <div className="add-form-group">
@@ -42,7 +62,7 @@ const Audience = (props) => {
                 <div className="col-md-4">
                     <div className="audience-form-age ">
                         <label for="age">Age:</label>
-                        <div className="row d-flex">
+                        <div className="d-flex">
                             <div className="mr-4 ">
                                 <p>From</p>
                                 <Select className="audience-form-select" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
@@ -59,9 +79,16 @@ const Audience = (props) => {
                         <Select className="audience-form-select " options={genderOptions} />
                     </div>
                 </div>
-                <div className="form-group col-md-8">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div className="audience-form-countries col-md-8">
+                <i class="fas fa-globe-europe"></i>
+                    <label  for="gender">Countries: </label>
+                    <Select
+                    closeMenuOnSelect={false}
+                    components={animatedComponents}
+                    // defaultValue={[countries[0], countries[1]]}
+                    isMulti
+                    options={countries}
+                    />
                 </div>
             </div>
             {/* <div className="form-group">

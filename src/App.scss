@@ -777,11 +777,13 @@ $dark-blue: #273469;
             }
 
             .audience-form{
+                color: $dark-gray;
 
                 label{
                     margin: 15px 0;
                     font-size: 1.6rem;
-
+                    font-weight: 500;
+                    
                 }
 
                 &-gender{
