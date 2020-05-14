@@ -1,20 +1,34 @@
-import React,{ useState } from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import React,{ useState, useEffect } from 'react';
+import { Button, ButtonGroup, Form } from 'react-bootstrap';
+import Select from 'react-select'
+// import  Select  from 'react-bootstrap-select';
 // import Auxilliary from '../../../hoc/Auxilliary';
 
 
 const Audience = (props) => {
 
-    const [isAgeFrom, setIsAgeFrom] = useState(false);
+    // const [isAgeFrom, setIsAgeFrom] = useState(false);
 
     let options = [];
     for(let i = 13; i <= 65; i++){
-        options.push(i);
+        options.push({ 
+            value: `${i}`,
+            label: `${i}`
+        });
     }
+    // let optionHeight =  `20px`
+   
+    
 
-    let ageFrom = options.map( age =>{
-    return <option value={age} className="audience-form-option">{age}</option>
-    })
+    // useEffect(() => {
+    //     let x = document.getElementById("mySelect").length;
+    //     let y = 20 * x + 10;
+    //     document.getElementById("mySelect").style.height = y+"px";
+    // })
+
+    // let ageFrom = options.map( age =>{
+    // return <option value={age} className="audience-form-option">{age}</option>
+    // })
 
     console.log("options", options);
 
@@ -34,12 +48,12 @@ const Audience = (props) => {
                 <label for="exampleFormControlSelect1">Age</label>
                <div className="d-flex col-md-6">
                     <p>From</p>
-                        <select className="audience-form-select col-sm-5" id="exampleFormControlSelect1" >
-                        {ageFrom}
-                        </select>
+                    <Select options={options}/>
 
                     <p>To</p>
-                    <div class="wrapper">
+                    <Select options={options}/>
+
+                    {/* <div class="wrapper">
                         <select name="" id="" class="audience-form-select">
                             <option value="">One</option>
                             <option value="">Two</option>
@@ -62,7 +76,7 @@ const Audience = (props) => {
                             <option value="">Nine</option>
                             <option value="">Ten</option>
                         </select>
-                    </div>
+                    </div> */}
 
                </div>
             </div>

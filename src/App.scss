@@ -780,7 +780,7 @@ $dark-blue: #273469;
 
                 label{
                     margin: 15px 10px;
-                    font-size: 1.5rem;
+                    font-size: 1.4rem;
 
                 }
 
@@ -811,14 +811,15 @@ $dark-blue: #273469;
 
                 
                 &-select{
-                   size: 5;
+                    width: 20px;
 
                    &:focus{
                     size: 1;
                    }
                 }
                 &-option{
-                    height: 20px;
+                    font-size: 1rem;
+                    
                 }
                 
             }
