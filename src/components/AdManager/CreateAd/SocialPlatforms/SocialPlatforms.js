@@ -1,11 +1,11 @@
 import React from 'react';
-import Auxilliary from '../../../hoc/Auxilliary';
+import Auxilliary from '../../../../hoc/Auxilliary';
 import { Form } from 'react-bootstrap';
 
-import facebookAds from '../../../assets/facebookAds.png'
-import instagramAds from '../../../assets/instagramAds.png'
-import googleAds from '../../../assets/adsGoogle.png'
-import twitterAds from '../../../assets/twitterAds.png'
+import facebookAds from '../../../../assets/facebookAds.png'
+import instagramAds from '../../../../assets/instagramAds.png'
+import googleAds from '../../../../assets/adsGoogle.png'
+import twitterAds from '../../../../assets/twitterAds.png'
 
 const SocialPlatforms = (props) => {
 

@@ -1,45 +1,20 @@
 import React,{ useState, useEffect } from 'react';
-import { Button, ButtonGroup, Form } from 'react-bootstrap';
+import { AgeFromSelect, AgeToSelect, GenderSelect } from './SelectForms';
+// import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
-import { countriesData } from '../CountriesData';
+import { countriesData } from '../../CountriesData';
 
-// import  Select  from 'react-bootstrap-select';
 // import Auxilliary from '../../../hoc/Auxilliary';
-import axios from "axios";
-
-axios.get("https://graph.facebook.com/API_VERSION/search?type=adgeolocation&location_types=['country']&fields=key,name&limit=1000")
-.then(response =>{
-    console.log(response.data)
-}).catch( err => console.log(err))
+// import axios from "axios";
 
 const Audience = (props) => {
 
-    // Age
-    let ageFrom = [];
-    for(let i = 13; i <= 65; i++){
-        ageFrom.push({ 
-            value: `${i}`,
-            label: `${i}`
-        });
-    }
+    
 
-    let ageTo = [];
-    for(let i = 13; i <= 65; i++){
-        ageTo.push({ 
-            value: `${i}`,
-            label: `${i}`
-        });
-    }
-    ageTo[0] = {value: '13+', label: "13+"}
-    ageTo[ageTo.length - 1] = {value: '65+', label: "65+"}
-
+    
     // Gender
-    let genderOptions = [
-        {label: "All", value: 'All'},
-        {label: "Men", value: 'men'},
-        {label: "Women", value: 'women'},
-    ]  
+    
 
     // Counteries and states
     const countries = countriesData.map( country => {
@@ -51,7 +26,7 @@ const Audience = (props) => {
 
     const animatedComponents = makeAnimated();
 
-    console.log("countries", countries)
+    // console.log("countries", countries)
 
     return(
         <div className="add-form-group">
@@ -65,18 +40,18 @@ const Audience = (props) => {
                         <div className="d-flex">
                             <div className="mr-4 ">
                                 <p>From</p>
-                                <Select className="audience-form-select" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+                                <AgeFromSelect updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
                             </div>
                             <div className="mr-4">
                                 <p>To</p>
-                                <Select className="audience-form-select" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+                                <AgeToSelect updateAgeTo={(option) => props.updateAgeTo(option)}/>
                             </div>
                         </div>
                         
                     </div>
                     <div className="audience-form-gender ">
                         <label  for="gender">Gender: </label>
-                        <Select className="audience-form-select " options={genderOptions} />
+                        <GenderSelect updateGender={(gender) => props.updateGender(gender)}/>
                     </div>
                 </div>
                 <div className="audience-form-countries col-md-8">

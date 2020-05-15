@@ -4,9 +4,9 @@ import { AuthContext } from "../../components/Auth/Auth";
 import { Form } from 'react-bootstrap';
 
 // Components
-import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms';
-import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal';
-import Audience from '../../components/AdManager/CreateAd/Audience';
+import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms/SocialPlatforms';
+import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal/MarketingGoal';
+import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 
 class AdManager extends PureComponent{
 //   const {currentUser} = this.context;
@@ -103,9 +103,23 @@ class AdManager extends PureComponent{
         )
     }
 
+    updateGender = gender => {
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                audience:{
+                    ...this.state.order.audience,
+                    gender: gender.value
+                }
+            }
+        }
+        )
+    }
+
 
   render(){
-      console.log("audience", this.state.order.audience)
+      console.log("order", this.state.order)
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
@@ -142,7 +156,8 @@ class AdManager extends PureComponent{
                         <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
                         <Audience 
                         updateAgeFrom={(option) => this.updateAgeFrom(option)}
-                        updateAgeTo={(option) => this.updateAgeTo(option)}/>
+                        updateAgeTo={(option) => this.updateAgeTo(option)}
+                        updateGender={(gender => this.updateGender(gender))}/>
 
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-cancel">Cancel</button>

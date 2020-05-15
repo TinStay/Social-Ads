@@ -1,5 +1,5 @@
 import React from 'react';
-import Auxilliary from '../../../hoc/Auxilliary';
+import Auxilliary from '../../../../hoc/Auxilliary';
 import { Form } from 'react-bootstrap';
 import GoalCard  from './GoalCard';
 

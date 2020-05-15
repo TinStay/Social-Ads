@@ -1,6 +1,4 @@
 import React from 'react';
-import Auxilliary from '../../../hoc/Auxilliary';
-import { Form } from 'react-bootstrap';
 
 
 const GoalCard = (props) => {
