@@ -1,6 +1,9 @@
 import React from 'react';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import CreatableSelect from 'react-select/creatable';
+import { countriesData } from '../../CountriesData';
+
 
     // AgeFrom
 export const AgeFromSelect = (props) => {
@@ -14,7 +17,7 @@ export const AgeFromSelect = (props) => {
     }
 
     return(
-        <Select className="audience-form-select" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
 
@@ -33,7 +36,7 @@ export const AgeToSelect = (props) => {
 
 
     return(
-       <Select className="audience-form-select" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 
@@ -50,3 +53,52 @@ export const GenderSelect = (props) => {
         <Select className="audience-form-select " options={genderOptions} onChange={(gender) => props.updateGender(gender)}/>
     )
 }
+
+// Location
+export const LocationSelect = (props) => {
+   
+    const countries = countriesData.map( country => {
+        return {
+            ...country,
+            label: country.value
+        }
+    })
+
+    const animatedComponents = makeAnimated();
+    return (
+        <Select
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        // defaultValue={[countries[0], countries[1]]}
+        isMulti
+        options={countries}
+        />
+    )
+}
+
+// Interests, behaviors, demographics
+export const InterestsSelect = (props) => {
+   
+    const handleChange = (newValue, actionMeta) => {
+        console.group('Value Changed');
+        console.log(newValue);
+        console.log(`action: ${actionMeta.action}`);
+        console.groupEnd();
+    };
+
+    let interests = [
+        {label: "Snowboarding", value: 'Snowboarding'},
+        {label: "Skiing", value: 'Skiing'},
+        {label: "Football", value: 'Football'},
+    ] 
+
+    return (
+        <CreatableSelect
+        isMulti
+        onChange={handleChange}
+        options={interests}
+      />
+    )
+}
+
+
