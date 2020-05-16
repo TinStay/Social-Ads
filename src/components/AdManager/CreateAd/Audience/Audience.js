@@ -4,7 +4,8 @@ import {
     AgeToSelect, 
     GenderSelect, 
     LocationSelect,
-    InterestsSelect } from './SelectForms';
+    InterestsSelect,
+    DevicesSelect } from './SelectForms';
 // import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
@@ -62,10 +63,13 @@ const Audience = (props) => {
                         <InterestsSelect />
                     </div>
                 </div>
-                {/* <div className="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                    
-                </div> */}
+                <div className="row">
+                    <div className="audience-form-devices col-md-7">
+                        {/* <i class="fas fa-globe-europe"></i> */}
+                        <label  for="devices">Devices, OS : </label>
+                        <DevicesSelect />
+                    </div>
+                </div>
                 
                 
             </form>
