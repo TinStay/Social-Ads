@@ -7,6 +7,7 @@ import { Form } from 'react-bootstrap';
 import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms/SocialPlatforms';
 import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal/MarketingGoal';
 import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
+import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
 
 class AdManager extends PureComponent{
 //   const {currentUser} = this.context;
@@ -117,9 +118,28 @@ class AdManager extends PureComponent{
         )
     }
 
+    saveLocation = e =>{
+        let location = e.map( place => {
+            return place.value
+        })
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                audience:{
+                    ...this.state.order.audience,
+                    location: location
+                }
+            }
+        }
+        )
+    }
+
 
   render(){
-      console.log("order", this.state.order)
+    //   console.log("order", this.state.order)
+
       let adSection = (
           <div className="row manager-ad-form-row text-center">
             <div className="col-md-6 first ">
@@ -154,10 +174,14 @@ class AdManager extends PureComponent{
                        <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
 
                         <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
+                        
                         <Audience 
                         updateAgeFrom={(option) => this.updateAgeFrom(option)}
                         updateAgeTo={(option) => this.updateAgeTo(option)}
-                        updateGender={(gender => this.updateGender(gender))}/>
+                        updateGender={(gender => this.updateGender(gender))}
+                        saveLocation={(e) => this.saveLocation(e)}/>
+
+                        <AdPlacement />
 
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-cancel">Cancel</button>

@@ -4,26 +4,10 @@ import {
     AgeToSelect, 
     GenderSelect, 
     LocationSelect,
-    InterestsSelect,
-    DevicesSelect } from './SelectForms';
-// import { Button, ButtonGroup, Form } from 'react-bootstrap';
-import Select from 'react-select'
-import makeAnimated from 'react-select/animated';
-
-// import Auxilliary from '../../../hoc/Auxilliary';
-// import axios from "axios";
+    InterestsSelect,} from './SelectForms';
 
 const Audience = (props) => {
 
-    
-
-    
-    // Gender
-    
-
-    
-
-    // console.log("countries", countries)
 
     return(
         <div className="add-form-group">
@@ -34,7 +18,7 @@ const Audience = (props) => {
                     <div className="audience-form-countries col-md-7">
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
-                        <LocationSelect />
+                        <LocationSelect saveLocation={(e) => props.saveLocation(e)}/>
                     </div>
                 </div>
                 
@@ -63,13 +47,7 @@ const Audience = (props) => {
                         <InterestsSelect />
                     </div>
                 </div>
-                <div className="row">
-                    <div className="audience-form-devices col-md-7">
-                        {/* <i class="fas fa-globe-europe"></i> */}
-                        <label  for="devices">Devices, OS : </label>
-                        <DevicesSelect />
-                    </div>
-                </div>
+                
                 
                 
             </form>

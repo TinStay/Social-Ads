@@ -68,6 +68,7 @@ export const LocationSelect = (props) => {
     return (
         <Select
         closeMenuOnSelect={false}
+        onChange={(e) => props.saveLocation(e)}
         components={animatedComponents}
         // defaultValue={[countries[0], countries[1]]}
         isMulti
@@ -79,12 +80,12 @@ export const LocationSelect = (props) => {
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
    
-    const handleChange = (newValue, actionMeta) => {
-        console.group('Value Changed');
-        console.log(newValue);
-        console.log(`action: ${actionMeta.action}`);
-        console.groupEnd();
-    };
+    // const handleChange = (newValue, actionMeta) => {
+    //     console.group('Value Changed');
+    //     console.log(newValue);
+    //     console.log(`action: ${actionMeta.action}`);
+    //     console.groupEnd();
+    // };
 
     let interests = [
         {label: "Snowboarding", value: 'Snowboarding'},
@@ -95,60 +96,12 @@ export const InterestsSelect = (props) => {
     return (
         <CreatableSelect
         isMulti
-        onChange={handleChange}
+        // onChange={handleChange}
         options={interests}
       />
     )
 }
 
-export const DevicesSelect = (props) => {
-   
 
-    let devices = [
-        {
-            label: "Devices",
-            options: [
-                {label: "Desktop and laptop computers", value: 'Desktop and laptop computers'},
-                {label: "iOS devices", value: 'iOS devices'},
-                {label: "Android devices", value: 'Android devices'},
-                {label: "Other mobile", value: 'Other mobile'},
-            ]
-        }
-    ] 
-
-    const groupStyles = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    };
-    const groupBadgeStyles = {
-        backgroundColor: '#EBECF0',
-        borderRadius: '2em',
-        color: '#172B4D',
-        display: 'inline-block',
-        fontSize: 12,
-        fontWeight: 'normal',
-        lineHeight: '1',
-        minWidth: 1,
-        padding: '0.16666666666667em 0.5em',
-        textAlign: 'center',
-    };
-
-    const formatGroupLabel = data => (
-        <div style={groupStyles}>
-          <span>{data.label}</span>
-          {/* <span style={groupBadgeStyles}>{data.options.length}</span> */}
-        </div>
-      );
-
-    return (
-        <Select
-        defaultValue={devices[0]}
-        options={devices}
-        isMulti
-        formatGroupLabel={formatGroupLabel}
-        />
-    )
-}
 
 
