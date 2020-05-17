@@ -25,8 +25,8 @@ class AdManager extends PureComponent{
 
     showForm = () => {
         this.setState({ showForm: true})
-        this.props.history.push(this.props.match.path + '/create-ad')
-        console.log("this.props.history", this.props.history)
+        // this.props.history.replace('/ad-manager/create-ad')
+        // console.log("this.props.history", this.props.history)
     }
 
 
@@ -37,25 +37,24 @@ class AdManager extends PureComponent{
     
     let adSection = (
             <div className="row manager-ad-form-row text-center">
-            <div className="col-md-6 first ">
-                <h2 className="">You have no running ads at the moment</h2>
-                <button onClick={this.showForm} className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
-            </div>
-            
-            <div className="col-md-6 second">
-                <h3>Check out a tutorial how to run ads</h3>
-                <button className="btn btn-watch-tutorial d-flex"><i class="fas fa-video"></i>Watch tutorial</button>
-            </div>
-        </div>
+                <div className="col-md-6 first ">
+                    <h2 className="">You have no running ads at the moment</h2>
+                    <button onClick={this.showForm} className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
+                </div>
+                <div className="col-md-6 second">
+                    <h3>Check out a tutorial how to run ads</h3>
+                    <button className="btn btn-watch-tutorial d-flex"><i class="fas fa-video"></i>Watch tutorial</button>
+                </div>
+             </div>
       ); 
 
       const adInfo = this.state.order.adInfo;
       
-    let redirectRoute = null;
+    let createAdForm = null;
 
-    // if(this.state.showForm){
-    //     this.props.history.push('/create-ad')
-    // }
+    if(this.state.showForm){
+        createAdForm = <CreateAdForm/>
+    }
     console.log(this.props.match.path)
 
     return (
@@ -67,7 +66,7 @@ class AdManager extends PureComponent{
             </div>
             <div className="manager-ad-form">
                 {adSection}
-                <PrivateRoute path='/ad-manager/create-ad' component={CreateAdForm}/>
+                {createAdForm}
             </div>
         </div>
        );

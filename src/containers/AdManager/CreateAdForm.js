@@ -24,10 +24,6 @@ class CreateAdForm extends PureComponent{
         showForm: false
     }
 
-    showForm = () => {
-        this.setState({ showForm: true})
-    }
-
     changeAdInfo = (e) => {
         // console.log(e.target.value, e.target.name)
         const value = e.target.value
@@ -137,7 +133,7 @@ class CreateAdForm extends PureComponent{
 
 
   render(){
-    //   console.log("order", this.state.order)
+      console.log("order", this.state.order)
 
       const adInfo = this.state.order.adInfo;
       
@@ -157,12 +153,13 @@ class CreateAdForm extends PureComponent{
                     <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
                     
                     <Audience 
-                    updateAgeFrom={(option) => this.updateAgeFrom(option)}
-                    updateAgeTo={(option) => this.updateAgeTo(option)}
-                    updateGender={(gender => this.updateGender(gender))}
-                    saveLocation={(e) => this.saveLocation(e)}/>
+                    updateAgeFrom = {(option) => this.updateAgeFrom(option)}
+                    updateAgeTo = {(option) => this.updateAgeTo(option)}
+                    updateGender = {(gender => this.updateGender(gender))}
+                    saveLocation = {(e) => this.saveLocation(e)}/>
 
-                    <AdPlacement />
+                    <AdPlacement 
+                    isFacebookChecked={adInfo.facebookAds}/>
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>
