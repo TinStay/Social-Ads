@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { 
     DevicesSelect} from './PlacementSelectForms';
-import FacebookPlacements from './FacebookPlacements';
+import FacebookPlacements from './FacebookPlacements/FacebookPlacements';
 // import Select from 'react-select'
 // import makeAnimated from 'react-select/animated';
 
