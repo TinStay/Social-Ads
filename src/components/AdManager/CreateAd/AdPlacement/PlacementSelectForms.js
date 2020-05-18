@@ -55,6 +55,7 @@ export const DevicesSelect = (props) => {
         options={devices}
         isMulti
         formatGroupLabel={formatGroupLabel}
+        onChange={devices => props.saveDevices(devices)}
         />
     )
 }

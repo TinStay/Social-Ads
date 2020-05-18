@@ -18,7 +18,7 @@ const Audience = (props) => {
                     <div className="audience-form-countries col-md-7">
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
-                        <LocationSelect saveLocation={(e) => props.saveLocation(e)}/>
+                        <LocationSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
                     </div>
                 </div>
                 
@@ -44,7 +44,7 @@ const Audience = (props) => {
                 <div className="row">
                     <div className="audience-form-countries col-md-10">
                         <label  for="gender">Interests, behaviors, demographics: </label>
-                        <InterestsSelect />
+                        <InterestsSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
                     </div>
                 </div>
                 

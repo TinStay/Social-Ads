@@ -113,9 +113,11 @@ class CreateAdForm extends PureComponent{
         )
     }
 
-    saveLocation = e =>{
-        let location = e.map( place => {
-            return place.value
+    saveOptionForm = (optionsData, form) =>{
+
+        console.log("form", form)
+        let options = optionsData.map( option => {
+            return option.value
         })
 
         this.setState({
@@ -124,7 +126,26 @@ class CreateAdForm extends PureComponent{
                 ...this.state.order,
                 audience:{
                     ...this.state.order.audience,
-                    location: location
+                    [form.name]: options
+                }
+            }
+        }
+        )
+    }
+
+    saveDevices = devicesData => {
+        // devices is an array
+        let devices = devicesData.map( device => {
+            return device.value
+        })
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    devices: devices
                 }
             }
         }
@@ -133,7 +154,7 @@ class CreateAdForm extends PureComponent{
 
 
   render(){
-      console.log("order", this.state.order)
+    console.log("order", this.state.order)
 
       const adInfo = this.state.order.adInfo;
       
@@ -156,10 +177,12 @@ class CreateAdForm extends PureComponent{
                     updateAgeFrom = {(option) => this.updateAgeFrom(option)}
                     updateAgeTo = {(option) => this.updateAgeTo(option)}
                     updateGender = {(gender => this.updateGender(gender))}
-                    saveLocation = {(e) => this.saveLocation(e)}/>
+                    saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
+                    />
 
                     <AdPlacement 
-                    isFacebookChecked={adInfo.facebookAds}/>
+                    isFacebookChecked={adInfo.facebookAds}
+                    saveDevices={(options) => this.saveDevices(options)}/>
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>

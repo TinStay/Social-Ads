@@ -6,9 +6,8 @@ import CustomBoxes from './CustomBoxes';
 
 
 const FacebookPlacements = (props) => {
-    const [customPlacement, setCustomPlacement] = useState(false)
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
-
+    const [customPlacement, setCustomPlacement] = useState(false)
 
     const changeToAutomatic = (e) =>{
         if(e.target.checked){
@@ -43,7 +42,6 @@ const FacebookPlacements = (props) => {
     return(
         <div className="fb-palacements">
         <h2 className=" font-color">Facebook</h2>
-        
             <Form className="fb-palacements-form row">
                <div className="fb-palacements-radioBtns col-md-3">
                     <Form.Check
@@ -69,7 +67,9 @@ const FacebookPlacements = (props) => {
                         onChange={(e) => changeToCustom(e)}
                     />
                </div>
+
                { customPlacements }
+
             </Form>
         
         </div>

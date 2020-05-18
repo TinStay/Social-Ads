@@ -68,7 +68,8 @@ export const LocationSelect = (props) => {
     return (
         <Select
         closeMenuOnSelect={false}
-        onChange={(e) => props.saveLocation(e)}
+        name="location"
+        onChange={(options, form) => props.saveOptionForm(options, form)}
         components={animatedComponents}
         // defaultValue={[countries[0], countries[1]]}
         isMulti
@@ -79,13 +80,6 @@ export const LocationSelect = (props) => {
 
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
-   
-    // const handleChange = (newValue, actionMeta) => {
-    //     console.group('Value Changed');
-    //     console.log(newValue);
-    //     console.log(`action: ${actionMeta.action}`);
-    //     console.groupEnd();
-    // };
 
     let interests = [
         {label: "Snowboarding", value: 'Snowboarding'},
@@ -96,7 +90,8 @@ export const InterestsSelect = (props) => {
     return (
         <CreatableSelect
         isMulti
-        // onChange={handleChange}
+        name="interests"
+        onChange={(options, form) => props.saveOptionForm(options, form)}
         options={interests}
       />
     )
