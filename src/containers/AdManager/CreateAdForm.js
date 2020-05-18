@@ -16,7 +16,9 @@ class CreateAdForm extends PureComponent{
         ads: {},
         order: {
             adInfo: {
-                
+                fbPlacements:{
+                    automatic: true
+                }
             },
             audience: {},
             payment: {},
@@ -153,6 +155,55 @@ class CreateAdForm extends PureComponent{
     }
 
 
+    saveFbPlacements = (e) => {
+        e.preventDefault()
+        // Automatic Facebook placements update state 
+        const automaticPlacements = e.target[0].checked
+        if(automaticPlacements){
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        fbPlacements: {
+                            automatic: automaticPlacements
+                        }
+                    }
+                }
+            }
+            )
+        }
+
+        // Custom Facebook placements update state 
+        
+        let customFbPlacements = e.target[1].checked;
+        let customPlacements = [];
+
+        if(customFbPlacements){
+            for(let i = 2; i <=6; i++){
+                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
+            }
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        fbPlacements: {
+                            custom: customPlacements
+                        }
+                    }
+                }
+            }
+            )
+        }
+        
+
+        
+    }
+
+
   render(){
     console.log("order", this.state.order)
 
@@ -182,7 +233,8 @@ class CreateAdForm extends PureComponent{
 
                     <AdPlacement 
                     isFacebookChecked={adInfo.facebookAds}
-                    saveDevices={(options) => this.saveDevices(options)}/>
+                    saveDevices={(options) => this.saveDevices(options)}
+                    saveFbPlacements={(e) => this.saveFbPlacements(e)}/>
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>

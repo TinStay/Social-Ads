@@ -8,18 +8,18 @@ import { Form } from 'react-bootstrap';
 const CustomBoxes = (props) => {
 
     let customBoxes = [
-        {name:"newsFeed", checked: true, label: "News Feed", id:`custom-fb-newsFeed`},
-        {name:"marketplace", checked: true, label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
-        {name:"videoFeeds", checked: true, label: "Video Feeds", id:`custom-fb-videoFeeds`},
-        {name:"rightColumn", checked: true, label: "Right Column", id:`custom-fb-rightColumn`},
-        {name:"stories", checked: true, label: "Stories", id:`custom-fb-stories`},
+        {name:"newsFeed", label: "News Feed", id:`custom-fb-newsFeed`},
+        {name:"marketplace", label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
+        {name:"videoFeeds", label: "Video Feeds", id:`custom-fb-videoFeeds`},
+        {name:"rightColumn", label: "Right Column", id:`custom-fb-rightColumn`},
+        {name:"stories", label: "Stories", id:`custom-fb-stories`},
     ]
 
     return(
         <div className="row customCheckboxes">
 
             { customBoxes.map( box =>{
-                return  <div className="col-md-4 d-flex align-items-center">
+                return  <div key={box.name} className="col-md-4 d-flex align-items-center">
                             <Form.Check
                                 custom
                                 // inline
@@ -28,8 +28,8 @@ const CustomBoxes = (props) => {
                                 id={box.id}
                                 className="customCheckbox"
                                 name={box.name}
-                                checked={box.checked}
-                                // onClick={(e) => props.changeSMPInfo(e)}
+                                checked
+                                // onChange={(e) => props.pushToCustomPlacements(e)}
                                 />
                                 <label>{box.label}</label>
                                 <i class="far fa-eye"></i>

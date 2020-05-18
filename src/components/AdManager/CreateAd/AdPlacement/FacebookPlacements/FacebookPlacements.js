@@ -9,8 +9,10 @@ const FacebookPlacements = (props) => {
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
     const [customPlacement, setCustomPlacement] = useState(false)
 
+
     const changeToAutomatic = (e) =>{
         if(e.target.checked){
+            
             setCustomPlacement(false)
             setAutomaticPlacement(true)
         }
@@ -20,19 +22,14 @@ const FacebookPlacements = (props) => {
         if(e.target.checked){
             setCustomPlacement(true)
             setAutomaticPlacement(false)
-        }else {
-            setCustomPlacement(false)
-            setAutomaticPlacement(true)
-        } 
+        }
     }
 
-    // console.log("customFb", customFb);
-    // console.log("customPlacement", customPlacement)
 
-    let customPlacements = null;
+    let customCheckboxes = null;
      
     if(customPlacement){
-        customPlacements = (
+        customCheckboxes = (
             <div className="col-md-9">
                <CustomBoxes />
             </div>
@@ -42,7 +39,7 @@ const FacebookPlacements = (props) => {
     return(
         <div className="fb-palacements">
         <h2 className=" font-color">Facebook</h2>
-            <Form className="fb-palacements-form row">
+            <Form onSubmit={(e) => props.saveFbPlacements(e)} className="fb-palacements-form row">
                <div className="fb-palacements-radioBtns col-md-3">
                     <Form.Check
                         custom
@@ -68,8 +65,10 @@ const FacebookPlacements = (props) => {
                     />
                </div>
 
-               { customPlacements }
-
+               { customCheckboxes }
+                <div className="col-md-12">
+                    <button type="submit" className="btn btn-primary">Save placements</button>
+                </div>
             </Form>
         
         </div>

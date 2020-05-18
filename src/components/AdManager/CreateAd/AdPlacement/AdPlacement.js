@@ -24,7 +24,8 @@ const AdPlacement = (props) => {
 
             <div className="add-form-row">
                 {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
-                <FacebookPlacements />
+                <FacebookPlacements 
+                saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
             </div>
                 
                 
