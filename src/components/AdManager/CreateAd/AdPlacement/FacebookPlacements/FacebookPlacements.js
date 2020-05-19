@@ -37,10 +37,12 @@ const FacebookPlacements = (props) => {
     }
 
     return(
-        <div className="fb-palacements">
-        <h2 className=" font-color">Facebook</h2>
+        <div className="fb-placements">
+        <h1 className=" font-color">Facebook</h1>
             <Form onSubmit={(e) => props.saveFbPlacements(e)} className="fb-palacements-form row">
-               <div className="fb-palacements-radioBtns col-md-3">
+           
+               <div className="fb-placements-radioBtns col-md-3">
+               <h3 className="fb-placements-label font-color ">Placements</h3>
                     <Form.Check
                         custom
                         block
@@ -66,6 +68,24 @@ const FacebookPlacements = (props) => {
                </div>
 
                { customCheckboxes }
+
+               <div className="container ad-container">
+                   <div className="row">
+                        <h3 className="col-md-12 pb-2  ad-container-label border-bottom font-color">Ad appearance</h3>
+                        <div className="col-md-6">
+                        <Form.Group>
+                            <Form.Label>Primary text</Form.Label>
+                            <Form.Control type="text" placeholder="Enter primary text" />
+                            <Form.Label>Headline</Form.Label>
+                            <Form.Control type="text" placeholder="Enter headline" />
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a description for your ad" />
+                        </Form.Group>
+                        </div>
+                   </div>
+               </div>
+
+               
                 <div className="col-md-12">
                     <button type="submit" className="btn btn-primary">Save placements</button>
                 </div>

@@ -836,22 +836,27 @@ $dark-blue: #273469;
                 }
             }
 
-            .fb-palacements{
+            .fb-placements{
                 margin: 60px auto;
                 padding: 20px;
                 border-radius: 2px;
                 border: 1px solid rgb(206, 206, 206);
 
                 &-form{
-                    margin: 10px auto;
+                    margin: 10px 20px;
                 }
 
                 &-radioBtns{
-                    padding: 0 50px;
+                    padding: 20px 0;
+                }
+
+                &-label{
+                    padding: 0 35px;
                 }
 
                 .radio-big{
-                    margin: 40px 0;
+                    margin: 40px 0 20px 0;
+                    padding: 0 70px;
                     font-size: 1.2rem;
                     width: 150px;
                     // background-color: red;
@@ -864,7 +869,12 @@ $dark-blue: #273469;
                 }
 
                 .customCheckboxes{
-                    margin: 10px auto;
+                    margin-bottom: 30px;
+
+                    @media screen and (min-width: 1199px){
+                        margin-top: 70px;
+                        margin-bottom: 0px;
+                    }
 
                     .customCheckbox{
                         margin: 20px 10px;
@@ -874,6 +884,8 @@ $dark-blue: #273469;
                         -moz-transform: scale(1.2); /* FF */
                         -webkit-transform: scale(1.2); /* Safari and Chrome */
                         -o-transform: scale(1.2); /* Opera */
+
+                        
                     }
 
 
@@ -887,6 +899,14 @@ $dark-blue: #273469;
                 }
                 
 
+                .ad-container{
+                    margin: 20px 35px;
+
+                    &-label{
+                        // width: 90%;
+                       
+                    }
+                }
 
             }
             

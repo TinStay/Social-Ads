@@ -38,8 +38,7 @@ class CreateAdForm extends PureComponent{
                         [e.target.name]: value
                     }
                 }
-            }
-            )
+            })
     }
 
     // Social Media Platforms
@@ -55,9 +54,7 @@ class CreateAdForm extends PureComponent{
                         [e.target.name]: checked
                     }
                 }
-            }
-            )
-
+            })
     }
 
     selectMarketingGoal = (title) => {
@@ -70,8 +67,7 @@ class CreateAdForm extends PureComponent{
                     marketingGoal: title
                 }
             }
-        }
-        )
+        })
     }
 
     updateAgeFrom = option => {
@@ -84,8 +80,7 @@ class CreateAdForm extends PureComponent{
                     ageFrom: option.value
                 }
             }
-        }
-        )
+        })
     }
     updateAgeTo = option => {
         this.setState({
@@ -97,8 +92,7 @@ class CreateAdForm extends PureComponent{
                     ageTo: option.value
                 }
             }
-        }
-        )
+        })
     }
 
     updateGender = gender => {
@@ -111,8 +105,7 @@ class CreateAdForm extends PureComponent{
                     gender: gender.value
                 }
             }
-        }
-        )
+        })
     }
 
     saveOptionForm = (optionsData, form) =>{
@@ -131,8 +124,7 @@ class CreateAdForm extends PureComponent{
                     [form.name]: options
                 }
             }
-        }
-        )
+        })
     }
 
     saveDevices = devicesData => {
@@ -150,8 +142,7 @@ class CreateAdForm extends PureComponent{
                     devices: devices
                 }
             }
-        }
-        )
+        })
     }
 
 
@@ -171,12 +162,10 @@ class CreateAdForm extends PureComponent{
                         }
                     }
                 }
-            }
-            )
+            })
         }
 
         // Custom Facebook placements update state 
-        
         let customFbPlacements = e.target[1].checked;
         let customPlacements = [];
 
@@ -195,8 +184,7 @@ class CreateAdForm extends PureComponent{
                         }
                     }
                 }
-            }
-            )
+            })
         }
         
 
