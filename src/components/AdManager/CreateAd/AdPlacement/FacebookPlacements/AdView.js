@@ -25,9 +25,9 @@ const AdView = (props) => {
             </div>
             <div className=" row ad-description pt-2">
                 <div className="col-md-8 ">
-                    <p className="url">https://tinstay.herokuapp.com/</p>
-                    <h1 className="headline">JavaScript course for beginners</h1>
-                    <p className="desc">Learn the basics of web development</p>
+                    <p className="url">{props.url}</p>
+                    <h1 className="headline">{props.headline}</h1>
+                    <p className="desc">{props.description}</p>
                 </div>
                 <div className="col-md-4 ">
                     <button disabled className="btn  btn-outline-secondary">LEARN MORE</button>
