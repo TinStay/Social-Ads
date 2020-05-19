@@ -26,6 +26,10 @@ $dark-blue: #273469;
     color: $gray;
 }
 
+.dark-gray{
+    color: $dark-gray;
+}
+
 
 
 .errorMsg{
@@ -567,7 +571,7 @@ $dark-blue: #273469;
     }
 
     &-ad-form{
-        width: 96%;
+        width: 100%;
         min-height: 300px;
         margin: 30px auto;
         background-color: $bgc-white;
@@ -584,7 +588,7 @@ $dark-blue: #273469;
         }
 
         &-row{
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
             @media screen and (min-width: 1199px){
                 width: 88%;
@@ -713,7 +717,7 @@ $dark-blue: #273469;
                 margin: 10px auto 30px auto;
 
                 .social-media-box{
-
+                    margin: 0 20px;
                     .checkbox-big{
                         transform: scale(1.5);
                         -ms-transform: scale(1.5); /* IE */
@@ -899,13 +903,94 @@ $dark-blue: #273469;
                 }
                 
 
-                .ad-container{
-                    margin: 20px 35px;
+                .fb-ad-form{
+                    margin: 20px auto;
+                    color: $dark-gray;
 
                     &-label{
                         // width: 90%;
                        
                     }
+
+                    &-field{
+                        margin: 25px 10px;
+
+                        &-label{
+                            margin: 15px 0;
+                            font-size: 1.4rem;
+                            font-weight: 500;
+                        }
+                    }
+
+                    &-view{
+                        margin: 50px 20px;
+                        .head{
+
+                            img{
+                                margin-right: 10px;
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                            }
+
+                            h1{
+                                font-size: 1rem;
+                                font-weight: bold;
+                            }
+
+                            p{
+                                font-size: 0.9rem;
+                                color: #888888;
+                            }
+
+                            .primary-text{
+                                margin: 0 10px;
+                                font-size: 1.2rem;
+                            }
+                        }
+
+                        .ad-image{
+                            // width: 96%;
+
+                            img{
+                                margin-top: 10px;
+                                width: 100%;
+
+                                @media screen and (min-width: 1199px){
+                                    // min-width: 500px;
+                                }
+                            }
+                        }
+
+                        .ad-description{
+                            padding: 0;
+                            margin: 0 auto;
+                            // width: 96%;
+                            background-color: #eeeeee;
+
+                            .url{
+                                color: #595959;
+                                font-size: 1.1rem;
+                                // margin: 10px;
+                            }
+
+                            .headline{
+                                font-size: 1.2rem;
+                            }
+
+                            .desc{
+                                font-size: 1.1rem;
+                                color: #595959;
+                            }
+
+                            button{
+                                margin: 15px 0;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    }
+
+                   
                 }
 
             }

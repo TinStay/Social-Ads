@@ -1,13 +1,15 @@
 import React,{ useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import CustomBoxes from './CustomBoxes';
-// import Select from 'react-select'
-// import makeAnimated from 'react-select/animated';
+import AdView from './AdView';
 
 
 const FacebookPlacements = (props) => {
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
     const [customPlacement, setCustomPlacement] = useState(false)
+
+    // Ad view state
+    const [primaryText, setPrimaryText] = useState()
 
 
     const changeToAutomatic = (e) =>{
@@ -24,6 +26,7 @@ const FacebookPlacements = (props) => {
             setAutomaticPlacement(false)
         }
     }
+
 
 
     let customCheckboxes = null;
@@ -69,18 +72,33 @@ const FacebookPlacements = (props) => {
 
                { customCheckboxes }
 
-               <div className="container ad-container">
+               <div className="container fb-ad-form">
                    <div className="row">
-                        <h3 className="col-md-12 pb-2  ad-container-label border-bottom font-color">Ad appearance</h3>
+                        <h3 className="col-md-12 pb-2  fb-ad-form-label border-bottom font-color">Ad appearance</h3>
                         <div className="col-md-6">
-                        <Form.Group>
-                            <Form.Label>Primary text</Form.Label>
-                            <Form.Control type="text" placeholder="Enter primary text" />
-                            <Form.Label>Headline</Form.Label>
-                            <Form.Control type="text" placeholder="Enter headline" />
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" placeholder="Enter a description for your ad" />
-                        </Form.Group>
+                            <Form.Group>
+                                <div className="fb-ad-form-field">
+                                    <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>
+                                    <Form.Control value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
+                                </div>
+                                <div className="fb-ad-form-field">
+                                    <Form.Label className="fb-ad-form-field-label">Headline</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter headline" />
+                                </div>
+                                <div className="fb-ad-form-field">
+                                    <Form.Label className="fb-ad-form-field-label">Description</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter a description for your ad" />
+                                </div>
+                                <div className="fb-ad-form-field">
+                                    <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter your website URL" />
+                                </div>
+                            
+                            
+                            </Form.Group>
+                        </div>
+                        <div className="col-md-6">
+                            <AdView primaryText={primaryText}/>
                         </div>
                    </div>
                </div>
