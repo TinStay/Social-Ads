@@ -8,7 +8,7 @@ const gglAdForm = (props) => {
 
     return(
         <div className="ggl-ad">
-        <h1 className="ggl-ad-label font-color">Google</h1>
+            <h1 className="ggl-ad-label font-color">Google</h1>
             <Form onSubmit={() => {}} className="ggl-ad-form row">
                <div className="container ggl-ad-fields">
                    <div className="row">
@@ -17,34 +17,40 @@ const gglAdForm = (props) => {
                                 
                                 <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Healine 1</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter primary text" />
+                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 1" />
                                 </div>
                                 <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Healine 2</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline" />
+                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 2" />
                                 </div>
                                 <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Healine 3</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter a description for your ad" />
+                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 3" />
                                 </div>
                                 <div className="ggl-ad-form-field">
+                                    <Form.Label className="ggl-ad-form-field-label">Description</Form.Label>
+                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter a description for your ad" />
+                                </div>
+                                {/* <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Website URL</Form.Label>
                                     <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter your website URL" />
-                                </div>
+                                </div> */}
                             
                             
                             </Form.Group>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mt-5">
+                            <h5 className="view-label border-bottom pb-2">Google ad view</h5> 
                             <AdViewGoogle/>
                         </div>
                    </div>
+                   
                </div>
 
                
-                <div className="col-md-12">
+               <div className="col-md-12">
                     <button type="submit" className="btn btn-primary">Save ad</button>
-                </div>
+                </div> 
             </Form>
         
         </div>

@@ -7,6 +7,15 @@ $navbar-purple:  #7678ed;
 $bgc-white: #fafaff;
 $font-color: #7662b6;
 $dark-blue: #273469;
+$gray-font: #5c6072;
+
+html{
+    font-size: 0.9rem;
+
+    @media screen and (min-width: 1199px){
+        font-size: 1rem;
+    }
+}
 
 .white{
     color: $white;
@@ -15,6 +24,7 @@ $dark-blue: #273469;
 .purple{
     color: $purple;
 }
+
 .navbar-purple{
     background-color: #7678ed;
 }
@@ -28,6 +38,10 @@ $dark-blue: #273469;
 
 .dark-gray{
     color: $dark-gray;
+}
+
+.gray-font{
+    color: #5c6072;;
 }
 
 
@@ -907,10 +921,7 @@ $dark-blue: #273469;
                     margin: 20px auto;
                     color: $dark-gray;
 
-                    &-label{
-                        // width: 90%;
-                       
-                    }
+                    
 
                     &-field{
                         margin: 35px 10px;
@@ -919,7 +930,7 @@ $dark-blue: #273469;
                             margin: 15px 0;
                             font-size: 1.4rem;
                             font-weight: 500;
-                            color: #4267B2;
+                            color: rgb(60, 96, 167);
                         }
 
                         .media-box{
@@ -936,6 +947,10 @@ $dark-blue: #273469;
                                 // color: $navbar-purple;
                             }
                         }
+                    }
+
+                    button{
+                        margin-top: 40px;
                     }
 
                     &-view{
@@ -1000,7 +1015,7 @@ $dark-blue: #273469;
 
                             .desc{
                                 font-size: 1.1rem;
-                                color: #595959;
+                                color: #5c6072;
                             }
 
                             button{
@@ -1018,60 +1033,81 @@ $dark-blue: #273469;
 
             .ggl-ad{
                 margin: 60px auto;
-                padding: 20px;
+                padding: 10px;
+                // width: 100%;
                 border-radius: 2px;
                 border: 1px solid rgb(206, 206, 206);
 
+                @media screen and (min-width: 1199px){
+                    
+                }
 
                 &-form{
-                    margin: 10px 20px;
+                    margin: 10px auto;
+
+                    button{
+                        margin-top: 40px;
+                    }
+
+                    @media screen and (min-width: 1199px){
+                        
+                    }
+                    
 
                     &-field{
                         margin: 35px 10px;
+                        
 
                         &-label{
                             margin: 15px 0;
                             font-size: 1.4rem;
                             font-weight: 500;
-                            color: #4267B2;
+                            color: rgb(60, 96, 167);
                         }
+                }
+
+                .view-label{
+                    color: $dark-blue;
+                    font-size: 1.4rem;
+                    margin: 0 20px;
                 }
 
                 &-view{
                     margin: 40px 0px;
                     background-color: #f3f1f1;
+                    padding: 5px 10px;
 
                     @media screen and (min-width: 1199px){
-                        margin: 50px 20px;
+                        margin: 30px 20px;
                     }
 
                     .headlines{
                         color: #0645AD;
-                        p{
-
-                        }
-                    }
-
-                    .description{
-                        
+                        word-break: break-all;
+                       
                     }
 
                     .url{
                         color:  #006621;
                         font-size: 1.1rem;
 
+                        p{
+                            margin: 5px 0;
+                        }
+
                         .ad-box{
                             border: 1px solid #006621;
-                            padding: 2px;
+                            padding: 1px;
                             border-radius: 4px;
                             margin-right: 6px;
                         }
                     }
 
-
+                    .description{
+                        font-size: 1.1rem;
+                        color: #5c6072;
+                    }
                 }
-
-                
                 }
             }
             
