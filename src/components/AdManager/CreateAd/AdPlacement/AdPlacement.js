@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import { 
     DevicesSelect} from './PlacementSelectForms';
 import FacebookPlacements from './FacebookPlacements/FacebookPlacements';
+import GoogleAdForm from './GoogleAd/GoogleAdForm';
 // import Select from 'react-select'
 // import makeAnimated from 'react-select/animated';
 
@@ -26,6 +27,7 @@ const AdPlacement = (props) => {
                 {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
                 <FacebookPlacements 
                 saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
+                <GoogleAdForm />
             </div>
                 
                 

@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import pagePhoto from '../../../../../assets/pagePhoto.jpg'
 import jsAd from '../../../../../assets/jsAd.jpg'
 
-const AdView = (props) => {
+const AdViewFb = (props) => {
 
 
     return(
@@ -39,4 +39,4 @@ const AdView = (props) => {
     );
 }
 
-export default AdView;
+export default AdViewFb;

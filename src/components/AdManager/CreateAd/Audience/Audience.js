@@ -43,7 +43,7 @@ const Audience = (props) => {
                 </div>
                 <div className="row">
                     <div className="audience-form-countries col-md-10">
-                        <label  for="gender">Interests, behaviors, demographics: </label>
+                        <label  for="gender">Interests, keywords, demographics: </label>
                         <InterestsSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
                     </div>
                 </div>

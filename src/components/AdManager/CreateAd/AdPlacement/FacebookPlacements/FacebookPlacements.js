@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import CustomBoxes from './CustomBoxes';
-import AdView from './AdView';
+import AdViewFb from './AdViewFb';
 
 
 const FacebookPlacements = (props) => {
@@ -112,7 +112,7 @@ const FacebookPlacements = (props) => {
                             </Form.Group>
                         </div>
                         <div className="col-md-6">
-                            <AdView 
+                            <AdViewFb 
                             primaryText={primaryText}
                             headline={headline}
                             description={description}

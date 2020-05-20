@@ -928,7 +928,7 @@ $dark-blue: #273469;
                             border-radius: 5px;
                             margin: 10px 10px;
                             padding: 10px;
-                            font-weight: 600;
+                            font-weight: 500;
                             cursor: pointer;
 
                             i{
@@ -939,7 +939,11 @@ $dark-blue: #273469;
                     }
 
                     &-view{
-                        margin: 50px 20px;
+                        margin: 40px 0px;
+
+                        @media screen and (min-width: 1199px){
+                            margin: 50px 20px;
+                        }
                         .head{
 
                             img{
@@ -1009,6 +1013,66 @@ $dark-blue: #273469;
                    
                 }
 
+            }
+
+
+            .ggl-ad{
+                margin: 60px auto;
+                padding: 20px;
+                border-radius: 2px;
+                border: 1px solid rgb(206, 206, 206);
+
+
+                &-form{
+                    margin: 10px 20px;
+
+                    &-field{
+                        margin: 35px 10px;
+
+                        &-label{
+                            margin: 15px 0;
+                            font-size: 1.4rem;
+                            font-weight: 500;
+                            color: #4267B2;
+                        }
+                }
+
+                &-view{
+                    margin: 40px 0px;
+                    background-color: #f3f1f1;
+
+                    @media screen and (min-width: 1199px){
+                        margin: 50px 20px;
+                    }
+
+                    .headlines{
+                        color: #0645AD;
+                        p{
+
+                        }
+                    }
+
+                    .description{
+                        
+                    }
+
+                    .url{
+                        color:  #006621;
+                        font-size: 1.1rem;
+
+                        .ad-box{
+                            border: 1px solid #006621;
+                            padding: 2px;
+                            border-radius: 4px;
+                            margin-right: 6px;
+                        }
+                    }
+
+
+                }
+
+                
+                }
             }
             
         }
