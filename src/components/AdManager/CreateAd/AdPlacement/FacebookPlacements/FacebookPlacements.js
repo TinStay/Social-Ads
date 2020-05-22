@@ -93,19 +93,19 @@ const FacebookPlacements = (props) => {
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>
-                                    <Form.Control value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
+                                    <Form.Control name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Headline</Form.Label>
-                                    <Form.Control value={headline} onChange={(e) => setHeadline(e.target.value)} type="text" placeholder="Enter headline" />
+                                    <Form.Control name="headline" value={headline} onChange={(e) => setHeadline(e.target.value)} type="text" placeholder="Enter headline" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Description</Form.Label>
-                                    <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
+                                    <Form.Control name="description" value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
-                                    <Form.Control value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter your website URL" />
+                                    <Form.Control name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter your website URL" />
                                 </div>
                             
                             

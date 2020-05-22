@@ -4,7 +4,20 @@ import AdViewGoogle from './AdViewGoogle';
 
 
 
-const gglAdForm = (props) => {
+const GooglelAdForm = (props) => {
+
+    const [headlineOne, setHeadlineOne] = useState("Headline 1 ");
+    const [headlineTwo, setHeadlineTwo] = useState("Headline 2 ");
+    const [headlineThree, setHeadlineThree] = useState("Headline 3 ");
+    const [description, setDescription] = useState("Write a description for your ad here");
+    const [url, setUrl] = useState(props.url);
+
+
+    // useEffect(() => {
+    //     setUrl(props.url)
+    // }, [])
+
+
 
     return(
         <div className="ggl-ad">
@@ -16,20 +29,20 @@ const gglAdForm = (props) => {
                             <Form.Group>
                                 
                                 <div className="ggl-ad-form-field">
-                                    <Form.Label className="ggl-ad-form-field-label">Healine 1</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 1" />
+                                    <Form.Label className="ggl-ad-form-field-label">Headline 1</Form.Label>
+                                    <Form.Control value={headlineOne} onChange={(e) => setHeadlineOne(e.target.value)} type="text" placeholder="Enter headline 1" />
                                 </div>
                                 <div className="ggl-ad-form-field">
-                                    <Form.Label className="ggl-ad-form-field-label">Healine 2</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 2" />
+                                    <Form.Label className="ggl-ad-form-field-label">Headline 2</Form.Label>
+                                    <Form.Control value={headlineTwo} onChange={(e) => setHeadlineTwo(e.target.value)} type="text" placeholder="Enter headline 2" />
                                 </div>
                                 <div className="ggl-ad-form-field">
-                                    <Form.Label className="ggl-ad-form-field-label">Healine 3</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter headline 3" />
+                                    <Form.Label className="ggl-ad-form-field-label">Headline 3</Form.Label>
+                                    <Form.Control value={headlineThree} onChange={(e) => setHeadlineThree(e.target.value)} type="text" placeholder="Enter headline 3" />
                                 </div>
                                 <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Description</Form.Label>
-                                    <Form.Control value='' onChange={() => {}} type="text" placeholder="Enter a description for your ad" />
+                                    <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
                                 </div>
                                 {/* <div className="ggl-ad-form-field">
                                     <Form.Label className="ggl-ad-form-field-label">Website URL</Form.Label>
@@ -41,7 +54,13 @@ const gglAdForm = (props) => {
                         </div>
                         <div className="col-md-6 mt-5">
                             <h5 className="view-label border-bottom pb-2">Google ad view</h5> 
-                            <AdViewGoogle/>
+                            <AdViewGoogle 
+                            headlineOne={headlineOne}
+                            headlineTwo={headlineTwo}
+                            headlineThree={headlineThree}
+                            description={description}
+                            url={url}
+                            />
                         </div>
                    </div>
                    
@@ -57,4 +76,4 @@ const gglAdForm = (props) => {
     );
 }
 
-export default gglAdForm;
+export default GooglelAdForm;

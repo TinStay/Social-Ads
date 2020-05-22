@@ -28,7 +28,7 @@ const CustomBoxes = (props) => {
                                 id={box.id}
                                 className="customCheckbox"
                                 name={box.name}
-                                checked
+                                // checked
                                 // onChange={(e) => props.pushToCustomPlacements(e)}
                                 />
                                 <label>{box.label}</label>

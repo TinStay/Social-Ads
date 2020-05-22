@@ -7,16 +7,16 @@ const AdViewGoogle = (props) => {
     return(
         <div className="ggl-ad-form-view">
            
-            <div className=" headlines">
-               <span>headline 1 | </span>
-               <span>headline 2 | </span>
-               <span>headline 3</span>
+            <div className="headlines">
+               <span>{props.headlineOne}</span>
+               <span>{props.headlineTwo}</span>
+               <span>{props.headlineThree}</span>
             </div>
             <div className="url ">
-                <p><span className="ad-box">Ad</span>tinstay.herokuapp.com</p>
+    <p><span className="ad-box">Ad</span>{props.url}</p>
             </div>
-            <div className=" description ">
-                <p>Description for your product or website</p>
+            <div className="description">
+                <p>{props.description}</p>
             </div>
         </div>
     );

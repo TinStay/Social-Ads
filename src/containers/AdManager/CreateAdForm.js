@@ -16,8 +16,12 @@ class CreateAdForm extends PureComponent{
         ads: {},
         order: {
             adInfo: {
-                fbPlacements:{
-                    automatic: true
+                facebookAd:{
+                    placements: {
+                        automatic: true,
+                        custom: []
+                    },
+                    adDetails: null
                 }
             },
             audience: {},
@@ -148,21 +152,18 @@ class CreateAdForm extends PureComponent{
 
     saveFbPlacements = (e) => {
         e.preventDefault()
+        // console.log("e.target",e.target)
+
         // Automatic Facebook placements update state 
-        const automaticPlacements = e.target[0].checked
+        const automaticPlacements = e.target[0].checked;
+        let fbAdDetails = [];
+
+
         if(automaticPlacements){
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        fbPlacements: {
-                            automatic: automaticPlacements
-                        }
-                    }
-                }
-            })
+            // Custom placements is false so i goes from 2 to 5 
+            for(let i = 2; i <= 5; i++){
+                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+            }
         }
 
         // Custom Facebook placements update state 
@@ -170,25 +171,32 @@ class CreateAdForm extends PureComponent{
         let customPlacements = [];
 
         if(customFbPlacements){
-            for(let i = 2; i <=6; i++){
+            for(let i = 2; i <= 6; i++){
                 customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
             }
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        fbPlacements: {
+
+            // Custom placements add 6 more form fields so i goes from 6 to 9 
+            for(let i = 6; i <= 9; i++){
+                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+            }
+        }
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    facebookAd: {
+                        placements: {
+                            automatic: automaticPlacements,
                             custom: customPlacements
-                        }
+                        },
+                        adDetails: fbAdDetails
                     }
                 }
-            })
-        }
-        
-
-        
+            }
+        })
     }
 
 
@@ -220,6 +228,7 @@ class CreateAdForm extends PureComponent{
                     />
 
                     <AdPlacement 
+                    websiteUrl="tinstay.com"
                     isFacebookChecked={adInfo.facebookAds}
                     saveDevices={(options) => this.saveDevices(options)}
                     saveFbPlacements={(e) => this.saveFbPlacements(e)}/>
