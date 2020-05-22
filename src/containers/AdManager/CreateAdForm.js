@@ -8,6 +8,7 @@ import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms
 import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal/MarketingGoal';
 import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
+import BudgetAndDate from '../../components/AdManager/CreateAd/BudgetAndDate/BudgetAndDate';
 
 class CreateAdForm extends PureComponent{
 
@@ -232,6 +233,8 @@ class CreateAdForm extends PureComponent{
                     isFacebookChecked={adInfo.facebookAds}
                     saveDevices={(options) => this.saveDevices(options)}
                     saveFbPlacements={(e) => this.saveFbPlacements(e)}/>
+
+                    <BudgetAndDate />
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>

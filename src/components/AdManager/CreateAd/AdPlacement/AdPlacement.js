@@ -18,7 +18,7 @@ const AdPlacement = (props) => {
             <div className="row">
                 <div className="audience-form-devices col-md-7">
                     {/* <i class="fas fa-globe-europe"></i> */}
-                    <label className="dark-gray h4" for="devices">Devices, OS: </label>
+                    <label className="dark-gray h4" >Devices, OS: </label>
                     <DevicesSelect saveDevices={devices => props.saveDevices(devices)}/>
                 </div>
             </div>
