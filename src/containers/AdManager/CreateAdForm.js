@@ -28,7 +28,6 @@ class CreateAdForm extends PureComponent{
             audience: {},
             payment: {},
         },
-        showForm: false
     }
 
     changeAdInfo = (e) => {

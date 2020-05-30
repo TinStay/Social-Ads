@@ -12,14 +12,6 @@ class AdManager extends PureComponent{
 //   static contextType = AuthContext;
 
     state = {
-        ads: {},
-        order: {
-            adInfo: {
-                
-            },
-            audience: {},
-            payment: {},
-        },
         showForm: false
     }
 
@@ -47,15 +39,12 @@ class AdManager extends PureComponent{
                 </div>
              </div>
       ); 
-
-      const adInfo = this.state.order.adInfo;
       
     let createAdForm = null;
 
     if(this.state.showForm){
         createAdForm = <CreateAdForm/>
     }
-    console.log(this.props.match.path)
 
     return (
         <div className="manager">
