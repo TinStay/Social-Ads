@@ -49,28 +49,30 @@ const FacebookPlacements = (props) => {
            
                <div className="fb-placements-radioBtns col-md-3">
                <h3 className="fb-placements-label font-color ">Placements</h3>
+                   <div className="">
                     <Form.Check
-                        custom
-                        block
-                        label="Automatic"
-                        type="radio"
-                        id={`automatic-inline-radio-facebook`}
-                        className="radio-big"
-                        name="automatic"
-                        checked={automaticPlacement}
-                        onChange={(e) => changeToAutomatic(e)}
-                    />
-                    <Form.Check
-                        custom
-                        block
-                        label="Custom"
-                        type="radio"
-                        id={`custom-inline-radio-facebook`}
-                        className="radio-big"
-                        name="custom"
-                        checked={customPlacement}
-                        onChange={(e) => changeToCustom(e)}
-                    />
+                            custom
+                            block
+                            label="Automatic"
+                            type="radio"
+                            id={`automatic-inline-radio-facebook`}
+                            className="radio-fb"
+                            name="automatic"
+                            checked={automaticPlacement}
+                            onChange={(e) => changeToAutomatic(e)}
+                        />
+                        <Form.Check
+                            custom
+                            block
+                            label="Custom"
+                            type="radio"
+                            id={`custom-inline-radio-facebook`}
+                            className="radio-fb"
+                            name="custom"
+                            checked={customPlacement}
+                            onChange={(e) => changeToCustom(e)}
+                        />
+                   </div>
                </div>
 
                { customCheckboxes }
