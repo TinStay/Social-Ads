@@ -57,8 +57,8 @@ const BudgetAndDate = (props) => {
 
             <div className="budget-form-budget col-md-6">
                <h3 className="budget-form-label font-color">Budget</h3>
-                    <div className="daily-budget-field d-flex">
-                        <div className="radio-schedule">
+                    <div className="daily-budget-field d-flex ">
+                        {/* <div className=""> */}
                             <Form.Check
                                 custom
                                 block
@@ -70,79 +70,90 @@ const BudgetAndDate = (props) => {
                                 checked={dailyBudget}
                                 onChange={(e) => changeToDaily(e)}
                             />
-                        </div>
-                       { dailyBudget ?  <div class="input-group mt-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">USD</span>
+                        {/* </div> */}
+                       { dailyBudget ?  
+                       <div className="input-group mx-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="text" className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
-                    <div className="lifetime-budget-field">
-                        <Form.Check
-                            custom
-                            block
-                            label="Lifetime"
-                            type="radio"
-                            id={`lifetime-budget-radio`}
-                            className="radio-budget"
-                            name="lifetimeBudget"
-                            checked={lifetimeBudget}
-                            onChange={(e) => changeToLifetime(e)}
-                        />
-                        { lifetimeBudget ?  <div class="input-group mt-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">USD</span>
+                    <div className="lifetime-budget-field d-flex">
+                        <div className="">
+                            <Form.Check
+                                custom
+                                block
+                                label="Lifetime"
+                                type="radio"
+                                id={`lifetime-budget-radio`}
+                                className="radio-budget"
+                                name="lifetimeBudget"
+                                checked={lifetimeBudget}
+                                onChange={(e) => changeToLifetime(e)}
+                            />
+                        </div>
+                        { lifetimeBudget ?  
+                        <div className="input-group ml-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="text" className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
                  
             </div>
+
             <div className="budget-form-schedule col-md-6">
                 <h3 className="budget-form-label font-color ">Schedule</h3>
                 <div className="asap-schedule-field">
+                    <div>
                     <Form.Check
                         custom
                         block
                         label="Run ads as soon as possible"
                         type="radio"
                         id="asap-schedule"
-                        className="radio-budget"
+                        className="radio-schedule"
                         name="Asap schedule"
                         checked={asapSchedule}
                         onChange={(e) => changeAsapSchedule(e)}
                     />
+                    </div>
                 </div>
-                <div className="custom-schedule-field">
+                <div className="custom-schedule-field ">
                     <Form.Check
                         custom
                         block
                         label="Custom schedule"
                         type="radio"
                         id="custom-schedule"
-                        className="radio-budget"
+                        className="radio-schedule"
                         name="Custom schedule"
                         checked={customSchedule}
                         onChange={(e) => changeCustomSchedule(e)}
                     />
                     { customSchedule ? 
-                        <Form.Group>
-                        <div className="start-date col-12">
-                            <label>Starting date</label>
-                            <DatePicker
-                            selected={startingDate}
-                            onChange={(date) => setStartingDate(date)}
-                            />
-                        </div>
-                        <div className="end-date col-12">
-                            <label>Ending date</label>
-                            <DatePicker
-                            selected={endingDate}
-                            onChange={(date) => setEndingDate(date)}
-                            />
-                        </div>
-                        </Form.Group> : null}
+                        <div className="">
+                            <Form.Group>
+                            <div className="start-date d-flex">
+                                <label className="mr-2 my-auto">Starting date:</label>
+                                <DatePicker
+                                selected={startingDate}
+                                onChange={(date) => setStartingDate(date)}
+                                className="date-picker"
+                                />
+                            </div>
+                            <div className="end-date d-flex">
+                                <label className="mr-2 my-auto">Ending date:</label>
+                                <DatePicker
+                                selected={endingDate}
+                                onChange={(date) => setEndingDate(date)}
+                                className="date-picker"
+                                />
+                            </div>
+                        </Form.Group>
+                        </div> : null}
 
                 </div>
         </div>
