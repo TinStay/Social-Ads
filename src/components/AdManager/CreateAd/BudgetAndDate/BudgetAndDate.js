@@ -55,7 +55,7 @@ const BudgetAndDate = (props) => {
             <h3 className="border-bottom add-form-label">Choose your budget and starting date</h3>
             <form className="budget-form row">
 
-            <div className="budget-form-budget col-md-6">
+            <div className="budget-form-budget col-md-5">
                <h3 className="budget-form-label font-color">Budget</h3>
                     <div className="daily-budget-field d-flex ">
                         {/* <div className=""> */}
@@ -104,7 +104,7 @@ const BudgetAndDate = (props) => {
                  
             </div>
 
-            <div className="budget-form-schedule col-md-6">
+            <div className="budget-form-schedule col-md-5 offset-md-1">
                 <h3 className="budget-form-label font-color ">Schedule</h3>
                 <div className="asap-schedule-field">
                     <div>
