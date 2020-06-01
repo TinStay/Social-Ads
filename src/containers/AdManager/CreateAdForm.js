@@ -199,6 +199,24 @@ class CreateAdForm extends PureComponent{
         })
     }
 
+    saveGooglePlacements = (e, gglPlacements) => {
+        e.preventDefault()
+        // console.log("google form", gglPlacements)
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    googleAd: {
+                        placements: gglPlacements,
+                    }
+                }
+            }
+        })
+    }
+
 
   render(){
     console.log("order", this.state.order)
@@ -231,7 +249,9 @@ class CreateAdForm extends PureComponent{
                     websiteUrl="tinstay.com"
                     isFacebookChecked={adInfo.facebookAds}
                     saveDevices={(options) => this.saveDevices(options)}
-                    saveFbPlacements={(e) => this.saveFbPlacements(e)}/>
+                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
+                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                    />
 
                     <BudgetAndDate />
 

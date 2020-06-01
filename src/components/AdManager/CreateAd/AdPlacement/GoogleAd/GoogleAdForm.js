@@ -17,12 +17,22 @@ const GooglelAdForm = (props) => {
     //     setUrl(props.url)
     // }, [])
 
+    let gglPlacements = {
+        headlineOne: headlineOne,
+        headlineTwo: headlineTwo,
+        headlineThree: headlineThree,
+        description: description,
+        url: url
+    }
+
+    console.log("gglPlacements",gglPlacements)
+
 
 
     return(
         <div className="ggl-ad">
             <h1 className="ggl-ad-label font-color">Google</h1>
-            <Form onSubmit={() => {}} className="ggl-ad-form row">
+            <Form onSubmit={e => props.saveGooglePlacements(e, gglPlacements)} className="ggl-ad-form row">
                <div className="container ggl-ad-fields">
                    <div className="row">
                         <div className="col-md-6">

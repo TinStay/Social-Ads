@@ -27,7 +27,9 @@ const AdPlacement = (props) => {
                 {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
                 <FacebookPlacements 
                 saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
-                <GoogleAdForm url={props.websiteUrl}/>
+                <GoogleAdForm 
+                saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
+                url={props.websiteUrl}/>
             </div>
                 
                 
