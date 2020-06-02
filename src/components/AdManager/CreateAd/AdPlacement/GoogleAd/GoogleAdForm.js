@@ -25,7 +25,6 @@ const GooglelAdForm = (props) => {
         url: url
     }
 
-    console.log("gglPlacements",gglPlacements)
 
 
 

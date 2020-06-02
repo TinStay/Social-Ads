@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import NumberPicker from 'react-widgets/lib/NumberPicker'
 import  { Form  } from 'react-bootstrap'
 
 // import Globalize from 'globalize';
@@ -8,9 +9,23 @@ import  { Form  } from 'react-bootstrap'
 
 const BudgetAndDate = (props) => {
 
-    // Budget
-    const [dailyBudget, setDailyBudget] = useState(true);
-    const [lifetimeBudget, setLifetimeBudget] = useState(false);
+    // Budget type
+    const [isDailyBudget, setIsDailyBudget] = useState(true);
+    const [isLifetimeBudget, setIsLifetimeBudget] = useState(false);
+
+    // Budget figures
+    const [dailyBudget, setDailyBudget] = useState(1);
+    const [lifetimeBudget, setLifetimeBudget] = useState(30);
+
+    const setDailyAndLifetimeBudget = e => {
+        if(e.target.name === "daily"){
+            setDailyBudget((e.target.value).toFixed(2))
+            setLifetimeBudget((e.target.value * 30).toFixed(2))
+        }else{
+            setDailyBudget((e.target.value / 30).toFixed(2))
+            setLifetimeBudget((e.target.value).toFixed(2))
+        }
+    }
 
 
     // Schedule 
@@ -23,15 +38,15 @@ const BudgetAndDate = (props) => {
 
     const changeToDaily = (e) => {
         if(e.target.checked){
-            setDailyBudget(true)
-            setLifetimeBudget(false)
+            setIsDailyBudget(true)
+            setIsLifetimeBudget(false)
         }
     }
 
     const changeToLifetime = (e) => {
         if(e.target.checked){
-            setDailyBudget(false)
-            setLifetimeBudget(true)
+            setIsDailyBudget(false)
+            setIsLifetimeBudget(true)
         }
     }
 
@@ -67,16 +82,16 @@ const BudgetAndDate = (props) => {
                                 id={"daily-budget-radio"}
                                 className="radio-budget"
                                 name="dailyBudget"
-                                checked={dailyBudget}
+                                checked={isDailyBudget}
                                 onChange={(e) => changeToDaily(e)}
                             />
                         {/* </div> */}
-                       { dailyBudget ?  
+                       { isDailyBudget ?  
                        <div className="input-group mx-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="daily" value={dailyBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
                     <div className="lifetime-budget-field d-flex">
@@ -89,17 +104,20 @@ const BudgetAndDate = (props) => {
                                 id={`lifetime-budget-radio`}
                                 className="radio-budget"
                                 name="lifetimeBudget"
-                                checked={lifetimeBudget}
+                                checked={isLifetimeBudget}
                                 onChange={(e) => changeToLifetime(e)}
                             />
                         </div>
-                        { lifetimeBudget ?  
+                        { isLifetimeBudget ?  
                         <div className="input-group ml-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="lifetime" value={lifetimeBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
+                    </div>
+                    <div className="spending">
+                        <p className="gray mt-3">You will spend no more than {isLifetimeBudget ? lifetimeBudget  : dailyBudget*30 }$/month.</p>
                     </div>
                  
             </div>
