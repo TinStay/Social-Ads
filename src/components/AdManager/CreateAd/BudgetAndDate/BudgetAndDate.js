@@ -1,12 +1,15 @@
 import React,{ useState, useEffect } from 'react';
 import DatePicker,{addDays} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import  { Form  } from 'react-bootstrap'
+import  { Form, Alert } from 'react-bootstrap'
 
 // import Globalize from 'globalize';
 // import globalizeLocalizer from 'react-widgets-globalize';
 
 const BudgetAndDate = (props) => {
+    // Alert 
+    const [alertType, setAlertType] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
 
     // Budget type
     const [isDailyBudget, setIsDailyBudget] = useState(true);
@@ -17,14 +20,37 @@ const BudgetAndDate = (props) => {
     const [lifetimeBudget, setLifetimeBudget] = useState(30);
 
     const setDailyAndLifetimeBudget = e => {
+
         if(e.target.name === "daily"){
-            const adCost = parseInt(e.target.value).toFixed(2)
-            setDailyBudget((adCost))
-            setLifetimeBudget((adCost * 30))
-        }else{
-            const adCost = parseInt(e.target.value).toFixed(2)
-            setDailyBudget((adCost / 30).toFixed(2))
-            setLifetimeBudget((adCost))
+            const dailyBud = parseInt(e.target.value).toFixed(2)
+
+            // Checks if dailyBudget > 1 else => shows error
+            if(dailyBud > 1){
+                setShowAlert(false)
+                setDailyBudget(dailyBud)
+            }else{
+                setShowAlert(true)
+                setAlertType("DailyBudgetTooSmall")
+                setDailyBudget(dailyBud)
+            }
+            
+            setLifetimeBudget((dailyBud * period))
+        }
+
+
+        if(e.target.name === "lifetime"){
+            const lifetimeBud = parseInt(e.target.value).toFixed(2)
+
+            // Checks if dailyBudget > 1 else => shows error
+            if(lifetimeBud / period >= 1){
+                setShowAlert(false)
+                const priceDaily = (lifetimeBud / period).toFixed(2)
+                setDailyBudget(priceDaily)
+            }else{
+                setShowAlert(true)
+                setAlertType("DailyBudgetTooSmall")
+            }
+            setLifetimeBudget((lifetimeBud))
         }
     }
 
@@ -39,10 +65,30 @@ const BudgetAndDate = (props) => {
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(endDateMin);
+    const [period, setPeriod] = useState(30);
 
-    
-    console.log("startdate",endDate.getDate() - startDate.getDate())
+    useEffect(()=>{
+        if(customSchedule){
+            const oneDay = 24 * 60 * 60 * 1000;
+            const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+            setPeriod(diffDays);
 
+            if(lifetimeBudget / diffDays < 1){
+                setShowAlert(true)
+                setAlertType("DailyBudgetTooSmall")
+            }else{
+                setShowAlert(false)
+            }
+            
+        }
+        if(dailyBudget < 1){
+            setShowAlert(true)
+            setAlertType("DailyBudgetTooSmall");
+        }
+
+    },[startDate, endDate, dailyBudget])
+
+    console.log("period",period)
 
     const changeToDaily = (e) => {
         if(e.target.checked){
@@ -72,13 +118,25 @@ const BudgetAndDate = (props) => {
         }
     }
     
-  
+    let alert = null;
+    if(showAlert){
+        if(alertType === "DailyBudgetTooSmall"){
+            alert =  (
+            <Alert variant='danger' onClose={() => setShowAlert(false)} dismissible>
+                Daily budget must be more than 1$.
+            </Alert>
+            )
+        }
+    }
+
 
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose your budget and starting date</h3>
             <form className="budget-form row">
-
+            <div className="col-12">
+                {alert}
+            </div>
             <div className="budget-form-schedule col-md-5 offset-md-1">
                 <h3 className="budget-form-label font-color ">Schedule</h3>
                 <div className="asap-schedule-field">
@@ -159,7 +217,7 @@ const BudgetAndDate = (props) => {
                        { isDailyBudget ?  
                        <div className="input-group mx-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">EUR</span>
+                                <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
                             <input type="number" name="daily" value={dailyBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
@@ -181,13 +239,13 @@ const BudgetAndDate = (props) => {
                         { isLifetimeBudget ?  
                         <div className="input-group ml-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">EUR</span>
+                                <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
                             <input type="number" name="lifetime" value={lifetimeBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
                     <div className="spending">
-                        <p className="gray mt-3">You will spend no more than {isLifetimeBudget ? lifetimeBudget + "$ for the whole period."  : `${(dailyBudget*30).toFixed(2)}$/month.` }</p>
+                        <p className="gray mt-3">You will spend no more than {isLifetimeBudget ? lifetimeBudget + `$ for the period of ${period} days.`  : `${(dailyBudget * 30).toFixed(2)}$/month.` }</p>
                     </div>
                  
             </div>
