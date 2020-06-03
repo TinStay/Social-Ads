@@ -63,9 +63,9 @@ const BudgetAndDate = (props) => {
     const [startDate, setStartDate] = useState(new Date());
 
     // Setting 29 days difference between dates
-    const endDateMin = startDate;
-    endDateMin.setDate(endDateMin.getDate() + 29);
-    const [endDate, setEndDate] = useState(endDateMin);
+    const endDateMin = new Date();
+    endDateMin.setDate(endDateMin.getDate() + 30);
+    const [endDate, setEndDate] = useState();
     const [period, setPeriod] = useState(30);
 
   
@@ -82,6 +82,13 @@ const BudgetAndDate = (props) => {
             }else{
                 setShowAlert(false)
             }
+
+            if(diffDays < 29){
+                setShowAlert(true)
+                setAlertType("PeriodTooShort")
+            }else{
+                setShowAlert(false)
+            }
             
         }
         if(dailyBudget < 1){
@@ -89,7 +96,7 @@ const BudgetAndDate = (props) => {
             setAlertType("DailyBudgetTooSmall");
         }
 
-    },[startDate, endDate, dailyBudget])
+    },[startDate, endDate, dailyBudget, period])
 
 
     const changeToDaily = (e) => {
@@ -161,14 +168,22 @@ const BudgetAndDate = (props) => {
     let alert = null;
     if(showAlert){
         if(alertType === "DailyBudgetTooSmall"){
-            alert =  (
+            alert = (
             <Alert variant='danger' onClose={() => setShowAlert(false)} dismissible>
                 Daily budget must be more than 1$.
             </Alert>
             )
         }
+        if(alertType === "PeriodTooShort"){
+            alert = (
+            <Alert variant='danger' onClose={() => setShowAlert(false)} dismissible>
+                Chosen period of time should be at least 29 days.
+            </Alert>
+            )
+        }
     }
 
+    console.log(endDate, startDate)
 
     return(
         <div className="add-form-group">
