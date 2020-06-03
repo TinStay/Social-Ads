@@ -60,12 +60,15 @@ const BudgetAndDate = (props) => {
     const [customSchedule, setCustomSchedule] = useState(false);
 
     // Schedule dates
-    const endDateMin = new Date();
-    endDateMin.setDate(endDateMin.getDate() + 29);
-
     const [startDate, setStartDate] = useState(new Date());
+
+    // Setting 29 days difference between dates
+    const endDateMin = startDate;
+    endDateMin.setDate(endDateMin.getDate() + 29);
     const [endDate, setEndDate] = useState(endDateMin);
     const [period, setPeriod] = useState(30);
+
+  
 
     useEffect(()=>{
         if(customSchedule){
@@ -88,7 +91,6 @@ const BudgetAndDate = (props) => {
 
     },[startDate, endDate, dailyBudget])
 
-    console.log("period",period)
 
     const changeToDaily = (e) => {
         if(e.target.checked){
@@ -117,6 +119,44 @@ const BudgetAndDate = (props) => {
             setCustomSchedule(true)
         }
     }
+
+    const changeStartDate = () => {
+
+    }
+
+    const saveData = e => {
+        e.preventDefault()
+
+        let formData = {
+            budget: {
+                dailyBudget: dailyBudget,
+                lifetimeBudget: lifetimeBudget
+            }
+        };
+
+        if(asapSchedule){
+            formData = {
+                ...formData,
+                schedule: {
+                    asapSchedule: asapSchedule,
+                    period: `${period} days`
+                }
+            }
+        }else if(customSchedule){
+            formData = {
+                ...formData,
+                schedule: {
+                    customSchedule: customSchedule,
+                    startDate: startDate,
+                    endDate: endDate,
+                    period: `${period} days`
+                },
+            }
+        }
+
+        props.saveBudgetAndScheduleData(formData)
+       
+    }
     
     let alert = null;
     if(showAlert){
@@ -133,7 +173,7 @@ const BudgetAndDate = (props) => {
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose your budget and starting date</h3>
-            <form className="budget-form row">
+            <form onSubmit={(e) => saveData(e)} className="budget-form row">
             <div className="col-12">
                 {alert}
             </div>
@@ -244,11 +284,15 @@ const BudgetAndDate = (props) => {
                             <input type="number" name="lifetime" value={lifetimeBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
-                    <div className="spending">
-                        <p className="gray mt-3">You will spend no more than {isLifetimeBudget ? lifetimeBudget + `$ for the period of ${period} days.`  : `${(dailyBudget * 30).toFixed(2)}$/month.` }</p>
+                    <div className="spending text-center">
+                        <p className="my-0">You will spend no more than <b>{isLifetimeBudget ? lifetimeBudget + `$ for the period of ${period} days.`  : `${(dailyBudget * 30).toFixed(2)}$/month.` }</b></p>
                     </div>
                  
             </div>
+
+            <button type="submit" className="btn btn-primary">
+                Continue to checkout
+            </button>
 
             </form>
         </div>

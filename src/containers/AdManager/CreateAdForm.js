@@ -217,6 +217,21 @@ class CreateAdForm extends PureComponent{
         })
     }
 
+    saveBudgetAndScheduleData = formData =>{
+        console.log("formData", formData)
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    budgetAndSchedule: formData
+                }
+            }
+        })
+    }
+
 
   render(){
     console.log("order", this.state.order)
@@ -253,7 +268,7 @@ class CreateAdForm extends PureComponent{
                     saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
                     />
 
-                    <BudgetAndDate />
+                    <BudgetAndDate saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}/>
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>
