@@ -1128,81 +1128,83 @@ html{
             }
 
             .budget-form{
-                .spending{
-                    border: 1px solid rgb(200, 200, 200);
-                    border-radius: 10px;
-                    background-color: rgb(238, 238, 238);
-                    padding: 15px 0;
-                    margin: 15px 10px;
-                    color: $dark-blue;
-                }
+                
 
                 &-budget{
                     font-size: 1.1rem;
                     margin-bottom: 30px;
 
                     .daily-budget-field{
-                        margin: 20px 0;
-                        
-    
+                        margin: 15px 0;
+                    }
+
                     .lifetime-budget-field{
-                        margin: 20px 0;
+                        margin: 15px 0;
                     }
 
-                    
-
-                    
-                }
-                .input-group{
-                    width: 50%;
-                }
-    
-                    .radio-budget{
-                        margin: 5px 20px;
-                        // width: 150px;
-
-                        color: $dark-gray;
-                        transform: scale(1.3);
-                        -ms-transform: scale(1.3); /* IE */
-                        -moz-transform: scale(1.3); /* FF */
-                        -webkit-transform: scale(1.3); /* Safari and Chrome */
-                        -o-transform: scale(1.3); /* Opera */
-
+                    .input-group{
+                        width: 50%;
                     }
-                }
+        
+                        .radio-budget{
+                            margin: 5px 20px;
+                            // width: 150px;
 
-                &-schedule{
-                    font-size: 1.1rem;
-                    margin-bottom: 30px;
+                            color: $dark-gray;
+                            transform: scale(1.3);
+                            -ms-transform: scale(1.3); /* IE */
+                            -moz-transform: scale(1.3); /* FF */
+                            -webkit-transform: scale(1.3); /* Safari and Chrome */
+                            -o-transform: scale(1.3); /* Opera */
 
-                    .radio-schedule{
-                        margin: 30px 50px;
-                        transform: scale(1.3);
-                        -ms-transform: scale(1.3); /* IE */
-                        -moz-transform: scale(1.3); /* FF */
-                        -webkit-transform: scale(1.3); /* Safari and Chrome */
-                        -o-transform: scale(1.3); /* Opera */
+                        }
                     }
 
-                    .custom-schedule-field{
+                    &-schedule{
+                        font-size: 1.1rem;
+                        margin-bottom: 30px;
+
+                        .radio-schedule{
+                            margin: 30px 50px;
+                            transform: scale(1.3);
+                            -ms-transform: scale(1.3); /* IE */
+                            -moz-transform: scale(1.3); /* FF */
+                            -webkit-transform: scale(1.3); /* Safari and Chrome */
+                            -o-transform: scale(1.3); /* Opera */
+                        }
+
+                        .custom-schedule-field{
+                            
+                            .start-date {
+                                margin: 20px 20px;
+                                font-size: 1.2rem;
+                            }
+                            .end-date {
+                                margin: 20px 20px;
+                                font-size: 1.2rem;
+                            }
+
+                            .date-picker{
+                                width: 80%;
+                            }
+                        }
+
                         
-                        .start-date {
-                            margin: 20px 20px;
-                            font-size: 1.2rem;
-                        }
-                        .end-date {
-                            margin: 20px 20px;
-                            font-size: 1.2rem;
-                        }
-
-                        .date-picker{
-                            width: 80%;
-                        }
+                        
                     }
 
-                    
-                    
-                }
+                    .fb-budget-box{
+                        padding: 20px;
+                    }
+
+                    .spending{
+                        border: 1px solid rgb(200, 200, 200);
+                        border-radius: 10px;
+                        background-color: rgb(238, 238, 238);
+                        padding: 15px 0;
+                        margin: 15px 10px;
+                        color: $dark-blue;
+                    }
             }
             
         }

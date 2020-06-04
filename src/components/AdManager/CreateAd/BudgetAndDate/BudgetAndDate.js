@@ -183,16 +183,25 @@ const BudgetAndDate = (props) => {
         }
     }
 
-    console.log(endDate, startDate)
+    // Budget info box
+    let budgetInfo;
+
+    if(asapSchedule){
+        budgetInfo = <span><b>{lifetimeBudget}$</b> for the period of 29 days and <b>{dailyBudget}$</b>/day.</span>
+    } else if(customSchedule){
+        budgetInfo = <span><b>{lifetimeBudget}$</b> for the period of {period} days and <b>{dailyBudget}$</b>/day.</span>
+    }
+    
+
 
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose your budget and starting date</h3>
-            <form onSubmit={(e) => saveData(e)} className="budget-form row">
+            <form onSubmit={(e) => saveData(e)} className="budget-form ">
             <div className="col-12">
                 {alert}
             </div>
-            <div className="budget-form-schedule col-md-5 offset-md-1">
+            <div className="budget-form-schedule col-md-6">
                 <h3 className="budget-form-label font-color ">Schedule</h3>
                 <div className="asap-schedule-field">
                     <div>
@@ -253,9 +262,12 @@ const BudgetAndDate = (props) => {
 
                 </div>
         </div>
-            <div className="budget-form-budget col-md-5">
+            <div className="budget-form-budget col-md-12">
                <h3 className="budget-form-label font-color">Budget</h3>
-                    <div className="daily-budget-field d-flex ">
+               <h4 className="font-color mt-4">Facebook & Instagram</h4>
+                <div className="row fb-budget-box border">
+                    <div className="col-md-6">
+                        <div className="daily-budget-field d-flex ">
                         {/* <div className=""> */}
                             <Form.Check
                                 custom
@@ -269,8 +281,8 @@ const BudgetAndDate = (props) => {
                                 onChange={(e) => changeToDaily(e)}
                             />
                         {/* </div> */}
-                       { isDailyBudget ?  
-                       <div className="input-group mx-3">
+                        { isDailyBudget ?  
+                        <div className="input-group mx-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
@@ -278,7 +290,7 @@ const BudgetAndDate = (props) => {
                         </div> : null }
                     </div>
                     <div className="lifetime-budget-field d-flex">
-                        <div className="">  
+                        {/* <div className="">   */}
                             <Form.Check
                                 custom
                                 block
@@ -290,7 +302,7 @@ const BudgetAndDate = (props) => {
                                 checked={isLifetimeBudget}
                                 onChange={(e) => changeToLifetime(e)}
                             />
-                        </div>
+                        {/* </div> */}
                         { isLifetimeBudget ?  
                         <div className="input-group ml-3">
                             <div className="input-group-prepend">
@@ -299,9 +311,15 @@ const BudgetAndDate = (props) => {
                             <input type="number" name="lifetime" value={lifetimeBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
-                    <div className="spending text-center">
-                        <p className="my-0">You will spend no more than <b>{isLifetimeBudget ? lifetimeBudget + `$ for the period of ${period} days.`  : `${(dailyBudget * 30).toFixed(2)}$/month.` }</b></p>
                     </div>
+
+                    <div className="col-md-6">
+                        <div className="spending text-center">
+                            <p className="my-0">You will spend no more than {budgetInfo}</p>
+                        </div>
+                    </div>
+                </div>
+                
                  
             </div>
 
