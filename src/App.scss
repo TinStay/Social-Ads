@@ -1143,7 +1143,7 @@ html{
                     }
 
                     .input-group{
-                        width: 50%;
+                        width: 40%;
                     }
         
                         .radio-budget{
@@ -1201,9 +1201,23 @@ html{
                         border: 1px solid rgb(200, 200, 200);
                         border-radius: 10px;
                         background-color: rgb(238, 238, 238);
-                        padding: 15px 0;
+                        padding: 15px 20px;
                         margin: 15px 10px;
                         color: $dark-blue;
+                    }
+
+                    .ggl-budget-box{
+                        padding: 20px 0;
+                        label{
+                            margin: auto 10px;
+                            font-size: 1.5rem;
+                            color: $dark-gray
+                        }
+
+                        .ggl-budget-field{
+                            width: 40%;
+                            margin: auto 10px;
+                        }
                     }
             }
             

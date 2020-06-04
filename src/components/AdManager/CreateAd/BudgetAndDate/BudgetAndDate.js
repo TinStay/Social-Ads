@@ -16,8 +16,12 @@ const BudgetAndDate = (props) => {
     const [isLifetimeBudget, setIsLifetimeBudget] = useState(false);
 
     // Budget figures
-    const [dailyBudget, setDailyBudget] = useState(1);
-    const [lifetimeBudget, setLifetimeBudget] = useState(30);
+    // Facebook 
+    const [dailyBudgetFb, setDailyBudgetFb] = useState(1);
+    const [lifetimeBudgetFb, setLifetimeBudgetFb] = useState(30);
+
+    // Google
+    const [GoogleDailyBudget, setGoogleDailyBudget] = useState(1)
 
     const setDailyAndLifetimeBudget = e => {
 
@@ -27,14 +31,14 @@ const BudgetAndDate = (props) => {
             // Checks if dailyBudget > 1 else => shows error
             if(dailyBud > 1){
                 setShowAlert(false)
-                setDailyBudget(dailyBud)
+                setDailyBudgetFb(dailyBud)
             }else{
                 setShowAlert(true)
                 setAlertType("DailyBudgetTooSmall")
-                setDailyBudget(dailyBud)
+                setDailyBudgetFb(dailyBud)
             }
             
-            setLifetimeBudget((dailyBud * period))
+            setLifetimeBudgetFb((dailyBud * period))
         }
 
 
@@ -45,12 +49,12 @@ const BudgetAndDate = (props) => {
             if(lifetimeBud / period >= 1){
                 setShowAlert(false)
                 const priceDaily = (lifetimeBud / period).toFixed(2)
-                setDailyBudget(priceDaily)
+                setDailyBudgetFb(priceDaily)
             }else{
                 setShowAlert(true)
                 setAlertType("DailyBudgetTooSmall")
             }
-            setLifetimeBudget((lifetimeBud))
+            setLifetimeBudgetFb(lifetimeBud)
         }
     }
 
@@ -76,7 +80,7 @@ const BudgetAndDate = (props) => {
             const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
             setPeriod(diffDays);
 
-            if(lifetimeBudget / diffDays < 1){
+            if(lifetimeBudgetFb / diffDays < 1){
                 setShowAlert(true)
                 setAlertType("DailyBudgetTooSmall")
             }else{
@@ -91,12 +95,12 @@ const BudgetAndDate = (props) => {
             }
             
         }
-        if(dailyBudget < 1){
+        if(dailyBudgetFb < 1){
             setShowAlert(true)
             setAlertType("DailyBudgetTooSmall");
         }
 
-    },[startDate, endDate, dailyBudget, period])
+    },[startDate, endDate, dailyBudgetFb, period])
 
 
     const changeToDaily = (e) => {
@@ -136,8 +140,8 @@ const BudgetAndDate = (props) => {
 
         let formData = {
             budget: {
-                dailyBudget: dailyBudget,
-                lifetimeBudget: lifetimeBudget
+                dailyBudget: dailyBudgetFb,
+                lifetimeBudget: lifetimeBudgetFb
             }
         };
 
@@ -187,9 +191,9 @@ const BudgetAndDate = (props) => {
     let budgetInfo;
 
     if(asapSchedule){
-        budgetInfo = <span><b>{lifetimeBudget}$</b> for the period of 29 days and <b>{dailyBudget}$</b>/day.</span>
+        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of 29 days and <b>{dailyBudgetFb}$</b>/day.</span>
     } else if(customSchedule){
-        budgetInfo = <span><b>{lifetimeBudget}$</b> for the period of {period} days and <b>{dailyBudget}$</b>/day.</span>
+        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {period} days and <b>{dailyBudgetFb}$</b>/day.</span>
     }
     
 
@@ -264,9 +268,9 @@ const BudgetAndDate = (props) => {
         </div>
             <div className="budget-form-budget col-md-12">
                <h3 className="budget-form-label font-color">Budget</h3>
-               <h4 className="font-color mt-4">Facebook & Instagram</h4>
+               <h4 className="font-color mt-4">Facebook & Instagram ads</h4>
                 <div className="row fb-budget-box border">
-                    <div className="col-md-6">
+                    <div className="col-md-5">
                         <div className="daily-budget-field d-flex ">
                         {/* <div className=""> */}
                             <Form.Check
@@ -286,7 +290,7 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="daily" value={dailyBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
                     <div className="lifetime-budget-field d-flex">
@@ -308,18 +312,40 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="lifetime" value={lifetimeBudget} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div> : null }
                     </div>
                     </div>
 
-                    <div className="col-md-6">
+                    <div className="col-md-7">
                         <div className="spending text-center">
                             <p className="my-0">You will spend no more than {budgetInfo}</p>
                         </div>
                     </div>
                 </div>
+
+                <h4 className="font-color mt-4">Google ads</h4>
                 
+                <div className="row ggl-budget-box border">
+                    <div className="col-12 text-center">
+                        <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
+                    </div>
+                    <div className="col-md-5 d-flex">
+                        <label >Daily</label>
+                        <div className="ggl-budget-field input-group mx-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="basic-addon1">USD</span>
+                            </div>
+                            <input type="number" name="gglBudget" value={GoogleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                        </div>
+                    </div>
+
+                    <div className="col-md-7">
+                        <div className="spending text-center">
+                            <p className="my-0">You will spend no more than <b>{GoogleDailyBudget * 30}$</b>/month.</p>
+                        </div>
+                    </div>
+                </div>
                  
             </div>
 
