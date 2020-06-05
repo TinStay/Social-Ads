@@ -22,11 +22,11 @@ const BudgetAndDate = (props) => {
 
     // Google
     const [googleDailyBudget, setGoogleDailyBudget] = useState(1)
-
+    
     const setDailyAndLifetimeBudget = e => {
 
         if(e.target.name === "daily"){
-            const dailyBud = parseInt(e.target.value).toFixed(2)
+            const dailyBud = parseFloat(e.target.value).toFixed(2)
 
             // Checks if dailyBudget > 1 else => shows error
             if(dailyBud > 1){
@@ -43,7 +43,7 @@ const BudgetAndDate = (props) => {
 
 
         if(e.target.name === "lifetime"){
-            const lifetimeBud = parseInt(e.target.value).toFixed(2)
+            const lifetimeBud = parseFloat(e.target.value).toFixed(2)
 
             // Checks if dailyBudget > 1 else => shows error
             if(lifetimeBud / period >= 1){
@@ -66,12 +66,13 @@ const BudgetAndDate = (props) => {
     // Schedule dates
     const [startDate, setStartDate] = useState();
 
-    // Setting 29 days difference between dates
+    // Setting 30 days difference between dates
     const endDateMin = new Date();
     endDateMin.setDate(endDateMin.getDate() + 30);
     const [endDate, setEndDate] = useState();
-    const [period, setPeriod] = useState(29);
+    const [period, setPeriod] = useState(30);
 
+    const state = [isDailyBudget ,isLifetimeBudget, dailyBudgetFb, lifetimeBudgetFb, googleDailyBudget, asapSchedule, customSchedule, startDate, endDate, period]
 
     useEffect(()=>{
         if(customSchedule){
@@ -79,39 +80,35 @@ const BudgetAndDate = (props) => {
             const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
             setPeriod(diffDays); // Difference between the start and end date
 
-            if(lifetimeBudgetFb / diffDays < 1){
-                setShowAlert(true)
-                setAlertType("DailyBudgetTooSmall")
-            }else{
-                setShowAlert(false)
-            }
-
-            if(diffDays < 29){
-                setShowAlert(true)
+            if(diffDays < 30){
                 setAlertType("PeriodTooShort")
+                setShowAlert(true)
+            }else{
+                if((lifetimeBudgetFb / diffDays) < 1){
+                    setAlertType("DailyBudgetTooSmall")
+                    setShowAlert(true)
+                }else{
+                    setShowAlert(false)
+                }
+            }  
+        }
+
+        if(asapSchedule){
+            setPeriod(30)
+
+            if(lifetimeBudgetFb < 30){
+                setShowAlert(true)
+                setAlertType("DailyBudgetTooSmall");
             }else{
                 setShowAlert(false)
             }
-            
         }
 
-        // if(asapSchedule){
-        //     if(lifetimeBudgetFb < 29){
-        //         setShowAlert(true)
-        //         setAlertType("DailyBudgetTooSmall");
-        //     }
-        // }
-
-        if(dailyBudgetFb < 1){
-            setShowAlert(true)
-            setAlertType("DailyBudgetTooSmall");
-        }else{
-            setShowAlert(false)
-        }
         
 
-    },[startDate, endDate, dailyBudgetFb, lifetimeBudgetFb, period])
+    },[state])
 
+    console.log(alertType, showAlert)
 
     const changeToDaily = (e) => {
         if(e.target.checked){
@@ -141,8 +138,6 @@ const BudgetAndDate = (props) => {
         }
     }
 
-    console.log("runOnFacebookOrInstagram", props.runOnFacebookOrInstagram)
-    console.log("runOnGoogle", props.runOnGoogle)
 
 
     const saveData = e => {
@@ -206,15 +201,15 @@ const BudgetAndDate = (props) => {
     if(showAlert){
         if(alertType === "DailyBudgetTooSmall"){
             alert = (
-            <Alert variant='danger' onClose={() => setShowAlert(false)} dismissible>
+            <Alert variant='danger' onClose={() => setShowAlert(false)} >
                 Daily budget must be more than 1$.
             </Alert>
             )
         }
         if(alertType === "PeriodTooShort"){
             alert = (
-            <Alert variant='danger' onClose={() => setShowAlert(false)} dismissible>
-                Chosen period of time should be at least 29 days.
+            <Alert variant='danger' onClose={() => setShowAlert(false)} >
+                Chosen period of time should be at least 30 days.
             </Alert>
             )
         }
@@ -222,12 +217,8 @@ const BudgetAndDate = (props) => {
 
     // Budget info box
     let budgetInfo;
+    budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {customSchedule ? period + " days" : "1 month"}  and around <b>{dailyBudgetFb}$</b>/day.</span>
 
-    if(asapSchedule){
-        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of 29 days and around <b>{dailyBudgetFb}$</b>/day.</span>
-    } else if(customSchedule){
-        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {period} days and around <b>{dailyBudgetFb}$</b>/day.</span>
-    }
     
 
 
@@ -245,7 +236,7 @@ const BudgetAndDate = (props) => {
                     <Form.Check
                         custom
                         block
-                        label="Run ads as soon as possible"
+                        label="Run ads for 1 month"
                         type="radio"
                         id="asap-schedule"
                         className="radio-schedule"
@@ -323,7 +314,7 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" min="0" max="20000" step="0.5"/>
                         </div> : null }
                     </div>
                     <div className="lifetime-budget-field d-flex">
@@ -345,7 +336,7 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" min="0" max="20000" step="0.5"/>
                         </div> : null }
                     </div>
                     </div>
@@ -369,7 +360,7 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
                         </div>
                     </div>
 
