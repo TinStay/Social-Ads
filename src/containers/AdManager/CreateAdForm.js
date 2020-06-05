@@ -262,13 +262,17 @@ class CreateAdForm extends PureComponent{
 
                     <AdPlacement 
                     websiteUrl="tinstay.com"
-                    isFacebookChecked={adInfo.facebookAds}
+                    isFacebookChecked={adInfo.runOnFacebook}
                     saveDevices={(options) => this.saveDevices(options)}
                     saveFbPlacements={(e) => this.saveFbPlacements(e)}
                     saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
                     />
 
-                    <BudgetAndDate saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}/>
+                    <BudgetAndDate 
+                    runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
+                    runOnGoogle={adInfo.runOnGoogle}
+                    saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
+                    />
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-cancel">Cancel</button>

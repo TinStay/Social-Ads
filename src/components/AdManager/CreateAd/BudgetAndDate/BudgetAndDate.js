@@ -21,7 +21,7 @@ const BudgetAndDate = (props) => {
     const [lifetimeBudgetFb, setLifetimeBudgetFb] = useState(30);
 
     // Google
-    const [GoogleDailyBudget, setGoogleDailyBudget] = useState(1)
+    const [googleDailyBudget, setGoogleDailyBudget] = useState(1)
 
     const setDailyAndLifetimeBudget = e => {
 
@@ -38,7 +38,7 @@ const BudgetAndDate = (props) => {
                 setDailyBudgetFb(dailyBud)
             }
             
-            setLifetimeBudgetFb((dailyBud * period))
+            setLifetimeBudgetFb((dailyBud * period).toFixed(2))
         }
 
 
@@ -64,21 +64,20 @@ const BudgetAndDate = (props) => {
     const [customSchedule, setCustomSchedule] = useState(false);
 
     // Schedule dates
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState();
 
     // Setting 29 days difference between dates
     const endDateMin = new Date();
     endDateMin.setDate(endDateMin.getDate() + 30);
     const [endDate, setEndDate] = useState();
-    const [period, setPeriod] = useState(30);
+    const [period, setPeriod] = useState(29);
 
-  
 
     useEffect(()=>{
         if(customSchedule){
             const oneDay = 24 * 60 * 60 * 1000;
             const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
-            setPeriod(diffDays);
+            setPeriod(diffDays); // Difference between the start and end date
 
             if(lifetimeBudgetFb / diffDays < 1){
                 setShowAlert(true)
@@ -95,12 +94,23 @@ const BudgetAndDate = (props) => {
             }
             
         }
+
+        // if(asapSchedule){
+        //     if(lifetimeBudgetFb < 29){
+        //         setShowAlert(true)
+        //         setAlertType("DailyBudgetTooSmall");
+        //     }
+        // }
+
         if(dailyBudgetFb < 1){
             setShowAlert(true)
             setAlertType("DailyBudgetTooSmall");
+        }else{
+            setShowAlert(false)
         }
+        
 
-    },[startDate, endDate, dailyBudgetFb, period])
+    },[startDate, endDate, dailyBudgetFb, lifetimeBudgetFb, period])
 
 
     const changeToDaily = (e) => {
@@ -131,19 +141,42 @@ const BudgetAndDate = (props) => {
         }
     }
 
-    const changeStartDate = () => {
+    console.log("runOnFacebookOrInstagram", props.runOnFacebookOrInstagram)
+    console.log("runOnGoogle", props.runOnGoogle)
 
-    }
 
     const saveData = e => {
         e.preventDefault()
 
-        let formData = {
-            budget: {
-                dailyBudget: dailyBudgetFb,
-                lifetimeBudget: lifetimeBudgetFb
+        let formData;
+
+        if(props.runOnFacebookOrInstagram){
+            // Both fb and google ads have been selected
+            if(props.runOnGoogle){
+                formData = {
+                    budget: {
+                        fbDailyBudget: dailyBudgetFb,
+                        fbLifetimeBudget: lifetimeBudgetFb,
+                        googleDailyBudget: googleDailyBudget
+                    }
+                };
+            }else{
+                formData = {
+                    budget: {
+                        fbDailyBudget: dailyBudgetFb,
+                        fbLifetimeBudget: lifetimeBudgetFb,
+                    }
+                };
             }
-        };
+
+        }else if(props.runOnGoogle){
+            formData = {
+                budget: {
+                    googleDailyBudget: googleDailyBudget
+                }
+            };
+        }
+
 
         if(asapSchedule){
             formData = {
@@ -191,9 +224,9 @@ const BudgetAndDate = (props) => {
     let budgetInfo;
 
     if(asapSchedule){
-        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of 29 days and <b>{dailyBudgetFb}$</b>/day.</span>
+        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of 29 days and around <b>{dailyBudgetFb}$</b>/day.</span>
     } else if(customSchedule){
-        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {period} days and <b>{dailyBudgetFb}$</b>/day.</span>
+        budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {period} days and around <b>{dailyBudgetFb}$</b>/day.</span>
     }
     
 
@@ -327,7 +360,7 @@ const BudgetAndDate = (props) => {
                 <h4 className="font-color mt-4">Google ads</h4>
                 
                 <div className="row ggl-budget-box border">
-                    <div className="col-12 text-center">
+                    <div className="col-12 ">
                         <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
                     </div>
                     <div className="col-md-5 d-flex">
@@ -336,13 +369,13 @@ const BudgetAndDate = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">USD</span>
                             </div>
-                            <input type="number" name="gglBudget" value={GoogleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" aria-label="budget" aria-describedby="basic-addon1"/>
+                            <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" aria-label="budget" aria-describedby="basic-addon1"/>
                         </div>
                     </div>
 
                     <div className="col-md-7">
                         <div className="spending text-center">
-                            <p className="my-0">You will spend no more than <b>{GoogleDailyBudget * 30}$</b>/month.</p>
+                            <p className="my-0">You will spend no more than <b>{googleDailyBudget * 30}$</b>/month.</p>
                         </div>
                     </div>
                 </div>
