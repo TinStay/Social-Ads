@@ -10,11 +10,48 @@ import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
 import BudgetAndDate from '../../components/AdManager/CreateAd/BudgetAndDate/BudgetAndDate';
 
+//Stepper 
+import { makeStyles } from '@material-ui/core/styles';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const styleStepper = makeStyles((theme) => ({
+    root: {
+    width: '100%',
+    },
+    backButton: {
+    marginRight: theme.spacing(1),
+    },
+    instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    },
+}));
+
+function getSteps() {
+    return ['Select social media platforms and marketing goal', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
+}
+
+function getStepContent(stepIndex){
+    switch (stepIndex) {
+      case 0:
+        return 'Select campaign settings...';
+      case 1:
+        return 'What is an ad group anyways?';
+      case 2:
+        return 'This is the bit I really care about!';
+      default:
+        return 'Unknown stepIndex';
+    }
+  }
+
 class CreateAdForm extends PureComponent{
-
-
     state = {
         ads: {},
+        activeStep: 0,
         order: {
             adInfo: {
                 facebookAd:{
@@ -29,6 +66,31 @@ class CreateAdForm extends PureComponent{
             payment: {},
         },
     }
+
+    // Stepper
+    handleNext = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        this.setState({
+            activeStep: nextStep
+        });
+
+      };
+    
+    handleBack = (activeStep) => {
+        const prevStep = activeStep - 1;
+
+        this.setState({
+            activeStep: prevStep
+        });
+    };
+
+    handleReset = () => {
+        this.setState({
+            activeStep: 0
+        });
+    };
+    
 
     changeAdInfo = (e) => {
         // console.log(e.target.value, e.target.name)
@@ -232,15 +294,30 @@ class CreateAdForm extends PureComponent{
         })
     }
 
+   
+
 
   render(){
     console.log("order", this.state.order)
+
+    // Stepper 
+    // const classes = styleStepper();
+    const steps = getSteps();
+
+    
 
       const adInfo = this.state.order.adInfo;
       
     return (
         <div className="manager-ad-form-row">
             <div className="ad-container">
+            <Stepper activeStep={this.state.activeStep} alternativeLabel>
+                {steps.map((label) => (
+                <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
+                ))}
+            </Stepper>
                 <Form className="add-form">
 
                     <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
