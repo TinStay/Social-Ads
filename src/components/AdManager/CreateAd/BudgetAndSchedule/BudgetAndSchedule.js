@@ -6,7 +6,7 @@ import  { Form, Alert } from 'react-bootstrap'
 // import Globalize from 'globalize';
 // import globalizeLocalizer from 'react-widgets-globalize';
 
-const BudgetAndDate = (props) => {
+const BudgetAndSchedule = (props) => {
     // Alert 
     const [alertType, setAlertType] = useState('');
     const [showAlert, setShowAlert] = useState(false);
@@ -108,7 +108,6 @@ const BudgetAndDate = (props) => {
 
     },[state])
 
-    console.log(alertType, showAlert)
 
     const changeToDaily = (e) => {
         if(e.target.checked){
@@ -385,4 +384,4 @@ const BudgetAndDate = (props) => {
     );
 }
 
-export default BudgetAndDate;
+export default BudgetAndSchedule;

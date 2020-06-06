@@ -55,8 +55,7 @@ class AdManager extends PureComponent{
                 
             </div>
             <div className="manager-ad-form">
-                {adSection}
-                {createAdForm}
+                {this.state.showForm ? createAdForm : adSection}
             </div>
         </div>
        );

@@ -689,6 +689,18 @@ html{
             width: 90%;
             margin: 0 auto;
 
+            .ad-stepper{
+                background-color: inherit;
+                
+                .ad-step{
+                    font-size: 1.9rem;
+                }
+
+                .ad-step-label{
+                    font-size: 1.1rem;
+                }
+            }
+
             .btn-cancel{
                 margin: 10px 10px;
                 font-size: 1.4rem;

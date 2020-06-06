@@ -8,7 +8,7 @@ import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms
 import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal/MarketingGoal';
 import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
-import BudgetAndDate from '../../components/AdManager/CreateAd/BudgetAndDate/BudgetAndDate';
+import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
 
 //Stepper 
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,22 +31,7 @@ const styleStepper = makeStyles((theme) => ({
     },
 }));
 
-function getSteps() {
-    return ['Select social media platforms and marketing goal', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
-}
 
-function getStepContent(stepIndex){
-    switch (stepIndex) {
-      case 0:
-        return 'Select campaign settings...';
-      case 1:
-        return 'What is an ad group anyways?';
-      case 2:
-        return 'This is the bit I really care about!';
-      default:
-        return 'Unknown stepIndex';
-    }
-  }
 
 class CreateAdForm extends PureComponent{
     state = {
@@ -68,6 +53,57 @@ class CreateAdForm extends PureComponent{
     }
 
     // Stepper
+    getSteps() {
+        return ['Select social media platforms and marketing goal', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
+    }
+
+    getStepContent(stepIndex){
+        const adInfo = this.state.order.adInfo;
+
+        switch (stepIndex) {
+          case 0:
+            return (
+            <div>
+                <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
+                <h3 className="add-form-label">Name your ad campaign</h3>
+                <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
+                </Form.Group>
+            
+                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}></SocialPlatforms>
+    
+                <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
+            </div>
+        );
+          case 1:
+            return (
+                <Audience 
+                updateAgeFrom = {(option) => this.updateAgeFrom(option)}
+                updateAgeTo = {(option) => this.updateAgeTo(option)}
+                updateGender = {(gender => this.updateGender(gender))}
+                saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
+                />
+            );
+            
+          case 2:
+            return (
+                <AdPlacement 
+                    websiteUrl="tinstay.com"
+                    isFacebookChecked={adInfo.runOnFacebook}
+                    saveDevices={(options) => this.saveDevices(options)}
+                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
+                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                />);
+          case 3:
+            return (
+            <BudgetAndSchedule 
+                runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
+                runOnGoogle={adInfo.runOnGoogle}
+                saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
+                />);
+          default:
+            return 'Unknown stepIndex';
+        }
+      }
     handleNext = (activeStep) => {
         const nextStep = activeStep + 1;
 
@@ -176,7 +212,6 @@ class CreateAdForm extends PureComponent{
 
     saveOptionForm = (optionsData, form) =>{
 
-        console.log("form", form)
         let options = optionsData.map( option => {
             return option.value
         })
@@ -280,7 +315,6 @@ class CreateAdForm extends PureComponent{
     }
 
     saveBudgetAndScheduleData = formData =>{
-        console.log("formData", formData)
 
         this.setState({
             ...this.state,
@@ -302,60 +336,50 @@ class CreateAdForm extends PureComponent{
 
     // Stepper 
     // const classes = styleStepper();
-    const steps = getSteps();
+    const steps = this.getSteps();
+    const activeStep = this.state.activeStep
 
-    
-
-      const adInfo = this.state.order.adInfo;
-      
     return (
         <div className="manager-ad-form-row">
             <div className="ad-container">
-            <Stepper activeStep={this.state.activeStep} alternativeLabel>
+
+            <Stepper className="ad-stepper" activeStep={this.state.activeStep} alternativeLabel>
                 {steps.map((label) => (
-                <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
+                <Step className="ad-step" key={label}>
+                    <StepLabel className="ad-step-label">{label}</StepLabel>
                 </Step>
                 ))}
             </Stepper>
-                <Form className="add-form">
 
-                    <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
-                        <h3 className="add-form-label">Name your ad campaign</h3>
-                        <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
-                    </Form.Group>
-
+            {activeStep === steps.length ? (
+                <div>
+                    <Typography className=''>All steps completed</Typography>
+                    <Button onClick={this.handleReset}>Reset</Button>
+                </div>
+                ) : (
+                <div>
+                    <Form className="add-form">
+                    {this.getStepContent(activeStep)}
                     
-                    <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
-
-                    <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
-                    
-                    <Audience 
-                    updateAgeFrom = {(option) => this.updateAgeFrom(option)}
-                    updateAgeTo = {(option) => this.updateAgeTo(option)}
-                    updateGender = {(gender => this.updateGender(gender))}
-                    saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
-                    />
-
-                    <AdPlacement 
-                    websiteUrl="tinstay.com"
-                    isFacebookChecked={adInfo.runOnFacebook}
-                    saveDevices={(options) => this.saveDevices(options)}
-                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
-                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
-                    />
-
-                    <BudgetAndDate 
-                    runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
-                    runOnGoogle={adInfo.runOnGoogle}
-                    saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
-                    />
-
                     <div className="d-flex justify-content-end">
-                        <button className="btn btn-cancel">Cancel</button>
-                        <button className="btn btn-next">Next</button>
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={() =>this.handleBack(activeStep)}
+                            className="btn btn-cancel"
+                        >
+                        Back
+                        </Button>
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.handleNext(activeStep)}>
+                            {activeStep === steps.length - 1 ? 'Go to payment details' : 'Next'}
+                        </Button>
                     </div>
-                </Form>
+                    </Form>
+                    
+                    
+                </div>
+                )}
+
+                
 
             </div>
         </div>
