@@ -292,81 +292,84 @@ const BudgetAndDate = (props) => {
         </div>
             <div className="budget-form-budget col-md-12">
                <h3 className="budget-form-label font-color">Budget</h3>
-               <h4 className="font-color mt-4">Facebook & Instagram ads</h4>
-                <div className="row fb-budget-box border">
-                    <div className="col-md-5">
-                        <div className="daily-budget-field d-flex ">
-                        {/* <div className=""> */}
-                            <Form.Check
-                                custom
-                                block
-                                label="Daily"
-                                type="radio"
-                                id={"daily-budget-radio"}
-                                className="radio-budget"
-                                name="dailyBudget"
-                                checked={isDailyBudget}
-                                onChange={(e) => changeToDaily(e)}
-                            />
-                        {/* </div> */}
-                        { isDailyBudget ?  
-                        <div className="input-group mx-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">USD</span>
-                            </div>
-                            <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" min="0" max="20000" step="0.5"/>
-                        </div> : null }
-                    </div>
-                    <div className="lifetime-budget-field d-flex">
-                        {/* <div className="">   */}
-                            <Form.Check
-                                custom
-                                block
-                                label="Lifetime"
-                                type="radio"
-                                id={`lifetime-budget-radio`}
-                                className="radio-budget"
-                                name="lifetimeBudget"
-                                checked={isLifetimeBudget}
-                                onChange={(e) => changeToLifetime(e)}
-                            />
-                        {/* </div> */}
-                        { isLifetimeBudget ?  
-                        <div className="input-group ml-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">USD</span>
-                            </div>
-                            <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" min="0" max="20000" step="0.5"/>
-                        </div> : null }
-                    </div>
-                    </div>
+                <div className="fb-budget">
+                    <h4 className="font-color mb-4">Facebook & Instagram ads</h4>
+                    <div className="row fb-budget-box border">
+                        <div className="col-md-5">
+                            <div className="daily-budget-field d-flex ">
+                            {/* <div className=""> */}
+                                <Form.Check
+                                    custom
+                                    block
+                                    label="Daily budget:"
+                                    type="radio"
+                                    id={"daily-budget-radio"}
+                                    className="radio-budget"
+                                    name="dailyBudget"
+                                    checked={isDailyBudget}
+                                    onChange={(e) => changeToDaily(e)}
+                                />
+                            {/* </div> */}
+                            { isDailyBudget ?  
+                            <div className="input-group mx-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">USD</span>
+                                </div>
+                                <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" min="0" max="20000" step="0.5"/>
+                            </div> : null }
+                        </div>
+                        <div className="lifetime-budget-field d-flex">
+                            {/* <div className="">   */}
+                                <Form.Check
+                                    custom
+                                    block
+                                    label="Lifetime budget:"
+                                    type="radio"
+                                    id={`lifetime-budget-radio`}
+                                    className="radio-budget"
+                                    name="lifetimeBudget"
+                                    checked={isLifetimeBudget}
+                                    onChange={(e) => changeToLifetime(e)}
+                                />
+                            {/* </div> */}
+                            { isLifetimeBudget ?  
+                            <div className="input-group ml-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">USD</span>
+                                </div>
+                                <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" min="0" max="20000" step="0.5"/>
+                            </div> : null }
+                        </div>
+                        </div>
 
-                    <div className="col-md-7">
-                        <div className="spending text-center">
-                            <p className="my-0">You will spend no more than {budgetInfo}</p>
+                        <div className="col-md-7">
+                            <div className="spending text-center">
+                                <p className="my-0">You will spend no more than {budgetInfo}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h4 className="font-color mt-4">Google ads</h4>
-                
-                <div className="row ggl-budget-box border">
-                    <div className="col-12 ">
-                        <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
-                    </div>
-                    <div className="col-md-5 d-flex">
-                        <label >Daily</label>
-                        <div className="ggl-budget-field input-group mx-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">USD</span>
-                            </div>
-                            <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
+                <div className="ggl-budget">
+                    <h4 className="font-color mb-4">Google ads</h4>
+                    <div className="row ggl-budget-box border">
+                        <div className="col-12 ">
+                            <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
                         </div>
-                    </div>
+                        <div className="col-md-5 d-flex">
+                            <label >Daily budget:</label>
+                            <div className="ggl-budget-field input-group mx-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">USD</span>
+                                </div>
+                                <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
+                            </div>
+                        </div>
 
-                    <div className="col-md-7">
-                        <div className="spending text-center">
-                            <p className="my-0">You will spend no more than <b>{googleDailyBudget * 30}$</b>/month.</p>
+                        <div className="col-md-7">
+                            <div className="spending text-center">
+                                <p className="my-0">You will spend no more than <b>{googleDailyBudget * 30}$</b>/month.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
