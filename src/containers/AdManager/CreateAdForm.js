@@ -39,6 +39,7 @@ class CreateAdForm extends PureComponent{
         activeStep: 0,
         order: {
             adInfo: {
+                runOn: [],
                 facebookAd:{
                     placements: {
                         automatic: true,
@@ -54,7 +55,7 @@ class CreateAdForm extends PureComponent{
 
     // Stepper
     getSteps() {
-        return ['Select social media platforms and marketing goal', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
+        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
     }
 
     getStepContent(stepIndex){
@@ -69,7 +70,7 @@ class CreateAdForm extends PureComponent{
                 <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
                 </Form.Group>
             
-                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}></SocialPlatforms>
+                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
     
                 <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
             </div>
@@ -147,16 +148,29 @@ class CreateAdForm extends PureComponent{
     changeSMPInfo = e => {
         // console.log(e.target.checked)
         const checked = e.target.checked
-        this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        [e.target.name]: checked
-                    }
+        const platforms = [...this.state.order.adInfo.runOn]
+
+        if(checked){
+            platforms.push(e.target.name);
+        }else{
+            for(let i =0; i < platforms.length; i++){
+                if(platforms[i] === e.target.name){
+                    platforms.splice(i, 1)
                 }
-            })
+            }
+        }
+
+        this.setState({
+            ...this.state,
+            order: {
+                ...this.state.order,
+                adInfo:{
+                    ...this.state.order.adInfo,
+                    runOn: platforms
+                }
+            }
+        })
+        
     }
 
     selectMarketingGoal = (title) => {
@@ -370,7 +384,7 @@ class CreateAdForm extends PureComponent{
                         Back
                         </Button>
                         <Button variant="contained" className="btn btn-next" onClick={() => this.handleNext(activeStep)}>
-                            {activeStep === steps.length - 1 ? 'Go to payment details' : 'Next'}
+                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
                         </Button>
                     </div>
                     </Form>

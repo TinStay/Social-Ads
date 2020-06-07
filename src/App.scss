@@ -621,7 +621,7 @@ html{
             width: 100%;
             margin: 0 auto;
             @media screen and (min-width: 1199px){
-                width: 88%;
+                // width: 88%;
             }
 
             
@@ -686,11 +686,20 @@ html{
         }
 
         .ad-container{
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
+            @media screen and (min-width: 1199px){
+                width: 88%;
+            }
 
             .ad-stepper{
+                margin: 20px auto;
                 background-color: inherit;
+                transform: scale(1.2);
+                -ms-transform: scale(1.2); /* IE */
+                -moz-transform: scale(1.2); /* FF */
+                -webkit-transform: scale(1.2); /* Safari and Chrome */
+                -o-transform: scale(125); /* Opera */
                 
                 .ad-step{
                     font-size: 1.9rem;
@@ -728,6 +737,9 @@ html{
             
            
             .add-form{
+                margin: 0 auto;
+                width: 90%;
+
                 &-group{
                     margin: 30px auto 125px auto;
                 }
