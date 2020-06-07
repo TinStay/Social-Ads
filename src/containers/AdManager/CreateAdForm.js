@@ -1,7 +1,7 @@
 import React, {  PureComponent } from "react";
 // import { Route, Redirect } from "react-router-dom";
 // import { AuthContext } from "../../components/Auth/Auth";
-import { Form } from 'react-bootstrap';
+import { Form,Alert } from 'react-bootstrap';
 
 // Components
 import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms/SocialPlatforms';
@@ -18,18 +18,18 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const styleStepper = makeStyles((theme) => ({
-    root: {
-    width: '100%',
-    },
-    backButton: {
-    marginRight: theme.spacing(1),
-    },
-    instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    },
-}));
+// const styleStepper = makeStyles((theme) => ({
+//     root: {
+//     width: '100%',
+//     },
+//     backButton: {
+//     marginRight: theme.spacing(1),
+//     },
+//     instructions: {
+//     marginTop: theme.spacing(1),
+//     marginBottom: theme.spacing(1),
+//     },
+// }));
 
 
 
@@ -39,6 +39,8 @@ class CreateAdForm extends PureComponent{
         activeStep: 0,
         order: {
             adInfo: {
+                name: '',
+                marketingGoal: '',
                 runOn: [],
                 facebookAd:{
                     placements: {
@@ -51,88 +53,18 @@ class CreateAdForm extends PureComponent{
             audience: {},
             payment: {},
         },
-    }
-
-    // Stepper
-    getSteps() {
-        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
-    }
-
-    getStepContent(stepIndex){
-        const adInfo = this.state.order.adInfo;
-
-        switch (stepIndex) {
-          case 0:
-            return (
-            <div>
-                <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
-                <h3 className="add-form-label">Name your ad campaign</h3>
-                <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
-                </Form.Group>
-            
-                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
-    
-                <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.state.order.adInfo.marketingGoal}/>
-            </div>
-        );
-          case 1:
-            return (
-                <Audience 
-                updateAgeFrom = {(option) => this.updateAgeFrom(option)}
-                updateAgeTo = {(option) => this.updateAgeTo(option)}
-                updateGender = {(gender => this.updateGender(gender))}
-                saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
-                />
-            );
-            
-          case 2:
-            return (
-                <AdPlacement 
-                    websiteUrl="tinstay.com"
-                    isFacebookChecked={adInfo.runOnFacebook}
-                    saveDevices={(options) => this.saveDevices(options)}
-                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
-                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
-                />);
-          case 3:
-            return (
-            <BudgetAndSchedule 
-                runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
-                runOnGoogle={adInfo.runOnGoogle}
-                saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
-                />);
-          default:
-            return 'Unknown stepIndex';
+        errors: {
+            name: "",
+            marketingGoal: ""
         }
-      }
-    handleNext = (activeStep) => {
-        const nextStep = activeStep + 1;
-
-        this.setState({
-            activeStep: nextStep
-        });
-
-      };
-    
-    handleBack = (activeStep) => {
-        const prevStep = activeStep - 1;
-
-        this.setState({
-            activeStep: prevStep
-        });
-    };
-
-    handleReset = () => {
-        this.setState({
-            activeStep: 0
-        });
-    };
-    
+    }
 
     changeAdInfo = (e) => {
         // console.log(e.target.value, e.target.name)
         const value = e.target.value
-        this.setState({
+
+        if(value.length < 2){
+            this.setState({
                 ...this.state,
                 order: {
                     ...this.state.order,
@@ -140,9 +72,32 @@ class CreateAdForm extends PureComponent{
                         ...this.state.order.adInfo,
                         [e.target.name]: value
                     }
+                },
+                errors: {
+                    ...this.state.errors,
+                    name: "Name should be more than 2 letters."
                 }
             })
+        }else{
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        [e.target.name]: value
+                    }
+                },
+                errors: {
+                    ...this.state.errors,
+                    name: ""
+                }
+            })
+        }
+
+       
     }
+
 
     // Social Media Platforms
     changeSMPInfo = e => {
@@ -152,24 +107,63 @@ class CreateAdForm extends PureComponent{
 
         if(checked){
             platforms.push(e.target.name);
+            
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        runOn: platforms
+                    }
+                },
+                error: {
+                    show: false,
+                    message: ""
+                }
+            })
+
         }else{
             for(let i =0; i < platforms.length; i++){
                 if(platforms[i] === e.target.name){
                     platforms.splice(i, 1)
                 }
             }
+
+            if(platforms.length != 0){
+                this.setState({
+                    ...this.state,
+                    order: {
+                        ...this.state.order,
+                        adInfo:{
+                            ...this.state.order.adInfo,
+                            runOn: platforms
+                        }
+                    },
+                    error: {
+                        show: false,
+                        message: ""
+                    }
+                })
+            }else{
+                this.setState({
+                    ...this.state,
+                    order: {
+                        ...this.state.order,
+                        adInfo:{
+                            ...this.state.order.adInfo,
+                            runOn: platforms
+                        }
+                    },
+                    error: {
+                        show: true,
+                        message: "You have to select at least 1 social media platform to continue."
+                    }
+                })
+            }
         }
 
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    runOn: platforms
-                }
-            }
-        })
+        
         
     }
 
@@ -342,6 +336,126 @@ class CreateAdForm extends PureComponent{
         })
     }
 
+    // Stepper
+    getSteps() {
+        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
+    }
+
+    getStepContent(stepIndex){
+        const adInfo = this.state.order.adInfo;
+        const activeStep = this.state.activeStep
+        const steps = this.getSteps();
+
+        let alert = null;
+
+        switch (stepIndex) {
+          case 0:
+            
+            // if(this.state.error.show === true){
+            //     alert = (
+            //         <Alert variant='danger' >
+            //             {this.state.error.message}
+            //         </Alert>
+            //         )
+            // }
+            return (
+            <div>
+                
+
+                <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
+                <h3 className="add-form-label">Name your ad campaign</h3>
+                {this.state.errors.name != "" ? 
+                    <Alert variant='danger' >
+                         {this.state.errors.name}
+                     </Alert> : null}
+                <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
+                </Form.Group>
+
+                
+                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
+    
+                <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
+
+                <div className="d-flex justify-content-end">
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={() =>this.handleBack(activeStep)}
+                            className="btn btn-cancel"
+                        >
+                        Back
+                        </Button>
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAudience(activeStep)}>
+                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                        </Button>
+                    </div>
+            </div>
+        );
+          case 1:
+            return (
+                <Audience 
+                updateAgeFrom = {(option) => this.updateAgeFrom(option)}
+                updateAgeTo = {(option) => this.updateAgeTo(option)}
+                updateGender = {(gender => this.updateGender(gender))}
+                saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
+                />
+            );
+            
+          case 2:
+            return (
+                <AdPlacement 
+                    websiteUrl="tinstay.com"
+                    isFacebookChecked={adInfo.runOnFacebook}
+                    saveDevices={(options) => this.saveDevices(options)}
+                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
+                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                />);
+          case 3:
+            return (
+            <BudgetAndSchedule 
+                runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
+                runOnGoogle={adInfo.runOnGoogle}
+                saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
+                />);
+          default:
+            return 'Unknown stepIndex';
+        }
+      }
+
+    handleNext = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        this.setState({
+            activeStep: nextStep
+        });
+
+    };
+
+    goToAudience = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        if(this.state.errors.name != ""){
+
+        }
+ 
+        this.setState({
+            activeStep: nextStep
+        });
+
+      };
+    
+    handleBack = (activeStep) => {
+        const prevStep = activeStep - 1;
+
+        this.setState({
+            activeStep: prevStep
+        });
+    };
+
+    handleReset = () => {
+        this.setState({
+            activeStep: 0
+        });
+    };
    
 
 
@@ -350,8 +464,11 @@ class CreateAdForm extends PureComponent{
 
     // Stepper 
     // const classes = styleStepper();
-    const steps = this.getSteps();
     const activeStep = this.state.activeStep
+    const steps = this.getSteps();
+
+
+    
 
     return (
         <div className="manager-ad-form-row">
@@ -375,18 +492,6 @@ class CreateAdForm extends PureComponent{
                     <Form className="add-form">
                     {this.getStepContent(activeStep)}
                     
-                    <div className="d-flex justify-content-end">
-                        <Button
-                            disabled={activeStep === 0}
-                            onClick={() =>this.handleBack(activeStep)}
-                            className="btn btn-cancel"
-                        >
-                        Back
-                        </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.handleNext(activeStep)}>
-                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
-                        </Button>
-                    </div>
                     </Form>
                     
                     

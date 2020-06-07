@@ -49,7 +49,6 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-facebook`}
                         className="checkbox-big"
                         name="runOnFacebook"
-                        chacked={runOnFacebook}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-slim" src={facebookAds} alt="Facebook ads"/>
@@ -63,7 +62,6 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-insta`}
                         className="checkbox-big"
                         name="runOnInstagram"
-                        chacked={runOnInstagram}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-slim" src={instagramAds} alt="Instagram Ads"/>
@@ -77,7 +75,6 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-google`}
                         className="checkbox-big"
                         name="runOnGoogle"
-                        chacked={runOnGoogle}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-box" src={googleAds} alt="Google Ads"/>

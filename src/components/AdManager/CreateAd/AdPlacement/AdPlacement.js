@@ -14,26 +14,21 @@ const AdPlacement = (props) => {
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
             <form className="placement-form">
-
-            <div className="row">
-                <div className="audience-form-devices col-md-7">
-                    {/* <i class="fas fa-globe-europe"></i> */}
-                    <label className="dark-gray h4" >Devices, OS: </label>
-                    <DevicesSelect saveDevices={devices => props.saveDevices(devices)}/>
+                <div className="row">
+                    <div className="audience-form-devices col-md-7">
+                        {/* <i class="fas fa-globe-europe"></i> */}
+                        <label className="dark-gray h4" >Devices, OS: </label>
+                        <DevicesSelect saveDevices={devices => props.saveDevices(devices)}/>
+                    </div>
                 </div>
-            </div>
-
-            <div className="add-form-row">
-                {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
-                <FacebookPlacements 
-                saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
-                <GoogleAdForm 
-                saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
-                url={props.websiteUrl}/>
-            </div>
-                
-                
-                
+                <div className="add-form-row">
+                    {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
+                    <FacebookPlacements 
+                    saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
+                    <GoogleAdForm 
+                    saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
+                    url={props.websiteUrl}/>
+                </div>
             </form>
         </div>
     );
