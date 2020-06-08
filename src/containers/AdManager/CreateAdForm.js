@@ -345,6 +345,16 @@ class CreateAdForm extends PureComponent{
 
         let alert = null;
 
+        const nameAlert = (
+            <Alert variant='danger' >
+                {this.state.errors.name}
+            </Alert>
+        )
+        const socialPlatformsAlert = (
+            <Alert variant='danger' >
+                {this.state.errors.socialPlatforms}
+            </Alert>
+        )
         const marketingGoalAlert = (
             <Alert variant='danger' >
                 {this.state.errors.marketingGoal}
@@ -367,17 +377,12 @@ class CreateAdForm extends PureComponent{
 
                 <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                 <h3 className="add-form-label">Name your ad campaign</h3>
-                {this.state.showErrors &&  this.state.errors.name ? 
-                    <Alert variant='danger' >
-                         {this.state.errors.name}
-                     </Alert> : null}
+
+                {this.state.showErrors &&  this.state.errors.name ? nameAlert : null}
                 <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
                 </Form.Group>
 
-                {this.state.showErrors &&  this.state.errors.socialPlatforms ? 
-                    <Alert variant='danger' >
-                         {this.state.errors.socialPlatforms}
-                     </Alert> : null}
+                {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
                 <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
     
                 {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
