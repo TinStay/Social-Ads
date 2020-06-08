@@ -54,9 +54,11 @@ class CreateAdForm extends PureComponent{
             payment: {},
         },
         errors: {
-            name: "",
-            marketingGoal: ""
-        }
+            name: "Name should be at least 2 symbols.",
+            socialPlatforms: "You have to select at least 1 social media platform to continue.",
+            marketingGoal: "You have to select a marketing goal for your campaign."
+        },
+        showErrors: false
     }
 
     changeAdInfo = (e) => {
@@ -75,7 +77,7 @@ class CreateAdForm extends PureComponent{
                 },
                 errors: {
                     ...this.state.errors,
-                    name: "Name should be more than 2 letters."
+                    name: "Name should be at least 2 symbols."
                 }
             })
         }else{
@@ -117,9 +119,9 @@ class CreateAdForm extends PureComponent{
                         runOn: platforms
                     }
                 },
-                error: {
-                    show: false,
-                    message: ""
+                errors:{
+                    ...this.state.errors,
+                    socialPlatforms: ""
                 }
             })
 
@@ -130,37 +132,25 @@ class CreateAdForm extends PureComponent{
                 }
             }
 
-            if(platforms.length != 0){
-                this.setState({
-                    ...this.state,
-                    order: {
-                        ...this.state.order,
-                        adInfo:{
-                            ...this.state.order.adInfo,
-                            runOn: platforms
-                        }
-                    },
-                    error: {
-                        show: false,
-                        message: ""
-                    }
-                })
-            }else{
-                this.setState({
-                    ...this.state,
-                    order: {
-                        ...this.state.order,
-                        adInfo:{
-                            ...this.state.order.adInfo,
-                            runOn: platforms
-                        }
-                    },
-                    error: {
-                        show: true,
-                        message: "You have to select at least 1 social media platform to continue."
-                    }
-                })
+            let socialPlatformsError = ''
+            if(platforms.length == 0){
+                socialPlatformsError = "You have to select at least 1 social media platform to continue."
             }
+
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        runOn: platforms
+                    }
+                },
+                errors:{
+                    ...this.state.errors,
+                    socialPlatforms: socialPlatformsError
+                }
+            })
         }
 
         
@@ -168,16 +158,23 @@ class CreateAdForm extends PureComponent{
     }
 
     selectMarketingGoal = (title) => {
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    marketingGoal: title
+        if(title != null){
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    adInfo:{
+                        ...this.state.order.adInfo,
+                        marketingGoal: title
+                    }
+                },
+                errors: {
+                    ...this.state.errors,
+                    marketingGoal: ""
                 }
-            }
-        })
+            })
+        }
+
     }
 
     updateAgeFrom = option => {
@@ -348,6 +345,12 @@ class CreateAdForm extends PureComponent{
 
         let alert = null;
 
+        const marketingGoalAlert = (
+            <Alert variant='danger' >
+                {this.state.errors.marketingGoal}
+            </Alert>
+        )
+
         switch (stepIndex) {
           case 0:
             
@@ -364,16 +367,20 @@ class CreateAdForm extends PureComponent{
 
                 <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                 <h3 className="add-form-label">Name your ad campaign</h3>
-                {this.state.errors.name != "" ? 
+                {this.state.showErrors &&  this.state.errors.name ? 
                     <Alert variant='danger' >
                          {this.state.errors.name}
                      </Alert> : null}
                 <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
                 </Form.Group>
 
-                
+                {this.state.showErrors &&  this.state.errors.socialPlatforms ? 
+                    <Alert variant='danger' >
+                         {this.state.errors.socialPlatforms}
+                     </Alert> : null}
                 <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
     
+                {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
                 <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
 
                 <div className="d-flex justify-content-end">
@@ -433,13 +440,18 @@ class CreateAdForm extends PureComponent{
     goToAudience = (activeStep) => {
         const nextStep = activeStep + 1;
 
-        if(this.state.errors.name != ""){
-
+        if(this.state.errors.name != "" ||  this.state.errors.socialPlatforms != "" ||  this.state.errors.marketingGoal != ""){
+            this.setState({
+                showErrors: true
+            })
+        }else {
+            this.setState({
+                activeStep: nextStep,
+                showErrors: false
+            });
         }
  
-        this.setState({
-            activeStep: nextStep
-        });
+        
 
       };
     
