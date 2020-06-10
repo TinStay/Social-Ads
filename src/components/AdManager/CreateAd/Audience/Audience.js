@@ -16,6 +16,7 @@ const Audience = (props) => {
 
                 <div className="row">
                     <div className="audience-form-countries col-md-7">
+                        {props.locationAlert}
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
                         <LocationSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>

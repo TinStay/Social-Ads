@@ -50,13 +50,19 @@ class CreateAdForm extends PureComponent{
                     adDetails: null
                 }
             },
-            audience: {},
+            audience: {
+                gender: "All"
+            },
             payment: {},
         },
         errors: {
             name: "Name should be at least 2 symbols.",
             socialPlatforms: "You have to select at least 1 social media platform to continue.",
-            marketingGoal: "You have to select a marketing goal for your campaign."
+            marketingGoal: "You have to select a marketing goal for your campaign.",
+            location: "You have to select at least 1 area of targeting",
+            ageFrom: "You have to select an age",
+            ageTo: "You have to select an age",
+            
         },
         showErrors: false
     }
@@ -216,20 +222,52 @@ class CreateAdForm extends PureComponent{
     }
 
     saveOptionForm = (optionsData, form) =>{
-
-        let options = optionsData.map( option => {
-            return option.value
-        })
+        let options;
+        if(optionsData != null){
+            options = optionsData.map( option => {
+                return option.value
+            })
+        }else{
+            options = [];
+        }
+        
+        // Handle validation
+        if(form.name == "location"){
+            if(options != []){
+                this.setState({
+                    ...this.state,
+                    order: {
+                        ...this.state.order,
+                        audience:{
+                            ...this.state.order.audience,
+                            [form.name]: options
+                        }
+                    },
+                    errors: {
+                        ...this.state.errors,
+                        location: ""
+                    }
+                })
+            }else{
+                this.setState({
+                    ...this.state,
+                    order: {
+                        ...this.state.order,
+                        audience:{
+                            ...this.state.order.audience,
+                            [form.name]: options
+                        }
+                    },
+                    errors: {
+                        ...this.state.errors,
+                        location: "You have to select at least 1 area of targeting"
+                    }
+                })
+            }
+        }
 
         this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                audience:{
-                    ...this.state.order.audience,
-                    [form.name]: options
-                }
-            }
+            
         })
     }
 
@@ -360,21 +398,20 @@ class CreateAdForm extends PureComponent{
                 {this.state.errors.marketingGoal}
             </Alert>
         )
+        
+        let locationAlert = null
+        if(this.state.errors.location != "" && this.state.showErrors){
+            locationAlert = (
+                <Alert variant='danger' >
+                    {this.state.errors.location}
+                </Alert>
+            )
+        }
 
         switch (stepIndex) {
           case 0:
-            
-            // if(this.state.error.show === true){
-            //     alert = (
-            //         <Alert variant='danger' >
-            //             {this.state.error.message}
-            //         </Alert>
-            //         )
-            // }
             return (
             <div>
-                
-
                 <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                 <h3 className="add-form-label">Name your ad campaign</h3>
 
@@ -389,6 +426,31 @@ class CreateAdForm extends PureComponent{
                 <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
 
                 <div className="d-flex justify-content-end">
+                    <Button
+                        disabled={activeStep === 0}
+                        onClick={() =>this.handleBack(activeStep)}
+                        className="btn btn-cancel"
+                    >
+                    Back
+                    </Button>
+                    <Button variant="contained" className="btn btn-next" onClick={() => this.goToAudience(activeStep)}>
+                        {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                    </Button>
+                </div>
+            </div>
+        );
+          case 1:
+            return (
+                <div>
+                    <Audience 
+                    updateAgeFrom = {(option) => this.updateAgeFrom(option)}
+                    updateAgeTo = {(option) => this.updateAgeTo(option)}
+                    updateGender = {(gender => this.updateGender(gender))}
+                    saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
+                    locationAlert={locationAlert}
+                    />
+
+                    <div className="d-flex justify-content-end">
                         <Button
                             disabled={activeStep === 0}
                             onClick={() =>this.handleBack(activeStep)}
@@ -396,20 +458,11 @@ class CreateAdForm extends PureComponent{
                         >
                         Back
                         </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAudience(activeStep)}>
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
                             {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
                         </Button>
                     </div>
-            </div>
-        );
-          case 1:
-            return (
-                <Audience 
-                updateAgeFrom = {(option) => this.updateAgeFrom(option)}
-                updateAgeTo = {(option) => this.updateAgeTo(option)}
-                updateGender = {(gender => this.updateGender(gender))}
-                saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
-                />
+                </div>
             );
             
           case 2:
@@ -455,10 +508,26 @@ class CreateAdForm extends PureComponent{
                 showErrors: false
             });
         }
- 
-        
 
       };
+
+    goToAdPlacements = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        // If there are any errors on this form step => showErrors = true
+        if(this.state.errors.location != "" ||  this.state.errors.ageFrom != "" ||  this.state.errors.ageTo != ""){
+            this.setState({
+                showErrors: true
+            })
+        }else {
+            this.setState({
+                activeStep: nextStep,
+                showErrors: false
+            });
+        }
+ 
+
+    };
     
     handleBack = (activeStep) => {
         const prevStep = activeStep - 1;
@@ -478,6 +547,7 @@ class CreateAdForm extends PureComponent{
 
   render(){
     console.log("order", this.state.order)
+    // console.log("location error", this.state.errors.location)
 
     // Stepper 
     // const classes = styleStepper();

@@ -50,7 +50,7 @@ export const GenderSelect = (props) => {
     ]  
 
     return (
-        <Select className="audience-form-select " options={genderOptions} onChange={(gender) => props.updateGender(gender)}/>
+        <Select className="audience-form-select " options={genderOptions} defaultValue={genderOptions[0]} onChange={(gender) => props.updateGender(gender)}/>
     )
 }
 
