@@ -7,6 +7,13 @@ import { countriesData } from '../../CountriesData';
 
     // AgeFrom
 export const AgeFromSelect = (props) => {
+
+    const customStyles = {
+        control: () => ({
+          // none of react-select's styles are passed to <Control />
+          border: '1px solid red',
+        }),
+      }
     
     let ageFrom = [];
     for(let i = 13; i <= 65; i++){
@@ -17,7 +24,7 @@ export const AgeFromSelect = (props) => {
     }
 
     return(
-        <Select className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select  className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
 

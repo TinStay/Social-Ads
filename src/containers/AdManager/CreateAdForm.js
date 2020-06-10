@@ -51,7 +51,9 @@ class CreateAdForm extends PureComponent{
                 }
             },
             audience: {
-                gender: "All"
+                gender: "All",
+                ageFrom: null,
+                ageTo: null
             },
             payment: {},
         },
@@ -192,9 +194,14 @@ class CreateAdForm extends PureComponent{
                     ...this.state.order.audience,
                     ageFrom: option.value
                 }
+            },
+            errors: {
+                ...this.state.errors,
+                ageFrom: ""
             }
         })
     }
+
     updateAgeTo = option => {
         this.setState({
             ...this.state,
@@ -204,6 +211,10 @@ class CreateAdForm extends PureComponent{
                     ...this.state.order.audience,
                     ageTo: option.value
                 }
+            },
+            errors: {
+                ...this.state.errors,
+                ageTo: ""
             }
         })
     }
@@ -223,18 +234,32 @@ class CreateAdForm extends PureComponent{
 
     saveOptionForm = (optionsData, form) =>{
         let options;
+
+         // Handle validation
         if(optionsData != null){
             options = optionsData.map( option => {
                 return option.value
             })
+
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    audience:{
+                        ...this.state.order.audience,
+                        [form.name]: options
+                    }
+                },
+                errors: {
+                    ...this.state.errors,
+                    location: ""
+                }
+            })
+
         }else{
-            options = [];
-        }
-        
-        // Handle validation
-        if(form.name == "location"){
-            if(options != []){
-                this.setState({
+            options = []
+
+            this.setState({
                     ...this.state,
                     order: {
                         ...this.state.order,
@@ -245,30 +270,11 @@ class CreateAdForm extends PureComponent{
                     },
                     errors: {
                         ...this.state.errors,
-                        location: ""
+                        location: "You have to select at least 1 area of targeting."
                     }
                 })
-            }else{
-                this.setState({
-                    ...this.state,
-                    order: {
-                        ...this.state.order,
-                        audience:{
-                            ...this.state.order.audience,
-                            [form.name]: options
-                        }
-                    },
-                    errors: {
-                        ...this.state.errors,
-                        location: "You have to select at least 1 area of targeting"
-                    }
-                })
-            }
         }
 
-        this.setState({
-            
-        })
     }
 
     saveDevices = devicesData => {
@@ -383,18 +389,19 @@ class CreateAdForm extends PureComponent{
 
         let alert = null;
 
+        // Alerts
         const nameAlert = (
-            <Alert variant='danger' >
+            <Alert variant='danger'>
                 {this.state.errors.name}
             </Alert>
         )
         const socialPlatformsAlert = (
-            <Alert variant='danger' >
+            <Alert variant='danger'>
                 {this.state.errors.socialPlatforms}
             </Alert>
         )
         const marketingGoalAlert = (
-            <Alert variant='danger' >
+            <Alert variant='danger'>
                 {this.state.errors.marketingGoal}
             </Alert>
         )
@@ -402,11 +409,30 @@ class CreateAdForm extends PureComponent{
         let locationAlert = null
         if(this.state.errors.location != "" && this.state.showErrors){
             locationAlert = (
-                <Alert variant='danger' >
+                <Alert variant='danger'>
                     {this.state.errors.location}
                 </Alert>
             )
         }
+
+        let ageFromAlert = null
+        if(this.state.errors.ageFrom != "" && this.state.showErrors){
+            ageFromAlert = (
+                <Alert variant='danger'>
+                    {this.state.errors.ageFrom}
+                </Alert>
+            )
+        }
+
+        let ageToAlert = null
+        if(this.state.errors.ageTo != "" && this.state.showErrors){
+            ageToAlert = (
+                <Alert variant='danger'>
+                    {this.state.errors.ageTo}
+                </Alert>
+            )
+        }
+
 
         switch (stepIndex) {
           case 0:
@@ -448,6 +474,8 @@ class CreateAdForm extends PureComponent{
                     updateGender = {(gender => this.updateGender(gender))}
                     saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
                     locationAlert={locationAlert}
+                    ageFromAlert={ageFromAlert}
+                    ageToAlert={ageToAlert}
                     />
 
                     <div className="d-flex justify-content-end">
@@ -547,7 +575,6 @@ class CreateAdForm extends PureComponent{
 
   render(){
     console.log("order", this.state.order)
-    // console.log("location error", this.state.errors.location)
 
     // Stepper 
     // const classes = styleStepper();

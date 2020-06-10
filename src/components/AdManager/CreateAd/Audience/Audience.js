@@ -31,13 +31,19 @@ const Audience = (props) => {
                     <div className="audience-form-age col-md-8">
                         <label for="age">Age:</label>
                         <div className="d-md-flex">
-                            <div className="mr-4 d-md-flex">
-                                <p>From</p>
-                                <AgeFromSelect updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
+                            <div>
+                                {props.ageFromAlert}
+                                <div className="mr-4 d-md-flex">
+                                    <p>From</p>
+                                    <AgeFromSelect updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
+                                </div>
                             </div>
-                            <div className="mr-4 d-md-flex">
-                                <p>To</p>
-                                <AgeToSelect updateAgeTo={(option) => props.updateAgeTo(option)}/>
+                            <div>
+                                {props.ageToAlert}
+                                <div className="mr-4 d-md-flex">
+                                    <p>To</p>
+                                    <AgeToSelect updateAgeTo={(option) => props.updateAgeTo(option)}/>
+                                </div>
                             </div>
                         </div>
                     </div>
