@@ -6,7 +6,7 @@ import AdViewGoogle from './AdViewGoogle';
 
 const GooglelAdForm = (props) => {
 
-    const [headlineOne, setHeadlineOne] = useState("Headline 1 ");
+    const [headlineOne, setHeadlineOne] = useState("");
     const [headlineTwo, setHeadlineTwo] = useState("Headline 2 ");
     const [headlineThree, setHeadlineThree] = useState("Headline 3 ");
     const [description, setDescription] = useState("Write a description for your ad here");

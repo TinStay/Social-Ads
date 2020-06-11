@@ -24,7 +24,7 @@ export const AgeFromSelect = (props) => {
     }
 
     return(
-        <Select  className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select defaultValue={ageFrom[0]}  className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
 
@@ -43,7 +43,7 @@ export const AgeToSelect = (props) => {
 
 
     return(
-       <Select className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select defaultValue={ageTo[30]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 

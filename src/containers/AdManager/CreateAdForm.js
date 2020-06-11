@@ -53,7 +53,8 @@ class CreateAdForm extends PureComponent{
             audience: {
                 gender: "All",
                 ageFrom: null,
-                ageTo: null
+                ageTo: null,
+                interests: []
             },
             payment: {},
         },
@@ -233,33 +234,16 @@ class CreateAdForm extends PureComponent{
     }
 
     saveOptionForm = (optionsData, form) =>{
-        let options;
+        let options = [];
 
-         // Handle validation
-        if(optionsData != null){
-            options = optionsData.map( option => {
-                return option.value
-            })
+        if(form.name === "location"){
+            // Handle validation
+            if(optionsData != null){
+                options = optionsData.map( option => {
+                    return option.value
+                })
 
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    audience:{
-                        ...this.state.order.audience,
-                        [form.name]: options
-                    }
-                },
-                errors: {
-                    ...this.state.errors,
-                    location: ""
-                }
-            })
-
-        }else{
-            options = []
-
-            this.setState({
+                this.setState({
                     ...this.state,
                     order: {
                         ...this.state.order,
@@ -270,10 +254,50 @@ class CreateAdForm extends PureComponent{
                     },
                     errors: {
                         ...this.state.errors,
-                        location: "You have to select at least 1 area of targeting."
+                        location: ""
                     }
                 })
+
+            }else{
+                options = []
+
+                this.setState({
+                        ...this.state,
+                        order: {
+                            ...this.state.order,
+                            audience:{
+                                ...this.state.order.audience,
+                                [form.name]: options
+                            }
+                        },
+                        errors: {
+                            ...this.state.errors,
+                            location: "You have to select at least 1 area of targeting."
+                        }
+                    })
+            }
+        }else{
+            // Handle validation
+            if(optionsData != null){
+                options = optionsData.map( option => {
+                    return option.value
+                })
+            }else{
+                options = []
+            }
+
+            this.setState({
+                ...this.state,
+                order: {
+                    ...this.state.order,
+                    audience:{
+                        ...this.state.order.audience,
+                        [form.name]: options
+                    }
+                },
+            })
         }
+        
 
     }
 
@@ -495,20 +519,50 @@ class CreateAdForm extends PureComponent{
             
           case 2:
             return (
-                <AdPlacement 
-                    websiteUrl="tinstay.com"
-                    isFacebookChecked={adInfo.runOnFacebook}
-                    saveDevices={(options) => this.saveDevices(options)}
-                    saveFbPlacements={(e) => this.saveFbPlacements(e)}
-                    saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
-                />);
+                <div>
+                    <AdPlacement 
+                        websiteUrl="tinstay.com"
+                        isFacebookChecked={adInfo.runOnFacebook}
+                        saveDevices={(options) => this.saveDevices(options)}
+                        saveFbPlacements={(e) => this.saveFbPlacements(e)}
+                        saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                    />
+                    <div className="d-flex justify-content-end">
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={() =>this.handleBack(activeStep)}
+                            className="btn btn-cancel"
+                        >
+                        Back
+                        </Button>
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
+                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                        </Button>
+                    </div>
+                </div>
+                );
           case 3:
             return (
-            <BudgetAndSchedule 
-                runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
-                runOnGoogle={adInfo.runOnGoogle}
-                saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
-                />);
+                <div>
+                    <BudgetAndSchedule 
+                        runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
+                        runOnGoogle={adInfo.runOnGoogle}
+                        saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
+                    />
+                    <div className="d-flex justify-content-end">
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={() =>this.handleBack(activeStep)}
+                            className="btn btn-cancel"
+                        >
+                        Back
+                        </Button>
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
+                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                        </Button>
+                    </div>
+                </div>
+            );
           default:
             return 'Unknown stepIndex';
         }
