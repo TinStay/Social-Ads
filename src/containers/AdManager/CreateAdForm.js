@@ -61,42 +61,25 @@ class CreateAdForm extends PureComponent{
 
     changeAdInfo = (e) => {
         // console.log(e.target.value, e.target.name)
+        this.props.setName(e)
         const value = e.target.value
 
-
-
         // Validation
-        // if(value.length < 2){
-        //     this.setState({
-        //         ...this.state,
-        //         order: {
-        //             ...this.state.order,
-        //             adInfo:{
-        //                 ...this.state.order.adInfo,
-        //                 [e.target.name]: value
-        //             }
-        //         },
-        //         errors: {
-        //             ...this.state.errors,
-        //             name: "Name should be at least 2 symbols."
-        //         }
-        //     })
-        // }else{
-        //     this.setState({
-        //         ...this.state,
-        //         order: {
-        //             ...this.state.order,
-        //             adInfo:{
-        //                 ...this.state.order.adInfo,
-        //                 [e.target.name]: value
-        //             }
-        //         },
-        //         errors: {
-        //             ...this.state.errors,
-        //             name: ""
-        //         }
-        //     })
-        // }
+        if(value.length < 2){
+            this.setState({
+                errors: {
+                    ...this.state.errors,
+                    name: "Name should be at least 2 symbols."
+                }
+            })
+        }else{
+            this.setState({
+                errors: {
+                    ...this.state.errors,
+                    name: ""
+                }
+            })
+        }
 
        
     }
@@ -454,32 +437,34 @@ class CreateAdForm extends PureComponent{
           case 0:
             return (
             <div>
-                <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
-                <h3 className="add-form-label">Name your ad campaign</h3>
+                <form onSubmit={(e) => this.goToAudience(e, activeStep, adInfo.marketingGoal)}>
+                    <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
+                    <h3 className="add-form-label">Name your ad campaign</h3>
 
-                {this.state.showErrors &&  this.state.errors.name ? nameAlert : null}
-                {/* <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" /> */}
-                <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.props.setName(e)} type="text" size="lg" placeholder="Enter name" />
-                </Form.Group>
+                    {this.state.showErrors &&  this.state.errors.name ? nameAlert : null}
+                    <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
+                    {/* <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.props.setName(e)} type="text" size="lg" placeholder="Enter name" /> */}
+                    </Form.Group>
 
-                {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
-                <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
-    
-                {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
-                <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
+                    {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
+                    <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
+        
+                    {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
+                    <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
 
-                <div className="d-flex justify-content-end">
-                    <Button
-                        disabled={activeStep === 0}
-                        onClick={() =>this.handleBack(activeStep)}
-                        className="btn btn-cancel"
-                    >
-                    Back
-                    </Button>
-                    <Button variant="contained" className="btn btn-next" onClick={() => this.goToAudience(activeStep)}>
-                        {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
-                    </Button>
-                </div>
+                    <div className="d-flex justify-content-end">
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={() =>this.handleBack(activeStep)}
+                            className="btn btn-cancel"
+                        >
+                        Back
+                        </Button>
+                        <button type="submit"  className="btn btn-next" >
+                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                        </button>
+                    </div>
+                </form>
             </div>
         );
           case 1:
@@ -570,7 +555,11 @@ class CreateAdForm extends PureComponent{
 
     };
 
-    goToAudience = (activeStep) => {
+    goToAudience = (e, activeStep, marketingGoal) => {
+        e.preventDefault()
+        // console.log(e.target)
+
+
         const nextStep = activeStep + 1;
 
         if(this.state.errors.name != "" ||  this.state.errors.socialPlatforms != "" ||  this.state.errors.marketingGoal != ""){
@@ -582,6 +571,7 @@ class CreateAdForm extends PureComponent{
                 activeStep: nextStep,
                 showErrors: false
             });
+
         }
 
       };
@@ -675,7 +665,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value})
+        setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
     }
 }
 

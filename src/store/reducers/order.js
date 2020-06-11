@@ -27,11 +27,11 @@ const reducer = (state = initialState, action) =>{
     switch(action.type){
        case actionTypes.SET_NAME:
            return {
-            adInfo: {
-                ...state,
-                name: action.name
-            }
-           }
+                adInfo: {
+                    ...state,
+                    name: action.name
+                }
+           };
         
         default: return state
     }
