@@ -11,26 +11,15 @@ import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlace
 import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
 
 //Stepper 
-import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-// const styleStepper = makeStyles((theme) => ({
-//     root: {
-//     width: '100%',
-//     },
-//     backButton: {
-//     marginRight: theme.spacing(1),
-//     },
-//     instructions: {
-//     marginTop: theme.spacing(1),
-//     marginBottom: theme.spacing(1),
-//     },
-// }));
-
+// Redux
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 
 class CreateAdForm extends PureComponent{
@@ -74,37 +63,40 @@ class CreateAdForm extends PureComponent{
         // console.log(e.target.value, e.target.name)
         const value = e.target.value
 
-        if(value.length < 2){
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        [e.target.name]: value
-                    }
-                },
-                errors: {
-                    ...this.state.errors,
-                    name: "Name should be at least 2 symbols."
-                }
-            })
-        }else{
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        [e.target.name]: value
-                    }
-                },
-                errors: {
-                    ...this.state.errors,
-                    name: ""
-                }
-            })
-        }
+
+
+        // Validation
+        // if(value.length < 2){
+        //     this.setState({
+        //         ...this.state,
+        //         order: {
+        //             ...this.state.order,
+        //             adInfo:{
+        //                 ...this.state.order.adInfo,
+        //                 [e.target.name]: value
+        //             }
+        //         },
+        //         errors: {
+        //             ...this.state.errors,
+        //             name: "Name should be at least 2 symbols."
+        //         }
+        //     })
+        // }else{
+        //     this.setState({
+        //         ...this.state,
+        //         order: {
+        //             ...this.state.order,
+        //             adInfo:{
+        //                 ...this.state.order.adInfo,
+        //                 [e.target.name]: value
+        //             }
+        //         },
+        //         errors: {
+        //             ...this.state.errors,
+        //             name: ""
+        //         }
+        //     })
+        // }
 
        
     }
@@ -466,7 +458,8 @@ class CreateAdForm extends PureComponent{
                 <h3 className="add-form-label">Name your ad campaign</h3>
 
                 {this.state.showErrors &&  this.state.errors.name ? nameAlert : null}
-                <Form.Control className="add-form-input-name" name="name" value={adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
+                {/* <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" /> */}
+                <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.props.setName(e)} type="text" size="lg" placeholder="Enter name" />
                 </Form.Group>
 
                 {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
@@ -674,5 +667,16 @@ class CreateAdForm extends PureComponent{
   }
 };
 
+const mapStateToProps = state => {
+    return{
+        adInfo: state.adInfo
+    }
+}
 
-export default CreateAdForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAdForm);
