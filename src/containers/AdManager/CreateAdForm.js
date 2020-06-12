@@ -148,36 +148,23 @@ class CreateAdForm extends PureComponent{
 
     updateAgeFrom = option => {
         this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                audience:{
-                    ...this.state.order.audience,
-                    ageFrom: option.value
-                }
-            },
             errors: {
                 ...this.state.errors,
                 ageFrom: ""
             }
         })
+
+        this.props.saveAgeFrom(option.value)
     }
 
     updateAgeTo = option => {
         this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                audience:{
-                    ...this.state.order.audience,
-                    ageTo: option.value
-                }
-            },
             errors: {
                 ...this.state.errors,
                 ageTo: ""
             }
         })
+        this.props.saveAgeTo(option.value)
     }
 
     updateGender = gender => {
@@ -204,58 +191,36 @@ class CreateAdForm extends PureComponent{
                 })
 
                 this.setState({
-                    ...this.state,
-                    order: {
-                        ...this.state.order,
-                        audience:{
-                            ...this.state.order.audience,
-                            [form.name]: options
-                        }
-                    },
                     errors: {
                         ...this.state.errors,
                         location: ""
                     }
                 })
 
-            }else{
-                options = []
+                // Save location to redux state
+                this.props.saveLocation(options)
 
+            }else{
                 this.setState({
-                        ...this.state,
-                        order: {
-                            ...this.state.order,
-                            audience:{
-                                ...this.state.order.audience,
-                                [form.name]: options
-                            }
-                        },
-                        errors: {
-                            ...this.state.errors,
-                            location: "You have to select at least 1 area of targeting."
-                        }
-                    })
+                    errors: {
+                        ...this.state.errors,
+                        location: "You have to select at least 1 area of targeting."
+                    }
+                })
+
+                // Save location to redux state
+                this.props.saveLocation(options)
             }
         }else{
-            // Handle validation
+            // Interests field
             if(optionsData != null){
                 options = optionsData.map( option => {
                     return option.value
                 })
-            }else{
-                options = []
             }
 
-            this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    audience:{
-                        ...this.state.order.audience,
-                        [form.name]: options
-                    }
-                },
-            })
+            // Save location to redux state
+            // this.props.saveLocation(options, form.name)
         }
         
 
@@ -446,7 +411,7 @@ class CreateAdForm extends PureComponent{
                         Back
                         </Button>
                         <button type="submit"  className="btn btn-next" >
-                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                            Continue
                         </button>
                     </div>
                 </form>
@@ -651,6 +616,10 @@ const mapDispatchToProps = dispatch => {
         setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
         saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
         saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
+        saveLocation : (options) => dispatch({type: actionTypes.SAVE_LOCATION, options: options}),
+        saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
+        saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
+
         
     }
 }

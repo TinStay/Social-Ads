@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateAdInfo } from '../../shared/utility';
+import { updateAdInfo, updateAudienceInfo } from '../../shared/utility';
 
 const initialState = {
         adInfo: {
@@ -15,12 +15,25 @@ const initialState = {
             }
         },
         audience: {
+            location: [],
             gender: "All",
-            ageFrom: null,
+            ageFrom: 13,
             ageTo: null,
             interests: []
         },
         payment: {},
+}
+
+const updateAgeFrom = (state, action) => {
+    return updateAudienceInfo(state, {
+        ageFrom: action.value
+    })
+}
+
+const updateAgeTo = (state, action) => {
+    return updateAudienceInfo(state, {
+        ageTo: action.value
+    })
 }
 
 const reducer = (state = initialState, action) =>{
@@ -29,7 +42,7 @@ const reducer = (state = initialState, action) =>{
         return updateAdInfo(state, {
             name: action.name
         })
-        
+
        case actionTypes.SAVE_RUNON_PLATFORMS:
             return updateAdInfo(state, {
                 runOn: action.platforms
@@ -39,6 +52,16 @@ const reducer = (state = initialState, action) =>{
            return updateAdInfo(state, {
                marketingGoal: action.goal
            })
+       case actionTypes.SAVE_LOCATION:
+           return updateAudienceInfo(state, {
+               location: action.options
+           })
+       case actionTypes.SAVE_LOCATION:
+           return updateAudienceInfo(state, {
+               location: action.options
+           })
+       case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action)
+       case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action)
         
         default: return state
     }

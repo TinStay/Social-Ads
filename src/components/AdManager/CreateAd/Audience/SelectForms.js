@@ -3,10 +3,22 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { countriesData } from '../../CountriesData';
+import { connect } from 'react-redux';
 
+
+const mapStateToProps = state => {
+    return{
+        audience: state.audience
+    }
+}
+
+// const connectFunc = connect(mapStateToProps)(AgeFromSelect)
+// connect(mapStateToProps)(LocationSelect, AgeFromSelect)
 
     // AgeFrom
 export const AgeFromSelect = (props) => {
+    const selectedAge = props.ageValue
+    // console.log(selectedAge)
 
     const customStyles = {
         control: () => ({
@@ -24,9 +36,10 @@ export const AgeFromSelect = (props) => {
     }
 
     return(
-        <Select defaultValue={ageFrom[0]}  className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select defaultValue={ageFrom[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
+
 
     // AgeTo
 export const AgeToSelect = (props) => {
@@ -43,7 +56,7 @@ export const AgeToSelect = (props) => {
 
 
     return(
-       <Select defaultValue={ageTo[30]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 
@@ -62,7 +75,7 @@ export const GenderSelect = (props) => {
 }
 
 // Location
-export const LocationSelect = (props) => {
+export function LocationSelect(props){
    
     const countries = countriesData.map( country => {
         return {
@@ -71,6 +84,8 @@ export const LocationSelect = (props) => {
         }
     })
 
+    // console.log(countries)
+
     const animatedComponents = makeAnimated();
     return (
         <Select
@@ -78,12 +93,16 @@ export const LocationSelect = (props) => {
         name="location"
         onChange={(options, form) => props.saveOptionForm(options, form)}
         components={animatedComponents}
-        // defaultValue={[countries[0], countries[1]]}
+        // defaultValue={props.audience.location}
         isMulti
         options={countries}
         />
     )
 }
+
+
+
+
 
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
@@ -103,6 +122,7 @@ export const InterestsSelect = (props) => {
       />
     )
 }
+
 
 
 

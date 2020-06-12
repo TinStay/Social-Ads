@@ -7,3 +7,13 @@ export const updateAdInfo = (oldObject, updatedProps) =>{
             }
     };
 };
+
+export const updateAudienceInfo = (oldObject, updatedProps) =>{
+    return{
+        ...oldObject,
+            audience: {
+                ...oldObject.audience,
+                ...updatedProps
+            }
+    };
+};

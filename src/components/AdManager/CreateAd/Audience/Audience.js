@@ -5,9 +5,11 @@ import {
     GenderSelect, 
     LocationSelect,
     InterestsSelect,} from './SelectForms';
+import { connect } from 'react-redux';
+
 
 const Audience = (props) => {
-
+    // console.log(props.audience)
 
     return(
         <div className="add-form-group">
@@ -35,7 +37,7 @@ const Audience = (props) => {
                                 {props.ageFromAlert}
                                 <div className="mr-4 d-md-flex">
                                     <p>From</p>
-                                    <AgeFromSelect updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
+                                    <AgeFromSelect ageValue={props.audience.ageFrom} updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
                                 </div>
                             </div>
                             <div>
@@ -59,4 +61,12 @@ const Audience = (props) => {
     );
 }
 
-export default Audience
+const mapStateToProps = state => {
+    return{
+        audience: state.adInfo
+    }
+}
+
+
+
+export default connect(mapStateToProps)(Audience)
