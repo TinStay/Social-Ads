@@ -80,8 +80,6 @@ class CreateAdForm extends PureComponent{
                 }
             })
         }
-
-       
     }
 
 
@@ -89,20 +87,17 @@ class CreateAdForm extends PureComponent{
     changeSMPInfo = e => {
         // console.log(e.target.checked)
         const checked = e.target.checked
-        const platforms = [...this.state.order.adInfo.runOn]
+        const platforms = [...this.props.adInfo.runOn]
+        
 
         if(checked){
+            // Add social platform to the array
             platforms.push(e.target.name);
+
+            // Save to redux state
+            this.props.saveRunOnPlatforms(platforms)
             
             this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        runOn: platforms
-                    }
-                },
                 errors:{
                     ...this.state.errors,
                     socialPlatforms: ""
@@ -110,6 +105,7 @@ class CreateAdForm extends PureComponent{
             })
 
         }else{
+            // Remove social platform from the array
             for(let i =0; i < platforms.length; i++){
                 if(platforms[i] === e.target.name){
                     platforms.splice(i, 1)
@@ -121,15 +117,10 @@ class CreateAdForm extends PureComponent{
                 socialPlatformsError = "You have to select at least 1 social media platform to continue."
             }
 
+            // Save to redux state
+            this.props.saveRunOnPlatforms(platforms)
+
             this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        runOn: platforms
-                    }
-                },
                 errors:{
                     ...this.state.errors,
                     socialPlatforms: socialPlatformsError
@@ -141,23 +132,17 @@ class CreateAdForm extends PureComponent{
         
     }
 
-    selectMarketingGoal = (title) => {
-        if(title != null){
+    selectMarketingGoal = (goal) => {
+        if(goal != null){
             this.setState({
-                ...this.state,
-                order: {
-                    ...this.state.order,
-                    adInfo:{
-                        ...this.state.order.adInfo,
-                        marketingGoal: title
-                    }
-                },
                 errors: {
                     ...this.state.errors,
                     marketingGoal: ""
                 }
             })
         }
+
+        this.props.saveMarketingGoal(goal)
 
     }
 
@@ -447,10 +432,10 @@ class CreateAdForm extends PureComponent{
                     </Form.Group>
 
                     {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
-                    <SocialPlatforms  changeSMPInfo={(e) => this.changeSMPInfo(e)}/>
+                    <SocialPlatforms changeSMPInfo={(e) => this.changeSMPInfo(e)} platforms={this.props.adInfo.runOn}/>
         
                     {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
-                    <MarketingGoal selectGoal={this.selectMarketingGoal} goal={adInfo.marketingGoal}/>
+                    <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.props.adInfo.marketingGoal}/>
 
                     <div className="d-flex justify-content-end">
                         <Button
@@ -619,8 +604,6 @@ class CreateAdForm extends PureComponent{
     const steps = this.getSteps();
 
 
-    
-
     return (
         <div className="manager-ad-form-row">
             <div className="ad-container">
@@ -666,6 +649,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
+        saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
+        saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
+        
     }
 }
 

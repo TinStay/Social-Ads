@@ -1,2 +1,4 @@
 // Order
 export const SET_NAME = "SET_NAME";
+export const SAVE_RUNON_PLATFORMS = "SAVE_RUNON_PLATFORMS";
+export const SAVE_MARKETING_GOAL = "SAVE_MARKETING_GOAL";
