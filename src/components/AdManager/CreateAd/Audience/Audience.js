@@ -52,7 +52,7 @@ function Audience(props){
                 <div className="row">
                     <div className="audience-form-countries col-md-10">
                         <label  for="gender">Interests, keywords, demographics: </label>
-                        <InterestsSelect saveInterests={(interests) => props.saveInterests(interests)} selectedInterests={props.audience.interests} saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
+                        <InterestsSelect saveInterests={(interests) => props.saveInterests(interests)} selectedInterests={props.audience.interests}/>
                     </div>
                 </div>
             </form>

@@ -297,7 +297,7 @@ export let unitedStates = [
     }
 ]
 
-export let countriesData = [
+export const countriesData = [
     {"value": "Afghanistan", "code": "AF"},
     {"value": "Åland Islands", "code": "AX"},
     {"value": "Albania", "code": "AL"},

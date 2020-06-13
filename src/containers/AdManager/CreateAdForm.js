@@ -47,15 +47,25 @@ class CreateAdForm extends PureComponent{
             },
             payment: {},
         },
+        // No validation during development
         errors: {
-            name: "Name should be at least 2 symbols.",
-            socialPlatforms: "You have to select at least 1 social media platform to continue.",
-            marketingGoal: "You have to select a marketing goal for your campaign.",
-            location: "You have to select at least 1 area of targeting",
-            ageFrom: "You have to select an age",
-            ageTo: "You have to select an age",
+            name: "",
+            socialPlatforms: "",
+            marketingGoal: "",
+            location: "",
+            ageFrom: "",
+            ageTo: "",
             
         },
+        // errors: {
+        //     name: "Name should be at least 2 symbols.",
+        //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
+        //     marketingGoal: "You have to select a marketing goal for your campaign.",
+        //     location: "You have to select at least 1 area of targeting",
+        //     ageFrom: "You have to select an age",
+        //     ageTo: "You have to select an age",
+            
+        // },
         showErrors: false
     }
 
@@ -228,9 +238,10 @@ class CreateAdForm extends PureComponent{
 
     }
 
-    saveInterests = interests => {
-        console.log(interests)
-    }
+    // saveInterests = interests => {
+    //     console.log(interests)
+    //     this.props.saveInterests(options)
+    // }
 
     saveDevices = devicesData => {
         // devices is an array
@@ -431,7 +442,7 @@ class CreateAdForm extends PureComponent{
                     updateAgeTo = {(option) => this.updateAgeTo(option)}
                     updateGender = {(gender => this.updateGender(gender))}
                     saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
-                    saveInterests={(interests) => this.saveInterests(interests)}
+                    saveInterests={(interests) => this.props.saveInterests(interests)}
                     locationAlert={locationAlert}
                     ageFromAlert={ageFromAlert}
                     ageToAlert={ageToAlert}

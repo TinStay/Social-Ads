@@ -6,8 +6,6 @@ import { countriesData, interestsData } from '../../selectFormsData';
 
     // AgeFrom
 export const AgeFromSelect = (props) => {
-    const selectedAge = props.ageValue
-    // console.log(selectedAge)
 
     const customStyles = {
         control: () => ({
@@ -19,13 +17,13 @@ export const AgeFromSelect = (props) => {
     let ageFrom = [];
     for(let i = 13; i <= 65; i++){
         ageFrom.push({ 
-            value: `${i}`,
+            values: `${i}`,
             label: `${i}`
         });
     }
 
     return(
-        <Select defaultValue={ageFrom[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select defaultValues={ageFrom[`${props.ageValues-13}`]} className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
 
@@ -36,16 +34,16 @@ export const AgeToSelect = (props) => {
     let ageTo = [];
     for(let i = 13; i <= 65; i++){
         ageTo.push({ 
-            value: `${i}`,
+            values: `${i}`,
             label: `${i}`
         });
     }
-    ageTo[0] = {value: '13+', label: "13+"}
-    ageTo[ageTo.length - 1] = {value: '65+', label: "65+"}
+    ageTo[0] = {values: '13+', label: "13+"}
+    ageTo[ageTo.length - 1] = {values: '65+', label: "65+"}
 
 
     return(
-       <Select defaultValue={ageTo[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select defaultValues={ageTo[`${props.ageValues-13}`]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 
@@ -53,13 +51,13 @@ export const AgeToSelect = (props) => {
 
 export const GenderSelect = (props) => {
     let genderOptions = [
-        {label: "All", value: 'All'},
-        {label: "Men", value: 'men'},
-        {label: "Women", value: 'women'},
+        {label: "All", values: 'All'},
+        {label: "Men", values: 'men'},
+        {label: "Women", values: 'women'},
     ]  
 
     return (
-        <Select className="audience-form-select " options={genderOptions} defaultValue={genderOptions[0]} onChange={(gender) => props.updateGender(gender)}/>
+        <Select className="audience-form-select " options={genderOptions} defaultValues={genderOptions[0]} onChange={(gender) => props.updateGender(gender)}/>
     )
 }
 
@@ -73,16 +71,17 @@ export function LocationSelect(props){
         }
     })
 
-    // console.log(countries)
+    console.log("contries",countries)
 
     const animatedComponents = makeAnimated();
+
     return (
         <Select
         closeMenuOnSelect={false}
         name="location"
         onChange={(options, form) => props.saveOptionForm(options, form)}
         components={animatedComponents}
-        // defaultValue={props.audience.location}
+        // defaultValues={props.audience.location}
         isMulti
         options={countries}
         />
@@ -100,95 +99,43 @@ export const InterestsSelect = (props) => {
 
     // const [ isLoading, setIsLoading] = useState(false)
     // const [ interests , setInterests] = useState([...interestsData])
-    const [ value , setValue] = useState([])
+    const [ values , setValues] = useState([...props.selectedInterests])
     const [ inputValue , setInputValue] = useState('')
-    
-    // let interests = [
-    //     {label: "Snowboarding", value: 'Snowboarding'},
-    //     {label: "Skiing", value: 'Skiing'},
-    //     {label: "Football", value: 'Football'},
-    // ] 
 
-    // let defaultValuesArray = [...props.selectedInterests]
-
-    
-
-    // selectedOptions.map( option => {
-    //     if(interestsData.includes(option)){
-    //         setInterests([...interestsData], option)
-
-    //     }
-    // })
-
-    // for(let i = 0; i < selectedOptions.length; i++){
-    //     if(interestsData.includes(selectedOptions[i])){
-    //         setInterests([...interestsData], selectedOptions)
-
-    //     }
-    // }
-
-
-    // let defaultValuesArray = interests.filter(interest => {
-    //     for(let i = 0; i < selectedOptions.length; i++){
-    //         if(interest.label === selectedOptions[i]){
-    //             return interest
-    //         }
-    //     }
-    // }) 
-
-    // const [defaultValues, setDefaultValues] = useState(defaultValuesArray)
-    
     
     const createOption = (label) => ({
         label,
-        value: label.toLowerCase().replace(/\W/g, ''),
+        values: label.toLowerCase().replace(/\W/g, ''),
       });
-
-    // const handleCreate = (inputValue) => {
-    //     setIsLoading(true)
-
-    //     setTimeout(() => {
-    //     //   const { options } = this.state;
-    //       const newOption = createOption(inputValue);
-    //     //   setDefaultValues([...defaultValues, newOption])
-          
-    //       setInterests([...interests, newOption])
-    //       setIsLoading(false)
-    //       setValues([...values, newOption])
-
-    //     }, 1000);
-    //   };
-
-    //   console.log("defaultValues", defaultValues)
     
 
-      const handleChange = (value, actionMeta) => {
-        setValue(value)
-        props.saveInterests(value)
-      };
+    const handleChange = (values) => {
+        setValues(values)
+        props.saveInterests(values)
+    };
 
-      const handleInputChange = (inputValue) => {
+    const handleInputChange = (inputValue) => {
         setInputValue(inputValue)
-      };
+    };
 
-      const handleKeyDown = (event) => {
-        // const { inputValue, value } = this.state;
-        if (!inputValue) return;
+    const handleKeyDown = (event) => {
+    // const { inputValue, values } = this.state;
+    if (!inputValue) return;
 
-        switch (event.key) {
-          case 'Enter':
-            
-            setInputValue('')
-            setValue([...value, createOption(inputValue)])
-            props.saveInterests([...value, createOption(inputValue)])
-          case 'Tab':
-            setInputValue('')
-            setValue([...value, createOption(inputValue)])
-            
-            event.preventDefault();
-        }
+    switch (event.key) {
+        case 'Enter':
+        setInputValue('')
+        setValues([...values, createOption(inputValue)])
+        props.saveInterests([...values, createOption(inputValue)])
         
-      };
+        case 'Tab':
+        setInputValue('')
+        setValues([...values, createOption(inputValue)])
+        
+        event.preventDefault();
+    }
+        
+    };
 
     return (
         <CreatableSelect
@@ -200,13 +147,8 @@ export const InterestsSelect = (props) => {
         inputValue={inputValue}
         isClearable
         menuIsOpen={false}
-        // onCreateOption={handleCreate}
         placeholder="Type keywords"
-        // defaultValue={defaultValues}
-        // options={interests}
-        // isDisabled={isLoading}
-        // isLoading={isLoading}
-        value={value}
+        value={values}
       />
     )
 }
