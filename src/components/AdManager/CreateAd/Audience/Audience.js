@@ -8,8 +8,7 @@ import {
 import { connect } from 'react-redux';
 
 
-const Audience = (props) => {
-    // console.log(props.audience)
+function Audience(props){
 
     return(
         <div className="add-form-group">
@@ -44,7 +43,7 @@ const Audience = (props) => {
                                 {props.ageToAlert}
                                 <div className="mr-4 d-md-flex">
                                     <p>To</p>
-                                    <AgeToSelect updateAgeTo={(option) => props.updateAgeTo(option)}/>
+                                    <AgeToSelect ageValue={props.audience.ageTo} updateAgeTo={(option) => props.updateAgeTo(option)}/>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +52,7 @@ const Audience = (props) => {
                 <div className="row">
                     <div className="audience-form-countries col-md-10">
                         <label  for="gender">Interests, keywords, demographics: </label>
-                        <InterestsSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
+                        <InterestsSelect selectedInterests={props.audience.interests} saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
                     </div>
                 </div>
             </form>
@@ -63,10 +62,10 @@ const Audience = (props) => {
 
 const mapStateToProps = state => {
     return{
-        audience: state.adInfo
+        audience: state.audience
     }
 }
 
 
 
-export default connect(mapStateToProps)(Audience)
+export default connect(mapStateToProps)(Audience);

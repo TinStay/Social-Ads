@@ -2,18 +2,7 @@ import React from 'react';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
-import { countriesData } from '../../CountriesData';
-import { connect } from 'react-redux';
-
-
-const mapStateToProps = state => {
-    return{
-        audience: state.audience
-    }
-}
-
-// const connectFunc = connect(mapStateToProps)(AgeFromSelect)
-// connect(mapStateToProps)(LocationSelect, AgeFromSelect)
+import { countriesData, interestsData } from '../../selectFormsData';
 
     // AgeFrom
 export const AgeFromSelect = (props) => {
@@ -56,7 +45,7 @@ export const AgeToSelect = (props) => {
 
 
     return(
-       <Select className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select defaultValue={ageTo[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 
@@ -107,18 +96,45 @@ export function LocationSelect(props){
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
 
-    let interests = [
-        {label: "Snowboarding", value: 'Snowboarding'},
-        {label: "Skiing", value: 'Skiing'},
-        {label: "Football", value: 'Football'},
-    ] 
+    // let interests = [
+    //     {label: "Snowboarding", value: 'Snowboarding'},
+    //     {label: "Skiing", value: 'Skiing'},
+    //     {label: "Football", value: 'Football'},
+    // ] 
+
+    // let defaultValuesArray = [...props.selectedInterests]
+
+    let selectedOptions = [...props.selectedInterests]
+    let defaultValuesArray;
+
+    // for(let j = 0; j < selectedOptions.length; j++){
+    //     defaultValuesArray = interestsData.filter(interest => {
+
+    //         return interest.label === selectedOptions[j]
+    //     }) 
+    // }
+
+    // for(let i = 0; i < selectedOptions.length; i++){
+    //     defaultValuesArray = interestsData.filter(interest => {
+    //         if (Object.values(interest).indexOf(selectedOptions[i]) > -1) {
+    //             return interest
+    //          }
+    //     }) 
+    // }
+
+    console.log(defaultValuesArray)
+    
+
+    
 
     return (
         <CreatableSelect
         isMulti
         name="interests"
         onChange={(options, form) => props.saveOptionForm(options, form)}
-        options={interests}
+        placeholder="Type keywords"
+        defaultValue={defaultValuesArray}
+        options={interestsData}
       />
     )
 }

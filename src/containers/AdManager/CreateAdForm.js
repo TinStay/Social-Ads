@@ -220,7 +220,7 @@ class CreateAdForm extends PureComponent{
             }
 
             // Save location to redux state
-            // this.props.saveLocation(options, form.name)
+            this.props.saveInterests(options)
         }
         
 
@@ -619,6 +619,7 @@ const mapDispatchToProps = dispatch => {
         saveLocation : (options) => dispatch({type: actionTypes.SAVE_LOCATION, options: options}),
         saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
+        saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options})
 
         
     }

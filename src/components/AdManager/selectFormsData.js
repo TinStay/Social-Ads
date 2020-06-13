@@ -542,3 +542,338 @@ export let countriesData = [
     {"value": "Zambia", "code": "ZM"},
     {"value": "Zimbabwe", "code": "ZW"}
     ]
+
+export const interestsData =[  
+      {  
+        "label":"Agile methods",
+        "value":"Agile methods"
+      },
+      {  
+        "label":"Activism",
+        "value":"Activism"
+      },
+      {  
+        "label":"Authenticity",
+        "value":"Authenticity"
+      },
+      {  
+        "label":"GNI",
+        "value":"GNI"
+      },
+      {  
+        "label":"Blockchain",
+        "value":"Blockchain"
+      },
+      {  
+        "label":"Blogging",
+        "value":"Blogging"
+      },
+      {  
+        "label":"Coaching",
+        "value":"Coaching"
+      },
+      {  
+        "label":"Corporate Social Responsibility",
+        "value":"Corporate Social Responsibility"
+      },
+      {  
+        "label":"Creative thinking",
+        "value":"Creative thinking"
+      },
+      {  
+        "label":"Democracy",
+        "value":"Democracy"
+      },
+      {  
+        "label":"Digital Media",
+        "value":"Digital Media"
+      },
+      {  
+        "label":"Digital Marketing",
+        "value":"Digital Marketing"
+      },
+      {  
+        "label":"Digitization",
+        "value":"Digitization"
+      },
+      {  
+        "label":"Diversity",
+        "value":"Diversity"
+      },
+      {  
+        "label":"Eco-Design",
+        "value":"Eco-Design"
+      },
+      {  
+        "label":"Emancipation",
+        "value":"Emancipation"
+      },
+      {  
+        "label":"Energy efficiency",
+        "value":"Energy efficiency"
+      },
+      {  
+        "label":"Engagement",
+        "value":"Engagement"
+      },
+      {  
+        "label":"Development",
+        "value":"Development"
+      },
+      {  
+        "label":"Nutrition",
+        "value":"Nutrition"
+      },
+      {  
+        "label":"Europe",
+        "value":"Europe"
+      },
+      {  
+        "label":"Fair Finance",
+        "value":"Fair Finance"
+      },
+      {  
+        "label":"Family",
+        "value":"Family"
+      },
+      {  
+        "label":"Finance",
+        "value":"Finance"
+      },
+      {  
+        "label":"Refugee Solidarity",
+        "value":"Refugee Solidarity"
+      },
+      {  
+        "label":"Freedom",
+        "value":"Freedom"
+      },
+      {  
+        "label":"Peace",
+        "value":"Peace"
+      },
+      {  
+        "label":"Gastronomy",
+        "value":"Gastronomy"
+      },
+      {  
+        "label":"Money system",
+        "value":"Money system"
+      },
+      {  
+        "label":"Community",
+        "value":"Community"
+      },
+      {  
+        "label":"Genetic engineering",
+        "value":"Genetic engineering"
+      },
+      {  
+        "label":"Justice",
+        "value":"Justice"
+      },
+      {  
+        "label":"Social commitment",
+        "value":"Social commitment"
+      },
+      {  
+        "label":"Graphic Design",
+        "value":"Graphic Design"
+      },
+      {  
+        "label":"Basic Income",
+        "value":"Basic Income"
+      },
+      {  
+        "label":"Green Living",
+        "value":"Green Living"
+      },
+      {  
+        "label":"Impact",
+        "value":"Impact"
+      },
+      {  
+        "label":"Improvisation",
+        "value":"Improvisation"
+      },
+      {  
+        "label":"Integration",
+        "value":"Integration"
+      },
+      {  
+        "label":"Intercultural communication",
+        "value":"Intercultural communication"
+      },
+      {  
+        "label":"Journalism",
+        "value":"Journalism"
+      },
+      {  
+        "label":"Youth",
+        "value":"Youth"
+      },
+      {  
+        "label":"Children",
+        "value":"Children"
+      },
+      {  
+        "label":"Climate protection",
+        "value":"Climate protection"
+      },
+      {  
+        "label":"Cooking",
+        "value":"Cooking"
+      },
+      {  
+        "label":"Cooperation",
+        "value":"Cooperation"
+      },
+      {  
+        "label":"Creativity",
+        "value":"Creativity"
+      },
+      {  
+        "label":"Food",
+        "value":"Food"
+      },
+      {  
+        "label":"Lifestyle",
+        "value":"Lifestyle"
+      },
+      {  
+        "label":"Love",
+        "value":"Love"
+      },
+      {  
+        "label":"Local food",
+        "value":"Local food"
+      },
+      {  
+        "label":"Marketing",
+        "value":"Marketing"
+      },
+      {  
+        "label":"Music",
+        "value":"Music"
+      },
+      {  
+        "label":"Muslim Community",
+        "value":"Muslim Community"
+      },
+      {  
+        "label":"Online Marketing",
+        "value":"Online Marketing"
+      },
+      {  
+        "label":"Organizational Development",
+        "value":"Organizational Development"
+      },
+      {  
+        "label":"Politics",
+        "value":"Politics"
+      },
+      {  
+        "label":"Project Management",
+        "value":"Project Management"
+      },
+      {  
+        "label":"Facilitation",
+        "value":"Facilitation"
+      },
+      {  
+        "label":"Regional",
+        "value":"Regional"
+      },
+      {  
+        "label":"Regional Agriculture",
+        "value":"Regional Agriculture"
+      },
+      {  
+        "label":"Regional Development",
+        "value":"Regional Development"
+      },
+      {  
+        "label":"Self-determination",
+        "value":"Self-determination"
+      },
+      {  
+        "label":"Self-reflection",
+        "value":"Self-reflection"
+      },
+      {  
+        "label":"Social Media",
+        "value":"Social Media"
+      },
+      {  
+        "label":"Social Media Marketing",
+        "value":"Social Media Marketing"
+      },
+      {  
+        "label":"Software",
+        "value":"Software"
+      },
+      {  
+        "label":"Social Innovations",
+        "value":"Social Innovations"
+      },
+      {  
+        "label":"Social Innovations in the Global South",
+        "value":"Social Innovations in the Global South"
+      },
+      {  
+        "label":"Social value added",
+        "value":"Social value added"
+      },
+      {  
+        "label":"Social Theater",
+        "value":"Social Theater"
+      },
+      {  
+        "label":"Sufficiency",
+        "value":"Sufficiency"
+      },
+      {  
+        "label":"Unconscious bias",
+        "value":"Unconscious bias"
+      },
+      {  
+        "label":"Event Management",
+        "value":"Event Management"
+      },
+      {  
+        "label":"Connectedness promotion",
+        "value":"Connectedness promotion"
+      },
+      {  
+        "label":"Association Foundation",
+        "value":"Association Foundation"
+      },
+      {  
+        "label":"Virtual Teams",
+        "value":"Virtual Teams"
+      },
+      {  
+        "label":"World Food",
+        "value":"World Food"
+      },
+      {  
+        "label":"World Peace",
+        "value":"World Peace"
+      },
+      {  
+        "label":"Economy of the Future",
+        "value":"Economy of the Future"
+      },
+      {  
+        "label":"Zeitgeist",
+        "value":"Zeitgeist"
+      },
+      {  
+        "label":"Sustainable Society",
+        "value":"Sustainable Society"
+      },
+      {  
+        "label":"Change management",
+        "value":"Change management"
+      }
+    ]
