@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
@@ -96,6 +96,13 @@ export function LocationSelect(props){
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
 
+    // let selectedOptions = [...props.selectedInterests]
+
+    // const [ isLoading, setIsLoading] = useState(false)
+    // const [ interests , setInterests] = useState([...interestsData])
+    const [ value , setValue] = useState([])
+    const [ inputValue , setInputValue] = useState('')
+    
     // let interests = [
     //     {label: "Snowboarding", value: 'Snowboarding'},
     //     {label: "Skiing", value: 'Skiing'},
@@ -104,37 +111,102 @@ export const InterestsSelect = (props) => {
 
     // let defaultValuesArray = [...props.selectedInterests]
 
-    let selectedOptions = [...props.selectedInterests]
-    let defaultValuesArray;
+    
 
-    // for(let j = 0; j < selectedOptions.length; j++){
-    //     defaultValuesArray = interestsData.filter(interest => {
+    // selectedOptions.map( option => {
+    //     if(interestsData.includes(option)){
+    //         setInterests([...interestsData], option)
 
-    //         return interest.label === selectedOptions[j]
-    //     }) 
-    // }
+    //     }
+    // })
 
     // for(let i = 0; i < selectedOptions.length; i++){
-    //     defaultValuesArray = interestsData.filter(interest => {
-    //         if (Object.values(interest).indexOf(selectedOptions[i]) > -1) {
-    //             return interest
-    //          }
-    //     }) 
+    //     if(interestsData.includes(selectedOptions[i])){
+    //         setInterests([...interestsData], selectedOptions)
+
+    //     }
     // }
 
-    console.log(defaultValuesArray)
+
+    // let defaultValuesArray = interests.filter(interest => {
+    //     for(let i = 0; i < selectedOptions.length; i++){
+    //         if(interest.label === selectedOptions[i]){
+    //             return interest
+    //         }
+    //     }
+    // }) 
+
+    // const [defaultValues, setDefaultValues] = useState(defaultValuesArray)
+    
+    
+    const createOption = (label) => ({
+        label,
+        value: label.toLowerCase().replace(/\W/g, ''),
+      });
+
+    // const handleCreate = (inputValue) => {
+    //     setIsLoading(true)
+
+    //     setTimeout(() => {
+    //     //   const { options } = this.state;
+    //       const newOption = createOption(inputValue);
+    //     //   setDefaultValues([...defaultValues, newOption])
+          
+    //       setInterests([...interests, newOption])
+    //       setIsLoading(false)
+    //       setValues([...values, newOption])
+
+    //     }, 1000);
+    //   };
+
+    //   console.log("defaultValues", defaultValues)
     
 
-    
+      const handleChange = (value, actionMeta) => {
+        setValue(value)
+        props.saveInterests(value)
+      };
+
+      const handleInputChange = (inputValue) => {
+        setInputValue(inputValue)
+      };
+
+      const handleKeyDown = (event) => {
+        // const { inputValue, value } = this.state;
+        if (!inputValue) return;
+
+        switch (event.key) {
+          case 'Enter':
+            
+            setInputValue('')
+            setValue([...value, createOption(inputValue)])
+            props.saveInterests([...value, createOption(inputValue)])
+          case 'Tab':
+            setInputValue('')
+            setValue([...value, createOption(inputValue)])
+            
+            event.preventDefault();
+        }
+        
+      };
 
     return (
         <CreatableSelect
         isMulti
         name="interests"
-        onChange={(options, form) => props.saveOptionForm(options, form)}
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        inputValue={inputValue}
+        isClearable
+        menuIsOpen={false}
+        // onCreateOption={handleCreate}
         placeholder="Type keywords"
-        defaultValue={defaultValuesArray}
-        options={interestsData}
+        // defaultValue={defaultValues}
+        // options={interests}
+        // isDisabled={isLoading}
+        // isLoading={isLoading}
+        value={value}
       />
     )
 }

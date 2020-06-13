@@ -214,6 +214,8 @@ class CreateAdForm extends PureComponent{
         }else{
             // Interests field
             if(optionsData != null){
+                console.log("optionsData", optionsData, "form", form)
+
                 options = optionsData.map( option => {
                     return option.value
                 })
@@ -224,6 +226,10 @@ class CreateAdForm extends PureComponent{
         }
         
 
+    }
+
+    saveInterests = interests => {
+        console.log(interests)
     }
 
     saveDevices = devicesData => {
@@ -425,6 +431,7 @@ class CreateAdForm extends PureComponent{
                     updateAgeTo = {(option) => this.updateAgeTo(option)}
                     updateGender = {(gender => this.updateGender(gender))}
                     saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
+                    saveInterests={(interests) => this.saveInterests(interests)}
                     locationAlert={locationAlert}
                     ageFromAlert={ageFromAlert}
                     ageToAlert={ageToAlert}
