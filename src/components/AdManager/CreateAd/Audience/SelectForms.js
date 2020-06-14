@@ -105,7 +105,7 @@ export const InterestsSelect = (props) => {
     
     const createOption = (label) => ({
         label,
-        values: label.toLowerCase().replace(/\W/g, ''),
+        value: label.toLowerCase().replace(/\W/g, ''),
       });
     
 

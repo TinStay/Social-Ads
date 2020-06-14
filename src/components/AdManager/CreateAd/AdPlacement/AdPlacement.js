@@ -3,6 +3,8 @@ import {
     DevicesSelect} from './PlacementSelectForms';
 import FacebookPlacements from './FacebookPlacements/FacebookPlacements';
 import GoogleAdForm from './GoogleAd/GoogleAdForm';
+import { connect } from 'react-redux'
+
 // import Select from 'react-select'
 // import makeAnimated from 'react-select/animated';
 
@@ -18,7 +20,7 @@ const AdPlacement = (props) => {
                     <div className="audience-form-devices col-md-7">
                         {/* <i class="fas fa-globe-europe"></i> */}
                         <label className="dark-gray h4" >Devices, OS: </label>
-                        <DevicesSelect saveDevices={devices => props.saveDevices(devices)}/>
+                        <DevicesSelect selectedDevices={props.adInfo.devices} saveDevices={devices => props.saveDevices(devices)}/>
                     </div>
                 </div>
                 <div className="add-form-row">
@@ -34,4 +36,10 @@ const AdPlacement = (props) => {
     );
 }
 
-export default AdPlacement;
+const mapStateToProps = state => {
+    return{ 
+        adInfo: state.adInfo
+    }
+}
+
+export default connect(mapStateToProps)(AdPlacement);

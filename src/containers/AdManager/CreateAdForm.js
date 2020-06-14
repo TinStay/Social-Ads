@@ -55,6 +55,7 @@ class CreateAdForm extends PureComponent{
             location: "",
             ageFrom: "",
             ageTo: "",
+            devices: "",
             
         },
         // errors: {
@@ -64,6 +65,7 @@ class CreateAdForm extends PureComponent{
         //     location: "You have to select at least 1 area of targeting",
         //     ageFrom: "You have to select an age",
         //     ageTo: "You have to select an age",
+        //     devices: "You must select at least 1 type of devices",
             
         // },
         showErrors: false
@@ -244,21 +246,33 @@ class CreateAdForm extends PureComponent{
     // }
 
     saveDevices = devicesData => {
-        // devices is an array
-        let devices = devicesData.map( device => {
-            return device.value
-        })
+        
+        let devices = []
 
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    devices: devices
+        // Handle validation
+        if(devicesData != null){
+
+            devices = devicesData.map( device => {
+                return device.value
+            })
+
+            this.setState({
+                errors: {
+                    ...this.state.errors,
+                    devices: ""
                 }
-            }
-        })
+            })
+        }else{
+            this.setState({
+                errors: {
+                    ...this.state.errors,
+                    devices: "You must select at least 1 type of devices"
+                }
+            })
+        }
+
+        this.props.saveDevices(devices)
+        
     }
 
 
@@ -611,7 +625,6 @@ class CreateAdForm extends PureComponent{
                     
                     </Form>
                     
-                    
                 </div>
                 )}
 
@@ -637,7 +650,8 @@ const mapDispatchToProps = dispatch => {
         saveLocation : (options) => dispatch({type: actionTypes.SAVE_LOCATION, options: options}),
         saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
-        saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options})
+        saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
+        saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
 
         
     }

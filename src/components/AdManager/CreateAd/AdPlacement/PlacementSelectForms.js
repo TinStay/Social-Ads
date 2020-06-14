@@ -47,11 +47,24 @@ export const DevicesSelect = (props) => {
         </div>
       );
 
-    const defaultOption = devices[0].options[0].label
+    
+    let defaultValues = [devices[0].options[0]]
+
+    if(props.selectedDevices){
+        defaultValues = props.selectedDevices.map( device => {
+            for(let i = 0; i < devices[0].options.length; i++){
+                if(devices[0].options[i].value === device){
+                    return devices[0].options[i]
+                }
+            }
+        })
+    }
+    
+
 
     return (
         <Select
-        defaultValue={devices[0].options[0]}
+        defaultValue={defaultValues}
         options={devices}
         isMulti
         formatGroupLabel={formatGroupLabel}

@@ -42,6 +42,12 @@ const updateInterests = (state, action) => {
     })
 }
 
+const updateDevices = (state, action) => {
+    return updateAdInfo(state, {
+        devices: action.devices
+    })
+}
+
 const reducer = (state = initialState, action) =>{
     switch(action.type){
        case actionTypes.SET_NAME:
@@ -62,14 +68,12 @@ const reducer = (state = initialState, action) =>{
            return updateAudienceInfo(state, {
                location: action.options
            })
-       case actionTypes.SAVE_LOCATION:
-           return updateAudienceInfo(state, {
-               location: action.options
-           })
+           
        case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action)
        case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action)
-
        case actionTypes.SAVE_INTERESTS: return updateInterests(state, action)
+
+       case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
         
         default: return state
     }
