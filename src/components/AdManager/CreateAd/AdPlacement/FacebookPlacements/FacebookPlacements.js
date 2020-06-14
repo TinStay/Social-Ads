@@ -5,14 +5,17 @@ import AdViewFb from './AdViewFb';
 
 
 const FacebookPlacements = (props) => {
+    const [isFormSaved, setIsFormSaved] = useState(false)
+
+    // Placements
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
     const [customPlacement, setCustomPlacement] = useState(false)
 
     // Ad view state
-    const [primaryText, setPrimaryText] = useState("Example primary text for the ad")
-    const [headline, setHeadline] = useState("Example headline")
-    const [description, setDescription] = useState("Example description of your product")
-    const [url, setUrl] = useState("www.examplewebsite.com")
+    const [primaryText, setPrimaryText] = useState("")
+    const [headline, setHeadline] = useState("")
+    const [description, setDescription] = useState("")
+    const [url, setUrl] = useState("")
 
 
     const changeToAutomatic = (e) =>{
@@ -115,10 +118,10 @@ const FacebookPlacements = (props) => {
                         </div>
                         <div className="col-md-6">
                             <AdViewFb 
-                            primaryText={primaryText}
-                            headline={headline}
-                            description={description}
-                            url={url}/>
+                            primaryText={primaryText ? primaryText : "Example primary text for the ad"}
+                            headline={headline ? headline : "Example headline"}
+                            description={description ? description : "Example description of your product"}
+                            url={url ? url : "www.examplewebsite.com"}/>
                         </div>
                    </div>
                </div>

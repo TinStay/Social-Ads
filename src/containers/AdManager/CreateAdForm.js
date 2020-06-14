@@ -56,7 +56,10 @@ class CreateAdForm extends PureComponent{
             ageFrom: "",
             ageTo: "",
             devices: "",
-            
+            primaryText: "ERROR",
+            headline: "ERROR",
+            description: "ERROR",
+            url: "ERROR"
         },
         // errors: {
         //     name: "Name should be at least 2 symbols.",
@@ -278,19 +281,32 @@ class CreateAdForm extends PureComponent{
 
     saveFbPlacements = (e) => {
         e.preventDefault()
-        // console.log("e.target",e.target)
+        console.log("fb form",e.target)
 
         // Automatic Facebook placements update state 
         const automaticPlacements = e.target[0].checked;
         let fbAdDetails = [];
+        let fbAdDetailsErrors = {...this.state.errors};
 
 
         if(automaticPlacements){
             // Custom placements is false so i goes from 2 to 5 
             for(let i = 2; i <= 5; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+                
+                console.log(e.target[i].name,  e.target[i].value.length)
+                const fieldName = e.target[i].name
+
+                if(e.target[i].value.length > 0){
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: ""
+                    }
+                }
+                
             }
         }
+        
 
         // Custom Facebook placements update state 
         let customFbPlacements = e.target[1].checked;
@@ -307,6 +323,8 @@ class CreateAdForm extends PureComponent{
             }
         }
 
+        
+
         this.setState({
             ...this.state,
             order: {
@@ -321,8 +339,11 @@ class CreateAdForm extends PureComponent{
                         adDetails: fbAdDetails
                     }
                 }
-            }
+            },
+            errors: fbAdDetailsErrors
+
         })
+
     }
 
     saveGooglePlacements = (e, gglPlacements) => {
@@ -594,6 +615,7 @@ class CreateAdForm extends PureComponent{
 
   render(){
     console.log("order", this.state.order)
+    console.log("errors", this.state.errors)
 
     // Stepper 
     // const classes = styleStepper();

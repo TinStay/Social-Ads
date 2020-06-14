@@ -10,6 +10,26 @@ import { connect } from 'react-redux'
 
 
 const AdPlacement = (props) => {
+    const [showFbPlacements, setShowFbPlacements] = useState(false)
+    const [showInstaPlacements, setShowInstaPlacements] = useState(false)
+    const [showGooglePlacements, setShowGooglePlacements] = useState(false)
+
+    const runOnPlatforms = [...props.adInfo.runOn]
+
+    useEffect(() => {
+        // Show placements form for platforms chosen by the customer
+        if(runOnPlatforms.includes("runOnFacebook")){
+            setShowFbPlacements(true)
+        }
+
+        if(runOnPlatforms.includes("runOnInstagram")){
+            setShowInstaPlacements(true)
+        }
+
+        if(runOnPlatforms.includes("runOnGoogle")){
+            setShowGooglePlacements(true)
+        }
+    }, [])
 
     
     return(
@@ -24,12 +44,17 @@ const AdPlacement = (props) => {
                     </div>
                 </div>
                 <div className="add-form-row">
-                    {/* {props.isFacebookChecked ? <FacebookPlacements /> : null} */}
-                    <FacebookPlacements 
-                    saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
-                    <GoogleAdForm 
-                    saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
-                    url={props.websiteUrl}/>
+                    {showFbPlacements ? 
+                        <FacebookPlacements 
+                        saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
+                    : null}
+                    {showGooglePlacements ? 
+                        <GoogleAdForm 
+                        saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
+                        url={props.websiteUrl}/>
+                    : null}
+                    
+                   
                 </div>
             </form>
         </div>
