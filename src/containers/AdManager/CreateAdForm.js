@@ -380,6 +380,12 @@ class CreateAdForm extends PureComponent{
 
         })
 
+        const placements = {
+            automatic: automaticPlacements,
+            custom: customPlacements
+        }
+
+        this.props.saveFacebookPlacements(placements)
         this.props.saveFacebookAdInfo(fbAdDetails)
 
     }
@@ -734,6 +740,7 @@ const mapDispatchToProps = dispatch => {
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
         saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
+        saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
 
         

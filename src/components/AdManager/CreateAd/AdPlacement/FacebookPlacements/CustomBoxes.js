@@ -6,14 +6,52 @@ import { Form } from 'react-bootstrap';
 
 
 const CustomBoxes = (props) => {
+    let placements = [...props.selectedCustomPlacements]
 
-    let customBoxes = [
-        {name:"newsFeed", label: "News Feed", id:`custom-fb-newsFeed`},
-        {name:"marketplace", label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
-        {name:"videoFeeds", label: "Video Feeds", id:`custom-fb-videoFeeds`},
-        {name:"rightColumn", label: "Right Column", id:`custom-fb-rightColumn`},
-        {name:"stories", label: "Stories", id:`custom-fb-stories`},
-    ]
+    const [customBoxes, setCustomBoxes] = useState([
+        {name:"newsFeed", checked: placements.length > 0 ? placements[0].checked : false,  label: "News Feed", id:`custom-fb-newsFeed`},
+        {name:"marketplace", checked: placements.length > 0 ? placements[1].checked : false,  label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
+        {name:"videoFeeds", checked: placements.length > 0 ? placements[2].checked : false,  label: "Video Feeds", id:`custom-fb-videoFeeds`},
+        {name:"rightColumn", checked: placements.length > 0 ? placements[3].checked : false,  label: "Right Column", id:`custom-fb-rightColumn`},
+        {name:"stories", checked: placements.length > 0 ? placements[4].checked : false,  label: "Stories", id:`custom-fb-stories`},
+    ]) 
+
+    // if(props.selectedCustomPlacements.length > 0){
+        
+    // }
+    
+
+    // let customBoxes = [
+    //     {name:"newsFeed", checked: placements.length > 0 ? placements[0].checked : false,  label: "News Feed", id:`custom-fb-newsFeed`},
+    //     {name:"marketplace", checked: placements.length > 0 ? placements[1].checked : false,  label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
+    //     {name:"videoFeeds", checked: placements.length > 0 ? placements[2].checked : false,  label: "Video Feeds", id:`custom-fb-videoFeeds`},
+    //     {name:"rightColumn", checked: placements.length > 0 ? placements[3].checked : false,  label: "Right Column", id:`custom-fb-rightColumn`},
+    //     {name:"stories", checked: placements.length > 0 ? placements[4].checked : false,  label: "Stories", id:`custom-fb-stories`},
+    // ]
+
+    useEffect(() => {
+        console.log("Custom boxes changed")
+    },[customBoxes])
+
+    const handleChange = (e) => {
+        for(let i = 0; i < customBoxes.length; i++){
+            const updatedCheckboxes = [...customBoxes]
+            if(updatedCheckboxes[i].name === e.target.name){
+                updatedCheckboxes[i].checked = e.target.checked
+
+                setCustomBoxes(updatedCheckboxes)
+                
+            }
+        }
+        // customBoxes = [
+        //     ...customBoxes,
+        //     {name: e.target.name, checked: e.target.checked, label: label, id: `custom-fb-${e.target.name}`}
+        // ]
+
+        
+    }
+
+    console.log(customBoxes)
 
     return(
         <div className="row customCheckboxes">
@@ -28,8 +66,8 @@ const CustomBoxes = (props) => {
                                 id={box.id}
                                 className="customCheckbox"
                                 name={box.name}
-                                // checked
-                                // onChange={(e) => props.pushToCustomPlacements(e)}
+                                checked={box.checked}
+                                onChange={(e) => handleChange(e)}
                                 />
                                 <label>{box.label}</label>
                                 <i class="far fa-eye"></i>

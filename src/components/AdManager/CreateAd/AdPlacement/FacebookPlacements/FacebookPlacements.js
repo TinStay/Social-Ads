@@ -18,21 +18,31 @@ const FacebookPlacements = (props) => {
     const [url, setUrl] = useState("")
 
 
-    const changeToAutomatic = (e) =>{
-        if(e.target.checked){
+    const changeToAutomatic = () =>{
+        // if(e.target.checked){
             
             setCustomPlacement(false)
             setAutomaticPlacement(true)
-        }
+        // }
     }
 
-    const changeToCustom = (e) =>{
-        if(e.target.checked){
+    const changeToCustom = () =>{
+        // if(e.target.checked){
             setCustomPlacement(true)
             setAutomaticPlacement(false)
-        }
+        // }
     }
 
+    useEffect(() => {
+        if(props.selectedInfo.placements.automatic){
+            changeToAutomatic()
+        }else{
+            changeToCustom()
+        }
+
+
+
+    }, [])
 
 
     let customCheckboxes = null;
@@ -40,7 +50,7 @@ const FacebookPlacements = (props) => {
     if(customPlacement){
         customCheckboxes = (
             <div className="col-md-9">
-               <CustomBoxes />
+               <CustomBoxes selectedCustomPlacements={props.selectedInfo.placements.custom}/>
             </div>
         )
     }

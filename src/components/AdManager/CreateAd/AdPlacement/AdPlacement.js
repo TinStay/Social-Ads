@@ -47,7 +47,7 @@ const AdPlacement = (props) => {
                     {showFbPlacements ? 
                         <FacebookPlacements 
                         saveFbPlacements={(e) => props.saveFbPlacements(e)}
-                        selectedDetails={props.adInfo.facebookAd.adDetails}
+                        selectedInfo={props.adInfo.facebookAd}
                         primaryTextError={props.primaryTextError}
                         headlineError={props.headlineError}
                         descriptionError={props.descriptionError}
