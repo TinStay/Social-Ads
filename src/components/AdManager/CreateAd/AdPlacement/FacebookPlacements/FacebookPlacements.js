@@ -1,11 +1,11 @@
 import React,{ useState, useEffect } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Alert } from 'react-bootstrap';
 import CustomBoxes from './CustomBoxes';
 import AdViewFb from './AdViewFb';
 
 
 const FacebookPlacements = (props) => {
-    const [isFormSaved, setIsFormSaved] = useState(false)
+    // const [isFormSaved, setIsFormSaved] = useState(false)
 
     // Placements
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
@@ -42,6 +42,43 @@ const FacebookPlacements = (props) => {
             <div className="col-md-9">
                <CustomBoxes />
             </div>
+        )
+    }
+
+    // Alerts
+    let primaryTextAlert = null
+    if(props.primaryTextError != "" && props.showErrors){
+        primaryTextAlert = (
+            <Alert variant='danger'>
+                {props.primaryTextError}
+            </Alert>
+        )
+    }
+
+    let headlineAlert = null
+    if(props.headlineError != "" && props.showErrors){
+        headlineAlert = (
+            <Alert variant='danger'>
+                {props.headlineError}
+            </Alert>
+        )
+    }
+
+    let descriptionAlert = null
+    if(props.descriptionError != "" && props.showErrors){
+        descriptionAlert = (
+            <Alert variant='danger'>
+                {props.descriptionError}
+            </Alert>
+        )
+    }
+
+    let urlAlert = null
+    if(props.urlError != "" && props.showErrors){
+        urlAlert = (
+            <Alert variant='danger'>
+                {props.urlError}
+            </Alert>
         )
     }
 
@@ -98,18 +135,22 @@ const FacebookPlacements = (props) => {
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>
+                                    {primaryTextAlert}
                                     <Form.Control name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Headline</Form.Label>
+                                    {headlineAlert}
                                     <Form.Control name="headline" value={headline} onChange={(e) => setHeadline(e.target.value)} type="text" placeholder="Enter headline" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Description</Form.Label>
+                                    {descriptionAlert}
                                     <Form.Control name="description" value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
+                                    {urlAlert}
                                     <Form.Control name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter your website URL" />
                                 </div>
                             
@@ -128,7 +169,7 @@ const FacebookPlacements = (props) => {
 
                
                 <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary">Save placements</button>
+                    <button type="submit" className="btn btn-primary">Save and continue</button>
                 </div>
             </Form>
         

@@ -48,6 +48,18 @@ const updateDevices = (state, action) => {
     })
 }
 
+const updateFacebookAdDetails = (state, action) => {
+    return updateAdInfo(state, {
+            facebookAd: {
+                placements: {
+                    ...state.adInfo.facebookAd.placements
+                },
+                adDetails: action.adDetails
+            }
+    })
+}
+
+
 const reducer = (state = initialState, action) =>{
     switch(action.type){
        case actionTypes.SET_NAME:
@@ -74,6 +86,7 @@ const reducer = (state = initialState, action) =>{
        case actionTypes.SAVE_INTERESTS: return updateInterests(state, action)
 
        case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
+       case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         
         default: return state
     }

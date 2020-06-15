@@ -7,3 +7,4 @@ export const SAVE_AGE_FROM = "SAVE_AGE_FROM";
 export const SAVE_AGE_TO = "SAVE_AGE_TO";
 export const SAVE_INTERESTS = "SAVE_INTERESTS";
 export const SAVE_DEVICES = "SAVE_DEVICES";
+export const SAVE_FACEBOOK_AD_DETAILS = "SAVE_FACEBOOK_AD_DETAILS";

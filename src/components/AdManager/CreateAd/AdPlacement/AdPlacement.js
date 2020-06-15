@@ -46,7 +46,14 @@ const AdPlacement = (props) => {
                 <div className="add-form-row">
                     {showFbPlacements ? 
                         <FacebookPlacements 
-                        saveFbPlacements={(e) => props.saveFbPlacements(e)}/> 
+                        saveFbPlacements={(e) => props.saveFbPlacements(e)}
+                        selectedDetails={props.adInfo.facebookAd.adDetails}
+                        primaryTextError={props.primaryTextError}
+                        headlineError={props.headlineError}
+                        descriptionError={props.descriptionError}
+                        urlError={props.urlError}
+                        showErrors={props.showErrors}
+                        /> 
                     : null}
                     {showGooglePlacements ? 
                         <GoogleAdForm 

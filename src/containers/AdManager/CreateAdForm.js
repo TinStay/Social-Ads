@@ -56,10 +56,10 @@ class CreateAdForm extends PureComponent{
             ageFrom: "",
             ageTo: "",
             devices: "",
-            primaryText: "ERROR",
-            headline: "ERROR",
-            description: "ERROR",
-            url: "ERROR"
+            primaryText: "You have to fill this field",
+            headline: "You have to fill this field",
+            description: "You have to fill this field",
+            url: "You have to fill this field"
         },
         // errors: {
         //     name: "Name should be at least 2 symbols.",
@@ -69,6 +69,10 @@ class CreateAdForm extends PureComponent{
         //     ageFrom: "You have to select an age",
         //     ageTo: "You have to select an age",
         //     devices: "You must select at least 1 type of devices",
+        //     primaryText: "You have to fill this field",
+        //     headline: "You have to fill this field",
+        //     description: "You have to fill this field",
+        //     url: "You have to fill this field"
             
         // },
         showErrors: false
@@ -299,14 +303,16 @@ class CreateAdForm extends PureComponent{
 
                 // Validation
                 if(e.target[i].value.length > 0){
+                    // Remove error message
                     fbAdDetailsErrors = {
                         ...fbAdDetailsErrors,
                         [fieldName]: ""
                     }
                 }else{
+                    // Set error message again
                     fbAdDetailsErrors = {
                         ...fbAdDetailsErrors,
-                        [fieldName]: "ERROR"
+                        [fieldName]: "You have to fill this field"
                     }
                 }
                 
@@ -332,21 +338,26 @@ class CreateAdForm extends PureComponent{
 
                 // Validation
                 if(e.target[i].value.length > 0){
-                    
-                    
+                    // Remove error message
                     fbAdDetailsErrors = {
                         ...fbAdDetailsErrors,
                         [fieldName]: ""
                     }
                 }else{
+                    // Set error message again
                     fbAdDetailsErrors = {
                         ...fbAdDetailsErrors,
-                        [fieldName]: "ERROR"
+                        [fieldName]: "You have to fill this field"
                     }
                 }
             }
         }
 
+        let showErrors = false;
+        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ||  fbAdDetailsErrors.url != ""){
+            showErrors = true
+        }
+ 
         
 
         this.setState({
@@ -364,9 +375,12 @@ class CreateAdForm extends PureComponent{
                     }
                 }
             },
-            errors: fbAdDetailsErrors
+            errors: fbAdDetailsErrors,
+            showErrors: showErrors
 
         })
+
+        this.props.saveFacebookAdInfo(fbAdDetails)
 
     }
 
@@ -527,10 +541,14 @@ class CreateAdForm extends PureComponent{
                 <div>
                     <AdPlacement 
                         websiteUrl="tinstay.com"
-                        isFacebookChecked={adInfo.runOnFacebook}
                         saveDevices={(options) => this.saveDevices(options)}
                         saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                        showErrors={this.state.showErrors}
+                        primaryTextError={this.state.errors.primaryText}
+                        headlineError={this.state.errors.headline}
+                        descriptionError={this.state.errors.description}
+                        urlError={this.state.errors.url}
                     />
                     <div className="d-flex justify-content-end">
                         <Button
@@ -540,8 +558,8 @@ class CreateAdForm extends PureComponent{
                         >
                         Back
                         </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
-                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
+                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToBudgetAndSchedule(activeStep)}>
+                            Next
                         </Button>
                     </div>
                 </div>
@@ -608,6 +626,24 @@ class CreateAdForm extends PureComponent{
 
         // If there are any errors on this form step => showErrors = true
         if(this.state.errors.location != "" ||  this.state.errors.ageFrom != "" ||  this.state.errors.ageTo != ""){
+            this.setState({
+                showErrors: true
+            })
+        }else {
+            this.setState({
+                activeStep: nextStep,
+                showErrors: false
+            });
+        }
+ 
+
+    };
+
+    goToBudgetAndSchedule = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        // If there are any errors on this form step => showErrors = true
+        if(this.state.errors.primaryText != "" ||  this.state.errors.ageFrom != "" ||  this.state.errors.ageTo != ""){
             this.setState({
                 showErrors: true
             })
@@ -698,6 +734,7 @@ const mapDispatchToProps = dispatch => {
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
         saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
+        saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
 
         
     }
