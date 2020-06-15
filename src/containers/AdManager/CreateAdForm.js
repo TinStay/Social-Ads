@@ -294,13 +294,19 @@ class CreateAdForm extends PureComponent{
             for(let i = 2; i <= 5; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
                 
-                console.log(e.target[i].name,  e.target[i].value.length)
                 const fieldName = e.target[i].name
+                console.log(e.target[i].name)
 
+                // Validation
                 if(e.target[i].value.length > 0){
                     fbAdDetailsErrors = {
                         ...fbAdDetailsErrors,
                         [fieldName]: ""
+                    }
+                }else{
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: "ERROR"
                     }
                 }
                 
@@ -318,8 +324,26 @@ class CreateAdForm extends PureComponent{
             }
 
             // Custom placements add 6 more form fields so i goes from 6 to 9 
-            for(let i = 6; i <= 9; i++){
+            for(let i = 7; i <= 10; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+
+                const fieldName = e.target[i].name
+                console.log(e.target[i].name)
+
+                // Validation
+                if(e.target[i].value.length > 0){
+                    
+                    
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: ""
+                    }
+                }else{
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: "ERROR"
+                    }
+                }
             }
         }
 
