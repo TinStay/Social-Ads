@@ -1,9 +1,11 @@
 import React,{ useState, useEffect } from 'react';
 import { 
     DevicesSelect} from './PlacementSelectForms';
+import { Form, Alert } from 'react-bootstrap';
 import FacebookPlacements from './FacebookPlacements/FacebookPlacements';
 import GoogleAdForm from './GoogleAd/GoogleAdForm';
 import { connect } from 'react-redux'
+import * as actionTypes from '../../../../store/actions/actionTypes'
 
 // import Select from 'react-select'
 // import makeAnimated from 'react-select/animated';
@@ -31,7 +33,31 @@ const AdPlacement = (props) => {
         }
     }, [])
 
+    const saveUrl = e => {
+        const url = e.target.value
+
+        let valid = /^(ftp|http|https):\/\/[^ "]+$/.test(url)
+        console.log(valid)
+
+        props.saveUrl(url)
+    }
+
+    let url = ""
+    const adDetails = [...props.adInfo.facebookAd.adDetails]
+
+    if(adDetails.length > 0){
+        url = props.adInfo.facebookAd.adDetails[3].value
+    }
     
+    let urlAlert = null
+    if(props.urlError != "" && props.showErrors){
+        urlAlert = (
+            <Alert variant='danger'>
+                {props.urlError}
+            </Alert>
+        )
+    }
+
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
@@ -41,6 +67,13 @@ const AdPlacement = (props) => {
                         {/* <i class="fas fa-globe-europe"></i> */}
                         <label className="dark-gray h4" >Devices, OS: </label>
                         <DevicesSelect selectedDevices={props.adInfo.devices} saveDevices={devices => props.saveDevices(devices)}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="fb-ad-form-field col-md-7">
+                        <label className="dark-gray h4" >Website URL</label>
+                        {urlAlert}
+                        <Form.Control name="url" value={''} onChange={(e) => saveUrl(e)} type="text" placeholder="Enter your website URL" />
                     </div>
                 </div>
                 <div className="add-form-row">
@@ -58,7 +91,7 @@ const AdPlacement = (props) => {
                     {showGooglePlacements ? 
                         <GoogleAdForm 
                         saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
-                        url={props.websiteUrl}/>
+                        url={url}/>
                     : null}
                     
                    
@@ -71,6 +104,12 @@ const AdPlacement = (props) => {
 const mapStateToProps = state => {
     return{ 
         adInfo: state.adInfo
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url})
     }
 }
 

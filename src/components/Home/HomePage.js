@@ -5,7 +5,6 @@ import SubscriptionPlans from './SubscriptionPlans/SubscriptionPlans';
 
 const HomePage = props =>{
 
-
     return(
         <div className="homepage">
             <div className="jumbotron-bg">

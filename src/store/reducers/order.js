@@ -11,7 +11,7 @@ const initialState = {
                     automatic: true,
                     custom: []
                 },
-                adDetails: null
+                adDetails: []
             }
         },
         audience: {
@@ -22,6 +22,31 @@ const initialState = {
             interests: []
         },
         payment: {},
+}
+
+
+const updateName = (state, action) => {
+    return updateAdInfo(state, {
+        name: action.name
+    })
+}
+
+const updateRunOnPlatforms = (state, action) => {
+    return updateAdInfo(state, {
+        runOn: action.platforms
+    })
+}
+
+const updateMarketingGoal = (state, action) => {
+    return updateAdInfo(state, {
+        marketingGoal: action.goal
+    })
+}
+
+const updateLocation = (state, action) => {
+    return updateAudienceInfo(state, {
+        location: action.options
+    })
 }
 
 const updateAgeFrom = (state, action) => {
@@ -70,32 +95,21 @@ const updateFacebookAdDetails = (state, action) => {
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
-       case actionTypes.SET_NAME:
-        return updateAdInfo(state, {
-            name: action.name
-        })
-
-       case actionTypes.SAVE_RUNON_PLATFORMS:
-            return updateAdInfo(state, {
-                runOn: action.platforms
-            })
-           
-       case actionTypes.SAVE_MARKETING_GOAL:
-           return updateAdInfo(state, {
-               marketingGoal: action.goal
-           })
-       case actionTypes.SAVE_LOCATION:
-           return updateAudienceInfo(state, {
-               location: action.options
-           })
-           
+        // General Info
+       case actionTypes.SET_NAME: return updateName(state, action)
+       case actionTypes.SAVE_RUNON_PLATFORMS: return updateRunOnPlatforms(state, action)
+       case actionTypes.SAVE_MARKETING_GOAL: return updateMarketingGoal(state, action)
+    
+       // Audience    
+       case actionTypes.SAVE_LOCATION: return updateLocation(state, action)
        case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action)
        case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action)
        case actionTypes.SAVE_INTERESTS: return updateInterests(state, action)
-
-       case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
-       case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
-       case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
+       
+        // Placements    
+        case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
+        case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
+        case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         
         default: return state
     }

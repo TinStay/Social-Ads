@@ -15,7 +15,7 @@ const FacebookPlacements = (props) => {
     const [primaryText, setPrimaryText] = useState("")
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
-    const [url, setUrl] = useState("")
+    // const [url, setUrl] = useState("")
 
 
     const changeToAutomatic = () =>{
@@ -38,6 +38,22 @@ const FacebookPlacements = (props) => {
             changeToAutomatic()
         }else{
             changeToCustom()
+        }
+
+        // Update detail values with redux state
+        if(props.selectedInfo.adDetails !== []){
+            props.selectedInfo.adDetails.map( detailInfo => {
+                switch(detailInfo.field){
+                    case "primaryText":
+                        setPrimaryText(detailInfo.value)
+                    case "headline":
+                        setHeadline(detailInfo.value)
+                    case "description":
+                        setDescription(detailInfo.value)
+                    // case "url":
+                    //     setUrl(detailInfo.value)
+                }
+            })
         }
 
 
@@ -83,14 +99,7 @@ const FacebookPlacements = (props) => {
         )
     }
 
-    let urlAlert = null
-    if(props.urlError != "" && props.showErrors){
-        urlAlert = (
-            <Alert variant='danger'>
-                {props.urlError}
-            </Alert>
-        )
-    }
+    
 
     return(
         <div className="fb-placements">
@@ -158,11 +167,11 @@ const FacebookPlacements = (props) => {
                                     {descriptionAlert}
                                     <Form.Control name="description" value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
                                 </div>
-                                <div className="fb-ad-form-field">
+                                {/* <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
                                     {urlAlert}
                                     <Form.Control name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter your website URL" />
-                                </div>
+                                </div> */}
                             
                             
                             </Form.Group>
@@ -172,7 +181,8 @@ const FacebookPlacements = (props) => {
                             primaryText={primaryText ? primaryText : "Example primary text for the ad"}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
-                            url={url ? url : "www.examplewebsite.com"}/>
+                            // url={url ? url : "www.examplewebsite.com"}
+                            />
                         </div>
                    </div>
                </div>

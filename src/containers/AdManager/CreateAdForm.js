@@ -546,10 +546,12 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <AdPlacement 
-                        websiteUrl="tinstay.com"
+                        // websiteUrl="tinstay.com"
                         saveDevices={(options) => this.saveDevices(options)}
                         saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                        
+                        //Error props
                         showErrors={this.state.showErrors}
                         primaryTextError={this.state.errors.primaryText}
                         headlineError={this.state.errors.headline}
