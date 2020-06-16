@@ -56,10 +56,11 @@ class CreateAdForm extends PureComponent{
             ageFrom: "",
             ageTo: "",
             devices: "",
-            primaryText: "You have to fill this field",
-            headline: "You have to fill this field",
-            description: "You have to fill this field",
-            url: "You have to fill this field"
+            url: "",
+            primaryText: "",
+            headline: "",
+            description: "",
+            
         },
         // errors: {
         //     name: "Name should be at least 2 symbols.",
@@ -282,113 +283,107 @@ class CreateAdForm extends PureComponent{
         
     }
 
+    // setUrlErrorMessage = message => {
+    //     this.setState({
+    //         errors: {
+    //             ...this.state.errors,
+    //             url: message
+    //         }
+    //     })
+    // }
 
-    saveFbPlacements = (e) => {
-        e.preventDefault()
-        console.log("fb form",e.target)
 
-        // Automatic Facebook placements update state 
-        const automaticPlacements = e.target[0].checked;
-        let fbAdDetails = [];
-        let fbAdDetailsErrors = {...this.state.errors};
+    // saveFbPlacements = (e) => {
+    //     e.preventDefault()
+
+    //     // Automatic Facebook placements update state 
+    //     const automaticPlacements = e.target[0].checked;
+    //     let fbAdDetails = [];
+    //     let fbAdDetailsErrors = {...this.state.errors};
 
 
-        if(automaticPlacements){
-            // Custom placements is false so i goes from 2 to 5 
-            for(let i = 2; i <= 5; i++){
-                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+    //     if(automaticPlacements){
+    //         // Custom placements is false so i goes from 2 to 5 
+    //         for(let i = 2; i <= 4; i++){
+    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
                 
-                const fieldName = e.target[i].name
-                console.log(e.target[i].name)
+    //             const fieldName = e.target[i].name
 
-                // Validation
-                if(e.target[i].value.length > 0){
-                    // Remove error message
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: ""
-                    }
-                }else{
-                    // Set error message again
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: "You have to fill this field"
-                    }
-                }
+    //             // Validation
+    //             if(e.target[i].value.length > 0){
+    //                 // Remove error message
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: ""
+    //                 }
+    //             }else{
+    //                 // Set error message again
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: "You have to fill this field"
+    //                 }
+    //             }
                 
-            }
-        }
+    //         }
+    //     }
         
 
-        // Custom Facebook placements update state 
-        let customFbPlacements = e.target[1].checked;
-        let customPlacements = [];
+    //     // Custom Facebook placements update state 
+    //     let customFbPlacements = e.target[1].checked;
+    //     let customPlacements = [];
 
-        if(customFbPlacements){
-            for(let i = 2; i <= 6; i++){
-                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
-            }
+    //     if(customFbPlacements){
+    //         for(let i = 2; i <= 6; i++){
+    //             customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
+    //         }
 
-            // Custom placements add 6 more form fields so i goes from 6 to 9 
-            for(let i = 7; i <= 10; i++){
-                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+    //         // Custom placements add 6 more form fields so i goes from 6 to 9 
+    //         for(let i = 7; i <= 9; i++){
+    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
 
-                const fieldName = e.target[i].name
-                console.log(e.target[i].name)
+    //             const fieldName = e.target[i].name
 
-                // Validation
-                if(e.target[i].value.length > 0){
-                    // Remove error message
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: ""
-                    }
-                }else{
-                    // Set error message again
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: "You have to fill this field"
-                    }
-                }
-            }
-        }
+    //             // Validation
+    //             if(e.target[i].value.length > 0){
+    //                 // Remove error message
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: ""
+    //                 }
+    //             }else{
+    //                 // Set error message again
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: "You have to fill this field"
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        let showErrors = false;
-        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ||  fbAdDetailsErrors.url != ""){
-            showErrors = true
-        }
+    //     let showErrors = false;
+    //     if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != ""){
+    //         showErrors = true
+    //     }
  
         
 
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    facebookAd: {
-                        placements: {
-                            automatic: automaticPlacements,
-                            custom: customPlacements
-                        },
-                        adDetails: fbAdDetails
-                    }
-                }
-            },
-            errors: fbAdDetailsErrors,
-            showErrors: showErrors
+    //     this.setState({
+    //         errors: fbAdDetailsErrors,
+    //         showErrors: showErrors
 
-        })
+    //     })
 
-        const placements = {
-            automatic: automaticPlacements,
-            custom: customPlacements
-        }
+    //     const placements = {
+    //         automatic: automaticPlacements,
+    //         custom: customPlacements
+    //     }
 
-        this.props.saveFacebookPlacements(placements)
-        this.props.saveFacebookAdInfo(fbAdDetails)
+    //     this.props.saveFacebookPlacements(placements)
+    //     this.props.saveFacebookAdInfo(fbAdDetails)
 
-    }
+    // }
+
+
 
     saveGooglePlacements = (e, gglPlacements) => {
         e.preventDefault()
@@ -550,26 +545,19 @@ class CreateAdForm extends PureComponent{
                         saveDevices={(options) => this.saveDevices(options)}
                         saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
+                        goToBudgetAndSchedule={(errors) => this.goToBudgetAndSchedule(errors, activeStep)}
+                        handleBack={() => this.handleBack(activeStep)}
                         
                         //Error props
                         showErrors={this.state.showErrors}
+                        // setUrlError={(message) => this.setUrlErrorMessage(message)}
+                        // setFacebookErrors={(errors, showErrors) => this.setFacebookErrors(errors, showErrors)}
                         primaryTextError={this.state.errors.primaryText}
                         headlineError={this.state.errors.headline}
                         descriptionError={this.state.errors.description}
                         urlError={this.state.errors.url}
                     />
-                    <div className="d-flex justify-content-end">
-                        <Button
-                            disabled={activeStep === 0}
-                            onClick={() =>this.handleBack(activeStep)}
-                            className="btn btn-cancel"
-                        >
-                        Back
-                        </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToBudgetAndSchedule(activeStep)}>
-                            Next
-                        </Button>
-                    </div>
+                    
                 </div>
                 );
           case 3:
@@ -588,7 +576,7 @@ class CreateAdForm extends PureComponent{
                         >
                         Back
                         </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
+                        <Button variant="contained" className="btn btn-next" onClick={() => {}}>
                             {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
                         </Button>
                     </div>
@@ -599,16 +587,16 @@ class CreateAdForm extends PureComponent{
         }
       }
 
-    handleNext = (activeStep) => {
-        const nextStep = activeStep + 1;
+    // handleNext = (activeStep) => {
+    //     const nextStep = activeStep + 1;
 
-        this.setState({
-            activeStep: nextStep
-        });
+    //     this.setState({
+    //         activeStep: nextStep
+    //     });
 
-    };
+    // };
 
-    goToAudience = (e, activeStep, marketingGoal) => {
+    goToAudience = (e, activeStep) => {
         e.preventDefault()
         // console.log(e.target)
 
@@ -647,11 +635,11 @@ class CreateAdForm extends PureComponent{
 
     };
 
-    goToBudgetAndSchedule = (activeStep) => {
+    goToBudgetAndSchedule = (errors,activeStep) => {
         const nextStep = activeStep + 1;
 
         // If there are any errors on this form step => showErrors = true
-        if(this.state.errors.primaryText != "" ||  this.state.errors.ageFrom != "" ||  this.state.errors.ageTo != ""){
+        if(errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != ""){
             this.setState({
                 showErrors: true
             })
@@ -684,6 +672,7 @@ class CreateAdForm extends PureComponent{
   render(){
     console.log("order", this.state.order)
     console.log("errors", this.state.errors)
+    console.log("activeStep", this.state.activeStep)
 
     // Stepper 
     // const classes = styleStepper();
@@ -742,8 +731,8 @@ const mapDispatchToProps = dispatch => {
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
         saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
-        saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
-        saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
+        // saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
+        // saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
 
         
     }

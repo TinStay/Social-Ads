@@ -71,7 +71,6 @@ export function LocationSelect(props){
         }
     })
 
-    console.log("contries",countries)
 
     const animatedComponents = makeAnimated();
 

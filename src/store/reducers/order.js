@@ -72,6 +72,11 @@ const updateDevices = (state, action) => {
         devices: action.devices
     })
 }
+const updateUrl = (state, action) => {
+    return updateAdInfo(state, {
+        url: action.url
+    })
+}
 
 const updateFacebookPlacements = (state, action) => {
     return updateAdInfo(state, {
@@ -108,6 +113,7 @@ const reducer = (state = initialState, action) =>{
        
         // Placements    
         case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
+        case actionTypes.SAVE_URL: return updateUrl(state, action)
         case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
         case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         
