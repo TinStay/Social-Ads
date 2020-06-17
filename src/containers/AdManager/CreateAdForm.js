@@ -234,7 +234,7 @@ class CreateAdForm extends PureComponent{
         }else{
             // Interests field
             if(optionsData != null){
-                console.log("optionsData", optionsData, "form", form)
+                // console.log("optionsData", optionsData, "form", form)
 
                 options = optionsData.map( option => {
                     return option.value
@@ -247,142 +247,6 @@ class CreateAdForm extends PureComponent{
         
 
     }
-
-    // saveInterests = interests => {
-    //     console.log(interests)
-    //     this.props.saveInterests(options)
-    // }
-
-    saveDevices = devicesData => {
-        
-        let devices = []
-
-        // Handle validation
-        if(devicesData != null){
-
-            devices = devicesData.map( device => {
-                return device.value
-            })
-
-            this.setState({
-                errors: {
-                    ...this.state.errors,
-                    devices: ""
-                }
-            })
-        }else{
-            this.setState({
-                errors: {
-                    ...this.state.errors,
-                    devices: "You must select at least 1 type of devices"
-                }
-            })
-        }
-
-        this.props.saveDevices(devices)
-        
-    }
-
-    // setUrlErrorMessage = message => {
-    //     this.setState({
-    //         errors: {
-    //             ...this.state.errors,
-    //             url: message
-    //         }
-    //     })
-    // }
-
-
-    // saveFbPlacements = (e) => {
-    //     e.preventDefault()
-
-    //     // Automatic Facebook placements update state 
-    //     const automaticPlacements = e.target[0].checked;
-    //     let fbAdDetails = [];
-    //     let fbAdDetailsErrors = {...this.state.errors};
-
-
-    //     if(automaticPlacements){
-    //         // Custom placements is false so i goes from 2 to 5 
-    //         for(let i = 2; i <= 4; i++){
-    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
-                
-    //             const fieldName = e.target[i].name
-
-    //             // Validation
-    //             if(e.target[i].value.length > 0){
-    //                 // Remove error message
-    //                 fbAdDetailsErrors = {
-    //                     ...fbAdDetailsErrors,
-    //                     [fieldName]: ""
-    //                 }
-    //             }else{
-    //                 // Set error message again
-    //                 fbAdDetailsErrors = {
-    //                     ...fbAdDetailsErrors,
-    //                     [fieldName]: "You have to fill this field"
-    //                 }
-    //             }
-                
-    //         }
-    //     }
-        
-
-    //     // Custom Facebook placements update state 
-    //     let customFbPlacements = e.target[1].checked;
-    //     let customPlacements = [];
-
-    //     if(customFbPlacements){
-    //         for(let i = 2; i <= 6; i++){
-    //             customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
-    //         }
-
-    //         // Custom placements add 6 more form fields so i goes from 6 to 9 
-    //         for(let i = 7; i <= 9; i++){
-    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
-
-    //             const fieldName = e.target[i].name
-
-    //             // Validation
-    //             if(e.target[i].value.length > 0){
-    //                 // Remove error message
-    //                 fbAdDetailsErrors = {
-    //                     ...fbAdDetailsErrors,
-    //                     [fieldName]: ""
-    //                 }
-    //             }else{
-    //                 // Set error message again
-    //                 fbAdDetailsErrors = {
-    //                     ...fbAdDetailsErrors,
-    //                     [fieldName]: "You have to fill this field"
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     let showErrors = false;
-    //     if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != ""){
-    //         showErrors = true
-    //     }
- 
-        
-
-    //     this.setState({
-    //         errors: fbAdDetailsErrors,
-    //         showErrors: showErrors
-
-    //     })
-
-    //     const placements = {
-    //         automatic: automaticPlacements,
-    //         custom: customPlacements
-    //     }
-
-    //     this.props.saveFacebookPlacements(placements)
-    //     this.props.saveFacebookAdInfo(fbAdDetails)
-
-    // }
-
 
 
     saveGooglePlacements = (e, gglPlacements) => {
@@ -635,15 +499,18 @@ class CreateAdForm extends PureComponent{
 
     };
 
-    goToBudgetAndSchedule = (errors,activeStep) => {
+    goToBudgetAndSchedule = (errors, activeStep) => {
         const nextStep = activeStep + 1;
 
+        
         // If there are any errors on this form step => showErrors = true
-        if(errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != ""){
+        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != ""){
+            console.log("errors exist")
             this.setState({
                 showErrors: true
             })
         }else {
+            console.log("continue")
             this.setState({
                 activeStep: nextStep,
                 showErrors: false
@@ -671,8 +538,6 @@ class CreateAdForm extends PureComponent{
 
   render(){
     console.log("order", this.state.order)
-    console.log("errors", this.state.errors)
-    console.log("activeStep", this.state.activeStep)
 
     // Stepper 
     // const classes = styleStepper();
@@ -730,7 +595,7 @@ const mapDispatchToProps = dispatch => {
         saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
         saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
-        saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
+        
         // saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         // saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
 

@@ -20,8 +20,11 @@ const AdPlacement = (props) => {
         primaryText: "You have to fill this field",
         headline: "You have to fill this field",
         description: "You have to fill this field",
-        url: "URL is invalid. Check if you have 'https' or 'http' in your URL."
+        url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
+        devices: "You must select at least 1 type of device"
     })
+
+    console.log(errors)
 
     const [showErrors, setShowErrors] = useState(false)
 
@@ -40,7 +43,37 @@ const AdPlacement = (props) => {
         if(runOnPlatforms.includes("runOnGoogle")){
             setShowGooglePlacements(true)
         }
+
+       
+        
+
     }, [])
+
+    const validateDevices = devicesData => {
+        
+        let devices = []
+
+        // Handle validation
+        if(devicesData != null){
+
+            devices = devicesData.map( device => {
+                return device.value
+            })
+
+            setErrors({
+                ...errors,
+                devices: ""
+            })
+        }else{
+            setErrors({
+                ...errors,
+                devices: "You must select at least 1 type of devices"
+            })
+        }
+
+        props.saveDevices(devices)
+        
+    }
 
     // URL
     const saveUrl = e => {
@@ -132,14 +165,11 @@ const AdPlacement = (props) => {
             }
         }
 
-        let showErrors = false;
-        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != ""){
-            showErrors = true
+        
+        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+            setShowErrors(true)
         }
- 
         setErrors(fbAdDetailsErrors)
-        setShowErrors(showErrors)
-
 
         
 
@@ -154,6 +184,15 @@ const AdPlacement = (props) => {
     }
 
 
+    let devicesAlert = null
+    if(errors.devices != "" && showErrors){
+        devicesAlert = (
+            <Alert className="alert-danger my-0" variant='danger'>
+                {errors.devices}
+            </Alert>
+        )
+    }
+
     let urlAlert = null
     if(errors.url != "" && showErrors){
         urlAlert = (
@@ -163,24 +202,32 @@ const AdPlacement = (props) => {
         )
     }
 
+    
+
     // const errorMsgs= {...errors}
     // console.log("errors.primaryTextError", errorMsgs.primaryTextError)
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
             <form className="placement-form">
-                <div className="row">
-                    <div className="audience-form-devices col-md-7">
+                <div className="row devices-field">
+                    <div className="col-md-7 ">
                         {/* <i class="fas fa-globe-europe"></i> */}
                         <label className="dark-gray h4" >Devices, OS: </label>
-                        <DevicesSelect selectedDevices={props.adInfo.devices} saveDevices={devices => props.saveDevices(devices)}/>
+                        <DevicesSelect selectedDevices={props.adInfo.devices} saveDevices={devices => validateDevices(devices)}/>
+                    </div>
+                    <div className="col-md-5 alert-devices">
+                       {devicesAlert}
                     </div>
                 </div>
-                <div className="row">
+                <div className="row url-field">
                     <div className="fb-ad-form-field col-md-7">
                         <label className="dark-gray h4" >Website URL</label>
-                        {urlAlert}
+                        
                         <Form.Control name="url" value={props.adInfo.url} onChange={(e) => saveUrl(e)} type="text" placeholder="Enter your website URL" />
+                    </div>
+                    <div className="fb-ad-form-field col-md-5">
+                        {urlAlert}
                     </div>
                 </div>
                 <div className="add-form-row">
@@ -228,6 +275,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),

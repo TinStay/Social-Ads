@@ -621,6 +621,8 @@ html{
             font-size: 1.1rem;
         }
 
+        
+
         &-row{
             width: 100%;
             margin: 0 auto;
@@ -896,6 +898,24 @@ html{
                     @media screen and (min-width: 1199px){
                         width: 60%;
                     }
+                }
+            }
+
+            .placement-form{
+
+                .devices-field{
+                    position: relative;
+                    margin: 20px 0;
+
+                    .alert-devices{
+                        // position: absolute;
+                        // bottom: 0;
+                        margin: auto 0 0 0;
+                    }
+                }
+
+                .url-field{
+                    margin: 20px 0;
                 }
             }
 

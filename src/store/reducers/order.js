@@ -6,13 +6,14 @@ const initialState = {
             name: '',
             marketingGoal: '',
             runOn: [],
+            divices: [""],
             facebookAd:{
                 placements: {
                     automatic: true,
                     custom: []
                 },
                 adDetails: []
-            }
+            },
         },
         audience: {
             location: [],

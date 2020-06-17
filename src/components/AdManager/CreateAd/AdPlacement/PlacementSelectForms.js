@@ -48,7 +48,7 @@ export const DevicesSelect = (props) => {
       );
 
     
-    let defaultValues = [devices[0].options[0]]
+    let defaultValues = []
 
     if(props.selectedDevices){
         defaultValues = props.selectedDevices.map( device => {
