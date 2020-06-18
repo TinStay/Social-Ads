@@ -24,7 +24,11 @@ const AdPlacement = (props) => {
         headline: "You have to fill this field",
         description: "You have to fill this field",
         url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
-        devices: "You must select at least 1 type of device"
+        devices: "You must select at least 1 type of device",
+        headlineOneGgl: "You have to fill this field",
+        headlineTwoGgl: "You have to fill this field",
+        headlineThreeGgl: "You have to fill this field",
+        descriptionGgl: "You have to fill this field"
     })
 
     const [showErrors, setShowErrors] = useState(false)
@@ -195,6 +199,28 @@ const AdPlacement = (props) => {
 
     }
 
+    const saveGooglePlacements = (e, details) => {
+        e.preventDefault()
+
+        // Validation
+        let errorsGoogle = {...errors}
+
+        // Set errors if fields are not filled
+        errorsGoogle.headlineOneGgl = details.headlineOne.length > 0 ? "" :  "You have to fill this field"
+        errorsGoogle.headlineTwoGgl = details.headlineTwo.length > 0 ? "" :  "You have to fill this field"
+        errorsGoogle.headlineThreeGgl = details.headlineThree.length > 0 ? "" :  "You have to fill this field"
+        errorsGoogle.descriptionGgl = details.description.length > 0 ? "" :  "You have to fill this field"
+
+        if(errors.headlineOneGgl != "" ||  errors.headlineTwoGgl != "" ||  errors.headlineThreeGgl != "" ||  errors.descriptionGgl != "" && showErrors != true){
+            setShowErrors(true)
+        }
+
+        setIsGglFormSaved(true)
+
+        setErrors(errorsGoogle)
+        props.saveGoogleDetails(details)
+    }
+
 
     let devicesAlert = null
     if(errors.devices != "" && showErrors){
@@ -215,17 +241,22 @@ const AdPlacement = (props) => {
     }
 
     let isNextDisabled = true;
-    if(showFbPlacements && isFbFormSaved){
-        if(showGooglePlacements){
-            if(isGglFormSaved) isNextDisabled = false
-            
-        }else{
-            isNextDisabled
-        }
-    } 
 
-    console.log("showErrors", showErrors)
-    console.log("isFbFormSaved", isFbFormSaved)
+    // Checks if all social platforms are used in the form
+    if(showFbPlacements && showGooglePlacements){
+        if(isFbFormSaved && isGglFormSaved){
+            isNextDisabled = false
+        }
+    }else if(showFbPlacements){
+        if(isFbFormSaved){
+            isNextDisabled = false
+        }
+    }else if(showGooglePlacements){
+        if(isGglFormSaved){
+            isNextDisabled = false
+        }
+    }
+
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
@@ -265,8 +296,16 @@ const AdPlacement = (props) => {
                     : null}
                     {showGooglePlacements ? 
                         <GoogleAdForm 
-                        saveGooglePlacements={(e, gglPlacements) => props.saveGooglePlacements(e, gglPlacements)} 
-                        url={props.adInfo.url}/>
+                        saveGooglePlacements={(e, gglPlacements) => saveGooglePlacements(e, gglPlacements)}
+                        selectedDetails={props.adInfo.googleAd}
+                        url={props.adInfo.url}
+                        // For alerts
+                        showErrors={showErrors}
+                        headlineOneError={errors.headlineOneGgl}
+                        headlineTwoError={errors.headlineTwoGgl}
+                        headlineThreeError={errors.headlineThreeGgl}
+                        descriptionError={errors.descriptionGgl}
+                        />
                     : null}
                     
                    
@@ -280,7 +319,7 @@ const AdPlacement = (props) => {
                 >
                 Back
                 </button>
-                <Button variant="contained" disabled={!isFbFormSaved} className="btn btn-next" onClick={() => props.goToBudgetAndSchedule(errors)}>
+                <Button variant="contained" disabled={isNextDisabled} className="btn btn-next" onClick={() => props.goToBudgetAndSchedule(errors)}>
                     Next
                 </Button>
             </div>
@@ -300,6 +339,7 @@ const mapDispatchToProps = dispatch => {
         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
+        saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
     }
 }
 

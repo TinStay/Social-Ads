@@ -6,7 +6,8 @@ const initialState = {
             name: '',
             marketingGoal: '',
             runOn: [],
-            divices: [""],
+            divices: [],
+            url: '',
             facebookAd:{
                 placements: {
                     automatic: true,
@@ -14,6 +15,12 @@ const initialState = {
                 },
                 adDetails: []
             },
+            googleAd: {
+                headlineOne: "",
+                headlineTwo: "",
+                headlineThree: "",
+                description: "",
+            }
         },
         audience: {
             location: [],
@@ -98,6 +105,12 @@ const updateFacebookAdDetails = (state, action) => {
     })
 }
 
+const updateGoogleDetails = (state, action) => {
+    return updateAdInfo(state, {
+            googleAd: action.details
+    })
+}
+
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
@@ -117,6 +130,7 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.SAVE_URL: return updateUrl(state, action)
         case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
         case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
+        case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action)
         
         default: return state
     }

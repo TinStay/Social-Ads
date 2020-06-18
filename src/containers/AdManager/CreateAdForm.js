@@ -249,24 +249,6 @@ class CreateAdForm extends PureComponent{
     }
 
 
-    saveGooglePlacements = (e, gglPlacements) => {
-        e.preventDefault()
-        // console.log("google form", gglPlacements)
-
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    googleAd: {
-                        placements: gglPlacements,
-                    }
-                }
-            }
-        })
-    }
-
     saveBudgetAndScheduleData = formData =>{
 
         this.setState({
@@ -501,16 +483,13 @@ class CreateAdForm extends PureComponent{
 
     goToBudgetAndSchedule = (errors, activeStep) => {
         const nextStep = activeStep + 1;
-
         
         // If there are any errors on this form step => showErrors = true
-        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != ""){
-            console.log("errors exist")
+        if(errors.devices != "" || errors.url != ""){
             this.setState({
                 showErrors: true
             })
         }else {
-            console.log("continue")
             this.setState({
                 activeStep: nextStep,
                 showErrors: false
