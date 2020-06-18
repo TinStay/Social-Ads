@@ -16,6 +16,9 @@ const AdPlacement = (props) => {
     const [showInstaPlacements, setShowInstaPlacements] = useState(false)
     const [showGooglePlacements, setShowGooglePlacements] = useState(false)
 
+    const [isFbFormSaved, setIsFbFormSaved] = useState(false)
+    const [isGglFormSaved, setIsGglFormSaved] = useState(false)
+
     const [errors, setErrors] = useState({
         primaryText: "You have to fill this field",
         headline: "You have to fill this field",
@@ -23,8 +26,6 @@ const AdPlacement = (props) => {
         url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
         devices: "You must select at least 1 type of device"
     })
-
-    console.log(errors)
 
     const [showErrors, setShowErrors] = useState(false)
 
@@ -44,10 +45,14 @@ const AdPlacement = (props) => {
             setShowGooglePlacements(true)
         }
 
-       
+        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+            setIsFbFormSaved(false)
+        }else{
+            setIsFbFormSaved(true)
+        }
         
 
-    }, [])
+    }, [errors])
 
     const validateDevices = devicesData => {
         
@@ -97,9 +102,14 @@ const AdPlacement = (props) => {
     }
     
 
+    const changeFbForm = e =>{
+        setIsFbFormSaved(false)
+    }
+
     // Facebook ad details
     const saveFbPlacements = (e) => {
         e.preventDefault()
+        
 
         // Automatic Facebook placements update state 
         const automaticPlacements = e.target[0].checked;
@@ -166,9 +176,11 @@ const AdPlacement = (props) => {
         }
 
         
-        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+        // Set showError to true in case of non valid details
+        if( errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
             setShowErrors(true)
         }
+
         setErrors(fbAdDetailsErrors)
 
         
@@ -202,10 +214,18 @@ const AdPlacement = (props) => {
         )
     }
 
-    
+    let isNextDisabled = true;
+    if(showFbPlacements && isFbFormSaved){
+        if(showGooglePlacements){
+            if(isGglFormSaved) isNextDisabled = false
+            
+        }else{
+            isNextDisabled
+        }
+    } 
 
-    // const errorMsgs= {...errors}
-    // console.log("errors.primaryTextError", errorMsgs.primaryTextError)
+    console.log("showErrors", showErrors)
+    console.log("isFbFormSaved", isFbFormSaved)
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
@@ -234,6 +254,7 @@ const AdPlacement = (props) => {
                     {showFbPlacements ? 
                         <FacebookPlacements 
                         saveFbPlacements={(e) => saveFbPlacements(e)}
+                        changeFbForm={(e) => changeFbForm(e)}
                         selectedInfo={props.adInfo.facebookAd}
                         primaryTextError={errors.primaryText}
                         headlineError={errors.headline}
@@ -252,14 +273,14 @@ const AdPlacement = (props) => {
                 </div>
             </form>
             <div className="d-flex justify-content-end">
-                <Button
+                <button
                     // disabled={false}
                     onClick={() => props.handleBack()}
                     className="btn btn-cancel"
                 >
                 Back
-                </Button>
-                <Button variant="contained" className="btn btn-next" onClick={() => props.goToBudgetAndSchedule(errors)}>
+                </button>
+                <Button variant="contained" disabled={!isFbFormSaved} className="btn btn-next" onClick={() => props.goToBudgetAndSchedule(errors)}>
                     Next
                 </Button>
             </div>

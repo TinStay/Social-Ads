@@ -104,7 +104,7 @@ const FacebookPlacements = (props) => {
     return(
         <div className="fb-placements">
         <h1 className=" font-color">Facebook</h1>
-            <Form onSubmit={(e) => props.saveFbPlacements(e)} className="fb-palacements-form row">
+            <Form onSubmit={(e) => props.saveFbPlacements(e)} onChange={e => props.changeFbForm(e)} className="fb-palacements-form row">
            
                <div className="fb-placements-radioBtns col-md-3">
                <h3 className="fb-placements-label font-color ">Placements</h3>
