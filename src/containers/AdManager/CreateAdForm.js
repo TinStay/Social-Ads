@@ -483,6 +483,7 @@ class CreateAdForm extends PureComponent{
 
     goToBudgetAndSchedule = (errors, activeStep) => {
         const nextStep = activeStep + 1;
+        console.log(errors)
         
         // If there are any errors on this form step => showErrors = true
         if(errors.devices != "" || errors.url != ""){

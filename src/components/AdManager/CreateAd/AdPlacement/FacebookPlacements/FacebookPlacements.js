@@ -189,7 +189,7 @@ const FacebookPlacements = (props) => {
 
                
                 <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary">Save and continue</button>
+                    <button type="submit" className="btn btn-primary">Confirm details</button>
                 </div>
             </Form>
         

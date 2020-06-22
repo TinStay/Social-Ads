@@ -20,11 +20,11 @@ const AdPlacement = (props) => {
     const [isGglFormSaved, setIsGglFormSaved] = useState(false)
 
     const [errors, setErrors] = useState({
+        url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
+        devices: "You must select at least 1 type of device",
         primaryText: "You have to fill this field",
         headline: "You have to fill this field",
         description: "You have to fill this field",
-        url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
-        devices: "You must select at least 1 type of device",
         headlineOneGgl: "You have to fill this field",
         headlineTwoGgl: "You have to fill this field",
         headlineThreeGgl: "You have to fill this field",
@@ -49,11 +49,35 @@ const AdPlacement = (props) => {
             setShowGooglePlacements(true)
         }
 
-        if(errors.devices != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
-            setIsFbFormSaved(false)
-        }else{
-            setIsFbFormSaved(true)
-        }
+        
+
+        // Set isFormSaved on both facebook and google form
+        // if(showFbPlacements && showGooglePlacements){
+        //     // Show alerts 
+        //     if(errors.devices != "" || errors.url != "" && showErrors != true){
+        //         setShowErrors(true)
+        //     }
+
+        //     if(errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+        //         setIsFbFormSaved(false)
+        //     }else{
+        //         setIsFbFormSaved(true)
+        //     }
+
+        //     if(errors.headlineOneGgl != "" ||  errors.headlineTwoGgl != "" ||  errors.headlineThreeGgl != "" || errors.descriptionGgl != ""  && showErrors != true){
+        //         setIsGglFormSaved(false)
+        //     }else{
+        //         setIsGglFormSaved(true)
+        //     }
+        // }
+        
+
+
+        // if(errors.h != "" || errors.url != "" || errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+        //     setIsFbFormSaved(false)
+        // }else{
+        //     setIsFbFormSaved(true)
+        // }
         
 
     }, [errors])
@@ -181,8 +205,11 @@ const AdPlacement = (props) => {
 
         
         // Set showError to true in case of non valid details
-        if( errors.primaryText != "" ||  errors.headline != "" ||  errors.description != "" && showErrors != true){
+        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
             setShowErrors(true)
+            setIsFbFormSaved(false)
+        }else{
+            setIsFbFormSaved(true)
         }
 
         setErrors(fbAdDetailsErrors)
@@ -199,6 +226,10 @@ const AdPlacement = (props) => {
 
     }
 
+    const changeGglForm = () => {
+        setIsGglFormSaved(false)
+    }
+    
     const saveGooglePlacements = (e, details) => {
         e.preventDefault()
 
@@ -211,11 +242,14 @@ const AdPlacement = (props) => {
         errorsGoogle.headlineThreeGgl = details.headlineThree.length > 0 ? "" :  "You have to fill this field"
         errorsGoogle.descriptionGgl = details.description.length > 0 ? "" :  "You have to fill this field"
 
-        if(errors.headlineOneGgl != "" ||  errors.headlineTwoGgl != "" ||  errors.headlineThreeGgl != "" ||  errors.descriptionGgl != "" && showErrors != true){
-            setShowErrors(true)
+        if(errorsGoogle.headlineOneGgl != "" ||  errorsGoogle.headlineTwoGgl != "" ||  errorsGoogle.headlineThreeGgl != "" ||  errorsGoogle.descriptionGgl != "" ){
+            // setShowErrors(true)
+            setIsGglFormSaved(false)
+        }else{
+            setIsGglFormSaved(true)
         }
 
-        setIsGglFormSaved(true)
+        
 
         setErrors(errorsGoogle)
         props.saveGoogleDetails(details)
@@ -257,6 +291,8 @@ const AdPlacement = (props) => {
         }
     }
 
+    console.log(isFbFormSaved, isGglFormSaved)
+
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose where your ads will appear</h3>
@@ -297,6 +333,7 @@ const AdPlacement = (props) => {
                     {showGooglePlacements ? 
                         <GoogleAdForm 
                         saveGooglePlacements={(e, gglPlacements) => saveGooglePlacements(e, gglPlacements)}
+                        changeGglForm={changeGglForm}
                         selectedDetails={props.adInfo.googleAd}
                         url={props.adInfo.url}
                         // For alerts

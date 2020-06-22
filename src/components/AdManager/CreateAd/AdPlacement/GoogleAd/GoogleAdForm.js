@@ -73,7 +73,7 @@ const GooglelAdForm = (props) => {
     return(
         <div className="ggl-ad">
             <h1 className="ggl-ad-label font-color">Google</h1>
-            <Form onSubmit={e => props.saveGooglePlacements(e, gglPlacements)} className="ggl-ad-form row">
+            <Form onSubmit={e => props.saveGooglePlacements(e, gglPlacements)} onChange={e => props.changeGglForm(e)} className="ggl-ad-form row">
                <div className="container ggl-ad-fields">
                    <div className="row">
                         <div className="col-md-6">
@@ -123,7 +123,7 @@ const GooglelAdForm = (props) => {
 
                
                <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary">Save ad</button>
+                    <button type="submit" className="btn btn-primary">Confirm details</button>
                 </div> 
             </Form>
         
