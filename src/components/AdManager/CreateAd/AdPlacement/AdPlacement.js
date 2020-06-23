@@ -229,7 +229,7 @@ const AdPlacement = (props) => {
     const changeGglForm = () => {
         setIsGglFormSaved(false)
     }
-    
+
     const saveGooglePlacements = (e, details) => {
         e.preventDefault()
 
@@ -253,6 +253,17 @@ const AdPlacement = (props) => {
 
         setErrors(errorsGoogle)
         props.saveGoogleDetails(details)
+    }
+
+    // Validate form and go to budget and schedule form
+    const goToBudgetAndSchedule = () => {
+        if(errors.devices != "" || errors.url != ""){
+            setShowErrors(true)
+        }else{
+            props.goToBudgetAndSchedule()
+        }
+
+        
     }
 
 
@@ -328,6 +339,7 @@ const AdPlacement = (props) => {
                         descriptionError={errors.description}
                         urlError={errors.url}
                         showErrors={showErrors}
+                        isFormSaved={isFbFormSaved}
                         /> 
                     : null}
                     {showGooglePlacements ? 
@@ -356,7 +368,7 @@ const AdPlacement = (props) => {
                 >
                 Back
                 </button>
-                <Button variant="contained" disabled={isNextDisabled} className="btn btn-next" onClick={() => props.goToBudgetAndSchedule(errors)}>
+                <Button variant="contained" disabled={isNextDisabled} className="btn btn-next" onClick={() => goToBudgetAndSchedule()}>
                     Next
                 </Button>
             </div>

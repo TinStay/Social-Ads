@@ -391,7 +391,7 @@ class CreateAdForm extends PureComponent{
                         saveDevices={(options) => this.saveDevices(options)}
                         saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
-                        goToBudgetAndSchedule={(errors) => this.goToBudgetAndSchedule(errors, activeStep)}
+                        goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                         handleBack={() => this.handleBack(activeStep)}
                         
                         //Error props
@@ -481,23 +481,13 @@ class CreateAdForm extends PureComponent{
 
     };
 
-    goToBudgetAndSchedule = (errors, activeStep) => {
+    goToBudgetAndSchedule = (activeStep) => {
         const nextStep = activeStep + 1;
-        console.log(errors)
-        
-        // If there are any errors on this form step => showErrors = true
-        if(errors.devices != "" || errors.url != ""){
-            this.setState({
-                showErrors: true
-            })
-        }else {
-            this.setState({
-                activeStep: nextStep,
-                showErrors: false
-            });
-        }
- 
 
+        this.setState({
+            activeStep: nextStep,
+            showErrors: false
+        });
     };
     
     handleBack = (activeStep) => {

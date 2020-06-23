@@ -60,7 +60,6 @@ const FacebookPlacements = (props) => {
 
     }, [])
 
-
     let customCheckboxes = null;
      
     if(customPlacement){
@@ -179,7 +178,7 @@ const FacebookPlacements = (props) => {
                             
                             </Form.Group>
                             <div className=" d-flex justify-content-center w-100">
-                                <button type="submit" className="btn details-btn">Confirm details</button>
+                                <button type="submit" disabled={props.isFormSaved ? true : false} className="btn details-btn">{props.isFormSaved ? "Confirmed" : "Confirm details"}</button>
                             </div>
                         </div>
                         <div className="col-md-6">
