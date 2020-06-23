@@ -75,7 +75,7 @@ const FacebookPlacements = (props) => {
     let primaryTextAlert = null
     if(props.primaryTextError != "" && props.showErrors){
         primaryTextAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert" variant='danger'>
                 {props.primaryTextError}
             </Alert>
         )
@@ -84,7 +84,7 @@ const FacebookPlacements = (props) => {
     let headlineAlert = null
     if(props.headlineError != "" && props.showErrors){
         headlineAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert" variant='danger'>
                 {props.headlineError}
             </Alert>
         )
@@ -93,7 +93,7 @@ const FacebookPlacements = (props) => {
     let descriptionAlert = null
     if(props.descriptionError != "" && props.showErrors){
         descriptionAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert" variant='danger'>
                 {props.descriptionError}
             </Alert>
         )
@@ -155,7 +155,9 @@ const FacebookPlacements = (props) => {
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>
                                     {primaryTextAlert}
-                                    <Form.Control name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
+                                    
+                                    <Form.Control className="fb" name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
+                                   
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Headline</Form.Label>
@@ -166,6 +168,7 @@ const FacebookPlacements = (props) => {
                                     <Form.Label className="fb-ad-form-field-label">Description</Form.Label>
                                     {descriptionAlert}
                                     <Form.Control name="description" value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
+                                    
                                 </div>
                                 {/* <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
@@ -175,6 +178,9 @@ const FacebookPlacements = (props) => {
                             
                             
                             </Form.Group>
+                            <div className=" d-flex justify-content-center w-100">
+                                <button type="submit" className="btn details-btn">Confirm details</button>
+                            </div>
                         </div>
                         <div className="col-md-6">
                             <AdViewFb 
@@ -188,9 +194,7 @@ const FacebookPlacements = (props) => {
                </div>
 
                
-                <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary">Confirm details</button>
-                </div>
+                
             </Form>
         
         </div>

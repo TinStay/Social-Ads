@@ -933,9 +933,15 @@ html{
                     padding: 20px 0;
                 }
 
+
                 &-label{
                     padding: 0 35px;
+                    
                 }
+
+                // &-control{
+                //     margin: 0 20px;
+                // }
 
                 .radio-fb{
                     margin: 40px 0 20px 0;
@@ -980,19 +986,26 @@ html{
 
                     
                 }
+
+               
+
                 
 
                 .fb-ad-form{
                     margin: 20px auto;
                     color: $dark-gray;
 
-                    
+                    .alert{
+                        padding: 8px 20px;
+                        margin: 10px auto;
+                        width: 100%;
+                    }
 
                     &-field{
-                        margin: 35px 10px;
+                        margin: 45px 10px;
 
                         &-label{
-                            margin: 15px 0;
+                            margin: 10px 0;
                             font-size: 1.4rem;
                             font-weight: 500;
                             color: rgb(60, 96, 167);
@@ -1014,9 +1027,6 @@ html{
                         }
                     }
 
-                    button{
-                        margin-top: 40px;
-                    }
 
                     &-view{
                         margin: 40px 0px;
@@ -1091,6 +1101,15 @@ html{
                     }
 
                    
+                }
+
+                .details-btn{
+                    // width: 80%;
+                    font-size: 1.1rem;
+                    color: white;
+                    background-color: #4267B2;
+                    padding: 8px 15px;
+                    
                 }
 
             }
