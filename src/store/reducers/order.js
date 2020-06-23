@@ -6,7 +6,7 @@ const initialState = {
             name: '',
             marketingGoal: '',
             runOn: [],
-            divices: [],
+            devices: [],
             url: '',
             facebookAd:{
                 placements: {

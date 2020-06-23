@@ -243,7 +243,7 @@ const AdPlacement = (props) => {
         errorsGoogle.descriptionGgl = details.description.length > 0 ? "" :  "You have to fill this field"
 
         if(errorsGoogle.headlineOneGgl != "" ||  errorsGoogle.headlineTwoGgl != "" ||  errorsGoogle.headlineThreeGgl != "" ||  errorsGoogle.descriptionGgl != "" ){
-            // setShowErrors(true)
+            setShowErrors(true)
             setIsGglFormSaved(false)
         }else{
             setIsGglFormSaved(true)
@@ -289,14 +289,14 @@ const AdPlacement = (props) => {
 
     // Checks if all social platforms are used in the form
     if(showFbPlacements && showGooglePlacements){
-        if(isFbFormSaved && isGglFormSaved){
+        if(isFbFormSaved && isGglFormSaved && errors.devices == "" && errors.url == ""){
             isNextDisabled = false
         }
-    }else if(showFbPlacements){
+    }else if(showFbPlacements && errors.devices == "" && errors.url == ""){
         if(isFbFormSaved){
             isNextDisabled = false
         }
-    }else if(showGooglePlacements){
+    }else if(showGooglePlacements && errors.devices == "" && errors.url == ""){
         if(isGglFormSaved){
             isNextDisabled = false
         }
@@ -334,12 +334,14 @@ const AdPlacement = (props) => {
                         saveFbPlacements={(e) => saveFbPlacements(e)}
                         changeFbForm={(e) => changeFbForm(e)}
                         selectedInfo={props.adInfo.facebookAd}
+                        isFormSaved={isFbFormSaved}
+                        // Alerts
                         primaryTextError={errors.primaryText}
                         headlineError={errors.headline}
                         descriptionError={errors.description}
                         urlError={errors.url}
                         showErrors={showErrors}
-                        isFormSaved={isFbFormSaved}
+                        
                         /> 
                     : null}
                     {showGooglePlacements ? 
@@ -348,6 +350,7 @@ const AdPlacement = (props) => {
                         changeGglForm={changeGglForm}
                         selectedDetails={props.adInfo.googleAd}
                         url={props.adInfo.url}
+                        isFormSaved={isGglFormSaved}
                         // For alerts
                         showErrors={showErrors}
                         headlineOneError={errors.headlineOneGgl}

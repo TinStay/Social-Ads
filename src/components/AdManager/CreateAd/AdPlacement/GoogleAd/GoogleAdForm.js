@@ -106,6 +106,10 @@ const GooglelAdForm = (props) => {
                             
                             
                             </Form.Group>
+                            <div className=" d-flex justify-content-center w-100">
+                                <button type="submit" disabled={props.isFormSaved ? true : false} className="btn confirm-details">{props.isFormSaved ? "Confirmed" : "Confirm details"}</button>
+                            </div>
+
                         </div>
                         <div className="col-md-6 mt-5">
                             <h5 className="view-label border-bottom pb-2">Your ad will look like this:</h5> 
@@ -120,11 +124,7 @@ const GooglelAdForm = (props) => {
                    </div>
                    
                </div>
-
                
-               <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary">Confirm details</button>
-                </div> 
             </Form>
         
         </div>

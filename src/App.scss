@@ -1129,8 +1129,13 @@ html{
                 &-form{
                     margin: 10px auto;
 
-                    button{
-                        margin-top: 40px;
+                    .confirm-details{
+                        font-size: 1.1rem;
+                        color: white;
+                        background-color: #4267B2;
+                        padding: 8px 15px;
+                        margin-bottom: 30px;
+                        transition: all 0.2s ease-in-out;
                     }
 
                     @media screen and (min-width: 1199px){
