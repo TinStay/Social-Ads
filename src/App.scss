@@ -89,7 +89,7 @@ html{
 
 .navbar-nav{
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     width: 100%;
     transition: all 0.3s ease-in-out;
 
