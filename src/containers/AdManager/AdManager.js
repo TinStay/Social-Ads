@@ -29,14 +29,19 @@ class AdManager extends PureComponent{
     let path = this.props.match.path + '/create-ad';
     
     let adSection = (
-            <div className="row manager-ad-form-row text-center">
-                <div className="col-md-6 first ">
+            <div className="manager-ad-form-row text-center">
+                
+                <div className="first">
                     <h2 className="">You have no running ads at the moment</h2>
-                    <button onClick={this.showForm} className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
-                </div>
-                <div className="col-md-6 second">
-                    <h3>Check out a tutorial how to run ads</h3>
-                    <button className="btn btn-watch-tutorial d-flex"><i class="fas fa-video"></i>Watch tutorial</button>
+                    <div class="d-flex button-container justify-content-center">
+                        <button onClick={this.showForm} className="btn btn-add text-align-center d-flex"><i class="far fa-plus-square"></i> Create a campaign</button>
+                        <button className="btn btn-watch-tutorial d-flex"><i class="fas fa-video"></i>Watch tutorial</button>
+
+                        {/* <div className=" second">
+                            <h3>Check out a tutorial how to run ads</h3>
+                        </div> */}
+
+                    </div>
                 </div>
              </div>
       ); 
