@@ -221,8 +221,14 @@ const BudgetAndSchedule = (props) => {
     let budgetInfo;
     budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {customSchedule ? period + " days" : "1 month"}  and around <b>{dailyBudgetFb}$</b>/day.</span>
 
-    
-    console.log(props.runOnFacebook, props.runOnInstagram, props.runOnGoogle)
+    let budgetTitleFb = "";
+    if(props.adInfo.runOn.includes("runOnFacebook") && props.adInfo.runOn.includes("runOnInstagram")){
+        budgetTitleFb = "Facebook & Instagram"
+    }else if(props.adInfo.runOn.includes("runOnFacebook")){
+        budgetTitleFb = "Facebook"
+    }else if(props.adInfo.runOn.includes("runOnInstagram")){
+        budgetTitleFb = "Instagram"
+    }
 
     return(
         <div className="add-form-group">
@@ -296,7 +302,7 @@ const BudgetAndSchedule = (props) => {
                <h3 className="budget-form-label font-color">Budget</h3>
                 {props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram") ? 
                     <div className="fb-budget">
-                    <h4 className="font-color mb-4">Facebook & Instagram ads</h4>
+                    <h4 className="font-color mb-4">{budgetTitleFb}</h4>
                     <div className="row fb-budget-box border">
                         <div className="col-md-5">
                             <div className="daily-budget-field d-flex ">
