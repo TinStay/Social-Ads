@@ -2,6 +2,9 @@ import React,{ useState, useEffect } from 'react';
 import DatePicker,{addDays} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import  { Form, Alert } from 'react-bootstrap'
+// Redux
+import { connect } from 'react-redux'
+
 
 // import Globalize from 'globalize';
 // import globalizeLocalizer from 'react-widgets-globalize';
@@ -291,7 +294,7 @@ const BudgetAndSchedule = (props) => {
         </div>
             <div className="budget-form-budget col-md-12">
                <h3 className="budget-form-label font-color">Budget</h3>
-                {(props.runOnFacebook || props.runOnInstagram) ? 
+                {props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram") ? 
                     <div className="fb-budget">
                     <h4 className="font-color mb-4">Facebook & Instagram ads</h4>
                     <div className="row fb-budget-box border">
@@ -350,7 +353,7 @@ const BudgetAndSchedule = (props) => {
                     </div>
                 </div> : null}
 
-                {props.runOnGoogle ? 
+                {props.adInfo.runOn.includes("runOnGoogle") ? 
                     <div className="ggl-budget">
                         <h4 className="font-color mb-4">Google ads</h4>
                         <div className="row ggl-budget-box border">
@@ -386,4 +389,20 @@ const BudgetAndSchedule = (props) => {
     );
 }
 
-export default BudgetAndSchedule;
+const mapStateToProps = state => {
+    return{ 
+        adInfo: state.adInfo
+    }
+}
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
+//         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
+//         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
+//         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
+//         saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
+//     }
+// }
+
+export default connect(mapStateToProps)(BudgetAndSchedule);
