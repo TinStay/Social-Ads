@@ -410,7 +410,8 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <BudgetAndSchedule 
-                        runOnFacebookOrInstagram={adInfo.runOnFacebook || adInfo.runOnInstagram}
+                        runOnFacebook={adInfo.runOnFacebook}
+                        runOnInstagram={adInfo.runOnInstagram}
                         runOnGoogle={adInfo.runOnGoogle}
                         saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
                     />

@@ -16,19 +16,38 @@ const AdPlacement = (props) => {
     const [showInstaPlacements, setShowInstaPlacements] = useState(false)
     const [showGooglePlacements, setShowGooglePlacements] = useState(false)
 
-    const [isFbFormSaved, setIsFbFormSaved] = useState(false)
-    const [isGglFormSaved, setIsGglFormSaved] = useState(false)
+    // Production
+    // const [isFbFormSaved, setIsFbFormSaved] = useState(false)
+    // const [isGglFormSaved, setIsGglFormSaved] = useState(false)
 
+    // Development
+    const [isFbFormSaved, setIsFbFormSaved] = useState(true)
+    const [isGglFormSaved, setIsGglFormSaved] = useState(true)
+
+    // Production
+    // const [errors, setErrors] = useState({
+    //     url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
+    //     devices: "You must select at least 1 type of device",
+    //     primaryText: "You have to fill this field",
+    //     headline: "You have to fill this field",
+    //     description: "You have to fill this field",
+    //     headlineOneGgl: "You have to fill this field",
+    //     headlineTwoGgl: "You have to fill this field",
+    //     headlineThreeGgl: "You have to fill this field",
+    //     descriptionGgl: "You have to fill this field"
+    // })
+
+    // Development
     const [errors, setErrors] = useState({
-        url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
-        devices: "You must select at least 1 type of device",
-        primaryText: "You have to fill this field",
-        headline: "You have to fill this field",
-        description: "You have to fill this field",
-        headlineOneGgl: "You have to fill this field",
-        headlineTwoGgl: "You have to fill this field",
-        headlineThreeGgl: "You have to fill this field",
-        descriptionGgl: "You have to fill this field"
+        url: "",
+        devices: "",
+        primaryText: "",
+        headline: "",
+        description: "",
+        headlineOneGgl: "",
+        headlineTwoGgl: "",
+        headlineThreeGgl: "",
+        descriptionGgl: ""
     })
 
     const [showErrors, setShowErrors] = useState(false)

@@ -144,7 +144,7 @@ const BudgetAndSchedule = (props) => {
 
         let formData;
 
-        if(props.runOnFacebookOrInstagram){
+        if(props.runOnFacebook  || props.runOnInstagram){
             // Both fb and google ads have been selected
             if(props.runOnGoogle){
                 formData = {
@@ -219,7 +219,7 @@ const BudgetAndSchedule = (props) => {
     budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {customSchedule ? period + " days" : "1 month"}  and around <b>{dailyBudgetFb}$</b>/day.</span>
 
     
-
+    console.log(props.runOnFacebook, props.runOnInstagram, props.runOnGoogle)
 
     return(
         <div className="add-form-group">
@@ -291,7 +291,8 @@ const BudgetAndSchedule = (props) => {
         </div>
             <div className="budget-form-budget col-md-12">
                <h3 className="budget-form-label font-color">Budget</h3>
-                <div className="fb-budget">
+                {(props.runOnFacebook || props.runOnInstagram) ? 
+                    <div className="fb-budget">
                     <h4 className="font-color mb-4">Facebook & Instagram ads</h4>
                     <div className="row fb-budget-box border">
                         <div className="col-md-5">
@@ -347,31 +348,32 @@ const BudgetAndSchedule = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : null}
 
-                <div className="ggl-budget">
-                    <h4 className="font-color mb-4">Google ads</h4>
-                    <div className="row ggl-budget-box border">
-                        <div className="col-12 ">
-                            <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
-                        </div>
-                        <div className="col-md-5 d-flex">
-                            <label >Daily budget:</label>
-                            <div className="ggl-budget-field input-group mx-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">USD</span>
+                {props.runOnGoogle ? 
+                    <div className="ggl-budget">
+                        <h4 className="font-color mb-4">Google ads</h4>
+                        <div className="row ggl-budget-box border">
+                            <div className="col-12 ">
+                                <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
+                            </div>
+                            <div className="col-md-5 d-flex">
+                                <label >Daily budget:</label>
+                                <div className="ggl-budget-field input-group mx-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon1">USD</span>
+                                    </div>
+                                    <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
                                 </div>
-                                <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
                             </div>
-                        </div>
 
-                        <div className="col-md-7">
-                            <div className="spending text-center">
-                                <p className="my-0">You will spend no more than <b>{googleDailyBudget * 30}$</b>/month.</p>
+                            <div className="col-md-7">
+                                <div className="spending text-center">
+                                    <p className="my-0">You will spend no more than <b>{googleDailyBudget * 30}$</b>/month.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> : null}
                  
             </div>
 
