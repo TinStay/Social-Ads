@@ -163,10 +163,15 @@ const AdPlacement = (props) => {
         let fbAdDetails = [];
         let fbAdDetailsErrors = {...errors};
 
+        // for(let i = 0; i <= 11; i++){
+        //     console.log("e field",e.target.input)
+
+        // }
 
         if(automaticPlacements){
             // Custom placements is false so i goes from 2 to 5 
             for(let i = 2; i <= 4; i++){
+                
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
                 
                 const fieldName = e.target[i].name
@@ -189,6 +194,7 @@ const AdPlacement = (props) => {
             }
         }
         
+
 
         // Custom Facebook placements update state 
         let customFbPlacements = e.target[1].checked;
@@ -320,8 +326,6 @@ const AdPlacement = (props) => {
             isNextDisabled = false
         }
     }
-
-    console.log(isFbFormSaved, isGglFormSaved)
 
     return(
         <div className="add-form-group">

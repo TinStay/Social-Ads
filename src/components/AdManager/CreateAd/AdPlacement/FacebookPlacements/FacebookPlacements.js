@@ -12,6 +12,7 @@ const FacebookPlacements = (props) => {
     const [customPlacement, setCustomPlacement] = useState(false)
 
     // Ad view state
+    const [picture, setPicture] = useState(null)
     const [primaryText, setPrimaryText] = useState("")
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
@@ -60,6 +61,19 @@ const FacebookPlacements = (props) => {
 
     }, [])
 
+    const pictureChangeHandler = (event) => {
+        const file = event.target.files[0]
+        setPicture(file)
+    }
+
+    const uploadPictureHandler = () => {
+        // const file = event.target.files[0]
+        // setPicture(file)
+    }
+
+    // console.log(picture)
+
+
     let customCheckboxes = null;
      
     if(customPlacement){
@@ -98,6 +112,8 @@ const FacebookPlacements = (props) => {
         )
     }
 
+    // Picture or video
+    let fileInput = null
     
 
     return(
@@ -141,9 +157,18 @@ const FacebookPlacements = (props) => {
                         <div className="col-md-6">
                             <Form.Group>
                                 <div className="fb-ad-form-field row">
-                                    <div className="media-box col text-center">
+                                <input 
+                                style={{display: "none"}} 
+                                type="file" 
+                                onChange={pictureChangeHandler} 
+                                ref={input => {fileInput = input}}/>
+
+                                
+
+                                    <div onClick={() => fileInput.click()} className="media-box col text-center">
                                         <p className="">Upload a picture</p>
                                         <i class="fas fa-images"></i>
+                                        <button onClick={uploadPictureHandler}>Upload</button>
                                     </div>
                                     <div className="media-box col text-center">
                                         <p className="">Upload a video</p>
