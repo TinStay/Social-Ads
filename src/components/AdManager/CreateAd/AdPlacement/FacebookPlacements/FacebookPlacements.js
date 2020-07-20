@@ -66,10 +66,11 @@ const FacebookPlacements = (props) => {
         setPicture(file)
     }
 
-    const uploadPictureHandler = () => {
-        // const file = event.target.files[0]
-        // setPicture(file)
-    }
+    // const uploadPictureHandler = () => {
+    //     // Validation
+    //     //Save to redux state
+        
+    // }
 
     // console.log(picture)
 
@@ -157,24 +158,21 @@ const FacebookPlacements = (props) => {
                         <div className="col-md-6">
                             <Form.Group>
                                 <div className="fb-ad-form-field row">
-                                <input 
-                                style={{display: "none"}} 
-                                type="file" 
-                                onChange={pictureChangeHandler} 
-                                ref={input => {fileInput = input}}/>
-
-                                
+                                    <input 
+                                    style={{display: "none"}} 
+                                    type="file" 
+                                    onChange={pictureChangeHandler} 
+                                    ref={input => {fileInput = input}}/>
 
                                     <div onClick={() => fileInput.click()} className="media-box col text-center">
-                                        <p className="">Upload a picture</p>
+                                        <p className="">Select a picture</p>
                                         <i class="fas fa-images"></i>
-                                        <button onClick={uploadPictureHandler}>Upload</button>
                                     </div>
                                     <div className="media-box col text-center">
                                         <p className="">Upload a video</p>
                                         <i class="fas fa-file-video"></i>
                                     </div>
-                                   
+                                    <button onClick={() => props.savePictureOrVideo(picture)}>Upload</button>
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>

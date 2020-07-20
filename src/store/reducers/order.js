@@ -9,11 +9,13 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
+                pictureOrVideo: null,
                 placements: {
                     automatic: true,
                     custom: []
                 },
-                adDetails: []
+                adDetails: [],
+                
             },
             googleAd: {
                 headlineOne: "",
@@ -80,11 +82,20 @@ const updateDevices = (state, action) => {
         devices: action.devices
     })
 }
+
 const updateUrl = (state, action) => {
     return updateAdInfo(state, {
         url: action.url
     })
 }
+
+const updatePicOrVideo = (state, action) => {
+    return updateAdInfo(state, {
+        facebookAd: {
+            pictureOrVideo: action.mediaFile
+        }
+    })
+}   
 
 const updateFacebookPlacements = (state, action) => {
     return updateAdInfo(state, {
@@ -128,6 +139,7 @@ const reducer = (state = initialState, action) =>{
         // Placements    
         case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
         case actionTypes.SAVE_URL: return updateUrl(state, action)
+        case actionTypes.SAVE_PIC_OR_VIDEO: return updatePicOrVideo(state, action)
         case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
         case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action)

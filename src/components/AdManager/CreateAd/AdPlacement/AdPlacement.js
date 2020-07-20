@@ -355,6 +355,7 @@ const AdPlacement = (props) => {
                     {showFbPlacements ? 
                         <FacebookPlacements 
                         saveFbPlacements={(e) => saveFbPlacements(e)}
+                        savePictureOrVideo={file => props.savePictureOrVideo(file)}
                         changeFbForm={(e) => changeFbForm(e)}
                         selectedInfo={props.adInfo.facebookAd}
                         isFormSaved={isFbFormSaved}
@@ -412,6 +413,7 @@ const mapDispatchToProps = dispatch => {
     return {
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
+        savePictureOrVideo: (mediaFile) => dispatch({type: actionTypes.SAVE_PIC_OR_VIDEO, mediaFile: mediaFile}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
         saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
