@@ -393,24 +393,12 @@ class CreateAdForm extends PureComponent{
                 );
           case 3:
             return (
-                <div>
+                <div>   
                     <BudgetAndSchedule 
-                        runOnFacebook={adInfo.runOnFacebook}
-                        runOnInstagram={adInfo.runOnInstagram}
-                        runOnGoogle={adInfo.runOnGoogle}
+                        handleBack={() => this.handleBack(activeStep)}
+                        goToCheckout={() => this.goToCheckout(activeStep)}
                     />
-                    <div className="d-flex justify-content-end">
-                        <Button
-                            disabled={activeStep === 0}
-                            onClick={() =>this.handleBack(activeStep)}
-                            className="btn btn-cancel"
-                        >
-                        Back
-                        </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => {}}>
-                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
-                        </Button>
-                    </div>
+                    
                 </div>
             );
           default:
@@ -467,6 +455,15 @@ class CreateAdForm extends PureComponent{
     };
 
     goToBudgetAndSchedule = (activeStep) => {
+        const nextStep = activeStep + 1;
+
+        this.setState({
+            activeStep: nextStep,
+            showErrors: false
+        });
+    };
+
+    goToCheckout = (activeStep) => {
         const nextStep = activeStep + 1;
 
         this.setState({
