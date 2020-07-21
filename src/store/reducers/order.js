@@ -9,7 +9,7 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
-                pictureOrVideo: null,
+                pictureOrVideo: null, 
                 placements: {
                     automatic: true,
                     custom: []
@@ -22,7 +22,8 @@ const initialState = {
                 headlineTwo: "",
                 headlineThree: "",
                 description: "",
-            }
+            },
+            budgetAndSchedule: null
         },
         audience: {
             location: [],
@@ -122,6 +123,13 @@ const updateGoogleDetails = (state, action) => {
     })
 }
 
+// Budget and schedule
+const updateBudgetAndSchedule = (state, action) => {
+    return updateAdInfo(state, {
+        budgetAndSchedule: action.data
+})
+}
+
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
@@ -143,6 +151,10 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
         case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action)
+
+        // Budget and schedule
+        case actionTypes.SAVE_BUDGET_AND_SCHEDULE: return updateBudgetAndSchedule(state, action)
+
         
         default: return state
     }

@@ -248,21 +248,6 @@ class CreateAdForm extends PureComponent{
 
     }
 
-
-    saveBudgetAndScheduleData = formData =>{
-
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                adInfo:{
-                    ...this.state.order.adInfo,
-                    budgetAndSchedule: formData
-                }
-            }
-        })
-    }
-
     // Stepper
     getSteps() {
         return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
@@ -413,7 +398,6 @@ class CreateAdForm extends PureComponent{
                         runOnFacebook={adInfo.runOnFacebook}
                         runOnInstagram={adInfo.runOnInstagram}
                         runOnGoogle={adInfo.runOnGoogle}
-                        saveBudgetAndScheduleData={(formData) => this.saveBudgetAndScheduleData(formData)}
                     />
                     <div className="d-flex justify-content-end">
                         <Button
