@@ -14,6 +14,12 @@ const BudgetAndSchedule = (props) => {
     // Alert 
     const [alertType, setAlertType] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    
+    const [showAlerts, setShowAlerts] = useState(false);
+    const [scheduleError, setScheduleError] = useState("The period for running your ads should be more than 30 days");
+    const [fbBudgetError, setFbBudgetError] = useState("Facebook or instagram daily budget is too small");
+    const [googleBudgetError, setGoogleBudgetError] = useState("Google daily budget is too small");
+
 
     // Budget type
     const [isDailyBudget, setIsDailyBudget] = useState(true);
@@ -34,11 +40,13 @@ const BudgetAndSchedule = (props) => {
 
             // Checks if dailyBudget > 1 else => shows error
             if(dailyBud > 1){
-                setShowAlert(false)
+                // setShowAlert(false)
+                setFbBudgetError("")
                 setDailyBudgetFb(dailyBud)
             }else{
-                setShowAlert(true)
-                setAlertType("DailyBudgetTooSmall")
+                // setShowAlert(true)
+                // setAlertType("DailyBudgetTooSmall")
+                setFbBudgetError("Facebook or instagram daily budget is too small")
                 setDailyBudgetFb(dailyBud)
             }
             
@@ -51,12 +59,14 @@ const BudgetAndSchedule = (props) => {
 
             // Checks if dailyBudget > 1 else => shows error
             if(lifetimeBud / period >= 1){
-                setShowAlert(false)
+                // setShowAlert(false)
+                setFbBudgetError("")
                 const priceDaily = (lifetimeBud / period).toFixed(2)
                 setDailyBudgetFb(priceDaily)
             }else{
-                setShowAlert(true)
-                setAlertType("DailyBudgetTooSmall")
+                setFbBudgetError("Facebook or instagram daily budget is too small")
+                // setShowAlert(true)
+                // setAlertType("DailyBudgetTooSmall")
             }
             setLifetimeBudgetFb(lifetimeBud)
         }
@@ -85,27 +95,40 @@ const BudgetAndSchedule = (props) => {
             setPeriod(diffDays); // Difference between the start and end date
 
             if(diffDays < 30){
-                setAlertType("PeriodTooShort")
-                setShowAlert(true)
+                setScheduleError("The period for running your ads should be more than 30 days")
+                // setShowAlert(true)
             }else{
+                setScheduleError("")
+
                 if((lifetimeBudgetFb / diffDays) < 1){
-                    setAlertType("DailyBudgetTooSmall")
-                    setShowAlert(true)
+                    setFbBudgetError("Facebook or instagram daily budget is too small")
+                    // setShowAlert(true)
                 }else{
-                    setShowAlert(false)
+                    setFbBudgetError("")
+                    // setShowAlert(false)
                 }
             }  
         }
 
         if(asapSchedule){
             setPeriod(30)
+            setScheduleError("")
 
             if(lifetimeBudgetFb < 30){
-                setShowAlert(true)
-                setAlertType("DailyBudgetTooSmall");
+                // setShowAlert(true)
+                setFbBudgetError("Facebook or instagram daily budget is too small")
             }else{
-                setShowAlert(false)
+                setFbBudgetError("")
             }
+        }
+
+
+        // Set googleBudgetError message
+        if(props.adInfo.runOn.includes("runOnGoogle")){
+            if(googleDailyBudget >= 1){setGoogleBudgetError("")}
+            else{setGoogleBudgetError("Google daily budget is too small")}
+        }else{
+            setGoogleBudgetError("")
         }
 
         
@@ -146,76 +169,93 @@ const BudgetAndSchedule = (props) => {
     const saveData = e => {
         e.preventDefault()
 
-        let formData;
 
-        if(props.adInfo.runOn.includes("runOnFacebook")  || props.adInfo.runOn.includes("runOnInstagram")){
-            // Both fb and google ads have been selected
-            if(props.adInfo.runOn.includes("runOnGoogle")){
+        if(scheduleError === "" && fbBudgetError === "" && googleBudgetError === "" ){
+            setShowAlerts(false)
+            let formData;
+
+            if(props.adInfo.runOn.includes("runOnFacebook")  || props.adInfo.runOn.includes("runOnInstagram")){
+                // Both fb and google ads have been selected
+                if(props.adInfo.runOn.includes("runOnGoogle")){
+                    formData = {
+                        budget: {
+                            fbDailyBudget: dailyBudgetFb,
+                            fbLifetimeBudget: lifetimeBudgetFb,
+                            googleDailyBudget: googleDailyBudget
+                        }
+                    };
+                }else{
+                    formData = {
+                        budget: {
+                            fbDailyBudget: dailyBudgetFb,
+                            fbLifetimeBudget: lifetimeBudgetFb,
+                        }
+                    };
+                }
+
+            }else if(props.adInfo.runOn.includes("runOnGoogle")){
                 formData = {
                     budget: {
-                        fbDailyBudget: dailyBudgetFb,
-                        fbLifetimeBudget: lifetimeBudgetFb,
                         googleDailyBudget: googleDailyBudget
                     }
                 };
-            }else{
+            }
+
+            if(asapSchedule){
                 formData = {
-                    budget: {
-                        fbDailyBudget: dailyBudgetFb,
-                        fbLifetimeBudget: lifetimeBudgetFb,
+                    ...formData,
+                    schedule: {
+                        asapSchedule: asapSchedule,
+                        period: `${period} days`
                     }
-                };
-            }
-
-        }else if(props.adInfo.runOn.includes("runOnGoogle")){
-            formData = {
-                budget: {
-                    googleDailyBudget: googleDailyBudget
                 }
-            };
-        }
-
-        if(asapSchedule){
-            formData = {
-                ...formData,
-                schedule: {
-                    asapSchedule: asapSchedule,
-                    period: `${period} days`
+            }else if(customSchedule){
+                formData = {
+                    ...formData,
+                    schedule: {
+                        customSchedule: customSchedule,
+                        startDate: startDate,
+                        endDate: endDate,
+                        period: `${period} days`
+                    },
                 }
             }
-        }else if(customSchedule){
-            formData = {
-                ...formData,
-                schedule: {
-                    customSchedule: customSchedule,
-                    startDate: startDate,
-                    endDate: endDate,
-                    period: `${period} days`
-                },
-            }
-        }
 
-        props.saveBudgetAndSchedule(formData)
-        props.goToCheckout()
+            props.saveBudgetAndSchedule(formData)
+            props.goToCheckout()
+        }else{
+            setShowAlerts(true)
+        }
        
     }
     
-    let alert = null;
-    if(showAlert){
-        if(alertType === "DailyBudgetTooSmall"){
-            alert = (
-            <Alert variant='danger' onClose={() => setShowAlert(false)} >
-                Daily budget must be more than 1$.
+    let scheduleAlert = null;
+    let fbBudgetAlert = null;
+    let googleBudgetAlert = null;
+
+    if(showAlerts){
+        if(scheduleError != ""){
+            scheduleAlert = (
+            <Alert variant='danger' >
+                {scheduleError}
             </Alert>
             )
         }
-        if(alertType === "PeriodTooShort"){
-            alert = (
-            <Alert variant='danger' onClose={() => setShowAlert(false)} >
-                Chosen period of time should be at least 30 days.
+        if(fbBudgetError != ""){
+            fbBudgetAlert = (
+            <Alert variant='danger' >
+                {fbBudgetError}
             </Alert>
             )
         }
+        if(googleBudgetError != ""){
+            googleBudgetAlert = (
+            <Alert variant='danger' >
+                {googleBudgetError}
+            </Alert>
+            )
+        }
+      
     }
 
     // Budget info box
@@ -236,7 +276,7 @@ const BudgetAndSchedule = (props) => {
             <h3 className="border-bottom add-form-label">Choose your budget and starting date</h3>
             <form onSubmit={(e) => saveData(e)} className="budget-form ">
                 <div className="col-12">
-                    {alert}
+                    {scheduleAlert}
                 </div>
                 <div className="budget-form-schedule col-md-6">
                     <h3 className="budget-form-label font-color ">Schedule</h3>
@@ -305,6 +345,9 @@ const BudgetAndSchedule = (props) => {
                         <div className="fb-budget">
                         <h4 className="font-color mb-4">{budgetTitleFb}</h4>
                         <div className="row fb-budget-box border">
+                            <div className="col-12">
+                                {fbBudgetAlert}
+                            </div>
                             <div className="col-md-5">
                                 <div className="daily-budget-field d-flex ">
                                 {/* <div className=""> */}
@@ -363,6 +406,9 @@ const BudgetAndSchedule = (props) => {
                     {props.adInfo.runOn.includes("runOnGoogle") ? 
                         <div className="ggl-budget">
                             <h4 className="font-color mb-4">Google ads</h4>
+                            <div className="col-12">
+                                {googleBudgetAlert}
+                            </div>
                             <div className="row ggl-budget-box border">
                                 <div className="col-12 ">
                                     <p>Google ads will run every month unless you specify a time period or stop them in your Ad Manager.</p>
