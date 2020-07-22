@@ -352,8 +352,9 @@ const AdPlacement = (props) => {
                     </div>
                 </div>
                 <div className="add-form-row">
-                    {showFbPlacements ? 
+                    {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
+                        runOnPlatforms={props.adInfo.runOn}
                         saveFbPlacements={(e) => saveFbPlacements(e)}
                         savePictureOrVideo={file => props.savePictureOrVideo(file)}
                         changeFbForm={(e) => changeFbForm(e)}

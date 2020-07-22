@@ -7,6 +7,11 @@ import AdViewFb from './AdViewFb';
 const FacebookPlacements = (props) => {
     // const [isFormSaved, setIsFormSaved] = useState(false)
 
+    // Social media platforms user chose
+    const [runOnFacebook, setRunOnFacebook] = useState(props.runOnPlatforms.includes("runOnFacebook") ? true : false)
+    const [runOnInstagram, setRunOnInstagram] = useState(props.runOnPlatforms.includes("runOnInstagram") ? true : false)
+    const [runOnGoogle, setRunOnGoogle] = useState(props.runOnPlatforms.includes("runOnGoogle") ? true : false)
+
     // Placements
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
     const [customPlacement, setCustomPlacement] = useState(false)
@@ -115,11 +120,19 @@ const FacebookPlacements = (props) => {
 
     // Picture or video
     let fileInput = null
-    
+
+    let title = null;
+    if(runOnFacebook && runOnInstagram){
+        title = "Facebook and Instagram"
+    }else if(runOnFacebook){
+        title = "Facebook"
+    }else if(runOnInstagram){
+        title = "Instagram"
+    }
 
     return(
         <div className="fb-placements">
-        <h1 className=" font-color">Facebook</h1>
+        <h1 className=" font-color">{title}</h1>
             <Form onSubmit={(e) => props.saveFbPlacements(e)} onChange={e => props.changeFbForm(e)} className="fb-palacements-form row">
            
                <div className="fb-placements-radioBtns col-md-3">
