@@ -1003,6 +1003,7 @@ html{
                 .fb-ad-form{
                     margin: 20px auto;
                     color: $dark-gray;
+                    font-size: 1.1rem;
 
                     .alert{
                         padding: 8px 20px;
@@ -1036,13 +1037,15 @@ html{
                         }
                     }
 
-
                     &-view{
                         margin: 40px 0px;
 
                         @media screen and (min-width: 1199px){
                             margin: 50px 20px;
                         }
+
+                        
+
                         .head{
 
                             img{

@@ -219,6 +219,7 @@ const FacebookPlacements = (props) => {
                         </div>
                         <div className="col-md-6">
                             <AdViewFb 
+                            runOnPlatforms={props.runOnPlatforms}
                             primaryText={primaryText ? primaryText : "Example primary text for the ad"}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
