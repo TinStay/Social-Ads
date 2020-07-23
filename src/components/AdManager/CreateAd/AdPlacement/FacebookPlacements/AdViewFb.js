@@ -14,7 +14,7 @@ const AdViewFb = (props) => {
             >
             {props.runOnPlatforms.includes("runOnFacebook") ? 
                 <Tab eventKey="facebook" title="Facebook view">
-                    <div className="fb-ad-form-view">
+                    <div className="fb-ad-form-view-facebook">
                         <div className="row head">
                             <div className="col-md-12 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
@@ -47,7 +47,32 @@ const AdViewFb = (props) => {
                 </Tab> : null}
             {props.runOnPlatforms.includes("runOnInstagram") ? 
                 <Tab eventKey="instagram" title="Instagram view">
-
+                    <div className="fb-ad-form-view-instagram">
+                        <div className="row head">
+                            <div className="col-md-11 d-flex">
+                                <img src={pagePhoto} alt="pagePhoto"/>
+                                <div>
+                                    <h1>Discover new people</h1>
+                                    <p>Sponsored</p>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <span className="three-dots">&#8230;</span>
+                            </div>
+                        </div>
+                        <div className="ad-image">
+                            <img src={jsAd} alt="Ad picture"/>
+                        </div>
+                        <div className=" row ad-description ">
+                            <div class="blue-field row justify-content-between m-0">
+                                <p className="blue-field-title">Shop now</p>
+                                <span className="blue-field-arrow">&#x203A;</span>
+                            </div>
+                        </div>
+                    
+                    
+                    </div>
                 </Tab>
             : null}
            
