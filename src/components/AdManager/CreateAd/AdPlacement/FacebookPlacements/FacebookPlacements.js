@@ -217,7 +217,7 @@ const FacebookPlacements = (props) => {
                                 <button type="submit" disabled={props.isFormSaved ? true : false} className="btn details-btn">{props.isFormSaved ? "Confirmed" : "Confirm details"}</button>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mt-3">
                             <AdViewFb 
                             runOnPlatforms={props.runOnPlatforms}
                             primaryText={primaryText ? primaryText : "Example primary text for the ad"}
