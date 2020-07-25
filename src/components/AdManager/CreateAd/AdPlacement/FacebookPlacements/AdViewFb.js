@@ -2,9 +2,8 @@ import React,{ useState, useEffect } from 'react';
 import {Tabs, Tab} from 'react-bootstrap'
 import pagePhoto from '../../../../../assets/pagePhoto.jpg'
 import jsAd from '../../../../../assets/jsAd.jpg'
-import likeIconInstagram from '../../../../../assets/likeIconInstagram.png'
+import saveIconInstagram from '../../../../../assets/saveIconInstagram.png'
 import instagramIcons from '../../../../../assets/instagramIcons.png'
-import commentIconInstagram from '../../../../../assets/commentIconInstagram.png'
 
 const AdViewFb = (props) => {
     const [key, setKey] = useState('facebook');
@@ -73,12 +72,14 @@ const AdViewFb = (props) => {
                                 <span className="blue-field-arrow">&#x203A;</span>
                             </div>
                         </div>
-                        <div className="row ad-icons">
+                        <div className="d-flex ad-icons">
                             <div class="like-comment-share-icons d-flex justify-content-between">
                                 <img src={instagramIcons} className="icon" alt="likeIconInstagram" />
                                 {/* <img src={commentIconInstagram} className="commentIcon" alt="commentIconInstagram" />
                                 <img src={likeIconInstagram} className="icon" alt="likeIconInstagram" /> */}
                             </div>
+                            <img src={saveIconInstagram} className="saveIcon" alt="saveIconInstagram" />
+
                         </div>
                     
                     
