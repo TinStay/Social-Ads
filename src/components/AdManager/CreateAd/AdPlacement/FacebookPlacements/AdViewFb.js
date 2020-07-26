@@ -26,7 +26,7 @@ const AdViewFb = (props) => {
                                     
                                 </div>
                             </div>
-                            <div className="col-md-12 primary-text">
+                            <div className="col-md-12 description">
                                 {props.description}
                             </div>
                         </div>
@@ -54,7 +54,7 @@ const AdViewFb = (props) => {
                             <div className="col-11 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
                                 <div>
-                                    <h1>Discover new people</h1>
+                                    <h1>Discover daily</h1>
                                     <p>Sponsored</p>
                                     
                                 </div>
@@ -84,7 +84,7 @@ const AdViewFb = (props) => {
                             <p>125,406 views</p>
                         </div>
                         <div class="description-section ">
-                            <p className="description"><span className="account-name">socialads</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, quisquam?</p>
+                            <p className="description"><span className="account-name">discoverdaily </span>{props.description}</p>
                         </div>
                     
                     </div>

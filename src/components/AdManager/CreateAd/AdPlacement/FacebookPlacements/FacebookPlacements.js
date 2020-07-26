@@ -19,10 +19,8 @@ const FacebookPlacements = (props) => {
 
     // Ad view state
     const [picture, setPicture] = useState(null)
-    const [primaryText, setPrimaryText] = useState("")
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
-    const [url, setUrl] = useState("")
 
 
     const changeToAutomatic = () =>{
@@ -51,14 +49,10 @@ const FacebookPlacements = (props) => {
         if(props.selectedInfo.adDetails !== []){
             props.selectedInfo.adDetails.map( detailInfo => {
                 switch(detailInfo.field){
-                    case "primaryText":
-                        setPrimaryText(detailInfo.value)
                     case "headline":
                         setHeadline(detailInfo.value)
                     case "description":
                         setDescription(detailInfo.value)
-                    // case "url":
-                    //     setUrl(detailInfo.value)
                 }
             })
         }
@@ -91,15 +85,6 @@ const FacebookPlacements = (props) => {
         )
     }
 
-    // Alerts
-    let primaryTextAlert = null
-    if(props.primaryTextError != "" && props.showErrors){
-        primaryTextAlert = (
-            <Alert className="alert" variant='danger'>
-                {props.primaryTextError}
-            </Alert>
-        )
-    }
 
     let headlineAlert = null
     if(props.headlineError != "" && props.showErrors){
@@ -173,6 +158,7 @@ const FacebookPlacements = (props) => {
                             <Form.Group>
                                 <div className="fb-ad-form-field row">
                                     <input 
+                                    name="pictureOrVideo"
                                     style={{display: "none"}} 
                                     type="file" 
                                     onChange={pictureChangeHandler} 
@@ -182,11 +168,11 @@ const FacebookPlacements = (props) => {
                                         <p className="">Select a picture</p>
                                         <i class="fas fa-images"></i>
                                     </div>
-                                    <div className="media-box col text-center">
-                                        <p className="">Upload a video</p>
-                                        <i class="fas fa-file-video"></i>
-                                    </div>
-                                    <button onClick={() => props.savePictureOrVideo(picture)}>Upload</button>
+                                    
+                                    {/* <button onClick={() => props.savePictureOrVideo(picture)}>Upload</button> */}
+                                
+                                
+                                
                                 </div>
                                 
                                 <div className="fb-ad-form-field">
@@ -202,10 +188,8 @@ const FacebookPlacements = (props) => {
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Button label</Form.Label>
-                                    {primaryTextAlert}
-                                    
-                                    <ButtonLabelSelect />
-                                    {/* <Form.Control className="fb" name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" /> */}
+                                    {/* {primaryTextAlert} */}
+                                    <ButtonLabelSelect buttonLabel={props.selectedInfo.buttonLabel} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
                                    
                                 </div>
                             
@@ -218,7 +202,8 @@ const FacebookPlacements = (props) => {
                         <div className="col-md-6 mt-3">
                             <AdViewFb 
                             runOnPlatforms={props.runOnPlatforms}
-                            primaryText={primaryText ? primaryText : "Example primary text for the ad"}
+                            
+                            // primaryText={primaryText ? primaryText : "Example primary text for the ad"}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
                             url={props.url ? props.url : "www.examplewebsite.com"}

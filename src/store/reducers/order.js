@@ -9,7 +9,8 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
-                pictureOrVideo: null, 
+                pictureOrVideo: null,
+                buttonLabel: null, 
                 placements: {
                     automatic: true,
                     custom: []
@@ -96,13 +97,27 @@ const updatePicOrVideo = (state, action) => {
             pictureOrVideo: action.mediaFile
         }
     })
+}  
+
+const updateButtonLabel = (state, action) => {
+    return updateAdInfo(state, {
+        facebookAd: {
+            placements: {
+                ...state.adInfo.facebookAd.placements
+            },
+            adDetails: [...state.adInfo.facebookAd.adDetails],
+            buttonLabel: action.buttonLabel
+        }
+})
 }   
 
 const updateFacebookPlacements = (state, action) => {
     return updateAdInfo(state, {
             facebookAd: {
                 placements: action.placements
-            }
+            },
+            adDetails: [...state.adInfo.facebookAd.adDetails],
+            buttonLabel: state.adInfo.facebookAd.buttonLabel
     })
 }
 
@@ -112,7 +127,8 @@ const updateFacebookAdDetails = (state, action) => {
                 placements: {
                     ...state.adInfo.facebookAd.placements
                 },
-                adDetails: action.adDetails
+                adDetails: action.adDetails,
+                buttonLabel: state.adInfo.facebookAd.buttonLabel
             }
     })
 }
@@ -148,6 +164,7 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
         case actionTypes.SAVE_URL: return updateUrl(state, action)
         case actionTypes.SAVE_PIC_OR_VIDEO: return updatePicOrVideo(state, action)
+        case actionTypes.SAVE_BUTTON_LABEL: return updateButtonLabel(state, action)
         case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
         case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
         case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action)

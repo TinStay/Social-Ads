@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select'
-import makeAnimated from 'react-select/animated';
-import CreatableSelect from 'react-select/creatable';
+import { connect } from 'react-redux'
+import * as actionTypes from '../../../../store/actions/actionTypes'
+// import makeAnimated from 'react-select/animated';
+// import CreatableSelect from 'react-select/creatable';
 
 
 export const DevicesSelect = (props) => {
@@ -26,18 +28,6 @@ export const DevicesSelect = (props) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-    };
-    const groupBadgeStyles = {
-        backgroundColor: '#EBECF0',
-        borderRadius: '2em',
-        color: '#172B4D',
-        display: 'inline-block',
-        fontSize: 12,
-        fontWeight: 'normal',
-        lineHeight: '1',
-        minWidth: 1,
-        padding: '0.16666666666667em 0.5em',
-        textAlign: 'center',
     };
 
     const formatGroupLabel = data => (
@@ -73,7 +63,8 @@ export const DevicesSelect = (props) => {
     )
 }
 
-export const ButtonLabelSelect = (props) => {
+export function ButtonLabelSelect(props){
+    const [buttonLabel, setButtonLabel] = useState(props.buttonLabel ? props.buttonLabel : null)
    
     let buttonLabels = [
         {label: "Aply now", value: 'Aply now'},
@@ -108,22 +99,42 @@ export const ButtonLabelSelect = (props) => {
         textAlign: 'center',
     };
 
-    const formatGroupLabel = data => (
-        <div style={groupStyles}>
-          <span>{data.label}</span>
-          {/* <span style={groupBadgeStyles}>{data.options.length}</span> */}
-        </div>
-      );
+    // let defaultValue = buttonLabel ? buttonLabel : buttonLabels[4]
     
+     // Set defaultValue if there is value stored in redux state
+    if(props.buttonLabel != null){
+        // console.log("defaultValue",defaultValue)
+        
+        // defaultValue = buttonLabels.filter( option => {
+        //     if(option.value === props.buttonLabel){
+        //         return option
+        //     }
+        // })
+        for(let i = 0; i <= buttonLabels.length; i++){
+            if(buttonLabels[i] === props.buttonLabel){
+                setButtonLabel(buttonLabels[i])
+            }
+        }
+    }
 
+    let defaultValue=  buttonLabels[4]
+    useEffect(() => {
+       if(props.buttonLabel != null){
+        defaultValue= props.buttonLabel
+       }
+        
+    }, [])
+    console.log(props.buttonLabel)
+
+   
 
     return (
         <Select
-        defaultValue={buttonLabels[4]}
+        defaultValue={defaultValue}
         options={buttonLabels}
+        onChange={buttonLabel => props.saveButtonLabel(buttonLabel)}
+        // values={props.buttonLabel}
         // isMulti
-        // formatGroupLabel={formatGroupLabel}
-        // onChange={buttonLabel => props.saveDevices(devices)}
         />
     )
 }

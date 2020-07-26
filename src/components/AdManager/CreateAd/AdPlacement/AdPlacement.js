@@ -155,8 +155,7 @@ const AdPlacement = (props) => {
 
     // Facebook ad details
     const saveFbPlacements = (e) => {
-        e.preventDefault()
-        
+        e.preventDefault()        
 
         // Automatic Facebook placements update state 
         const automaticPlacements = e.target[0].checked;
@@ -169,7 +168,7 @@ const AdPlacement = (props) => {
         // }
 
         if(automaticPlacements){
-            // Custom placements is false so i goes from 2 to 5 
+            // Custom placements is false so i goes from 2 to 4
             for(let i = 2; i <= 4; i++){
                 
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
@@ -205,7 +204,7 @@ const AdPlacement = (props) => {
                 customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
             }
 
-            // Custom placements add 6 more form fields so i goes from 6 to 9 for ad details
+            // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
             for(let i = 7; i <= 9; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
 
@@ -354,13 +353,15 @@ const AdPlacement = (props) => {
                 <div className="add-form-row">
                     {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
-                        url={props.adInfo.url}
-                        runOnPlatforms={props.adInfo.runOn}
                         saveFbPlacements={(e) => saveFbPlacements(e)}
-                        savePictureOrVideo={file => props.savePictureOrVideo(file)}
                         changeFbForm={(e) => changeFbForm(e)}
-                        selectedInfo={props.adInfo.facebookAd}
                         isFormSaved={isFbFormSaved}
+                        // Redux
+                        selectedInfo={props.adInfo.facebookAd}
+                        runOnPlatforms={props.adInfo.runOn}
+                        savePictureOrVideo={file => props.savePictureOrVideo(file)}
+                        saveButtonLabel={buttonLabel => props.saveButtonLabel(buttonLabel)}
+                        url={props.adInfo.url}
                         // Alerts
                         primaryTextError={errors.primaryText}
                         headlineError={errors.headline}
@@ -416,6 +417,7 @@ const mapDispatchToProps = dispatch => {
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
         savePictureOrVideo: (mediaFile) => dispatch({type: actionTypes.SAVE_PIC_OR_VIDEO, mediaFile: mediaFile}),
+        saveButtonLabel: (buttonLabel) => dispatch({type: actionTypes.SAVE_BUTTON_LABEL, buttonLabel: buttonLabel}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
         saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
