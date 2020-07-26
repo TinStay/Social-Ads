@@ -205,7 +205,7 @@ const AdPlacement = (props) => {
                 customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
             }
 
-            // Custom placements add 6 more form fields so i goes from 6 to 9 
+            // Custom placements add 6 more form fields so i goes from 6 to 9 for ad details
             for(let i = 7; i <= 9; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
 
@@ -354,6 +354,7 @@ const AdPlacement = (props) => {
                 <div className="add-form-row">
                     {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
+                        url={props.adInfo.url}
                         runOnPlatforms={props.adInfo.runOn}
                         saveFbPlacements={(e) => saveFbPlacements(e)}
                         savePictureOrVideo={file => props.savePictureOrVideo(file)}

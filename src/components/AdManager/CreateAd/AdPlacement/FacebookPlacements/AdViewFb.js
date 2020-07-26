@@ -27,7 +27,7 @@ const AdViewFb = (props) => {
                                 </div>
                             </div>
                             <div className="col-md-12 primary-text">
-                                {props.primaryText}
+                                {props.description}
                             </div>
                         </div>
                         <div className="ad-image">
@@ -37,7 +37,7 @@ const AdViewFb = (props) => {
                             <div className="col-md-8 ">
                                 <p className="url">{props.url}</p>
                                 <h1 className="headline">{props.headline}</h1>
-                                <p className="desc">{props.description}</p>
+                                {/* <p className="desc">{props.description}</p> */}
                             </div>
                             <div className="col-md-4 ">
                                 <button disabled className="btn  btn-outline-secondary">LEARN MORE</button>

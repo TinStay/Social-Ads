@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { Form, Alert } from 'react-bootstrap';
+import { ButtonLabelSelect } from '../PlacementSelectForms'
 import CustomBoxes from './CustomBoxes';
 import AdViewFb from './AdViewFb';
 
@@ -21,7 +22,7 @@ const FacebookPlacements = (props) => {
     const [primaryText, setPrimaryText] = useState("")
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
-    // const [url, setUrl] = useState("")
+    const [url, setUrl] = useState("")
 
 
     const changeToAutomatic = () =>{
@@ -187,13 +188,7 @@ const FacebookPlacements = (props) => {
                                     </div>
                                     <button onClick={() => props.savePictureOrVideo(picture)}>Upload</button>
                                 </div>
-                                <div className="fb-ad-form-field">
-                                    <Form.Label className="fb-ad-form-field-label">Primary text</Form.Label>
-                                    {primaryTextAlert}
-                                    
-                                    <Form.Control className="fb" name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" />
-                                   
-                                </div>
+                                
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Headline</Form.Label>
                                     {headlineAlert}
@@ -205,11 +200,14 @@ const FacebookPlacements = (props) => {
                                     <Form.Control name="description" value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Enter a description for your ad" />
                                     
                                 </div>
-                                {/* <div className="fb-ad-form-field">
-                                    <Form.Label className="fb-ad-form-field-label">Website URL</Form.Label>
-                                    {urlAlert}
-                                    <Form.Control name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter your website URL" />
-                                </div> */}
+                                <div className="fb-ad-form-field">
+                                    <Form.Label className="fb-ad-form-field-label">Button label</Form.Label>
+                                    {primaryTextAlert}
+                                    
+                                    <ButtonLabelSelect />
+                                    {/* <Form.Control className="fb" name="primaryText" value={primaryText} onChange={(e) => setPrimaryText(e.target.value)} type="text" placeholder="Enter primary text" /> */}
+                                   
+                                </div>
                             
                             
                             </Form.Group>
@@ -223,7 +221,7 @@ const FacebookPlacements = (props) => {
                             primaryText={primaryText ? primaryText : "Example primary text for the ad"}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
-                            // url={url ? url : "www.examplewebsite.com"}
+                            url={props.url ? props.url : "www.examplewebsite.com"}
                             />
                         </div>
                    </div>
