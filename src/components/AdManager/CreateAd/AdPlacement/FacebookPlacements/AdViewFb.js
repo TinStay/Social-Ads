@@ -79,9 +79,13 @@ const AdViewFb = (props) => {
                                 <img src={likeIconInstagram} className="icon" alt="likeIconInstagram" /> */}
                             </div>
                             <img src={saveIconInstagram} className="saveIcon" alt="saveIconInstagram" />
-
                         </div>
-                    
+                        <div class="views-section">
+                            <p>125,406 views</p>
+                        </div>
+                        <div class="description-section ">
+                            <p className="description"><span className="account-name">socialads</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, quisquam?</p>
+                        </div>
                     
                     </div>
                 </Tab>
