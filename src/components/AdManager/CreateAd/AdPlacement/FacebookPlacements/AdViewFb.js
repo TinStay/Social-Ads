@@ -8,6 +8,12 @@ import instagramIcons from '../../../../../assets/instagramIcons.png'
 const AdViewFb = (props) => {
     const [key, setKey] = useState('facebook');
 
+    let buttonLabel = {value: "Learn more"}
+
+    if(props.buttonLabel != null){
+        buttonLabel = {...props.buttonLabel}
+    }
+
     return(
         <Tabs
             id="controlled-tab-example"
@@ -40,7 +46,7 @@ const AdViewFb = (props) => {
                                 {/* <p className="desc">{props.description}</p> */}
                             </div>
                             <div className="col-md-4 ">
-                                <button disabled className="btn  btn-outline-secondary">LEARN MORE</button>
+                                <button disabled className="btn btn-outline-secondary">{buttonLabel.value}</button>
                             </div>
                         </div>
                     
@@ -68,7 +74,7 @@ const AdViewFb = (props) => {
                         </div>
                         <div className="row ad-description">
                             <div class="blue-field row justify-content-between m-0">
-                                <p className="blue-field-title">Shop now</p>
+                                <p className="blue-field-title">{buttonLabel.value}</p>
                                 <span className="blue-field-arrow">&#x203A;</span>
                             </div>
                         </div>

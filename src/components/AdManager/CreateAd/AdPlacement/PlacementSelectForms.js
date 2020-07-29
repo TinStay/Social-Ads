@@ -64,7 +64,6 @@ export const DevicesSelect = (props) => {
 }
 
 export function ButtonLabelSelect(props){
-    const [buttonLabel, setButtonLabel] = useState(props.buttonLabel ? props.buttonLabel : null)
    
     let buttonLabels = [
         {label: "Aply now", value: 'Aply now'},
@@ -79,7 +78,17 @@ export function ButtonLabelSelect(props){
         {label: "Request time", value: 'Request time'},
     ] 
 
-    
+    const [buttonLabel, setButtonLabel] = useState(props.buttonLabel ? props.buttonLabel : buttonLabels[4])
+
+    // useEffect(() => {
+    //     if(props.buttonLabel != null){
+    //         setButtonLabel(props.buttonLabel)
+    //     }else{
+    //         setButtonLabel(buttonLabels[4])
+    //     }
+         
+    //  }, [])
+
 
     const groupStyles = {
         display: 'flex',
@@ -116,19 +125,6 @@ export function ButtonLabelSelect(props){
             }
         }
     }
-
-    let defaultValue=  buttonLabels[4]
-
-    useEffect(() => {
-       if(props.buttonLabel != null){
-        setButtonLabel(props.buttonLabel)
-       }
-        
-    }, [])
-
-    console.log(props.buttonLabel)
-
-   
 
     return (
         <Select
