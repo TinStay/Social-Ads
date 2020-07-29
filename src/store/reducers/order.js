@@ -94,7 +94,8 @@ const updateUrl = (state, action) => {
 const updatePicOrVideo = (state, action) => {
     return updateAdInfo(state, {
         facebookAd: {
-            pictureOrVideo: action.mediaFile
+            ...state.adInfo.facebookAd,
+            pictureOrVideo: action.mediaFile,
         }
     })
 }  
@@ -102,10 +103,7 @@ const updatePicOrVideo = (state, action) => {
 const updateButtonLabel = (state, action) => {
     return updateAdInfo(state, {
         facebookAd: {
-            placements: {
-                ...state.adInfo.facebookAd.placements
-            },
-            adDetails: [...state.adInfo.facebookAd.adDetails],
+            ...state.adInfo.facebookAd,
             buttonLabel: action.buttonLabel
         }
 })
@@ -114,21 +112,18 @@ const updateButtonLabel = (state, action) => {
 const updateFacebookPlacements = (state, action) => {
     return updateAdInfo(state, {
             facebookAd: {
-                placements: action.placements
-            },
-            adDetails: [...state.adInfo.facebookAd.adDetails],
-            buttonLabel: state.adInfo.facebookAd.buttonLabel
+                ...state.adInfo.facebookAd,
+                placements: action.placements,
+            }
+            
     })
 }
 
 const updateFacebookAdDetails = (state, action) => {
     return updateAdInfo(state, {
             facebookAd: {
-                placements: {
-                    ...state.adInfo.facebookAd.placements
-                },
+                ...state.adInfo.facebookAd,
                 adDetails: action.adDetails,
-                buttonLabel: state.adInfo.facebookAd.buttonLabel
             }
     })
 }

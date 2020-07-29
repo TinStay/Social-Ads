@@ -118,19 +118,21 @@ export function ButtonLabelSelect(props){
     }
 
     let defaultValue=  buttonLabels[4]
+
     useEffect(() => {
        if(props.buttonLabel != null){
-        defaultValue= props.buttonLabel
+        setButtonLabel(props.buttonLabel)
        }
         
     }, [])
+
     console.log(props.buttonLabel)
 
    
 
     return (
         <Select
-        defaultValue={defaultValue}
+        defaultValue={buttonLabel}
         options={buttonLabels}
         onChange={buttonLabel => props.saveButtonLabel(buttonLabel)}
         // values={props.buttonLabel}
