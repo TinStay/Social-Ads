@@ -8,6 +8,12 @@ import instagramIcons from '../../../../../assets/instagramIcons.png'
 const AdViewFb = (props) => {
     const [key, setKey] = useState('facebook');
 
+    useEffect(() => {
+        if(props.runOnPlatforms.includes("runOnInstagram") && !props.runOnPlatforms.includes("runOnFacebook")){
+            setKey("instagram")
+        }
+    }, [])
+
     let buttonLabel = {value: "Learn more"}
 
     if(props.buttonLabel != null){
