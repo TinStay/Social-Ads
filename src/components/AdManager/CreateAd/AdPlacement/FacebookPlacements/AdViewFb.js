@@ -43,7 +43,7 @@ const AdViewFb = (props) => {
                             </div>
                         </div>
                         <div className="ad-image">
-                            <img src={jsAd} alt="Ad picture"/>
+                            <img src={props.pictureOrVideo ? props.pictureOrVideo : jsAd} alt="Ad picture"/>
                         </div>
                         <div className=" row ad-description pt-2">
                             <div className="col-md-8 ">
@@ -76,7 +76,7 @@ const AdViewFb = (props) => {
                             </div>
                         </div>
                         <div className="ad-image">
-                            <img src={jsAd} alt="Ad picture"/>
+                            <img src={props.pictureOrVideo ? props.pictureOrVideo : jsAd} alt="Ad picture"/>
                         </div>
                         <div className="row ad-description">
                             <div class="blue-field row justify-content-between m-0">

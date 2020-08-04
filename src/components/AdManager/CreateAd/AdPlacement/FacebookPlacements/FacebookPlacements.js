@@ -18,7 +18,7 @@ const FacebookPlacements = (props) => {
     const [customPlacement, setCustomPlacement] = useState(false)
 
     // Ad view state
-    const [picture, setPicture] = useState(null)
+    const [pictureOrVideo, setPictureOrVideo] = useState(null)
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
 
@@ -63,7 +63,13 @@ const FacebookPlacements = (props) => {
 
     const pictureChangeHandler = (event) => {
         const file = event.target.files[0]
-        setPicture(file)
+        // console.log(event.target.files[0])
+
+
+        // Save url of picture to state
+        let pictureOrVideoUrl = URL.createObjectURL(event.target.files[0])
+        setPictureOrVideo(pictureOrVideoUrl)
+
     }
 
     // const uploadPictureHandler = () => {
@@ -203,6 +209,7 @@ const FacebookPlacements = (props) => {
                             <AdViewFb 
                             runOnPlatforms={props.runOnPlatforms}
                             buttonLabel={props.selectedInfo.buttonLabel}
+                            pictureOrVideo={pictureOrVideo}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
                             url={props.url ? props.url : "www.examplewebsite.com"}
