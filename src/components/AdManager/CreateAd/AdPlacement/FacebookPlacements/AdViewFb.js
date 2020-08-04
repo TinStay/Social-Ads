@@ -16,9 +16,11 @@ const AdViewFb = (props) => {
 
     let buttonLabel = {value: "Learn more"}
 
-    if(props.buttonLabel != null){
-        buttonLabel = {...props.buttonLabel}
+    if(props.adDetails[props.adDetails.length-1] != null){
+        buttonLabel = props.adDetails[props.adDetails.length-1]
     }
+
+    console.log(buttonLabel)
 
     return(
         <Tabs

@@ -21,6 +21,7 @@ const FacebookPlacements = (props) => {
     const [pictureOrVideo, setPictureOrVideo] = useState(null)
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
+    const [buttonLabel, setButtonLabel] = useState("")
 
 
     const changeToAutomatic = () =>{
@@ -53,13 +54,18 @@ const FacebookPlacements = (props) => {
                         setHeadline(detailInfo.value)
                     case "description":
                         setDescription(detailInfo.value)
+                    case "buttonLabel":
+                        console.log("set",buttonLabel)
+                        setButtonLabel(detailInfo.value)
                 }
             })
         }
 
 
 
-    }, [])
+    }, [props.selectedInfo.adDetails])
+
+    
 
     const pictureChangeHandler = (event) => {
         const file = event.target.files[0]
@@ -195,7 +201,7 @@ const FacebookPlacements = (props) => {
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Button label</Form.Label>
                                     {/* {primaryTextAlert} */}
-                                    <ButtonLabelSelect buttonLabel={props.selectedInfo.buttonLabel} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
+                                    <ButtonLabelSelect adDetails={props.selectedInfo.adDetails} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
                                    
                                 </div>
                             
@@ -208,7 +214,7 @@ const FacebookPlacements = (props) => {
                         <div className="col-md-6 mt-3">
                             <AdViewFb 
                             runOnPlatforms={props.runOnPlatforms}
-                            buttonLabel={props.selectedInfo.buttonLabel}
+                            adDetails={props.selectedInfo.adDetails}
                             pictureOrVideo={pictureOrVideo}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}

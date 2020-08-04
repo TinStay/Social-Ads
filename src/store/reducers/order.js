@@ -9,8 +9,8 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
-                pictureOrVideo: null,
-                buttonLabel: null, 
+                // pictureOrVideo: null,
+                // buttonLabel: null, 
                 placements: {
                     automatic: true,
                     custom: []
@@ -101,12 +101,19 @@ const updatePicOrVideo = (state, action) => {
 }  
 
 const updateButtonLabel = (state, action) => {
+    const newAdDetails = [...state.adInfo.facebookAd.adDetails]
+
+    //Remove the previous buttonLabel
+    newAdDetails.pop()
+    // Add the new buttonLabel
+    newAdDetails.push(action.buttonLabel)
+
     return updateAdInfo(state, {
         facebookAd: {
             ...state.adInfo.facebookAd,
-            buttonLabel: action.buttonLabel
+            adDetails: newAdDetails
         }
-})
+    })
 }   
 
 const updateFacebookPlacements = (state, action) => {
@@ -123,10 +130,24 @@ const updateFacebookAdDetails = (state, action) => {
     return updateAdInfo(state, {
             facebookAd: {
                 ...state.adInfo.facebookAd,
-                adDetails: action.adDetails,
+                adDetails: [ 
+                    ...action.adDetails,
+                    ...state.adInfo.facebookAd.adDetails
+                ]
             }
     })
 }
+// const updateFacebookAdDetails = (state, action) => {
+//     return updateAdInfo(state, {
+//             facebookAd: {
+//                 ...state.adInfo.facebookAd,
+//                 adDetails: [ 
+//                     ...state.adInfo.facebookAd.adDetails.buttonLabel,
+//                     adDetails: action.adDetails
+//                 ]
+//             }
+//     })
+// }
 
 const updateGoogleDetails = (state, action) => {
     return updateAdInfo(state, {

@@ -66,19 +66,21 @@ export const DevicesSelect = (props) => {
 export function ButtonLabelSelect(props){
    
     let buttonLabels = [
-        {label: "Aply now", value: 'Aply now'},
-        {label: "Book now", value: 'Book now'},
-        {label: "Contact us", value: 'Contact us'},
-        {label: "Donate now", value: 'Donate now'},
-        {label: "Learn more", value: 'Learn more'},
-        {label: "Shop now", value: 'Shop now'},
-        {label: "Sign up", value: 'Sign up'},
-        {label: "Watch more", value: 'Watch more'},
-        {label: "Download", value: 'Download'},
-        {label: "Request time", value: 'Request time'},
+        {label: "Aply now", value: 'Aply now', field: "buttonLabel"},
+        {label: "Book now", value: 'Book now', field: "buttonLabel"},
+        {label: "Contact us", value: 'Contact us', field: "buttonLabel"},
+        {label: "Donate now", value: 'Donate now', field: "buttonLabel"},
+        {label: "Learn more", value: 'Learn more', field: "buttonLabel"},
+        {label: "Shop now", value: 'Shop now', field: "buttonLabel"},
+        {label: "Sign up", value: 'Sign up', field: "buttonLabel"},
+        {label: "Watch more", value: 'Watch more', field: "buttonLabel"},
+        {label: "Download", value: 'Download', field: "buttonLabel"},
+        {label: "Request time", value: 'Request time', field: "buttonLabel"},
     ] 
 
-    const [buttonLabel, setButtonLabel] = useState(props.buttonLabel ? props.buttonLabel : buttonLabels[4])
+    const [buttonLabel, setButtonLabel] = useState(props.adDetails ? props.adDetails[props.adDetails.length-1] : buttonLabels[4])
+    
+    // const buttonLabel = props.adDetails[props.adDetails.length-1]
 
     // useEffect(() => {
     //     if(props.buttonLabel != null){
