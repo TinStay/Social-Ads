@@ -15,7 +15,7 @@ const initialState = {
                     automatic: true,
                     custom: []
                 },
-                adDetails: [],
+                adDetails: [{label: "Learn more", value: 'Learn more', field: "buttonLabel"}],
                 
             },
             googleAd: {
@@ -28,7 +28,7 @@ const initialState = {
         },
         audience: {
             location: [],
-            gender: {label: "All", values: 'All'},
+            gender: null,
             ageFrom: null,
             ageTo: null,
             interests: []
@@ -133,13 +133,18 @@ const updateFacebookPlacements = (state, action) => {
 }
 
 const updateFacebookAdDetails = (state, action) => {
+    const adDetails = state.adInfo.facebookAd.adDetails
+
+    // newAdDetails = new adDetails + buttonLabel
+    let newAdDetails = [...action.adDetails]
+    const buttonLabel = adDetails[adDetails.length-1]
+    // Add buttonLabel
+    newAdDetails.push(buttonLabel)
+
     return updateAdInfo(state, {
             facebookAd: {
                 ...state.adInfo.facebookAd,
-                adDetails: [ 
-                    ...action.adDetails,
-                    ...state.adInfo.facebookAd.adDetails
-                ]
+                adDetails: newAdDetails
             }
     })
 }

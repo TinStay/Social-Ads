@@ -33,12 +33,11 @@ const FacebookPlacements = (props) => {
     // const [isFbFormSaved, setIsFbFormSaved] = useState(true)
 
     // Errors
-    const [showErrors, setShowErrors] = useState(false)
+    // const [showErrors, setShowErrors] = useState(false)
     // Production
     // const [errors, setErrors] = useState({
-    //     url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
-    //     devices: "You must select at least 1 type of device",
-    //     primaryText: "You have to fill this field",
+    //     // url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
+    //     // devices: "You must select at least 1 type of device",
     //     headline: "You have to fill this field",
     //     description: "You have to fill this field",
     //     headlineOneGgl: "You have to fill this field",
@@ -78,15 +77,18 @@ const FacebookPlacements = (props) => {
     }
 
     useEffect(() => {
-        if(props.selectedInfo.placements.automatic){
+        let adDetails = [...props.facebookAd.adDetails] 
+        let placements = {...props.facebookAd.placements}
+
+        if(placements.automatic){
             changeToAutomatic()
         }else{
             changeToCustom()
         }
 
         // Update detail values with redux state
-        if(props.selectedInfo.adDetails !== []){
-            props.selectedInfo.adDetails.map( detailInfo => {
+        if(adDetails !== []){
+            adDetails.map( detailInfo => {
                 switch(detailInfo.field){
                     case "headline":
                         setHeadline(detailInfo.value)
@@ -100,7 +102,7 @@ const FacebookPlacements = (props) => {
 
 
 
-    }, [props.selectedInfo.adDetails])
+    }, [props.adInfo.facebookAd.adDetails])
 
     
 
@@ -129,7 +131,7 @@ const FacebookPlacements = (props) => {
     if(customPlacement){
         customCheckboxes = (
             <div className="col-md-9">
-               <CustomBoxes selectedCustomPlacements={props.selectedInfo.placements.custom}/>
+               <CustomBoxes selectedCustomPlacements={props.facebookAd.placements.custom}/>
             </div>
         )
     }
@@ -210,8 +212,8 @@ const FacebookPlacements = (props) => {
 
         
         // Set showError to true in case of non valid details
-        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
-            setShowErrors(true)
+        if(fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
+            props.setShowErrors(true)
             props.setIsFbFormSaved(false)
         }else{
             props.setIsFbFormSaved(true)
@@ -233,19 +235,19 @@ const FacebookPlacements = (props) => {
 
 
     let headlineAlert = null
-    if(props.headlineError != "" && props.showErrors){
+    if(errors.headline != "" && props.showErrors){
         headlineAlert = (
             <Alert className="alert" variant='danger'>
-                {props.headlineError}
+                {errors.headline}
             </Alert>
         )
     }
 
     let descriptionAlert = null
-    if(props.descriptionError != "" && props.showErrors){
+    if(errors.description != "" && props.showErrors){
         descriptionAlert = (
             <Alert className="alert" variant='danger'>
-                {props.descriptionError}
+                {errors.description}
             </Alert>
         )
     }
@@ -335,7 +337,7 @@ const FacebookPlacements = (props) => {
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Button label</Form.Label>
                                     {/* {primaryTextAlert} */}
-                                    <ButtonLabelSelect adDetails={props.selectedInfo.adDetails} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
+                                    <ButtonLabelSelect adDetails={props.facebookAd.adDetails} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
                                    
                                 </div>
                             
@@ -348,11 +350,11 @@ const FacebookPlacements = (props) => {
                         <div className="col-md-6 mt-3">
                             <AdViewFb 
                             runOnPlatforms={props.adInfo.runOn}
-                            adDetails={props.selectedInfo.adDetails}
+                            adDetails={props.facebookAd.adDetails}
                             pictureOrVideo={pictureOrVideo}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
-                            url={props.url ? props.url : "www.examplewebsite.com"}
+                            url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}
                             />
                         </div>
                    </div>
@@ -368,7 +370,8 @@ const FacebookPlacements = (props) => {
 
 const mapStateToProps = state => {
     return{ 
-        adInfo: state.adInfo
+        adInfo: state.adInfo,
+        facebookAd: state.adInfo.facebookAd
     }
 }
 

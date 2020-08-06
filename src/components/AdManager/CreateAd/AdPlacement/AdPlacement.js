@@ -28,7 +28,6 @@ const AdPlacement = (props) => {
     // const [errors, setErrors] = useState({
     //     url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
     //     devices: "You must select at least 1 type of device",
-    //     primaryText: "You have to fill this field",
     //     headline: "You have to fill this field",
     //     description: "You have to fill this field",
     //     headlineOneGgl: "You have to fill this field",
@@ -41,7 +40,6 @@ const AdPlacement = (props) => {
     const [errors, setErrors] = useState({
         url: "",
         devices: "",
-        primaryText: "",
         headline: "",
         description: "",
         headlineOneGgl: "",
@@ -352,18 +350,19 @@ const AdPlacement = (props) => {
                         // saveFbPlacements={(e) => saveFbPlacements(e)}
                         setIsFbFormSaved={(trueOrFalse) => setIsFbFormSaved(trueOrFalse)}
                         isFormSaved={isFbFormSaved}
-                        // Redux
-                        selectedInfo={props.adInfo.facebookAd}
-                        runOnPlatforms={props.adInfo.runOn}
-                        savePictureOrVideo={file => props.savePictureOrVideo(file)}
-                        saveButtonLabel={buttonLabel => props.saveButtonLabel(buttonLabel)}
-                        url={props.adInfo.url}
-                        // Alerts
-                        primaryTextError={errors.primaryText}
-                        headlineError={errors.headline}
-                        descriptionError={errors.description}
-                        urlError={errors.url}
                         showErrors={showErrors}
+                        setShowErrors={trueOrFalse => setShowErrors(trueOrFalse)}
+                        // Redux
+                        // selectedInfo={props.adInfo.facebookAd}
+                        // runOnPlatforms={props.adInfo.runOn}
+                        // savePictureOrVideo={file => props.savePictureOrVideo(file)}
+                        // saveButtonLabel={buttonLabel => props.saveButtonLabel(buttonLabel)}
+                        // url={props.adInfo.url}
+                        // Alerts
+                        // headlineError={errors.headline}
+                        // descriptionError={errors.description}
+                        // urlError={errors.url}
+                        
                         
                         /> 
                     : null}
