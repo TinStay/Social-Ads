@@ -80,17 +80,6 @@ export function ButtonLabelSelect(props){
 
     const [buttonLabel, setButtonLabel] = useState(props.adDetails ? props.adDetails[props.adDetails.length-1] : buttonLabels[4])
     
-    // const buttonLabel = props.adDetails[props.adDetails.length-1]
-
-    // useEffect(() => {
-    //     if(props.buttonLabel != null){
-    //         setButtonLabel(props.buttonLabel)
-    //     }else{
-    //         setButtonLabel(buttonLabels[4])
-    //     }
-         
-    //  }, [])
-
 
     const groupStyles = {
         display: 'flex',
@@ -110,31 +99,11 @@ export function ButtonLabelSelect(props){
         textAlign: 'center',
     };
 
-    // let defaultValue = buttonLabel ? buttonLabel : buttonLabels[4]
-    
-     // Set defaultValue if there is value stored in redux state
-    if(props.buttonLabel != null){
-        // console.log("defaultValue",defaultValue)
-        
-        // defaultValue = buttonLabels.filter( option => {
-        //     if(option.value === props.buttonLabel){
-        //         return option
-        //     }
-        // })
-        for(let i = 0; i <= buttonLabels.length; i++){
-            if(buttonLabels[i] === props.buttonLabel){
-                setButtonLabel(buttonLabels[i])
-            }
-        }
-    }
-
     return (
         <Select
         defaultValue={buttonLabel}
         options={buttonLabels}
         onChange={buttonLabel => props.saveButtonLabel(buttonLabel)}
-        // values={props.buttonLabel}
-        // isMulti
         />
     )
 }

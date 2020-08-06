@@ -20,8 +20,6 @@ const AdViewFb = (props) => {
         buttonLabel = props.adDetails[props.adDetails.length-1]
     }
 
-    console.log(buttonLabel)
-
     return(
         <Tabs
             id="controlled-tab-example"

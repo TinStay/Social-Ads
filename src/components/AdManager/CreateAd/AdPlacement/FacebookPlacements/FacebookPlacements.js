@@ -55,7 +55,6 @@ const FacebookPlacements = (props) => {
                     case "description":
                         setDescription(detailInfo.value)
                     case "buttonLabel":
-                        console.log("set",buttonLabel)
                         setButtonLabel(detailInfo.value)
                 }
             })
