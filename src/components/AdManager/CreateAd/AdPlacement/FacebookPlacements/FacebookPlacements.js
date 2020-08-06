@@ -3,15 +3,19 @@ import { Form, Alert } from 'react-bootstrap';
 import { ButtonLabelSelect } from '../PlacementSelectForms'
 import CustomBoxes from './CustomBoxes';
 import AdViewFb from './AdViewFb';
+//Redux
+import * as actionTypes from '../../../../../store/actions/actionTypes'
+import { connect } from "react-redux"
 
 
 const FacebookPlacements = (props) => {
-    // const [isFormSaved, setIsFormSaved] = useState(false)
+
+    const runOnPlatforms = [...props.adInfo.runOn]
 
     // Social media platforms user chose
-    const [runOnFacebook, setRunOnFacebook] = useState(props.runOnPlatforms.includes("runOnFacebook") ? true : false)
-    const [runOnInstagram, setRunOnInstagram] = useState(props.runOnPlatforms.includes("runOnInstagram") ? true : false)
-    const [runOnGoogle, setRunOnGoogle] = useState(props.runOnPlatforms.includes("runOnGoogle") ? true : false)
+    const [runOnFacebook, setRunOnFacebook] = useState(runOnPlatforms.includes("runOnFacebook") ? true : false)
+    const [runOnInstagram, setRunOnInstagram] = useState(runOnPlatforms.includes("runOnInstagram") ? true : false)
+    // const [runOnGoogle, setRunOnGoogle] = useState(props.runOnPlatforms.includes("runOnGoogle") ? true : false)
 
     // Placements
     const [automaticPlacement, setAutomaticPlacement] = useState(true)
@@ -21,8 +25,42 @@ const FacebookPlacements = (props) => {
     const [pictureOrVideo, setPictureOrVideo] = useState(null)
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
-    // const [buttonLabel, setButtonLabel] = useState("")
 
+    // Form update
+    // Production
+    // const [isFbFormSaved, setIsFbFormSaved] = useState(false)
+    // Development
+    // const [isFbFormSaved, setIsFbFormSaved] = useState(true)
+
+    // Errors
+    const [showErrors, setShowErrors] = useState(false)
+    // Production
+    // const [errors, setErrors] = useState({
+    //     url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
+    //     devices: "You must select at least 1 type of device",
+    //     primaryText: "You have to fill this field",
+    //     headline: "You have to fill this field",
+    //     description: "You have to fill this field",
+    //     headlineOneGgl: "You have to fill this field",
+    //     headlineTwoGgl: "You have to fill this field",
+    //     headlineThreeGgl: "You have to fill this field",
+    //     descriptionGgl: "You have to fill this field"
+    // })
+
+    // Development
+    const [errors, setErrors] = useState({
+        url: "",
+        devices: "",
+        primaryText: "",
+        headline: "",
+        description: "",
+        headlineOneGgl: "",
+        headlineTwoGgl: "",
+        headlineThreeGgl: "",
+        descriptionGgl: ""
+    })
+
+    
 
     const changeToAutomatic = () =>{
         // if(e.target.checked){
@@ -96,6 +134,103 @@ const FacebookPlacements = (props) => {
         )
     }
 
+    // Facebook ad details
+    const saveFbPlacements = (e) => {
+        e.preventDefault()        
+
+        // Automatic Facebook placements update state 
+        const automaticPlacements = e.target[0].checked;
+        let fbAdDetails = [];
+        let fbAdDetailsErrors = {...errors};
+
+        // for(let i = 0; i <= 11; i++){
+        //     console.log("e field",e.target.input)
+
+        // }
+
+        if(automaticPlacements){
+            // Custom placements is false so i goes from 2 to 4
+            for(let i = 2; i <= 4; i++){
+                
+                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+                
+                const fieldName = e.target[i].name
+
+                // Validation
+                if(e.target[i].value.length > 0){
+                    // Remove error message
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: ""
+                    }
+                }else{
+                    // Set error message again
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: "You have to fill this field"
+                    }
+                }
+                
+            }
+        }
+        
+
+
+        // Custom Facebook placements update state 
+        let customFbPlacements = e.target[1].checked;
+        let customPlacements = [];
+
+        if(customFbPlacements){
+            for(let i = 2; i <= 6; i++){
+                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
+            }
+
+            // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
+            for(let i = 7; i <= 9; i++){
+                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+
+                const fieldName = e.target[i].name
+
+                // Validation
+                if(e.target[i].value.length > 0){
+                    // Remove error message
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: ""
+                    }
+                }else{
+                    // Set error message again
+                    fbAdDetailsErrors = {
+                        ...fbAdDetailsErrors,
+                        [fieldName]: "You have to fill this field"
+                    }
+                }
+            }
+        }
+
+        
+        // Set showError to true in case of non valid details
+        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
+            setShowErrors(true)
+            props.setIsFbFormSaved(false)
+        }else{
+            props.setIsFbFormSaved(true)
+        }
+
+        setErrors(fbAdDetailsErrors)
+
+        
+
+        const placements = {
+            automatic: automaticPlacements,
+            custom: customPlacements
+        }
+
+        props.saveFacebookPlacements(placements)
+        props.saveFacebookAdInfo(fbAdDetails)
+
+    }
+
 
     let headlineAlert = null
     if(props.headlineError != "" && props.showErrors){
@@ -130,7 +265,7 @@ const FacebookPlacements = (props) => {
     return(
         <div className="fb-placements">
         <h1 className=" font-color">{title}</h1>
-            <Form onSubmit={(e) => props.saveFbPlacements(e)} onChange={e => props.changeFbForm(e)} className="fb-palacements-form row">
+            <Form onSubmit={(e) => saveFbPlacements(e)} onChange={e => props.setIsFbFormSaved(false)} className="fb-palacements-form row">
            
                <div className="fb-placements-radioBtns col-md-3">
                <h3 className="fb-placements-label font-color ">Placements</h3>
@@ -212,7 +347,7 @@ const FacebookPlacements = (props) => {
                         </div>
                         <div className="col-md-6 mt-3">
                             <AdViewFb 
-                            runOnPlatforms={props.runOnPlatforms}
+                            runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.selectedInfo.adDetails}
                             pictureOrVideo={pictureOrVideo}
                             headline={headline ? headline : "Example headline"}
@@ -231,4 +366,23 @@ const FacebookPlacements = (props) => {
     );
 }
 
-export default FacebookPlacements;
+const mapStateToProps = state => {
+    return{ 
+        adInfo: state.adInfo
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
+        saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
+        savePictureOrVideo: (mediaFile) => dispatch({type: actionTypes.SAVE_PIC_OR_VIDEO, mediaFile: mediaFile}),
+        saveButtonLabel: (buttonLabel) => dispatch({type: actionTypes.SAVE_BUTTON_LABEL, buttonLabel: buttonLabel}),
+        saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
+        saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
+        // saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FacebookPlacements);
+

@@ -28,7 +28,7 @@ const initialState = {
         },
         audience: {
             location: [],
-            gender: "All",
+            gender: {label: "All", values: 'All'},
             ageFrom: null,
             ageTo: null,
             interests: []
@@ -58,6 +58,12 @@ const updateMarketingGoal = (state, action) => {
 const updateLocation = (state, action) => {
     return updateAudienceInfo(state, {
         location: action.options
+    })
+}
+
+const updateGender = (state, action) => {
+    return updateAudienceInfo(state, {
+        gender: action.gender
     })
 }
 
@@ -172,6 +178,7 @@ const reducer = (state = initialState, action) =>{
     
        // Audience    
        case actionTypes.SAVE_LOCATION: return updateLocation(state, action)
+       case actionTypes.SAVE_GENDER: return updateGender(state, action)
        case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action)
        case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action)
        case actionTypes.SAVE_INTERESTS: return updateInterests(state, action)

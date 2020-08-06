@@ -6,6 +6,7 @@ export const SAVE_MARKETING_GOAL = "SAVE_MARKETING_GOAL";
 
 // Audience
 export const SAVE_LOCATION = "SAVE_LOCATION";
+export const SAVE_GENDER = "SAVE_GENDER";
 export const SAVE_AGE_FROM = "SAVE_AGE_FROM";
 export const SAVE_AGE_TO = "SAVE_AGE_TO";
 export const SAVE_INTERESTS = "SAVE_INTERESTS";

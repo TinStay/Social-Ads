@@ -149,106 +149,102 @@ const AdPlacement = (props) => {
     }
     
 
-    const changeFbForm = e =>{
-        setIsFbFormSaved(false)
-    }
+    // // Facebook ad details
+    // const saveFbPlacements = (e) => {
+    //     e.preventDefault()        
 
-    // Facebook ad details
-    const saveFbPlacements = (e) => {
-        e.preventDefault()        
+    //     // Automatic Facebook placements update state 
+    //     const automaticPlacements = e.target[0].checked;
+    //     let fbAdDetails = [];
+    //     let fbAdDetailsErrors = {...errors};
 
-        // Automatic Facebook placements update state 
-        const automaticPlacements = e.target[0].checked;
-        let fbAdDetails = [];
-        let fbAdDetailsErrors = {...errors};
+    //     // for(let i = 0; i <= 11; i++){
+    //     //     console.log("e field",e.target.input)
 
-        // for(let i = 0; i <= 11; i++){
-        //     console.log("e field",e.target.input)
+    //     // }
 
-        // }
-
-        if(automaticPlacements){
-            // Custom placements is false so i goes from 2 to 4
-            for(let i = 2; i <= 4; i++){
+    //     if(automaticPlacements){
+    //         // Custom placements is false so i goes from 2 to 4
+    //         for(let i = 2; i <= 4; i++){
                 
-                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
                 
-                const fieldName = e.target[i].name
+    //             const fieldName = e.target[i].name
 
-                // Validation
-                if(e.target[i].value.length > 0){
-                    // Remove error message
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: ""
-                    }
-                }else{
-                    // Set error message again
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: "You have to fill this field"
-                    }
-                }
+    //             // Validation
+    //             if(e.target[i].value.length > 0){
+    //                 // Remove error message
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: ""
+    //                 }
+    //             }else{
+    //                 // Set error message again
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: "You have to fill this field"
+    //                 }
+    //             }
                 
-            }
-        }
+    //         }
+    //     }
         
 
 
-        // Custom Facebook placements update state 
-        let customFbPlacements = e.target[1].checked;
-        let customPlacements = [];
+    //     // Custom Facebook placements update state 
+    //     let customFbPlacements = e.target[1].checked;
+    //     let customPlacements = [];
 
-        if(customFbPlacements){
-            for(let i = 2; i <= 6; i++){
-                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
-            }
+    //     if(customFbPlacements){
+    //         for(let i = 2; i <= 6; i++){
+    //             customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
+    //         }
 
-            // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
-            for(let i = 7; i <= 9; i++){
-                fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
+    //         // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
+    //         for(let i = 7; i <= 9; i++){
+    //             fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
 
-                const fieldName = e.target[i].name
+    //             const fieldName = e.target[i].name
 
-                // Validation
-                if(e.target[i].value.length > 0){
-                    // Remove error message
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: ""
-                    }
-                }else{
-                    // Set error message again
-                    fbAdDetailsErrors = {
-                        ...fbAdDetailsErrors,
-                        [fieldName]: "You have to fill this field"
-                    }
-                }
-            }
-        }
-
-        
-        // Set showError to true in case of non valid details
-        if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
-            setShowErrors(true)
-            setIsFbFormSaved(false)
-        }else{
-            setIsFbFormSaved(true)
-        }
-
-        setErrors(fbAdDetailsErrors)
+    //             // Validation
+    //             if(e.target[i].value.length > 0){
+    //                 // Remove error message
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: ""
+    //                 }
+    //             }else{
+    //                 // Set error message again
+    //                 fbAdDetailsErrors = {
+    //                     ...fbAdDetailsErrors,
+    //                     [fieldName]: "You have to fill this field"
+    //                 }
+    //             }
+    //         }
+    //     }
 
         
+    //     // Set showError to true in case of non valid details
+    //     if(fbAdDetailsErrors.primaryText != "" ||  fbAdDetailsErrors.headline != "" ||  fbAdDetailsErrors.description != "" ){
+    //         setShowErrors(true)
+    //         setIsFbFormSaved(false)
+    //     }else{
+    //         setIsFbFormSaved(true)
+    //     }
 
-        const placements = {
-            automatic: automaticPlacements,
-            custom: customPlacements
-        }
+    //     setErrors(fbAdDetailsErrors)
 
-        props.saveFacebookPlacements(placements)
-        props.saveFacebookAdInfo(fbAdDetails)
+        
 
-    }
+    //     const placements = {
+    //         automatic: automaticPlacements,
+    //         custom: customPlacements
+    //     }
+
+    //     props.saveFacebookPlacements(placements)
+    //     props.saveFacebookAdInfo(fbAdDetails)
+
+    // }
 
     const changeGglForm = () => {
         setIsGglFormSaved(false)
@@ -353,8 +349,8 @@ const AdPlacement = (props) => {
                 <div className="add-form-row">
                     {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
-                        saveFbPlacements={(e) => saveFbPlacements(e)}
-                        changeFbForm={(e) => setIsFbFormSaved(false)}
+                        // saveFbPlacements={(e) => saveFbPlacements(e)}
+                        setIsFbFormSaved={(trueOrFalse) => setIsFbFormSaved(trueOrFalse)}
                         isFormSaved={isFbFormSaved}
                         // Redux
                         selectedInfo={props.adInfo.facebookAd}

@@ -24,30 +24,30 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 class CreateAdForm extends PureComponent{
     state = {
-        ads: {},
+    //     ads: {},
         activeStep: 0,
-        order: {
-            adInfo: {
-                name: '',
-                marketingGoal: '',
-                runOn: [],
-                facebookAd:{
-                    placements: {
-                        automatic: true,
-                        custom: []
-                    },
-                    adDetails: null
-                }
-            },
-            audience: {
-                gender: "All",
-                ageFrom: null,
-                ageTo: null,
-                interests: []
-            },
-            payment: {},
-        },
-        // No validation during development
+    //     order: {
+    //         adInfo: {
+    //             name: '',
+    //             marketingGoal: '',
+    //             runOn: [],
+    //             facebookAd:{
+    //                 placements: {
+    //                     automatic: true,
+    //                     custom: []
+    //                 },
+    //                 adDetails: null
+    //             }
+    //         },
+    //         audience: {
+    //             gender: "All",
+    //             ageFrom: null,
+    //             ageTo: null,
+    //             interests: []
+    //         },
+    //         payment: {},
+    //     },
+    //     // No validation during development
         errors: {
             name: "",
             socialPlatforms: "",
@@ -60,22 +60,22 @@ class CreateAdForm extends PureComponent{
             primaryText: "",
             headline: "",
             description: "",
-            
         },
-        // errors: {
-        //     name: "Name should be at least 2 symbols.",
-        //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
-        //     marketingGoal: "You have to select a marketing goal for your campaign.",
-        //     location: "You have to select at least 1 area of targeting",
-        //     ageFrom: "You have to select an age",
-        //     ageTo: "You have to select an age",
-        //     devices: "You must select at least 1 type of devices",
-        //     primaryText: "You have to fill this field",
-        //     headline: "You have to fill this field",
-        //     description: "You have to fill this field",
-        //     url: "You have to fill this field"
+
+    //     // errors: {
+    //     //     name: "Name should be at least 2 symbols.",
+    //     //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
+    //     //     marketingGoal: "You have to select a marketing goal for your campaign.",
+    //     //     location: "You have to select at least 1 area of targeting",
+    //     //     ageFrom: "You have to select an age",
+    //     //     ageTo: "You have to select an age",
+    //     //     devices: "You must select at least 1 type of devices",
+    //     //     primaryText: "You have to fill this field",
+    //     //     headline: "You have to fill this field",
+    //     //     description: "You have to fill this field",
+    //     //     url: "You have to fill this field"
             
-        // },
+    //     // },
         showErrors: false
     }
 
@@ -188,16 +188,17 @@ class CreateAdForm extends PureComponent{
     }
 
     updateGender = gender => {
-        this.setState({
-            ...this.state,
-            order: {
-                ...this.state.order,
-                audience:{
-                    ...this.state.order.audience,
-                    gender: gender.value
-                }
-            }
-        })
+        // this.setState({
+        //     ...this.state,
+        //     order: {
+        //         ...this.state.order,
+        //         audience:{
+        //             ...this.state.order.audience,
+        //             gender: gender.value
+        //         }
+        //     }
+        // })
+        this.props.saveGender(gender)
     }
 
     saveOptionForm = (optionsData, form) =>{
@@ -254,7 +255,7 @@ class CreateAdForm extends PureComponent{
     }
 
     getStepContent(stepIndex){
-        const adInfo = this.state.order.adInfo;
+        const adInfo = this.props.adInfo;
         const activeStep = this.state.activeStep
         const steps = this.getSteps();
 
@@ -309,7 +310,7 @@ class CreateAdForm extends PureComponent{
           case 0:
             return (
             <div>
-                <form onSubmit={(e) => this.goToAudience(e, activeStep, adInfo.marketingGoal)}>
+                <form onSubmit={(e) => this.goToAudience(e, activeStep)}>
                     <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                     <h3 className="add-form-label">Name your ad campaign</h3>
 
@@ -544,6 +545,7 @@ const mapDispatchToProps = dispatch => {
         saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
         saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
         saveLocation : (options) => dispatch({type: actionTypes.SAVE_LOCATION, options: options}),
+        saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
         saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
         saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),

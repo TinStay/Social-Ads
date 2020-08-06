@@ -17,13 +17,13 @@ export const AgeFromSelect = (props) => {
     let ageFrom = [];
     for(let i = 13; i <= 65; i++){
         ageFrom.push({ 
-            values: `${i}`,
+            value: `${i}`,
             label: `${i}`
         });
     }
 
     return(
-        <Select defaultValues={ageFrom[`${props.ageValues-13}`]} className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
+        <Select defaultValue={ageFrom[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageFrom} onChange={(option) => props.updateAgeFrom(option)}/>
     )
 }
 
@@ -34,16 +34,16 @@ export const AgeToSelect = (props) => {
     let ageTo = [];
     for(let i = 13; i <= 65; i++){
         ageTo.push({ 
-            values: `${i}`,
+            value: `${i}`,
             label: `${i}`
         });
     }
-    ageTo[0] = {values: '13+', label: "13+"}
-    ageTo[ageTo.length - 1] = {values: '65+', label: "65+"}
+    ageTo[0] = {value: '13+', label: "13+"}
+    ageTo[ageTo.length - 1] = {value: '65+', label: "65+"}
 
 
     return(
-       <Select defaultValues={ageTo[`${props.ageValues-13}`]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
+       <Select defaultValue={ageTo[`${props.ageValue-13}`]} className="audience-form-select-age" options={ageTo} onChange={(option) => props.updateAgeTo(option)}/>
     )
 }
 
@@ -51,13 +51,13 @@ export const AgeToSelect = (props) => {
 
 export const GenderSelect = (props) => {
     let genderOptions = [
-        {label: "All", values: 'All'},
-        {label: "Men", values: 'men'},
-        {label: "Women", values: 'women'},
+        {label: "All", value: 'All'},
+        {label: "Men", value: 'men'},
+        {label: "Women", value: 'women'},
     ]  
 
     return (
-        <Select className="audience-form-select " options={genderOptions} defaultValues={genderOptions[0]} onChange={(gender) => props.updateGender(gender)}/>
+        <Select className="audience-form-select " options={genderOptions} defaultValue={genderOptions[0]} onChange={(gender) => props.updateGender(gender)}/>
     )
 }
 
@@ -80,7 +80,7 @@ export function LocationSelect(props){
         name="location"
         onChange={(options, form) => props.saveOptionForm(options, form)}
         components={animatedComponents}
-        // defaultValues={props.audience.location}
+        // defaultValue={props.audience.location}
         isMulti
         options={countries}
         />
@@ -98,7 +98,7 @@ export const InterestsSelect = (props) => {
 
     // const [ isLoading, setIsLoading] = useState(false)
     // const [ interests , setInterests] = useState([...interestsData])
-    const [ values , setValues] = useState([...props.selectedInterests])
+    const [ value , setValue] = useState([...props.selectedInterests])
     const [ inputValue , setInputValue] = useState('')
 
     
@@ -108,9 +108,9 @@ export const InterestsSelect = (props) => {
       });
     
 
-    const handleChange = (values) => {
-        setValues(values)
-        props.saveInterests(values)
+    const handleChange = (value) => {
+        setValue(value)
+        props.saveInterests(value)
     };
 
     const handleInputChange = (inputValue) => {
@@ -118,18 +118,18 @@ export const InterestsSelect = (props) => {
     };
 
     const handleKeyDown = (event) => {
-    // const { inputValue, values } = this.state;
+    // const { inputValue, value } = this.state;
     if (!inputValue) return;
 
     switch (event.key) {
         case 'Enter':
         setInputValue('')
-        setValues([...values, createOption(inputValue)])
-        props.saveInterests([...values, createOption(inputValue)])
+        setValue([...value, createOption(inputValue)])
+        props.saveInterests([...value, createOption(inputValue)])
         
         case 'Tab':
         setInputValue('')
-        setValues([...values, createOption(inputValue)])
+        setValue([...value, createOption(inputValue)])
         
         event.preventDefault();
     }
@@ -147,7 +147,7 @@ export const InterestsSelect = (props) => {
         isClearable
         menuIsOpen={false}
         placeholder="Type keywords"
-        value={values}
+        value={value}
       />
     )
 }
