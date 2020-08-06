@@ -354,7 +354,7 @@ const AdPlacement = (props) => {
                     {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
                         saveFbPlacements={(e) => saveFbPlacements(e)}
-                        changeFbForm={(e) => changeFbForm(e)}
+                        changeFbForm={(e) => setIsFbFormSaved(false)}
                         isFormSaved={isFbFormSaved}
                         // Redux
                         selectedInfo={props.adInfo.facebookAd}

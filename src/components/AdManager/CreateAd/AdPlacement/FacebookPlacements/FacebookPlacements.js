@@ -21,7 +21,7 @@ const FacebookPlacements = (props) => {
     const [pictureOrVideo, setPictureOrVideo] = useState(null)
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
-    const [buttonLabel, setButtonLabel] = useState("")
+    // const [buttonLabel, setButtonLabel] = useState("")
 
 
     const changeToAutomatic = () =>{
@@ -54,8 +54,8 @@ const FacebookPlacements = (props) => {
                         setHeadline(detailInfo.value)
                     case "description":
                         setDescription(detailInfo.value)
-                    case "buttonLabel":
-                        setButtonLabel(detailInfo.value)
+                    // case "buttonLabel":
+                    //     setButtonLabel(detailInfo.value)
                 }
             })
         }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select'
-import { connect } from 'react-redux'
-import * as actionTypes from '../../../../store/actions/actionTypes'
 // import makeAnimated from 'react-select/animated';
 // import CreatableSelect from 'react-select/creatable';
 
