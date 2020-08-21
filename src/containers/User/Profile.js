@@ -103,7 +103,8 @@ class Profile extends PureComponent{
         .then(response =>{
             
             const noChanges = _.isEqual(response.data, newData);
-            console.log(noChanges)
+            // console.log(noChanges)
+
             if(noChanges === false){
                 // Update displayName in the firebase authentication account
                 currentUser.updateProfile({

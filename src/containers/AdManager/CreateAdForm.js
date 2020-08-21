@@ -1,4 +1,8 @@
 import React, {  PureComponent } from "react";
+// Auth
+import { db } from '../../base'
+import { AuthContext } from '../../components/Auth/Auth';
+
 // import { Route, Redirect } from "react-router-dom";
 // import { AuthContext } from "../../components/Auth/Auth";
 import { Form,Alert } from 'react-bootstrap';
@@ -23,6 +27,9 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 
 class CreateAdForm extends PureComponent{
+    static contextType = AuthContext;
+   
+
     state = {
     //     ads: {},
         activeStep: 0,
@@ -418,6 +425,7 @@ class CreateAdForm extends PureComponent{
 
     goToAudience = (e, activeStep) => {
         e.preventDefault()
+        const { currentUser } = this.context;
         // console.log(e.target)
 
 
@@ -428,6 +436,19 @@ class CreateAdForm extends PureComponent{
                 showErrors: true
             })
         }else {
+            // let orderData = {
+            //     // ...this.props.state,
+            //     orderStatus: "Uncompleted"
+            // }
+            // // let orderData = {
+            // //     adInfo: this.props.adInfo,
+            // //     audience: this.props.audience,
+            // //     orderStatus: "Uncompleted"
+            // // }
+
+            // db.ref("users/" + currentUser.uid + "/orders/"+`/${this.props.adInfo.name}`).set(orderData)
+
+
             this.setState({
                 activeStep: nextStep,
                 showErrors: false
@@ -458,6 +479,8 @@ class CreateAdForm extends PureComponent{
     goToBudgetAndSchedule = (activeStep) => {
         const nextStep = activeStep + 1;
 
+        
+
         this.setState({
             activeStep: nextStep,
             showErrors: false
@@ -466,6 +489,20 @@ class CreateAdForm extends PureComponent{
 
     goToCheckout = (activeStep) => {
         const nextStep = activeStep + 1;
+
+        const { currentUser } = this.context;
+
+        let orderData = {
+            ...this.props.state,
+            orderStatus: "Uncompleted"
+        }
+        // let orderData = {
+        //     adInfo: this.props.adInfo,
+        //     audience: this.props.audience,
+        //     orderStatus: "Uncompleted"
+        // }
+
+        db.ref("users/" + currentUser.uid + "/orders/"+`/${this.props.adInfo.name}`).set(orderData)
 
         this.setState({
             activeStep: nextStep,
@@ -535,7 +572,10 @@ class CreateAdForm extends PureComponent{
 
 const mapStateToProps = state => {
     return{
-        adInfo: state.adInfo
+        adInfo: state.adInfo,
+        audience: state.audience,
+        state: {...state}
+
     }
 }
 
