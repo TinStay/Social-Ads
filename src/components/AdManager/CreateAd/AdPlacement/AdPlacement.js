@@ -278,6 +278,7 @@ const AdPlacement = (props) => {
         if(errors.devices != "" || errors.url != ""){
             setShowErrors(true)
         }else{
+            
             props.goToBudgetAndSchedule()
         }
 

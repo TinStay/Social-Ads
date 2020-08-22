@@ -1,14 +1,24 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect, useContext } from 'react';
 import { Form, Alert } from 'react-bootstrap';
 import { ButtonLabelSelect } from '../PlacementSelectForms'
 import CustomBoxes from './CustomBoxes';
 import AdViewFb from './AdViewFb';
+import axios from '../../../../../axios'
+
+// Firebase 
+import { db, storage } from '../../../../../base'
+import { AuthContext } from '../../../../Auth/Auth';
+
 //Redux
 import * as actionTypes from '../../../../../store/actions/actionTypes'
 import { connect } from "react-redux"
+import Axios from 'axios';
 
 
 const FacebookPlacements = (props) => {
+    // Auth context
+    const { currentUser } = useContext(AuthContext);
+    const [userData, setUserData] = useState(null)
 
     const runOnPlatforms = [...props.adInfo.runOn]
 
@@ -23,6 +33,8 @@ const FacebookPlacements = (props) => {
 
     // Ad view state
     const [pictureOrVideo, setPictureOrVideo] = useState(null)
+    const [pictureOrVideoUrl, setPictureOrVideoUrl] = useState(null)
+
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
 
@@ -100,22 +112,62 @@ const FacebookPlacements = (props) => {
             })
         }
 
+        axios.get(`/users/${currentUser.uid}.json`)
+        .then(response => {
+            setUserData(response.data)
+        }).catch(err => console.log(err))
 
 
     }, [props.adInfo.facebookAd.adDetails])
 
-    
-
     const pictureChangeHandler = (event) => {
+
         const file = event.target.files[0]
         // console.log(event.target.files[0])
 
 
         // Save url of picture to state
         let pictureOrVideoUrl = URL.createObjectURL(event.target.files[0])
-        setPictureOrVideo(pictureOrVideoUrl)
 
+        // Set state
+        setPictureOrVideo(file)
+
+        // Set pictureorVideoUrl in firebase realtime db
+        // db.ref("users/" + currentUser.uid + "/orders/"+`/${props.adInfo.name}/adInfo/facebookAd/adDetails/0/value`).set(pictureOrVideoUrl)
+
+        const userName = userData.firstName + userData.lastName
+        const campaignName = props.adInfo.name
+        const fileName = file.name
+
+        const uploadTask = storage.ref(`${userName}/${campaignName}/${fileName}`).put(file);
+        
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+              // progress function ...
+            //   const progress = Math.round(
+            //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            //   );
+            //   this.setState({ progress });
+            },
+            error => {
+              // Error function ...
+              console.log(error);
+            },
+            () => {
+              // complete function ...
+              storage
+                .ref(userName)
+                .child(`${campaignName}/${fileName}`)
+                .getDownloadURL()
+                .then(url => {
+                  setPictureOrVideoUrl(url);
+                });
+            }
+          );
     }
+
+    console.log("pictureOrVideo", pictureOrVideo, "pictureOrVideoUrl", pictureOrVideoUrl)
 
     // const uploadPictureHandler = () => {
     //     // Validation
@@ -351,7 +403,7 @@ const FacebookPlacements = (props) => {
                             <AdViewFb 
                             runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.facebookAd.adDetails}
-                            pictureOrVideo={pictureOrVideo}
+                            pictureOrVideo={pictureOrVideoUrl}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
                             url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}

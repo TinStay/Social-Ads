@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth';
 import 'firebase/database';
+import "firebase/storage";
 
 
 const app = firebase.initializeApp({
@@ -19,6 +20,8 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const db = firebase.database();
 // console.log("db",db)
+
+export const storage = firebase.storage()
 
 export const doSignInWithFacebook = () =>
     app.auth().signInWithPopup(facebookProvider)
