@@ -1,5 +1,5 @@
 import React,{ useState, useEffect, useContext } from 'react';
-import { Form, Alert } from 'react-bootstrap';
+import { Form, Alert, ProgressBar } from 'react-bootstrap';
 import { ButtonLabelSelect } from '../PlacementSelectForms'
 import CustomBoxes from './CustomBoxes';
 import AdViewFb from './AdViewFb';
@@ -34,6 +34,8 @@ const FacebookPlacements = (props) => {
     // Ad view state
     const [pictureOrVideo, setPictureOrVideo] = useState(null)
     const [pictureOrVideoUrl, setPictureOrVideoUrl] = useState(null)
+    const [imageUploadProgress, setImageUploadProgress] = useState(0)
+    const [isUploading, setIsUploading] = useState(false)
 
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
@@ -127,7 +129,7 @@ const FacebookPlacements = (props) => {
 
 
         // Save url of picture to state
-        let pictureOrVideoUrl = URL.createObjectURL(event.target.files[0])
+        // let pictureOrVideoUrl = URL.createObjectURL(event.target.files[0])
 
         // Set state
         setPictureOrVideo(file)
@@ -144,17 +146,21 @@ const FacebookPlacements = (props) => {
         uploadTask.on(
             "state_changed",
             snapshot => {
+                setIsUploading(true)
+
               // progress function ...
-            //   const progress = Math.round(
-            //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            //   );
-            //   this.setState({ progress });
+              const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+
+              setImageUploadProgress(progress)
             },
             error => {
               // Error function ...
               console.log(error);
             },
             () => {
+                setIsUploading(false)
               // complete function ...
               storage
                 .ref(userName)
@@ -162,6 +168,7 @@ const FacebookPlacements = (props) => {
                 .getDownloadURL()
                 .then(url => {
                   setPictureOrVideoUrl(url);
+                  props.savePictureOrVideo(url)     
                 });
             }
           );
@@ -203,8 +210,8 @@ const FacebookPlacements = (props) => {
         // }
 
         if(automaticPlacements){
-            // Custom placements is false so i goes from 2 to 4
-            for(let i = 2; i <= 4; i++){
+            // Only headline, description and button label will be saved to adDetails
+            for(let i = 3; i <= 4; i++){
                 
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
                 
@@ -240,7 +247,7 @@ const FacebookPlacements = (props) => {
             }
 
             // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
-            for(let i = 7; i <= 9; i++){
+            for(let i = 8; i <= 9; i++){
                 fbAdDetails.push({field: e.target[i].name, value: e.target[i].value})
 
                 const fieldName = e.target[i].name
@@ -356,6 +363,7 @@ const FacebookPlacements = (props) => {
                         <h3 className="col-md-12 pb-2  fb-ad-form-label border-bottom font-color">Ad appearance</h3>
                         <div className="col-md-6">
                             <Form.Group>
+
                                 <div className="fb-ad-form-field row">
                                     <input 
                                     name="pictureOrVideo"
@@ -364,14 +372,17 @@ const FacebookPlacements = (props) => {
                                     onChange={pictureChangeHandler} 
                                     ref={input => {fileInput = input}}/>
 
+                                    {isUploading ?  
+                                        <div class="progress-bar col-12">
+                                            <ProgressBar animated now={imageUploadProgress} label={`${imageUploadProgress}%`}/>
+                                        </div> 
+                                    : null}
+                                   
+
                                     <div onClick={() => fileInput.click()} className="media-box col text-center">
                                         <p className="">Select a picture</p>
                                         <i class="fas fa-images"></i>
                                     </div>
-                                    
-                                    {/* <button onClick={() => props.savePictureOrVideo(picture)}>Upload</button> */}
-                                
-                                
                                 
                                 </div>
                                 
