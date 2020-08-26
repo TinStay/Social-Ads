@@ -40,12 +40,6 @@ const FacebookPlacements = (props) => {
     const [headline, setHeadline] = useState("")
     const [description, setDescription] = useState("")
 
-    // Form update
-    // Production
-    // const [isFbFormSaved, setIsFbFormSaved] = useState(false)
-    // Development
-    // const [isFbFormSaved, setIsFbFormSaved] = useState(true)
-
     // Errors
     // const [showErrors, setShowErrors] = useState(false)
     // Production
@@ -372,15 +366,12 @@ const FacebookPlacements = (props) => {
                                     onChange={pictureChangeHandler} 
                                     ref={input => {fileInput = input}}/>
 
-                                    {isUploading ?  
-                                        <div class="progress-bar col-12">
-                                            <ProgressBar animated now={imageUploadProgress} label={`${imageUploadProgress}%`}/>
-                                        </div> 
-                                    : null}
-                                   
-
                                     <div onClick={() => fileInput.click()} className="media-box col text-center">
-                                        <p className="">Select a picture</p>
+                                        {isUploading ?  
+                                            <div class="progress-bar col-12">
+                                                <ProgressBar animated now={imageUploadProgress} label={`${imageUploadProgress}%`}/>
+                                            </div> 
+                                        : <p className="">Select a picture</p>}
                                         <i class="fas fa-images"></i>
                                     </div>
                                 

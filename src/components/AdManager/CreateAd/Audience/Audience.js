@@ -1,14 +1,21 @@
 import React,{ useState, useEffect } from 'react';
+
 import { 
     AgeFromSelect, 
     AgeToSelect, 
     GenderSelect, 
     LocationSelect,
-    InterestsSelect,} from './SelectForms';
+    InterestsSelect,
+} from './SelectForms';
+
+// import SelectPlaces from 'react-select-places';
 import { connect } from 'react-redux';
 
 
 function Audience(props){
+    const onLocationChange = (location) => {
+        console.log(location)
+    }
 
     return(
         <div className="add-form-group">
@@ -20,7 +27,9 @@ function Audience(props){
                         {props.locationAlert}
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
-                        <LocationSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/>
+                        {/* <PlacesSelect /> */}
+                        {/* <SelectPlaces multi onChange={(location) => onLocationChange(location)} value={["France", "Australia"]} /> */}
+                        {/* <LocationSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/> */}
                     </div>
                 </div>
                 

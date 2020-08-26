@@ -1,10 +1,20 @@
 import React,{ useState} from 'react';
+// import ReactSelectGooglePlaces from "react-select-google-places";
+import PropTypes from 'prop-types'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { countriesData, interestsData } from '../../selectFormsData';
 
     // AgeFrom
+// export const PlacesSelect = (props) => {
+
+
+//     return(
+//         // <ReactSelectGooglePlaces onChange={() => {}}>Example</ReactSelectGooglePlaces>
+//     )
+// }
+
 export const AgeFromSelect = (props) => {
 
     const customStyles = {
