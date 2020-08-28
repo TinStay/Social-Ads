@@ -6,7 +6,6 @@ import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { countriesData, interestsData } from '../../selectFormsData';
 
-    // AgeFrom
 // export const PlacesSelect = (props) => {
 
 

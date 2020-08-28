@@ -8,14 +8,37 @@ import {
     InterestsSelect,
 } from './SelectForms';
 
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng
+  } from "react-places-autocomplete";
+
 // import SelectPlaces from 'react-select-places';
 import { connect } from 'react-redux';
 
 
 function Audience(props){
-    const onLocationChange = (location) => {
-        console.log(location)
+     
+    const [location, setLocation] = useState("")
+    const [locationList, setLocationList] = useState([])
+    
+    const onLocationSelect =  async (location) => {
+        // Create new location entry
+        let newLocation = { name: location, id:Date.now()}
+
+        // Copy location list from state
+        let newLocationList = [...locationList]
+
+        // Push new location to list
+        newLocationList.push(newLocation)
+
+        // Update location list state
+        setLocationList(newLocationList)
+
+        
     }
+
+    // console.log(locationList)
 
     return(
         <div className="add-form-group">
@@ -27,9 +50,41 @@ function Audience(props){
                         {props.locationAlert}
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
-                        {/* <PlacesSelect /> */}
-                        {/* <SelectPlaces multi onChange={(location) => onLocationChange(location)} value={["France", "Australia"]} /> */}
-                        {/* <LocationSelect saveOptionForm={(options, form) => props.saveOptionForm(options, form)}/> */}
+                        <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                <div>
+                                    <input {...getInputProps({ placeholder: "Select a location"})}/>
+                                    <div>
+                                        {loading ? <div>...Loading</div> : null}
+
+                                        {suggestions.map(suggestion=>{  
+
+                                            const style = {
+                                                backgroundColor: suggestion.active ? "#5e60ce" : "#edf6f9" 
+                                            }
+
+                                            return (
+                                                <div {...getSuggestionItemProps(suggestion, {style})}>
+                                                    {suggestion.description}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+                        </PlacesAutocomplete>
+                        
+
+                    </div>
+                    <div class="col-md-3">
+                           {locationList !== [] ? locationList.map(location => {
+
+                               return(
+                                   <div class="locationBox">
+                                       {location.name}
+                                   </div>
+                               )
+                           }) : null}
                     </div>
                 </div>
                 

@@ -345,7 +345,7 @@ const AdPlacement = (props) => {
                         {urlAlert}
                     </div>
                 </div>
-                <div className="add-form-row">
+                <div className="add-form-row">  
                     {(showFbPlacements || showInstaPlacements) ? 
                         <FacebookPlacements 
                         // saveFbPlacements={(e) => saveFbPlacements(e)}

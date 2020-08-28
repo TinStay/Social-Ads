@@ -371,7 +371,7 @@ const FacebookPlacements = (props) => {
                                             <div class="progress-bar col-12">
                                                 <ProgressBar animated now={imageUploadProgress} label={`${imageUploadProgress}%`}/>
                                             </div> 
-                                        : <p className="">Select a picture</p>}
+                                        : <p className="">Select a picture</p>} 
                                         <i class="fas fa-images"></i>
                                     </div>
                                 
