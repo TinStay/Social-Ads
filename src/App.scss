@@ -862,6 +862,52 @@ html{
                     font-weight: 500;
                 }
 
+                
+
+                &-location-container{
+                    // width: 80%;
+                    margin-top: 20px;  
+                    margin-bottom: 1000px;  
+                    // border: 1px solid black;  
+    
+                }
+
+                &-location{
+                    // width: 80%;
+                    // margin: 5px 10px;
+    
+                    .dropdown{
+                        position: absolute;
+                        height: 70px;
+                        z-index: 10
+    
+                        // display: inline-block;
+                    }
+
+                    @media screen and (min-width: 1199px){
+                        width: 60%;
+                    }
+                }
+
+                &-location-list{
+                    // width: 80%;
+                    .title{
+                        font-size: 1.2rem;
+                    }
+
+                    .location-box{
+                        margin: 5px;
+                        padding: 6px;
+                        border: 1px solid #5e60ce;
+                        border-radius: 10px;
+                        // width: 60%;
+                    }
+
+                    @media screen and (min-width: 1199px){
+                        width: 60%;
+                    }
+                }
+
                 &-select{
                     margin: 5px 10px;
                     
@@ -901,13 +947,7 @@ html{
                     }
                 }
 
-                &-countries{
-                    // width: 80%;
-
-                    @media screen and (min-width: 1199px){
-                        width: 60%;
-                    }
-                }
+                
             }
 
             .placement-form{

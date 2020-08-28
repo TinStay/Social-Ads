@@ -38,35 +38,43 @@ function Audience(props){
         
     }
 
-    // console.log(locationList)
 
     return(
         <div className="add-form-group">
             <h3 className="border-bottom add-form-label">Choose your audience</h3>
             <form className="audience-form">
 
-                <div className="row">
-                    <div className="audience-form-countries col-md-7">
+                <div className="row audience-form-location-container ">
+                    <div className="audience-form-location col-md-5">
                         {props.locationAlert}
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Countries: </label>
                         <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
-                                    <input {...getInputProps({ placeholder: "Select a location"})}/>
-                                    <div>
+                                    {/* <input className="location-input" {...getInputProps({ placeholder: "Select a location"})}/> */}
+                                    <input {...getInputProps({ placeholder: "Select a location"})} className="form-control form-control-lg m-0" type="text"  />
+
+                                    <div className="dropdown" >
                                         {loading ? <div>...Loading</div> : null}
 
                                         {suggestions.map(suggestion=>{  
 
                                             const style = {
-                                                backgroundColor: suggestion.active ? "#5e60ce" : "#edf6f9" 
+                                                backgroundColor: suggestion.active ? "#deebff" : "#fafaff",
+                                                padding: '5px',
+                                                width: "100%",
+                                                border: "1px solid #dfdfdf",
+                                                display: suggestions ? "block" : "none",
+                                                // position: "absolute",
+                                                wordWrap: "break-word",
                                             }
 
                                             return (
                                                 <div {...getSuggestionItemProps(suggestion, {style})}>
                                                     {suggestion.description}
                                                 </div>
+                                                
                                             )
                                         })}
                                     </div>
@@ -74,14 +82,18 @@ function Audience(props){
                             )}
                         </PlacesAutocomplete>
                         
-
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-7 row audience-form-location-list  mb-0">
+                        <div class="col-12">
+                            <h1 className="title m-3">People located at these locations will see your ads.</h1>
+                        </div>
                            {locationList !== [] ? locationList.map(location => {
 
                                return(
-                                   <div class="locationBox">
-                                       {location.name}
+                                   <div class="col-6 p-0">
+                                       <div class="location-box">
+                                            {location.name}
+                                       </div>
                                    </div>
                                )
                            }) : null}

@@ -6,13 +6,6 @@ import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { countriesData, interestsData } from '../../selectFormsData';
 
-// export const PlacesSelect = (props) => {
-
-
-//     return(
-//         // <ReactSelectGooglePlaces onChange={() => {}}>Example</ReactSelectGooglePlaces>
-//     )
-// }
 
 export const AgeFromSelect = (props) => {
 
