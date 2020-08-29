@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react';
+import * as actionTypes from "../../../../store/actions/actionTypes"
 import removeIcon from '../../../../assets/removeIcon2.png'
 
 import { 
@@ -22,6 +23,13 @@ function Audience(props){
      
     const [location, setLocation] = useState("")
     const [locationList, setLocationList] = useState([])
+
+    // Load locationList if already saved in redux state
+    useEffect(() => {
+        if(props.audience.location !== null){
+            setLocationList(props.audience.location)
+        }
+    }, [])
     
     const onLocationSelect =  async (location) => {
         // Create new location entry
@@ -36,6 +44,11 @@ function Audience(props){
         // Update location list state
         setLocationList(newLocationList)
 
+        // Update redux state
+        // props.saveLocation(newLocationList)
+
+        // Update error message
+        props.updateLocationErrorMessage(newLocationList)
         
     }
 
@@ -51,6 +64,11 @@ function Audience(props){
         // Update state
         setLocationList(newLocationList)
 
+        // Update redux state
+        // props.saveLocation(newLocationList)
+
+        // Update error message
+        props.updateLocationErrorMessage(newLocationList)
     }
 
 
@@ -61,14 +79,17 @@ function Audience(props){
 
                 <div className="row audience-form-location-container ">
                     <div className="audience-form-location col-md-12">
-                        {props.locationAlert}
+                        
                         <i class="fas fa-globe-europe"></i>
                         <label  for="gender">Locations targeted by your ads: </label>
                         <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
-                                    {/* <input className="location-input" {...getInputProps({ placeholder: "Select a location"})}/> */}
-                                    <input {...getInputProps({ placeholder: "Select a location"})} className="form-control form-control-lg m-0" type="text"  />
+                                    <div class="col-md-6">
+                                        {props.locationAlert}
+                                    </div>
+                                    <input {...getInputProps({ placeholder: "Select a location"})} className="col-md-6 form-control form-control-lg m-0" type="text"  />
+                                    
 
                                     <div className="dropdown" >
                                         {loading ? <div>...Loading</div> : null}
@@ -98,11 +119,11 @@ function Audience(props){
                         </PlacesAutocomplete>
                         
                     </div>
-                    <div class="col-md-12 row audience-form-location-list  mb-0">
+                    <div class="col-md-12 row audience-form-location-list mb-0">
                         <div class="col-12">
-                            <h1 className="title m-3">People located at these locations will see your ads.</h1>
+                            <h1 className="title my-4">Selected locations:</h1>
                         </div>
-                           <div class="row row-cols-3 mx-3 w-100">
+                           <div class="row row-cols-3 mx-3 w-100 mb-0">
                                 {locationList !== [] ? locationList.map((location, index) => {
 
                                 return(
@@ -162,6 +183,12 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return{
+        saveLocation: (locationList) => dispatch({type: actionTypes.SAVE_LOCATION, locationList: locationList}),
+    }
+}
 
 
-export default connect(mapStateToProps)(Audience);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Audience);

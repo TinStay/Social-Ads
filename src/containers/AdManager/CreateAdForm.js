@@ -33,27 +33,6 @@ class CreateAdForm extends PureComponent{
     state = {
     //     ads: {},
         activeStep: 0,
-    //     order: {
-    //         adInfo: {
-    //             name: '',
-    //             marketingGoal: '',
-    //             runOn: [],
-    //             facebookAd:{
-    //                 placements: {
-    //                     automatic: true,
-    //                     custom: []
-    //                 },
-    //                 adDetails: null
-    //             }
-    //         },
-    //         audience: {
-    //             gender: "All",
-    //             ageFrom: null,
-    //             ageTo: null,
-    //             interests: []
-    //         },
-    //         payment: {},
-    //     },
     //     // No validation during development
         errors: {
             name: "",
@@ -69,20 +48,20 @@ class CreateAdForm extends PureComponent{
             description: "",
         },
 
-    //     // errors: {
-    //     //     name: "Name should be at least 2 symbols.",
-    //     //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
-    //     //     marketingGoal: "You have to select a marketing goal for your campaign.",
-    //     //     location: "You have to select at least 1 area of targeting",
-    //     //     ageFrom: "You have to select an age",
-    //     //     ageTo: "You have to select an age",
-    //     //     devices: "You must select at least 1 type of devices",
-    //     //     primaryText: "You have to fill this field",
-    //     //     headline: "You have to fill this field",
-    //     //     description: "You have to fill this field",
-    //     //     url: "You have to fill this field"
+        // errors: {
+        //     name: "Name should be at least 2 symbols.",
+        //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
+        //     marketingGoal: "You have to select a marketing goal for your campaign.",
+        //     location: "You have to select at least 1 location of targeting",
+        //     ageFrom: "You have to select an age",
+        //     ageTo: "You have to select an age",
+        //     devices: "You must select at least 1 type of devices",
+        //     primaryText: "You have to fill this field",
+        //     headline: "You have to fill this field",
+        //     description: "You have to fill this field",
+        //     url: "You have to fill this field"
             
-    //     // },
+        // },
         showErrors: false
     }
 
@@ -195,65 +174,30 @@ class CreateAdForm extends PureComponent{
     }
 
     updateGender = gender => {
-        // this.setState({
-        //     ...this.state,
-        //     order: {
-        //         ...this.state.order,
-        //         audience:{
-        //             ...this.state.order.audience,
-        //             gender: gender.value
-        //         }
-        //     }
-        // })
         this.props.saveGender(gender)
     }
 
-    saveOptionForm = (optionsData, form) =>{
-        let options = [];
+    updateLocationErrorMessage = (locationList) =>{
 
-        if(form.name === "location"){
-            // Handle validation
-            if(optionsData != null){
-                options = optionsData.map( option => {
-                    return option.value
-                })
-
-                this.setState({
-                    errors: {
-                        ...this.state.errors,
-                        location: ""
-                    }
-                })
-
-                // Save location to redux state
-                this.props.saveLocation(options)
-
-            }else{
-                this.setState({
-                    errors: {
-                        ...this.state.errors,
-                        location: "You have to select at least 1 area of targeting."
-                    }
-                })
-
-                // Save location to redux state
-                this.props.saveLocation(options)
+    if(locationList !== []){
+        this.setState({
+            errors: {
+                ...this.state.errors,
+                location: ""
             }
-        }else{
-            // Interests field
-            if(optionsData != null){
-                // console.log("optionsData", optionsData, "form", form)
-
-                options = optionsData.map( option => {
-                    return option.value
-                })
+        })
+    }else{
+        this.setState({
+            errors: {
+                ...this.state.errors,
+                location: "You have to select at least 1 location of targeting"
             }
-
-            // Save location to redux state
-            this.props.saveInterests(options)
-        }
+        })
+    }
         
-
+    // Save location to redux state
+    this.props.saveLocation(locationList)
+            
     }
 
     // Stepper
@@ -270,17 +214,17 @@ class CreateAdForm extends PureComponent{
 
         // Alerts
         const nameAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert-danger" variant='danger'>
                 {this.state.errors.name}
             </Alert>
         )
         const socialPlatformsAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert-danger" variant='danger'>
                 {this.state.errors.socialPlatforms}
             </Alert>
         )
         const marketingGoalAlert = (
-            <Alert variant='danger'>
+            <Alert className="alert-danger" variant='danger'>
                 {this.state.errors.marketingGoal}
             </Alert>
         )
@@ -288,7 +232,7 @@ class CreateAdForm extends PureComponent{
         let locationAlert = null
         if(this.state.errors.location != "" && this.state.showErrors){
             locationAlert = (
-                <Alert variant='danger'>
+                <Alert className="alert-danger" variant='danger'>
                     {this.state.errors.location}
                 </Alert>
             )
@@ -297,7 +241,7 @@ class CreateAdForm extends PureComponent{
         let ageFromAlert = null
         if(this.state.errors.ageFrom != "" && this.state.showErrors){
             ageFromAlert = (
-                <Alert variant='danger'>
+                <Alert className="alert-danger" variant='danger'>
                     {this.state.errors.ageFrom}
                 </Alert>
             )
@@ -306,7 +250,7 @@ class CreateAdForm extends PureComponent{
         let ageToAlert = null
         if(this.state.errors.ageTo != "" && this.state.showErrors){
             ageToAlert = (
-                <Alert variant='danger'>
+                <Alert className="alert-danger" variant='danger'>
                     {this.state.errors.ageTo}
                 </Alert>
             )
@@ -351,10 +295,11 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <Audience 
+                    // Update error message
+                    updateLocationErrorMessage = {(locationList) => this.updateLocationErrorMessage(locationList)}
                     updateAgeFrom = {(option) => this.updateAgeFrom(option)}
                     updateAgeTo = {(option) => this.updateAgeTo(option)}
                     updateGender = {(gender => this.updateGender(gender))}
-                    saveOptionForm = {(options, form) => this.saveOptionForm(options, form)}
                     saveInterests={(interests) => this.props.saveInterests(interests)}
                     locationAlert={locationAlert}
                     ageFromAlert={ageFromAlert}

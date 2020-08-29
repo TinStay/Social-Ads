@@ -57,7 +57,7 @@ const updateMarketingGoal = (state, action) => {
 
 const updateLocation = (state, action) => {
     return updateAudienceInfo(state, {
-        location: action.options
+        location: action.locationList
     })
 }
 
