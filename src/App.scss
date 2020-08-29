@@ -897,10 +897,21 @@ html{
 
                     .location-box{
                         margin: 5px;
-                        padding: 6px;
-                        border: 1px solid #5e60ce;
-                        border-radius: 10px;
+                        padding: 7px 6px;
+                        border: 1.3px solid #5e60ce;
+                        background-color: #deebff;
+                        border-radius: 7px;
                         // width: 60%;
+
+                        
+                    }
+                    .remove-btn{
+                        // background-color: #f94144;
+                        
+                        padding: 1px;
+                        width: 32px;
+                        height: 32px;
+
                     }
 
                     @media screen and (min-width: 1199px){

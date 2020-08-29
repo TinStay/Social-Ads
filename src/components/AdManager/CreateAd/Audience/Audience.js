@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react';
+import removeIcon from '../../../../assets/removeIcon2.png'
 
 import { 
     AgeFromSelect, 
@@ -38,6 +39,20 @@ function Audience(props){
         
     }
 
+    const removeLocation = (e, index) => {
+        e.preventDefault()
+
+        // Copy the location list from state
+        let newLocationList = [...locationList]
+
+        // Remove the location with index
+        newLocationList.splice(index, 1)
+
+        // Update state
+        setLocationList(newLocationList)
+
+    }
+
 
     return(
         <div className="add-form-group">
@@ -45,10 +60,10 @@ function Audience(props){
             <form className="audience-form">
 
                 <div className="row audience-form-location-container ">
-                    <div className="audience-form-location col-md-5">
+                    <div className="audience-form-location col-md-12">
                         {props.locationAlert}
                         <i class="fas fa-globe-europe"></i>
-                        <label  for="gender">Countries: </label>
+                        <label  for="gender">Locations targeted by your ads: </label>
                         <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
@@ -83,20 +98,25 @@ function Audience(props){
                         </PlacesAutocomplete>
                         
                     </div>
-                    <div class="col-md-7 row audience-form-location-list  mb-0">
+                    <div class="col-md-12 row audience-form-location-list  mb-0">
                         <div class="col-12">
                             <h1 className="title m-3">People located at these locations will see your ads.</h1>
                         </div>
-                           {locationList !== [] ? locationList.map(location => {
+                           <div class="row row-cols-3 mx-3 w-100">
+                                {locationList !== [] ? locationList.map((location, index) => {
 
-                               return(
-                                   <div class="col-6 p-0">
-                                       <div class="location-box">
+                                return(
+                                    <div class="col-md-4 p-0">
+                                        <div class="location-box d-flex justify-content-between">
                                             {location.name}
-                                       </div>
-                                   </div>
-                               )
-                           }) : null}
+                                            {/* <button className="remove-btn btn " onClick={(e) => removeLocation(e, index)}>X</button> */}
+                                            <img src={removeIcon} className="remove-btn btn " onClick={(e) => removeLocation(e, index)} />
+                                            {/* <span className="remove-btn btn " onClick={(e) => removeLocation(e, index)} >&#x2613;</span> */}
+                                        </div>
+                                    </div>
+                                )
+                                }) : null}
+                           </div>
                     </div>
                 </div>
                 
