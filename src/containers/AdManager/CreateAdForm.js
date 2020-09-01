@@ -196,7 +196,7 @@ class CreateAdForm extends PureComponent{
     }
         
     // Save location to redux state
-    this.props.saveLocation(locationList)
+    // this.props.saveLocation(locationList)
             
     }
 
@@ -327,7 +327,7 @@ class CreateAdForm extends PureComponent{
                     <AdPlacement 
                         // websiteUrl="tinstay.com"
                         saveDevices={(options) => this.saveDevices(options)}
-                        saveFbPlacements={(e) => this.saveFbPlacements(e)}
+                        // saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
                         goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                         handleBack={() => this.handleBack(activeStep)}
@@ -472,7 +472,6 @@ class CreateAdForm extends PureComponent{
 
 
   render(){
-    console.log("order", this.state.order)
 
     // Stepper 
     // const classes = styleStepper();
@@ -529,7 +528,7 @@ const mapDispatchToProps = dispatch => {
         setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
         saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
         saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
-        saveLocation : (options) => dispatch({type: actionTypes.SAVE_LOCATION, options: options}),
+
         saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
         saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
         saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),

@@ -27,9 +27,11 @@ function Audience(props){
     // Load locationList if already saved in redux state
     useEffect(() => {
         if(props.audience.location !== null){
-            setLocationList(props.audience.location)
+            setLocationList(props.audience.location)    
         }
     }, [])
+
+    console.log(props.audience.location)
     
     const onLocationSelect =  async (location) => {
         // Create new location entry
@@ -45,7 +47,10 @@ function Audience(props){
         setLocationList(newLocationList)
 
         // Update redux state
-        // props.saveLocation(newLocationList)
+        props.saveLocation(newLocationList) 
+
+        // Clear input
+        setLocation("")
 
         // Update error message
         props.updateLocationErrorMessage(newLocationList)
@@ -65,11 +70,13 @@ function Audience(props){
         setLocationList(newLocationList)
 
         // Update redux state
-        // props.saveLocation(newLocationList)
+        props.saveLocation(newLocationList)
 
         // Update error message
         props.updateLocationErrorMessage(newLocationList)
     }
+
+    console.log(locationList)
 
 
     return(
@@ -124,7 +131,7 @@ function Audience(props){
                             <h1 className="title my-4">Selected locations:</h1>
                         </div>
                            <div class="row row-cols-3 mx-3 w-100 mb-0">
-                                {locationList !== [] ? locationList.map((location, index) => {
+                                {locationList.length !== 0 ? locationList.map((location, index) => {
 
                                 return(
                                     <div class="col-md-4 p-0">
@@ -136,7 +143,7 @@ function Audience(props){
                                         </div>
                                     </div>
                                 )
-                                }) : null}
+                                }) : <p>You haven't selected a location.</p> }
                            </div>
                     </div>
                 </div>
