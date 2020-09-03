@@ -618,6 +618,30 @@ html{
             width: 86%;
         }
 
+        .btn-cancel{
+            margin: 10px 10px;
+            font-size: 1.4rem;
+            color: #a53860;
+            border-radius: 0;
+            border-bottom: 2px solid #a53860;
+            &:hover{
+                background-color: #a53860;
+                color: $white;
+            }
+        }
+
+        .btn-next{
+            margin: 10px 10px;
+            font-size: 1.5rem;
+            padding: 7px 25px;
+            background-color: $font-color;
+            color: $white;
+            &:hover{
+                background-color: #614fa3;
+                // color: $white;
+            }
+        }
+
         .alert-danger{
             font-size: 1.1rem;
             margin: 15px 5px;
@@ -724,31 +748,10 @@ html{
                 .ad-step-label{
                     font-size: 1.1rem;
                 }
+                
             }
 
-            .btn-cancel{
-                margin: 10px 10px;
-                font-size: 1.4rem;
-                color: #a53860;
-                border-radius: 0;
-                border-bottom: 2px solid #a53860;
-                &:hover{
-                    background-color: #a53860;
-                    color: $white;
-                }
-            }
-
-            .btn-next{
-                margin: 10px 10px;
-                font-size: 1.5rem;
-                padding: 7px 25px;
-                background-color: $font-color;
-                color: $white;
-                &:hover{
-                    background-color: #614fa3;
-                    // color: $white;
-                }
-            }
+            
 
             
            

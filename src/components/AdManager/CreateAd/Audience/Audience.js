@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import * as actionTypes from "../../../../store/actions/actionTypes"
 import removeIcon from '../../../../assets/removeIcon2.png'
+import {Alert, Button} from 'react-bootstrap'
 
 import { 
     AgeFromSelect, 
@@ -41,7 +42,8 @@ function Audience(props){
         }
     }, [])
 
-    console.log(props.audience.location)
+    
+
     
     const onLocationSelect =  async (location) => {
         // Create new location entry
@@ -63,7 +65,15 @@ function Audience(props){
         setLocation("")
 
         // Update error message
-        props.updateLocationErrorMessage(newLocationList)
+        let newErrors = {...errors}
+
+        if(locationList !== []){
+            newErrors.location = ""
+        }else{
+            newErrors.location = "You have to select at least 1 location of targeting"
+        }
+
+        setErrors(newErrors)
         
     }
 
@@ -83,18 +93,65 @@ function Audience(props){
         props.saveLocation(newLocationList)
 
         // Update error message
-        props.updateLocationErrorMessage(newLocationList)
+        let newErrors = {...errors}
+
+        if(locationList !== []){
+            newErrors.location = ""
+        }else{
+            newErrors.location = "You have to select at least 1 location of targeting"
+        }
+
+        setErrors(newErrors)
     }
 
 
     const updateAgeFrom = option => {
-            setErrors({
-                    ...errors,
-                    ageFrom: ""
-            })
-    
-            props.saveAgeFrom(option.value)
+        let newErrors = {...errors}
+        newErrors.ageFrom = ""
+
+        setErrors(newErrors)
+
+        props.saveAgeFrom(option.value)
+    }
+
+    const updateAgeTo = option => {
+        let newErrors = {...errors}
+        newErrors.ageTo = ""
+
+        setErrors(newErrors)
+
+        props.saveAgeTo(option.value)
+    }
+
+    const goToAdPlacements = () => {
+        if(errors.location != "" || errors.ageFrom != "" || errors.ageTo != ""){
+            setShowErrors(true)
+        }else{
+            setShowErrors(false)
+            props.goToAdPlacements()
         }
+    }
+
+    // Alerts
+    let ageFromAlert = null
+    if(errors.ageFrom != "" && showErrors){
+        ageFromAlert = (
+            <Alert className="alert-danger" variant='danger'>
+                {errors.ageFrom}
+            </Alert>
+        )
+    }
+
+    let ageToAlert = null
+    if(errors.ageTo != "" && showErrors){
+        ageToAlert = (
+            <Alert className="alert-danger" variant='danger'>
+                {errors.ageTo}
+            </Alert>
+        )
+    }
+
+    
 
     return(
         <div className="add-form-group">
@@ -174,17 +231,17 @@ function Audience(props){
                         <label for="age">Age:</label>
                         <div className="d-md-flex">
                             <div>
-                                {props.ageFromAlert}
+                                {ageFromAlert}
                                 <div className="mr-4 d-md-flex">
                                     <p>From</p>
                                     <AgeFromSelect ageValue={props.audience.ageFrom} updateAgeFrom={(option) => updateAgeFrom(option)}/>
                                 </div>
                             </div>
                             <div>
-                                {props.ageToAlert}
+                                {ageToAlert}
                                 <div className="mr-4 d-md-flex">
                                     <p>To</p>
-                                    <AgeToSelect ageValue={props.audience.ageTo} updateAgeTo={(option) => props.updateAgeTo(option)}/>
+                                    <AgeToSelect ageValue={props.audience.ageTo} updateAgeTo={(option) => updateAgeTo(option)}/>
                                 </div>
                             </div>
                         </div>
@@ -197,6 +254,17 @@ function Audience(props){
                     </div>
                 </div>
             </form>
+            <div className="d-flex justify-content-end">
+                <button
+                    onClick={() => props.handleBack()}
+                    className="btn btn-cancel"
+                >
+                Back
+                </button>
+                <Button variant="contained" className="btn btn-next" onClick={() => goToAdPlacements()}>
+                    Continue
+                </Button>
+            </div>
         </div>
     );
 }

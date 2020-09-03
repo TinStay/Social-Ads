@@ -163,42 +163,42 @@ class CreateAdForm extends PureComponent{
     //     this.props.saveAgeFrom(option.value)
     // }
 
-    updateAgeTo = option => {
-        this.setState({
-            errors: {
-                ...this.state.errors,
-                ageTo: ""
-            }
-        })
-        this.props.saveAgeTo(option.value)
-    }
+    // updateAgeTo = option => {
+    //     this.setState({
+    //         errors: {
+    //             ...this.state.errors,
+    //             ageTo: ""
+    //         }
+    //     })
+    //     this.props.saveAgeTo(option.value)
+    // }
 
     // updateGender = gender => {
     //     this.props.saveGender(gender)
     // }
 
-    updateLocationErrorMessage = (locationList) =>{
+    // updateLocationErrorMessage = (locationList) =>{
 
-    if(locationList !== []){
-        this.setState({
-            errors: {
-                ...this.state.errors,
-                location: ""
-            }
-        })
-    }else{
-        this.setState({
-            errors: {
-                ...this.state.errors,
-                location: "You have to select at least 1 location of targeting"
-            }
-        })
-    }
+    // if(locationList !== []){
+    //     this.setState({
+    //         errors: {
+    //             ...this.state.errors,
+    //             location: ""
+    //         }
+    //     })
+    // }else{
+    //     this.setState({
+    //         errors: {
+    //             ...this.state.errors,
+    //             location: "You have to select at least 1 location of targeting"
+    //         }
+    //     })
+    // }
         
-    // Save location to redux state
-    // this.props.saveLocation(locationList)
+    // // Save location to redux state
+    // // this.props.saveLocation(locationList)
             
-    }
+    // }
 
     // Stepper
     getSteps() {
@@ -238,23 +238,23 @@ class CreateAdForm extends PureComponent{
             )
         }
 
-        let ageFromAlert = null
-        if(this.state.errors.ageFrom != "" && this.state.showErrors){
-            ageFromAlert = (
-                <Alert className="alert-danger" variant='danger'>
-                    {this.state.errors.ageFrom}
-                </Alert>
-            )
-        }
+        // let ageFromAlert = null
+        // if(this.state.errors.ageFrom != "" && this.state.showErrors){
+        //     ageFromAlert = (
+        //         <Alert className="alert-danger" variant='danger'>
+        //             {this.state.errors.ageFrom}
+        //         </Alert>
+        //     )
+        // }
 
-        let ageToAlert = null
-        if(this.state.errors.ageTo != "" && this.state.showErrors){
-            ageToAlert = (
-                <Alert className="alert-danger" variant='danger'>
-                    {this.state.errors.ageTo}
-                </Alert>
-            )
-        }
+        // let ageToAlert = null
+        // if(this.state.errors.ageTo != "" && this.state.showErrors){
+        //     ageToAlert = (
+        //         <Alert className="alert-danger" variant='danger'>
+        //             {this.state.errors.ageTo}
+        //         </Alert>
+        //     )
+        // }
 
 
         switch (stepIndex) {
@@ -277,13 +277,6 @@ class CreateAdForm extends PureComponent{
                     <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.props.adInfo.marketingGoal}/>
 
                     <div className="d-flex justify-content-end">
-                        <Button
-                            disabled={activeStep === 0}
-                            onClick={() =>this.handleBack(activeStep)}
-                            className="btn btn-cancel"
-                        >
-                        Back
-                        </Button>
                         <button type="submit"  className="btn btn-next" >
                             Continue
                         </button>
@@ -295,29 +288,9 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <Audience 
-                    // Update error message
-                    updateLocationErrorMessage = {(locationList) => this.updateLocationErrorMessage(locationList)}
-                    // updateAgeFrom = {(option) => this.updateAgeFrom(option)}
-                    // updateAgeTo = {(option) => this.updateAgeTo(option)}
-                    // updateGender = {(gender => this.updateGender(gender))}
-                    // saveInterests={(interests) => this.props.saveInterests(interests)}
-                    locationAlert={locationAlert}
-                    ageFromAlert={ageFromAlert}
-                    ageToAlert={ageToAlert}
+                    handleBack={() => this.handleBack(activeStep)}
+                    goToAdPlacements={() => this.goToAdPlacements(activeStep)}
                     />
-
-                    <div className="d-flex justify-content-end">
-                        <Button
-                            disabled={activeStep === 0}
-                            onClick={() =>this.handleBack(activeStep)}
-                            className="btn btn-cancel"
-                        >
-                        Back
-                        </Button>
-                        <Button variant="contained" className="btn btn-next" onClick={() => this.goToAdPlacements(activeStep)}>
-                            {activeStep === steps.length - 1 ? 'Go to checkout' : 'Next'}
-                        </Button>
-                    </div>
                 </div>
             );
             
@@ -325,17 +298,13 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <AdPlacement 
-                        saveDevices={(options) => this.saveDevices(options)}
-                        saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
                         goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                         handleBack={() => this.handleBack(activeStep)}
                         
                         //Error props
-                        showErrors={this.state.showErrors}
-                        primaryTextError={this.state.errors.primaryText}
-                        headlineError={this.state.errors.headline}
-                        descriptionError={this.state.errors.description}
-                        urlError={this.state.errors.url}
+                        // headlineError={this.state.errors.headline}
+                        // descriptionError={this.state.errors.description}
+                        // urlError={this.state.errors.url}
                     />
                     
                 </div>
@@ -380,18 +349,10 @@ class CreateAdForm extends PureComponent{
     goToAdPlacements = (activeStep) => {
         const nextStep = activeStep + 1;
 
-        // If there are any errors on this form step => showErrors = true
-        if(this.state.errors.location != "" ||  this.state.errors.ageFrom != "" ||  this.state.errors.ageTo != ""){
-            this.setState({
-                showErrors: true
-            })
-        }else {
-            this.setState({
-                activeStep: nextStep,
-                showErrors: false
-            });
-        }
- 
+        this.setState({
+            activeStep: nextStep,
+            showErrors: false
+        });
 
     };
 

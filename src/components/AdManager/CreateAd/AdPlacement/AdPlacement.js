@@ -253,14 +253,13 @@ const AdPlacement = (props) => {
             </form>
             <div className="d-flex justify-content-end">
                 <button
-                    // disabled={false}
                     onClick={() => props.handleBack()}
                     className="btn btn-cancel"
                 >
                 Back
                 </button>
                 <Button variant="contained" disabled={isNextDisabled} className="btn btn-next" onClick={() => goToBudgetAndSchedule()}>
-                    Next
+                    Continue
                 </Button>
             </div>
         </div>
