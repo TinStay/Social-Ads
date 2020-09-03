@@ -56,15 +56,8 @@ const FacebookPlacements = (props) => {
 
     // Development
     const [errors, setErrors] = useState({
-        url: "",
-        devices: "",
-        primaryText: "",
         headline: "",
         description: "",
-        headlineOneGgl: "",
-        headlineTwoGgl: "",
-        headlineThreeGgl: "",
-        descriptionGgl: ""
     })
 
     
@@ -390,7 +383,6 @@ const FacebookPlacements = (props) => {
                                 </div>
                                 <div className="fb-ad-form-field">
                                     <Form.Label className="fb-ad-form-field-label">Button label</Form.Label>
-                                    {/* {primaryTextAlert} */}
                                     <ButtonLabelSelect adDetails={props.facebookAd.adDetails} saveButtonLabel={(buttonLabel) => props.saveButtonLabel(buttonLabel)}/>
                                    
                                 </div>
@@ -437,7 +429,6 @@ const mapDispatchToProps = dispatch => {
         saveButtonLabel: (buttonLabel) => dispatch({type: actionTypes.SAVE_BUTTON_LABEL, buttonLabel: buttonLabel}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
-        // saveGoogleDetails: details => dispatch({type: actionTypes.SAVE_GOOGLE_DETAILS, details: details}),
     }
 }
 

@@ -38,9 +38,9 @@ class CreateAdForm extends PureComponent{
             name: "",
             socialPlatforms: "",
             marketingGoal: "",
-            location: "",
-            ageFrom: "",
-            ageTo: "",
+            // location: "",
+            // ageFrom: "",
+            // ageTo: "",
             devices: "",
             url: "",
             primaryText: "",
@@ -152,16 +152,16 @@ class CreateAdForm extends PureComponent{
 
     }
 
-    updateAgeFrom = option => {
-        this.setState({
-            errors: {
-                ...this.state.errors,
-                ageFrom: ""
-            }
-        })
+    // updateAgeFrom = option => {
+    //     this.setState({
+    //         errors: {
+    //             ...this.state.errors,
+    //             ageFrom: ""
+    //         }
+    //     })
 
-        this.props.saveAgeFrom(option.value)
-    }
+    //     this.props.saveAgeFrom(option.value)
+    // }
 
     updateAgeTo = option => {
         this.setState({
@@ -173,9 +173,9 @@ class CreateAdForm extends PureComponent{
         this.props.saveAgeTo(option.value)
     }
 
-    updateGender = gender => {
-        this.props.saveGender(gender)
-    }
+    // updateGender = gender => {
+    //     this.props.saveGender(gender)
+    // }
 
     updateLocationErrorMessage = (locationList) =>{
 
@@ -297,10 +297,10 @@ class CreateAdForm extends PureComponent{
                     <Audience 
                     // Update error message
                     updateLocationErrorMessage = {(locationList) => this.updateLocationErrorMessage(locationList)}
-                    updateAgeFrom = {(option) => this.updateAgeFrom(option)}
-                    updateAgeTo = {(option) => this.updateAgeTo(option)}
-                    updateGender = {(gender => this.updateGender(gender))}
-                    saveInterests={(interests) => this.props.saveInterests(interests)}
+                    // updateAgeFrom = {(option) => this.updateAgeFrom(option)}
+                    // updateAgeTo = {(option) => this.updateAgeTo(option)}
+                    // updateGender = {(gender => this.updateGender(gender))}
+                    // saveInterests={(interests) => this.props.saveInterests(interests)}
                     locationAlert={locationAlert}
                     ageFromAlert={ageFromAlert}
                     ageToAlert={ageToAlert}
@@ -325,17 +325,13 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <AdPlacement 
-                        // websiteUrl="tinstay.com"
                         saveDevices={(options) => this.saveDevices(options)}
-                        // saveFbPlacements={(e) => this.saveFbPlacements(e)}
                         saveGooglePlacements={(e, gglPlacements ) => this.saveGooglePlacements(e, gglPlacements)}
                         goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                         handleBack={() => this.handleBack(activeStep)}
                         
                         //Error props
                         showErrors={this.state.showErrors}
-                        // setUrlError={(message) => this.setUrlErrorMessage(message)}
-                        // setFacebookErrors={(errors, showErrors) => this.setFacebookErrors(errors, showErrors)}
                         primaryTextError={this.state.errors.primaryText}
                         headlineError={this.state.errors.headline}
                         descriptionError={this.state.errors.description}
@@ -359,15 +355,6 @@ class CreateAdForm extends PureComponent{
         }
       }
 
-    // handleNext = (activeStep) => {
-    //     const nextStep = activeStep + 1;
-
-    //     this.setState({
-    //         activeStep: nextStep
-    //     });
-
-    // };
-
     goToAudience = (e, activeStep) => {
         e.preventDefault()
         const { currentUser } = this.context;
@@ -381,19 +368,6 @@ class CreateAdForm extends PureComponent{
                 showErrors: true
             })
         }else {
-            // let orderData = {
-            //     // ...this.props.state,
-            //     orderStatus: "Uncompleted"
-            // }
-            // // let orderData = {
-            // //     adInfo: this.props.adInfo,
-            // //     audience: this.props.audience,
-            // //     orderStatus: "Uncompleted"
-            // // }
-
-            // db.ref("users/" + currentUser.uid + "/orders/"+`/${this.props.adInfo.name}`).set(orderData)
-
-
             this.setState({
                 activeStep: nextStep,
                 showErrors: false
@@ -529,14 +503,10 @@ const mapDispatchToProps = dispatch => {
         saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
         saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
 
-        saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
-        saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
-        saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
-        saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
-        
-        // saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
-        // saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),
-
+        // saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
+        // saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
+        // saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
+        // saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
         
     }
 }

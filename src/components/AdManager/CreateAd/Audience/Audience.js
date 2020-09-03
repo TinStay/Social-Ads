@@ -20,9 +20,19 @@ import { connect } from 'react-redux';
 
 
 function Audience(props){
+
      
     const [location, setLocation] = useState("")
     const [locationList, setLocationList] = useState([])
+
+    // Errors
+    const [errors, setErrors] = useState({
+        location: "",
+        ageFrom: "You have to fill this field.",
+        ageTo: "",
+    })
+
+    const [showErrors, setShowErrors] = useState(false)
 
     // Load locationList if already saved in redux state
     useEffect(() => {
@@ -76,8 +86,15 @@ function Audience(props){
         props.updateLocationErrorMessage(newLocationList)
     }
 
-    console.log(locationList)
 
+    const updateAgeFrom = option => {
+            setErrors({
+                    ...errors,
+                    ageFrom: ""
+            })
+    
+            props.saveAgeFrom(option.value)
+        }
 
     return(
         <div className="add-form-group">
@@ -151,7 +168,7 @@ function Audience(props){
                 <div className="row">
                     <div className="audience-form-gender col-md-2 ">
                         <label for="gender">Gender: </label>
-                        <GenderSelect updateGender={(gender) => props.updateGender(gender)}/>
+                        <GenderSelect updateGender={(gender) => props.saveGender(gender)}/>
                     </div>
                     <div className="audience-form-age col-md-8">
                         <label for="age">Age:</label>
@@ -160,7 +177,7 @@ function Audience(props){
                                 {props.ageFromAlert}
                                 <div className="mr-4 d-md-flex">
                                     <p>From</p>
-                                    <AgeFromSelect ageValue={props.audience.ageFrom} updateAgeFrom={(option) => props.updateAgeFrom(option)}/>
+                                    <AgeFromSelect ageValue={props.audience.ageFrom} updateAgeFrom={(option) => updateAgeFrom(option)}/>
                                 </div>
                             </div>
                             <div>
@@ -193,6 +210,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return{
         saveLocation: (locationList) => dispatch({type: actionTypes.SAVE_LOCATION, locationList: locationList}),
+        saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
+        saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
+        saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
+        saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
+
     }
 }
 
