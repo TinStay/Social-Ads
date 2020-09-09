@@ -13,17 +13,17 @@ const GeneralInfo = (props) => {
     const [showErrors, setShowErrors] = useState(false)
    
     // Development
-    const [errors, setErrors] = useState({
-        name: "",
-        socialPlatforms: "",
-        marketingGoal: "",
-    })
-    // Production
     // const [errors, setErrors] = useState({
-    //     name: "Name should be at least 2 symbols." ,
-    //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
-    //     marketingGoal: "You have to select a marketing goal for your campaign.",
+    //     name: "",
+    //     socialPlatforms: "",
+    //     marketingGoal: "",
     // })
+    // Production
+    const [errors, setErrors] = useState({
+        name: "Name should be at least 2 symbols." ,
+        socialPlatforms: "You have to select at least 1 social media platform to continue.",
+        marketingGoal: "You have to select a marketing goal for your campaign.",
+    })
 
     const changeAdInfo = (e) => {
         // Update Redux state
@@ -46,7 +46,7 @@ const GeneralInfo = (props) => {
     }
 
     // Social Media Platforms
-    changeSMPInfo = e => {
+    const changeSMPInfo = e => {
         // console.log(e.target.checked)
         const checked = e.target.checked
         const platforms = [...props.adInfo.runOn]
@@ -91,17 +91,31 @@ const GeneralInfo = (props) => {
         
     }
 
-    selectMarketingGoal = (goal) => {
+    const selectMarketingGoal = (goal) => {
+        // Copy errors state 
+        let newErrors = {...errors}
+
         if(goal != null){
-            setState({
-                errors: {
-                    ...state.errors,
-                    marketingGoal: ""
-                }
-            })
+           // Set errors
+           newErrors.marketingGoal = ""
+           setErrors(newErrors)
         }
 
         props.saveMarketingGoal(goal)
+
+    }
+
+    const goToAudience = (e) => {
+        e.preventDefault()
+
+        // Display errors if any
+        if(errors.name != "" ||  errors.socialPlatforms != "" ||  errors.marketingGoal != ""){
+            setShowErrors(true)
+        }else {
+            // Continue to next page
+            setShowErrors(false)
+            props.goToAudience()
+        }
 
     }
 
@@ -128,7 +142,7 @@ const GeneralInfo = (props) => {
 
     return(
         <div >
-            <form onSubmit={(e) => goToAudience(e, activeStep)}>
+            <form onSubmit={(e) => goToAudience(e)}>
                 <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                     <h3 className="add-form-label">Name your ad campaign</h3>
 
@@ -162,6 +176,7 @@ const mapDispatchToProps = dispatch => {
     return {
         setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
         saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
+        saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
 
     }
 }

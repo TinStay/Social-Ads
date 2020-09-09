@@ -33,11 +33,11 @@ class CreateAdForm extends PureComponent{
     //     ads: {},
         activeStep: 0,
     //     // No validation during development
-        errors: {
-            name: "",
-            socialPlatforms: "",
-            marketingGoal: "",
-        },
+        // errors: {
+        //     name: "",
+        //     socialPlatforms: "",
+        //     marketingGoal: "",
+        // },
 
         // errors: {
         //     name: "Name should be at least 2 symbols.",
@@ -53,7 +53,7 @@ class CreateAdForm extends PureComponent{
         //     url: "You have to fill this field"
             
         // },
-        showErrors: false
+        // showErrors: false
     }
 
 
@@ -75,7 +75,7 @@ class CreateAdForm extends PureComponent{
           case 0:
             return (
             <div>
-                <GeneralInfo />
+                <GeneralInfo goToAudience={() => this.goToAudience(activeStep)} />
             </div>
         );
           case 1:
@@ -113,25 +113,13 @@ class CreateAdForm extends PureComponent{
         }
       }
 
-    goToAudience = (e, activeStep) => {
-        e.preventDefault()
-        const { currentUser } = this.context;
-        // console.log(e.target)
-
-
+    goToAudience = (activeStep) => {
         const nextStep = activeStep + 1;
 
-        if(this.state.errors.name != "" ||  this.state.errors.socialPlatforms != "" ||  this.state.errors.marketingGoal != ""){
-            this.setState({
-                showErrors: true
-            })
-        }else {
-            this.setState({
-                activeStep: nextStep,
-                showErrors: false
-            });
-
-        }
+        this.setState({
+            activeStep: nextStep,
+            showErrors: false
+        });
 
       };
 
@@ -244,7 +232,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
         
     }
 }
