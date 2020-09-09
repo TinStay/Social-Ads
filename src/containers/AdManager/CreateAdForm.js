@@ -8,8 +8,7 @@ import { AuthContext } from '../../components/Auth/Auth';
 import { Form,Alert } from 'react-bootstrap';
 
 // Components
-import SocialPlatforms from '../../components/AdManager/CreateAd/SocialPlatforms/SocialPlatforms';
-import MarketingGoal from '../../components/AdManager/CreateAd/MarketingGoal/MarketingGoal';
+import GeneralInfo from '../../components/AdManager/CreateAd/GeneralInfo/GeneralInfo';
 import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
 import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
@@ -38,14 +37,6 @@ class CreateAdForm extends PureComponent{
             name: "",
             socialPlatforms: "",
             marketingGoal: "",
-            // location: "",
-            // ageFrom: "",
-            // ageTo: "",
-            devices: "",
-            url: "",
-            primaryText: "",
-            headline: "",
-            description: "",
         },
 
         // errors: {
@@ -65,140 +56,9 @@ class CreateAdForm extends PureComponent{
         showErrors: false
     }
 
-    changeAdInfo = (e) => {
-        // console.log(e.target.value, e.target.name)
-        this.props.setName(e)
-        const value = e.target.value
-
-        // Validation
-        if(value.length < 2){
-            this.setState({
-                errors: {
-                    ...this.state.errors,
-                    name: "Name should be at least 2 symbols."
-                }
-            })
-        }else{
-            this.setState({
-                errors: {
-                    ...this.state.errors,
-                    name: ""
-                }
-            })
-        }
-    }
 
 
-    // Social Media Platforms
-    changeSMPInfo = e => {
-        // console.log(e.target.checked)
-        const checked = e.target.checked
-        const platforms = [...this.props.adInfo.runOn]
-        
-
-        if(checked){
-            // Add social platform to the array
-            platforms.push(e.target.name);
-
-            // Save to redux state
-            this.props.saveRunOnPlatforms(platforms)
-            
-            this.setState({
-                errors:{
-                    ...this.state.errors,
-                    socialPlatforms: ""
-                }
-            })
-
-        }else{
-            // Remove social platform from the array
-            for(let i =0; i < platforms.length; i++){
-                if(platforms[i] === e.target.name){
-                    platforms.splice(i, 1)
-                }
-            }
-
-            let socialPlatformsError = ''
-            if(platforms.length == 0){
-                socialPlatformsError = "You have to select at least 1 social media platform to continue."
-            }
-
-            // Save to redux state
-            this.props.saveRunOnPlatforms(platforms)
-
-            this.setState({
-                errors:{
-                    ...this.state.errors,
-                    socialPlatforms: socialPlatformsError
-                }
-            })
-        }
-
-        
-        
-    }
-
-    selectMarketingGoal = (goal) => {
-        if(goal != null){
-            this.setState({
-                errors: {
-                    ...this.state.errors,
-                    marketingGoal: ""
-                }
-            })
-        }
-
-        this.props.saveMarketingGoal(goal)
-
-    }
-
-    // updateAgeFrom = option => {
-    //     this.setState({
-    //         errors: {
-    //             ...this.state.errors,
-    //             ageFrom: ""
-    //         }
-    //     })
-
-    //     this.props.saveAgeFrom(option.value)
-    // }
-
-    // updateAgeTo = option => {
-    //     this.setState({
-    //         errors: {
-    //             ...this.state.errors,
-    //             ageTo: ""
-    //         }
-    //     })
-    //     this.props.saveAgeTo(option.value)
-    // }
-
-    // updateGender = gender => {
-    //     this.props.saveGender(gender)
-    // }
-
-    // updateLocationErrorMessage = (locationList) =>{
-
-    // if(locationList !== []){
-    //     this.setState({
-    //         errors: {
-    //             ...this.state.errors,
-    //             location: ""
-    //         }
-    //     })
-    // }else{
-    //     this.setState({
-    //         errors: {
-    //             ...this.state.errors,
-    //             location: "You have to select at least 1 location of targeting"
-    //         }
-    //     })
-    // }
-        
-    // // Save location to redux state
-    // // this.props.saveLocation(locationList)
-            
-    // }
+    
 
     // Stepper
     getSteps() {
@@ -210,78 +70,12 @@ class CreateAdForm extends PureComponent{
         const activeStep = this.state.activeStep
         const steps = this.getSteps();
 
-        let alert = null;
-
-        // Alerts
-        const nameAlert = (
-            <Alert className="alert-danger" variant='danger'>
-                {this.state.errors.name}
-            </Alert>
-        )
-        const socialPlatformsAlert = (
-            <Alert className="alert-danger" variant='danger'>
-                {this.state.errors.socialPlatforms}
-            </Alert>
-        )
-        const marketingGoalAlert = (
-            <Alert className="alert-danger" variant='danger'>
-                {this.state.errors.marketingGoal}
-            </Alert>
-        )
-        
-        let locationAlert = null
-        if(this.state.errors.location != "" && this.state.showErrors){
-            locationAlert = (
-                <Alert className="alert-danger" variant='danger'>
-                    {this.state.errors.location}
-                </Alert>
-            )
-        }
-
-        // let ageFromAlert = null
-        // if(this.state.errors.ageFrom != "" && this.state.showErrors){
-        //     ageFromAlert = (
-        //         <Alert className="alert-danger" variant='danger'>
-        //             {this.state.errors.ageFrom}
-        //         </Alert>
-        //     )
-        // }
-
-        // let ageToAlert = null
-        // if(this.state.errors.ageTo != "" && this.state.showErrors){
-        //     ageToAlert = (
-        //         <Alert className="alert-danger" variant='danger'>
-        //             {this.state.errors.ageTo}
-        //         </Alert>
-        //     )
-        // }
-
 
         switch (stepIndex) {
           case 0:
             return (
             <div>
-                <form onSubmit={(e) => this.goToAudience(e, activeStep)}>
-                    <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
-                    <h3 className="add-form-label">Name your ad campaign</h3>
-
-                    {this.state.showErrors &&  this.state.errors.name ? nameAlert : null}
-                    <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.changeAdInfo(e)} type="text" size="lg" placeholder="Enter name" />
-                    {/* <Form.Control className="add-form-input-name" name="name" value={this.props.adInfo.name} onChange={(e) => this.props.setName(e)} type="text" size="lg" placeholder="Enter name" /> */}
-                    </Form.Group>
-
-                    {this.state.showErrors &&  this.state.errors.socialPlatforms ? socialPlatformsAlert : null}
-                    <SocialPlatforms changeSMPInfo={(e) => this.changeSMPInfo(e)} platforms={this.props.adInfo.runOn}/>
-        
-                    {this.state.showErrors && this.state.errors.marketingGoal ? marketingGoalAlert : null}
-                    <MarketingGoal selectGoal={this.selectMarketingGoal} goal={this.props.adInfo.marketingGoal}/>
-
-                    <div className="d-flex justify-content-end">
-                        <button type="submit"  className="btn btn-next" >
-                            Continue
-                        </button>
-                    </div>
-                </form>
+                <GeneralInfo />
             </div>
         );
           case 1:
@@ -298,13 +92,8 @@ class CreateAdForm extends PureComponent{
             return (
                 <div>
                     <AdPlacement 
-                        goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                         handleBack={() => this.handleBack(activeStep)}
-                        
-                        //Error props
-                        // headlineError={this.state.errors.headline}
-                        // descriptionError={this.state.errors.description}
-                        // urlError={this.state.errors.url}
+                        goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                     />
                     
                 </div>
@@ -376,11 +165,6 @@ class CreateAdForm extends PureComponent{
             ...this.props.state,
             orderStatus: "Uncompleted"
         }
-        // let orderData = {
-        //     adInfo: this.props.adInfo,
-        //     audience: this.props.audience,
-        //     orderStatus: "Uncompleted"
-        // }
 
         db.ref("users/" + currentUser.uid + "/orders/"+`/${this.props.adInfo.name}`).set(orderData)
 
@@ -460,14 +244,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setName : (e) => dispatch({type: actionTypes.SET_NAME, name: e.target.value}),
-        saveRunOnPlatforms: platforms => dispatch({ type: actionTypes.SAVE_RUNON_PLATFORMS, platforms: platforms}),
         saveMarketingGoal : (goal) => dispatch({type: actionTypes.SAVE_MARKETING_GOAL, goal: goal}),
-
-        // saveGender : (gender) => dispatch({type: actionTypes.SAVE_GENDER, gender: gender}),
-        // saveAgeFrom : (value) => dispatch({type: actionTypes.SAVE_AGE_FROM, value: value}),
-        // saveAgeTo : (value) => dispatch({type: actionTypes.SAVE_AGE_TO, value: value}),
-        // saveInterests: (options) => dispatch({type: actionTypes.SAVE_INTERESTS, options: options}),
         
     }
 }
