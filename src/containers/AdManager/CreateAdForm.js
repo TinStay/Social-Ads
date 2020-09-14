@@ -12,6 +12,7 @@ import GeneralInfo from '../../components/AdManager/CreateAd/GeneralInfo/General
 import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
 import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
+import Subscription from '../../components/AdManager/CreateAd/Subscription/Subscription';
 
 //Stepper 
 import Stepper from '@material-ui/core/Stepper';
@@ -62,7 +63,7 @@ class CreateAdForm extends PureComponent{
 
     // Stepper
     getSteps() {
-        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule'];
+        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule', "Choose subscription plan"];
     }
 
     getStepContent(stepIndex){
@@ -72,42 +73,36 @@ class CreateAdForm extends PureComponent{
 
 
         switch (stepIndex) {
-          case 0:
-            return (
-            <div>
-                <GeneralInfo goToAudience={() => this.goToAudience(activeStep)} />
-            </div>
-        );
-          case 1:
-            return (
-                <div>
+            case 0:
+                return (
+                    <GeneralInfo goToAudience={() => this.goToAudience(activeStep)} />
+                );
+            case 1:
+                return (
                     <Audience 
                     handleBack={() => this.handleBack(activeStep)}
                     goToAdPlacements={() => this.goToAdPlacements(activeStep)}
                     />
-                </div>
-            );
+                );
             
-          case 2:
-            return (
-                <div>
+            case 2:
+                return (
                     <AdPlacement 
                         handleBack={() => this.handleBack(activeStep)}
                         goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
                     />
-                    
-                </div>
-                );
-          case 3:
-            return (
-                <div>   
+                    );
+            case 3:
+                return (
                     <BudgetAndSchedule 
                         handleBack={() => this.handleBack(activeStep)}
                         goToCheckout={() => this.goToCheckout(activeStep)}
                     />
-                    
-                </div>
-            );
+                );
+            case 4:
+                return(
+                    <Subscription />
+                )
           default:
             return 'Unknown stepIndex';
         }

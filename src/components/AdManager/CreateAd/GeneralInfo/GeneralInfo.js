@@ -13,17 +13,18 @@ const GeneralInfo = (props) => {
     const [showErrors, setShowErrors] = useState(false)
    
     // Development
-    // const [errors, setErrors] = useState({
-    //     name: "",
-    //     socialPlatforms: "",
-    //     marketingGoal: "",
-    // })
-    // Production
     const [errors, setErrors] = useState({
-        name: "Name should be at least 2 symbols." ,
-        socialPlatforms: "You have to select at least 1 social media platform to continue.",
-        marketingGoal: "You have to select a marketing goal for your campaign.",
+        name: "",
+        socialPlatforms: "",
+        marketingGoal: "",
     })
+
+    // Production
+    // const [errors, setErrors] = useState({
+    //     name: "Name should be at least 2 symbols." ,
+    //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
+    //     marketingGoal: "You have to select a marketing goal for your campaign.",
+    // })
 
     const changeAdInfo = (e) => {
         // Update Redux state
@@ -31,7 +32,6 @@ const GeneralInfo = (props) => {
 
         // Copy state 
         let newErrors = {...errors}
-        
 
         // Validation
         const value = e.target.value

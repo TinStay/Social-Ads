@@ -27,9 +27,16 @@ function Audience(props){
     const [locationList, setLocationList] = useState([])
 
     // Errors
+    // Production
+    // const [errors, setErrors] = useState({
+    //     location: "You have to fill this field.",
+    //     ageFrom: "You have to fill this field.",
+    //     ageTo: "You have to fill this field.",
+    // })
+    // Development
     const [errors, setErrors] = useState({
         location: "",
-        ageFrom: "You have to fill this field.",
+        ageFrom: "",
         ageTo: "",
     })
 
