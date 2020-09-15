@@ -13,9 +13,28 @@ const Subscription = () => {
                 <SubscriptionCardForm
                     title="Deluxe" 
                     price="50"
-                    // desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit"
+                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
+                    "
                     listing={basicListing}
-                    btnText="Update to Deluxe"
+                    btnText="Select Deluxe"
+                    iconClass="fa-dice-d20"
+                    />
+                     <SubscriptionCardForm
+                    title="Deluxe" 
+                    price="50"
+                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
+                    "
+                    listing={basicListing}
+                    btnText="Select Deluxe"
+                    iconClass="fa-dice-d20"
+                    />
+                     <SubscriptionCardForm
+                    title="Deluxe" 
+                    price="50"
+                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
+                    "
+                    listing={basicListing}
+                    btnText="Select Deluxe"
                     iconClass="fa-dice-d20"
                     />
             </div>

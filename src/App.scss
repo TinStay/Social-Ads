@@ -4,6 +4,7 @@ $purple: #6F1E51;
 $gray: #576574;
 $dark-gray: #353b48;
 $navbar-purple:  #7678ed;
+$dark-purple: #7c0bbd;
 $bgc-white: #fafaff;
 $font-color: #7662b6;
 $dark-blue: #273469;
@@ -31,7 +32,7 @@ html{
 }
 
 .font-color{
-    color: #273469;
+    color: $dark-blue;
 }
 .gray{
     color: $gray;
@@ -540,13 +541,13 @@ html{
 
         &-p{
             margin-top: 30px;
-            color: #273469;
+            color: $dark-blue;
         }
         &-list{
             width: 90%;
             margin: 50px auto;
             font-size: 1.3rem;
-            color: #273469;
+            color: $dark-blue;
             list-style-type: none;
             li{
                 margin: 25px auto;
@@ -1488,36 +1489,54 @@ html{
 
 
                 &-card{
-                    border: 1px rgb(16, 184, 52) solid;
+                    border: 1px $navbar-purple solid;
                     padding: 20px 20px 35px 20px;
                     margin: 20px 0;
                     font-size: 1.3rem;
                     
                     border-radius: 5px;
                     background-color: $white;
-                    color: $navbar-purple;
+                    color: $dark-purple;
+
+                    .fas{
+                        font-size: 2.8rem;
+                        margin: 0px;
+                    }
+                    
+                    h3{
+                        color: $dark-purple;
+                        margin: 20px auto;
+                    }
 
                     .list{
-                        width: 90%;
-                        margin: 50px auto;
+                        // width: 100%;
+                        margin: 15px 0;
+                        padding: 0;
                         font-size: 1.3rem;
-                        color: #273469;
+                        color: $dark-blue;
                         list-style-type: none;
                         li{
-                            margin: 25px auto;
+                            margin: 23px 0;
                             .fa-check{
-                                font-size: 1.2rem;
+                                font-size: 1.3rem;
                             }
                         }
                     }
+
+                    .description{
+                        line-height: 35px;
+                        color: $dark-blue;
+                        margin: 20px auto;
+                    }
+
             
                     .button{
                         color: white;
                         font-size: 1.4rem;
                         font-weight: 500;
-                        margin: 0 auto;
+                        margin: 20px auto 0 auto;
                         padding: 14px;
-                        background-color: #6c03a8;
+                        background-color: $dark-purple;
                         border-radius: 50px;
                         transition: all 0.3s ease-out;
                         &:hover{
@@ -1525,10 +1544,7 @@ html{
                         }
                         
                     }
-            
-                    .fas{
-                        font-size: 2.8rem;
-                    }
+
                 }
             }
             
