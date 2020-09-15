@@ -1483,6 +1483,54 @@ html{
                         }
                     }
             }
+
+            .subscription-form{
+
+
+                &-card{
+                    border: 1px rgb(16, 184, 52) solid;
+                    padding: 20px 20px 35px 20px;
+                    margin: 20px 0;
+                    font-size: 1.3rem;
+                    
+                    border-radius: 5px;
+                    background-color: $white;
+                    color: $navbar-purple;
+
+                    .list{
+                        width: 90%;
+                        margin: 50px auto;
+                        font-size: 1.3rem;
+                        color: #273469;
+                        list-style-type: none;
+                        li{
+                            margin: 25px auto;
+                            .fa-check{
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+            
+                    .button{
+                        color: white;
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                        margin: 0 auto;
+                        padding: 14px;
+                        background-color: #6c03a8;
+                        border-radius: 50px;
+                        transition: all 0.3s ease-out;
+                        &:hover{
+                            background-color: #992167;
+                        }
+                        
+                    }
+            
+                    .fas{
+                        font-size: 2.8rem;
+                    }
+                }
+            }
             
         }
     }
