@@ -1,5 +1,5 @@
 import React from 'react';
-import SubscriptionCardForm from './SubscriptionCardForm';
+import SubscriptionFormCard from './SubscriptionFormCard';
 
 const Subscription = () => {
 
@@ -10,7 +10,28 @@ const Subscription = () => {
             <h3 className="border-bottom add-form-label">Choose your your ad campaign plan</h3>
         
             <div className="subscription-form-cards">
-                <SubscriptionCardForm
+              
+                <div class="accordion" id="accordionExample">
+
+                <SubscriptionFormCard 
+                    title="Basic" 
+                    price="0"
+                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
+                    listing={basicListing}
+                    btnText="Go to ad manager"
+                    iconClass="fa-star"
+                    />
+
+                <SubscriptionFormCard 
+                    title="Premium" 
+                    price="15"
+                    // desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit"
+                    listing={basicListing}
+                    btnText="Update to Premium"
+                    iconClass="fa-crown"
+                    />
+
+                <SubscriptionFormCard
                     title="Deluxe" 
                     price="50"
                     desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
@@ -18,27 +39,12 @@ const Subscription = () => {
                     listing={basicListing}
                     btnText="Select Deluxe"
                     iconClass="fa-dice-d20"
-                    />
-                     <SubscriptionCardForm
-                    title="Deluxe" 
-                    price="50"
-                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
-                    "
-                    listing={basicListing}
-                    btnText="Select Deluxe"
-                    iconClass="fa-dice-d20"
-                    />
-                     <SubscriptionCardForm
-                    title="Deluxe" 
-                    price="50"
-                    desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
-                    "
-                    listing={basicListing}
-                    btnText="Select Deluxe"
-                    iconClass="fa-dice-d20"
-                    />
+                    />  
+
             </div>
         </div>
+    
+    </div>
     )
 }
 
