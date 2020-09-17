@@ -1489,8 +1489,8 @@ html{
 
 
                 &-card{
-                    border: 1px $navbar-purple solid;
-                    padding: 20px 20px 35px 20px;
+                    border: 2px $navbar-purple solid;
+                    // padding: 10px 15px;
                     margin: 20px 0;
                     font-size: 1.3rem;
                     
@@ -1501,6 +1501,33 @@ html{
                     .fas{
                         font-size: 2.8rem;
                         margin: 0px;
+                    }
+
+                    .collapse-bar{
+                        padding: 20px;
+                    }
+
+                    .info-toggle-btn{
+                        color: $dark-blue;
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                        margin: auto 20px;
+                        padding: 10px;
+                        background-color: #efea5a;
+                        border-radius: 5px;
+                        transition: all 0.3s ease-out;
+                        &:hover{
+                            background-color: #f1c453;
+                        }
+                    }
+
+                    .collapse{
+                        // width: 90%;
+
+                        @media screen and (min-width: 1199px){
+                            width: 96%;
+                            margin: 20px auto;
+                        }
                     }
                     
                     h3{
