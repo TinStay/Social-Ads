@@ -1489,13 +1489,13 @@ html{
 
 
                 &-card{
-                    border: 1px $navbar-purple solid;
+                    // border: 1px $navbar-purple solid;
                     // padding: 10px 15px;
                     // margin: 20px 0;
                     font-size: 1.3rem;
                     
                     // border-radius: 5px;
-                    background-color: #f8f9fa;
+                    
                     color: $dark-purple;
 
                     .fas{
@@ -1504,7 +1504,15 @@ html{
                     }
 
                     .card-header{
-                        padding: 20px;
+                        padding: 10px;
+                        color: $dark-purple;
+                        font-size: 1.3rem;
+                        background-color: #f8fdff;
+                    }
+
+                    .card-heading{
+                        padding: 10px;
+                        // background-color: #2fc5f7;
                     }
 
                     // .info-toggle-btn{
