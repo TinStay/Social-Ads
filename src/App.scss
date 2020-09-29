@@ -1489,7 +1489,7 @@ html{
 
 
                 &-card{
-                    padding: 10px 5px;
+                    padding: 10px 0px;
                     // margin: 20px 0;
                     font-size: 1.1rem;
                     color: $dark-purple;
@@ -1499,31 +1499,30 @@ html{
                         font-size: 1.3rem;
                     }
 
-                    .fas{
-                        margin: 0px;
-                    }
+                    
 
                     // Icons + titles
                     .card-heading{
                         color: $dark-purple;
-
+                        margin: auto auto;
+                        font-size: 1.3rem;
+                        // padding: 2px 0;
+                        
                         &:hover{
                             color: #6800a5;
                             
                         }
 
-                        h1{
-                            font-size: 1.6rem;
-
-                            @media screen and (min-width: 1199px){
-                                font-size: 2.6rem;
-                                padding: 10px;
-                            }
-                        }
-
                         @media screen and (min-width: 1199px){
-                            font-size: 2.6rem;
+                            font-size: 2.2rem;
+                            padding: 10px 0;
                         }
+
+                        h1{
+                            font-size: inherit;
+                        }
+
+                        
                     }
                     
                     h3{
@@ -1545,8 +1544,9 @@ html{
                         list-style-type: none;
                         li{
                             margin: 22px 0;
+                            font-size: 1.1rem;
                             .fa-check{
-                                font-size: 1.3rem;
+                                font-size: 1.2rem;
                                 margin-right: 10px;
                             }
                         }

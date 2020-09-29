@@ -17,31 +17,31 @@ const Subscription = () => {
         
             <div className="subscription-form-card">
               
-                <ul class="nav nav-tabs d-flex justify-items-between" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link " id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
-                            <div className="d-flex card-heading "   >
-                                <i className="fas mr-3 mb-2 fa-star"></i>
-                                <h1 className=" font-weight-bold">Basic</h1>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " id={`headingPremium`} data-toggle="tab" href="#tabPremium" role="tab" aria-controls="tabPremium" aria-selected="true">
-                            <div className="d-flex card-heading  "  >
-                                <i className="fas mr-3 mb-2 fa-crown"></i>
-                                <h1 className=" font-weight-bold">Premium</h1>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " id={`headingDeluxe`} data-toggle="tab" href="#tabDeluxe" role="tab" aria-controls="tabDeluxe" aria-selected="true">
-                            <div className="d-flex card-heading  "  >
-                                <i className="fas mr-3 mb-2 fa-dice-d20"></i>
-                                <h1 className=" font-weight-bold">Deluxe</h1>
-                            </div>
-                        </a>                   
-                    </li>
+                <ul class="nav nav-tabs d-flex justify-content-between" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active " id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
+                                <div className="d-flex card-heading justify-content-center"   >
+                                    <i className="fas mr-3 mb-2 fa-star"></i>
+                                    <h1 className=" font-weight-bold">Basic</h1>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " id={`headingPremium`} data-toggle="tab" href="#tabPremium" role="tab" aria-controls="tabPremium" aria-selected="true">
+                                <div className="d-flex card-heading justify-content-center "  >
+                                    <i className="fas mr-3 mb-2 fa-crown"></i>
+                                    <h1 className=" font-weight-bold">Premium</h1>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " id={`headingDeluxe`} data-toggle="tab" href="#tabDeluxe" role="tab" aria-controls="tabDeluxe" aria-selected="true">
+                                <div className="d-flex card-heading justify-content-center "  >
+                                    <i className="fas mr-3 mb-2 fa-dice-d20"></i>
+                                    <h1 className=" font-weight-bold">Deluxe</h1>
+                                </div>
+                            </a>                   
+                        </li>
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
