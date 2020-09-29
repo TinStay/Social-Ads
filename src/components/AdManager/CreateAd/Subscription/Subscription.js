@@ -17,30 +17,9 @@ const Subscription = () => {
         
             <div className="subscription-form-card">
               
-                {/* <div class="accordion" id="accordionExample"> */}
-
-                {/* <p>
-                    <div className="card-header col-12 d-flex justify-content-between" >
-                        <div className="d-flex card-heading " onClick={() => setShowCard("Basic")} id={`headingBasic`}  data-toggle="collapse" href={`#collapseBasic`} role="button" aria-expanded="false" aria-controls={`collapseBasic`}>
-                            <i className={iconClasses.join(" ")}></i>
-                            <h1 className=" font-weight-bold">Basic</h1>
-                        </div>
-
-                        <div className="d-flex card-heading  " onClick={() => setShowCard("Premium")} id={`headingPremium`}  data-toggle="collapse" href={`#collapsePremium`} role="button" aria-expanded="false" aria-controls={`collapsePremium`}>
-                            <i className={"fas mr-3 mb-2 fa-crown"}></i>
-                            <h1 className=" font-weight-bold">Premium</h1>
-                        </div>
-
-                        <div>
-                            <h1>$420 <span className="h4">/ month</span> </h1>
-                        </div>
-                        
-                    </div>
-                </p> */}
-
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs d-flex justify-items-between" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
+                        <a class="nav-link " id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
                             <div className="d-flex card-heading "   >
                                 <i className="fas mr-3 mb-2 fa-star"></i>
                                 <h1 className=" font-weight-bold">Basic</h1>
@@ -49,7 +28,7 @@ const Subscription = () => {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " id={`headingPremium`} data-toggle="tab" href="#tabPremium" role="tab" aria-controls="tabPremium" aria-selected="true">
-                            <div className="d-flex card-heading nav-link active"  >
+                            <div className="d-flex card-heading  "  >
                                 <i className="fas mr-3 mb-2 fa-crown"></i>
                                 <h1 className=" font-weight-bold">Premium</h1>
                             </div>
@@ -57,7 +36,7 @@ const Subscription = () => {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " id={`headingDeluxe`} data-toggle="tab" href="#tabDeluxe" role="tab" aria-controls="tabDeluxe" aria-selected="true">
-                            <div className="d-flex card-heading nav-link active"  >
+                            <div className="d-flex card-heading  "  >
                                 <i className="fas mr-3 mb-2 fa-dice-d20"></i>
                                 <h1 className=" font-weight-bold">Deluxe</h1>
                             </div>
@@ -97,9 +76,6 @@ const Subscription = () => {
                         iconClass="fa-dice-d20"
                         />  
 
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
                 </div>
 
                 

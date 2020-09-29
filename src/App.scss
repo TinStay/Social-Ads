@@ -1489,71 +1489,65 @@ html{
 
 
                 &-card{
-                    // border: 1px $navbar-purple solid;
-                    // padding: 10px 15px;
+                    padding: 10px 5px;
                     // margin: 20px 0;
-                    font-size: 1.3rem;
-                    
-                    // border-radius: 5px;
-                    
+                    font-size: 1.1rem;
                     color: $dark-purple;
 
+                    @media screen and (min-width: 1199px){
+                        padding: 10px 15px;
+                        font-size: 1.3rem;
+                    }
+
                     .fas{
-                        font-size: 2.8rem;
                         margin: 0px;
                     }
 
-                    .card-header{
-                        padding: 10px;
-                        color: $dark-purple;
-                        font-size: 1.3rem;
-                        background-color: #f8fdff;
-                    }
-
+                    // Icons + titles
                     .card-heading{
-                        padding: 10px;
-                        // background-color: #2fc5f7;
-                    }
+                        color: $dark-purple;
 
-                    // .info-toggle-btn{
-                    //     color: $dark-blue;
-                    //     font-size: 1.4rem;
-                    //     font-weight: 500;
-                    //     margin: auto 20px;
-                    //     padding: 10px;
-                    //     background-color: #efea5a;
-                    //     border-radius: 5px;
-                    //     transition: all 0.3s ease-out;
-                    //     &:hover{
-                    //         background-color: #f1c453;
-                    //     }
-                    // }
+                        &:hover{
+                            color: #6800a5;
+                            
+                        }
 
-                    .collapse{
-                        // width: 90%;
+                        h1{
+                            font-size: 1.6rem;
+
+                            @media screen and (min-width: 1199px){
+                                font-size: 2.6rem;
+                                padding: 10px;
+                            }
+                        }
 
                         @media screen and (min-width: 1199px){
-                            width: 96%;
-                            margin: 20px auto;
+                            font-size: 2.6rem;
                         }
                     }
                     
                     h3{
+                        font-size: 1.3rem;
                         color: $dark-purple;
-                        margin: 20px auto;
+                        margin: 25px auto;
+
+                        @media screen and (min-width: 1199px){
+                            font-size: 1.7rem;
+                        }
                     }
 
                     .list{
                         // width: 100%;
-                        margin: 15px 0;
+                        margin: 25px 0;
                         padding: 0;
-                        font-size: 1.3rem;
+                        font-size: 1.2rem;
                         color: $dark-blue;
                         list-style-type: none;
                         li{
-                            margin: 23px 0;
+                            margin: 22px 0;
                             .fa-check{
                                 font-size: 1.3rem;
+                                margin-right: 10px;
                             }
                         }
                     }
