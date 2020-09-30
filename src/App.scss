@@ -1486,13 +1486,14 @@ html{
             }
 
             .subscription-form{
-
+                
 
                 &-card{
                     padding: 10px 0px;
                     // margin: 20px 0;
                     font-size: 1.1rem;
                     color: $dark-purple;
+                    
 
                     @media screen and (min-width: 1199px){
                         padding: 10px 15px;
@@ -1500,9 +1501,31 @@ html{
                     }
 
                     
+                    .card-tab{
+                        .active{
+                            background-color: #D3CCE3;
+                        }
+
+                        
+                    }
+                    .card-link{
+                        border-bottom: none;
+                        // background: #D3CCE3;
+                        
+                        
+                    } 
+
+                    .active{
+                        // background-color: #ccdcff;
+                        background: #D3CCE3;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+                    }
 
                     // Icons + titles
                     .card-heading{
+                        
                         color: $dark-purple;
                         margin: auto auto;
                         font-size: 1.3rem;
@@ -1518,61 +1541,89 @@ html{
                             padding: 10px 0;
                         }
 
+                        
+
+                        
                         h1{
                             font-size: inherit;
+                           
                         }
 
                         
+                        
+                        
+                            
+                        
                     }
                     
-                    h3{
-                        font-size: 1.3rem;
-                        color: $dark-purple;
-                        margin: 25px auto;
 
-                        @media screen and (min-width: 1199px){
-                            font-size: 1.7rem;
-                        }
+                    &-cards-container{
+                        // background-color: #f7e3af;
+                        border-radius: 0 0 5px 5px;
+                        // border-left: 1px solid rgb(233, 232, 232);
+                        // border-right: 1px solid rgb(233, 232, 232);
+                        // border-bottom: 1px solid rgb(233, 232, 232);
                     }
+                    
+                    .card-body{
+                        h3{
+                            font-size: 1.3rem;
+                            color: $dark-purple;
+                            margin: 25px auto;
+    
+                            @media screen and (min-width: 1199px){
+                                font-size: 1.7rem;
+                            }
+                        }
+    
+                        .list{
+                            // width: 100%;
+                            margin: 25px 0;
+                            padding: 0;
+                            font-size: 1.2rem;
+                            color: $dark-blue;
+                            list-style-type: none;
+                            li{
+                                margin: 22px 0;
+                                font-size: 1.1rem;
+                                .fa-check{
+                                    font-size: 1.2rem;
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+    
+                        .description{
+                            line-height: 35px;
+                            color: $dark-blue;
+                            margin: 20px auto 65px auto;
+                        }
+    
+                
+                        .select-btn{
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
 
-                    .list{
-                        // width: 100%;
-                        margin: 25px 0;
-                        padding: 0;
-                        font-size: 1.2rem;
-                        color: $dark-blue;
-                        list-style-type: none;
-                        li{
-                            margin: 22px 0;
-                            font-size: 1.1rem;
-                            .fa-check{
-                                font-size: 1.2rem;
-                                margin-right: 10px;
+                            .button{
+                            
+                                color: white;
+                                font-size: 1.4rem;
+                                font-weight: 500;
+                                margin: 20px auto 0 auto;
+                                padding: 14px;
+                                background-color: $dark-purple;
+                                border-radius: 50px;
+                                transition: all 0.3s ease-out;
+                                &:hover{
+                                    background-color: #992167;
+                                }
+                                
                             }
                         }
                     }
 
-                    .description{
-                        line-height: 35px;
-                        color: $dark-blue;
-                        margin: 20px auto;
-                    }
-
-            
-                    .button{
-                        color: white;
-                        font-size: 1.4rem;
-                        font-weight: 500;
-                        margin: 20px auto 0 auto;
-                        padding: 14px;
-                        background-color: $dark-purple;
-                        border-radius: 50px;
-                        transition: all 0.3s ease-out;
-                        &:hover{
-                            background-color: #992167;
-                        }
-                        
-                    }
+                    
 
                 }
             }
