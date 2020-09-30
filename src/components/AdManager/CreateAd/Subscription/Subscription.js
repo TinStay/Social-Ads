@@ -7,8 +7,6 @@ const Subscription = () => {
 
     const [showCard, setShowCard]  = useState("Basic");
 
-    console.log("showCard",showCard)
-
     let iconClasses=["fas mr-3 mb-2", "fa-star"]
 
     return(
@@ -46,7 +44,7 @@ const Subscription = () => {
 
                 <div class="tab-content" id="myTabContent">
                     <SubscriptionFormCard 
-                        show={showCard}
+                        showCard={showCard}
                         title="Basic" 
                         price="0"
                         desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
@@ -56,7 +54,7 @@ const Subscription = () => {
                         />
 
                     <SubscriptionFormCard 
-                        show={showCard}
+                        showCard={showCard}
                         title="Premium" 
                         price="15"
                         // desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit"
@@ -66,7 +64,7 @@ const Subscription = () => {
                         />
 
                     <SubscriptionFormCard
-                        show={showCard}
+                        showCard={showCard}
                         title="Deluxe" 
                         price="50"
                         desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?

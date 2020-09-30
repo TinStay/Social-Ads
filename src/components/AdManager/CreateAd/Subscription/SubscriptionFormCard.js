@@ -10,7 +10,7 @@ const SubscriptionFormCard = (props) => {
 
 
 
-                <div  className={`tab-pane fade row ${props.title === "Basic" ? "show" : null}`} id={`tab${props.title}`} aria-labelledby={`heading${props.title}`} data-parent={`#heading${props.title}`}>
+                <div  className={`tab-pane fade row ${props.showCard === props.title ? "show active" : null}`} id={`tab${props.title}`} aria-labelledby={`heading${props.title}`} data-parent={`#heading${props.title}`}>
                         <div className="col-md-6 ">                
                             <h3 className="h4">Includes: </h3>
                             <ul className="list text-left"> 
