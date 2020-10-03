@@ -1488,7 +1488,7 @@ html{
             .subscription-form{
                 
 
-                &-card{
+                &-cards{
                     padding: 10px 0px;
                     // margin: 20px 0;
                     font-size: 1.1rem;
@@ -1498,37 +1498,33 @@ html{
                     @media screen and (min-width: 1199px){
                         padding: 10px 15px;
                         font-size: 1.3rem;
+                        
                     }
 
                     
                     .card-tab{
+                        border: none;
                         .active{
-                            background-color: #D3CCE3;
+                            background-color: #e2daf8; 
+                            transition: 0.5s ease-in-out ;
                         }
-
                         
                     }
                     .card-link{
                         border-bottom: none;
                         // background: #D3CCE3;
-                        
+                        border:none;
                         
                     } 
 
-                    .active{
-                        // background-color: #ccdcff;
-                        background: #D3CCE3;  /* fallback for old browsers */
-                        background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-                        background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-                    }
+                    
 
                     // Icons + titles
                     .card-heading{
-                        
                         color: $dark-purple;
                         margin: auto auto;
                         font-size: 1.3rem;
+                        transition: 0.5s ease-in-out ;
                         // padding: 2px 0;
                         
                         &:hover{
@@ -1538,47 +1534,45 @@ html{
 
                         @media screen and (min-width: 1199px){
                             font-size: 2.2rem;
-                            padding: 10px 0;
+                            padding: 7px 0;
+                            
                         }
-
-                        
-
-                        
+      
                         h1{
                             font-size: inherit;
                            
-                        }
-
-                        
-                        
-                        
-                            
-                        
+                        } 
                     }
                     
 
-                    &-cards-container{
-                        // background-color: #f7e3af;
-                        border-radius: 0 0 5px 5px;
-                        // border-left: 1px solid rgb(233, 232, 232);
-                        // border-right: 1px solid rgb(233, 232, 232);
-                        // border-bottom: 1px solid rgb(233, 232, 232);
+                    &-body-container{
+                        // border-radius: 0 0 5px 5px;
+                        background: #D3CCE3;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to top, $bgc-white, #e2daf8);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to top, $bgc-white, #e2daf8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                     }
+
+                    
                     
                     .card-body{
+                        transition: 0.5s ease-in-out ;  
+                                                                        
+                        
                         h3{
                             font-size: 1.3rem;
                             color: $dark-purple;
-                            margin: 25px auto;
+                            margin: 0px auto 25px auto ;
     
                             @media screen and (min-width: 1199px){
                                 font-size: 1.7rem;
+                                margin: 0px auto 35px auto ;
                             }
                         }
     
                         .list{
+                            
                             // width: 100%;
-                            margin: 25px 0;
+                            margin: 5px 0;
                             padding: 0;
                             font-size: 1.2rem;
                             color: $dark-blue;

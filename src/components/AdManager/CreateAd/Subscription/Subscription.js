@@ -7,15 +7,17 @@ const Subscription = () => {
 
     const [showCard, setShowCard]  = useState("Basic");
 
-    let iconClasses=["fas mr-3 mb-2", "fa-star"]
+    let iconClasses=["fas mr-3 mb-2", "fa-star"];
+
+    let [selectedPlan, setSelectedPlan] = useState("");
 
     return(
         <div className="subscription-form">
             <h3 className="border-bottom add-form-label">Choose your your ad campaign plan</h3>
         
-            <div className="subscription-form-card ">
+            <div className="subscription-form-cards ">
               
-                <ul className="nav nav-tabs d-flex justify-content-between" id="myTab" role="tablist">
+                <ul className="nav nav-tabs d-flex justify-content-between border-bottom-0" id="myTab" role="tablist">
                         <li className="nav-tab card-tab">
                             <a className=" nav-link card-link active " id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
                                 <div className="d-flex card-heading justify-content-center"   >
@@ -42,36 +44,42 @@ const Subscription = () => {
                         </li>
                 </ul>
 
-                <div className="tab-content subscription-form-cards-container  border-top-0" id="myTabContent">
+                <div className="tab-content subscription-form-cards-body-container " id="myTabContent">
                     <SubscriptionFormCard 
                         showCard={showCard}
-                        title="Basic" 
+                        planName="Basic" 
                         price="0"
                         desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
                         listing={basicListing}
                         btnText="Go to ad manager"
                         iconClass="fa-star"
+                        selectSubscriptionPlan = {(planName) => setSelectedPlan(planName)}
+                        selectedPlan={selectedPlan}
                         />
 
                     <SubscriptionFormCard 
                         showCard={showCard}
-                        title="Premium" 
+                        planName="Premium" 
                         price="15"
                         // desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit"
                         listing={basicListing}
                         btnText="Update to Premium"
                         iconClass="fa-crown"
+                        selectSubscriptionPlan = {(planName) => setSelectedPlan(planName)}
+                        selectedPlan={selectedPlan}
                         />
 
                     <SubscriptionFormCard
                         showCard={showCard}
-                        title="Deluxe" 
+                        planName="Deluxe" 
                         price="50"
                         desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aliquid officia dicta ullam nesciunt recusandae nemo? Optio ducimus praesentium mollitia?
                         "
                         listing={basicListing}
                         btnText="Select Deluxe"
                         iconClass="fa-dice-d20"
+                        selectSubscriptionPlan = {(planName) => setSelectedPlan(planName)}
+                        selectedPlan={selectedPlan}
                         />  
 
                 </div>

@@ -5,12 +5,16 @@ const SubscriptionFormCard = (props) => {
 
     let iconClasses=["fas mr-3 mb-2", props.iconClass]
 
+    const selectPlan = (e) => {
+        e.preventDefault();
+
+        // Pass current plan to be saved in Subscription component
+        props.selectSubscriptionPlan(props.planName);
+    };
 
     return(
 
-
-
-                <div className={`tab-pane fade card-body ${props.showCard === props.title ? "show active" : null} `} id={`tab${props.title}`} aria-labelledby={`heading${props.title}`} data-parent={`#heading${props.title}`}>
+                <div className={`tab-pane fade card-body ${props.showCard === props.planName ? "show active" : null} `} id={`tab${props.planName}`} aria-labelledby={`heading${props.planName}`} data-parent={`#heading${props.planName}`}>
                         <div className="row  ">
                             <div className="col-md-6 ">                
                                 <h3 className="h4">Includes: </h3>
@@ -25,7 +29,7 @@ const SubscriptionFormCard = (props) => {
                                 <h3 className="h4">Description</h3>
                                 <p className="description">{props.desc}</p>
                                 <div className="col-12 text-center select-btn">
-                                    <button className="btn button">{props.btnText}</button>
+                                    <button onClick={(e) => selectPlan(e)} className="btn button">{props.selectedPlan === props.planName ? "Selected" : props.btnText}</button>
                                 </div>
                             </div>
 
