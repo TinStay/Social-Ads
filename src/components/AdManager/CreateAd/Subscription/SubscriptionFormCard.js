@@ -2,8 +2,9 @@ import React from 'react';
 
 const SubscriptionFormCard = (props) => {
 
-
-    let iconClasses=["fas mr-3 mb-2", props.iconClass]
+    let selectButtonDisabled = {
+        "cursor": "context-menu",
+    }
 
     const selectPlan = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const SubscriptionFormCard = (props) => {
                                 <h3 className="h4">Description</h3>
                                 <p className="description">{props.desc}</p>
                                 <div className="col-12 text-center select-btn">
-                                    <button onClick={(e) => selectPlan(e)} className="btn button">{props.selectedPlan === props.planName ? "Selected" : props.btnText}</button>
+                                    <button onClick={(e) => selectPlan(e)} disabled={props.selectedPlan === props.planName ? true: false} className="btn button">{props.selectedPlan === props.planName ? "Selected" : props.btnText}</button>
                                 </div>
                             </div>
 

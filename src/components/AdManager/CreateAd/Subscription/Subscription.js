@@ -7,7 +7,6 @@ const Subscription = () => {
 
     const [showCard, setShowCard]  = useState("Basic");
 
-    let iconClasses=["fas mr-3 mb-2", "fa-star"];
 
     let [selectedPlan, setSelectedPlan] = useState("");
 
