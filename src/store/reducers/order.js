@@ -33,6 +33,7 @@ const initialState = {
             ageTo: null,
             interests: []
         },
+        subscriptionPlan: "",
         payment: {},
 }
 
@@ -137,7 +138,10 @@ const updateFacebookAdDetails = (state, action) => {
 
     // newAdDetails = new adDetails + buttonLabel
     let newAdDetails = [...action.adDetails]
+
+    // buttonLabel = last adDetail
     const buttonLabel = adDetails[adDetails.length-1]
+
     // Add buttonLabel
     newAdDetails.push(buttonLabel)
 
@@ -148,17 +152,6 @@ const updateFacebookAdDetails = (state, action) => {
             }
     })
 }
-// const updateFacebookAdDetails = (state, action) => {
-//     return updateAdInfo(state, {
-//             facebookAd: {
-//                 ...state.adInfo.facebookAd,
-//                 adDetails: [ 
-//                     ...state.adInfo.facebookAd.adDetails.buttonLabel,
-//                     adDetails: action.adDetails
-//                 ]
-//             }
-//     })
-// }
 
 const updateGoogleDetails = (state, action) => {
     return updateAdInfo(state, {
@@ -173,35 +166,45 @@ const updateBudgetAndSchedule = (state, action) => {
 })
 }
 
+ // Subscription plans
+const updateSubscriptionPlan = (state, action) => {
+    return {
+        ...state,
+        subscriptionPlan: action.plan
+    }
+}
+
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
         // General Info
-       case actionTypes.SET_NAME: return updateName(state, action)
-       case actionTypes.SAVE_RUNON_PLATFORMS: return updateRunOnPlatforms(state, action)
-       case actionTypes.SAVE_MARKETING_GOAL: return updateMarketingGoal(state, action)
+       case actionTypes.SET_NAME: return updateName(state, action);
+       case actionTypes.SAVE_RUNON_PLATFORMS: return updateRunOnPlatforms(state, action);
+       case actionTypes.SAVE_MARKETING_GOAL: return updateMarketingGoal(state, action);
     
        // Audience    
-       case actionTypes.SAVE_LOCATION: return updateLocation(state, action)
-       case actionTypes.SAVE_GENDER: return updateGender(state, action)
-       case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action)
-       case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action)
-       case actionTypes.SAVE_INTERESTS: return updateInterests(state, action)
+       case actionTypes.SAVE_LOCATION: return updateLocation(state, action);
+       case actionTypes.SAVE_GENDER: return updateGender(state, action);
+       case actionTypes.SAVE_AGE_FROM: return updateAgeFrom(state, action);
+       case actionTypes.SAVE_AGE_TO: return updateAgeTo(state, action);
+       case actionTypes.SAVE_INTERESTS: return updateInterests(state, action);
        
         // Placements    
-        case actionTypes.SAVE_DEVICES: return updateDevices(state, action)
-        case actionTypes.SAVE_URL: return updateUrl(state, action)
-        case actionTypes.SAVE_PIC_OR_VIDEO: return updatePicOrVideo(state, action)
-        case actionTypes.SAVE_BUTTON_LABEL: return updateButtonLabel(state, action)
-        case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action)
-        case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action)
-        case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action)
+        case actionTypes.SAVE_DEVICES: return updateDevices(state, action);
+        case actionTypes.SAVE_URL: return updateUrl(state, action);
+        case actionTypes.SAVE_PIC_OR_VIDEO: return updatePicOrVideo(state, action);
+        case actionTypes.SAVE_BUTTON_LABEL: return updateButtonLabel(state, action);
+        case actionTypes.SAVE_FACEBOOK_PLACEMENTS: return updateFacebookPlacements(state, action);
+        case actionTypes.SAVE_FACEBOOK_AD_DETAILS: return updateFacebookAdDetails(state, action);
+        case actionTypes.SAVE_GOOGLE_DETAILS: return updateGoogleDetails(state, action);
 
         // Budget and schedule
-        case actionTypes.SAVE_BUDGET_AND_SCHEDULE: return updateBudgetAndSchedule(state, action)
+        case actionTypes.SAVE_BUDGET_AND_SCHEDULE: return updateBudgetAndSchedule(state, action);
 
+        // Subscription plans
+        case actionTypes.SAVE_SUBSCRIPTION_PLAN: return updateSubscriptionPlan(state, action);
         
-        default: return state
+        default: return state;
     }
 };
 

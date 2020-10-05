@@ -13,9 +13,14 @@ const SubscriptionFormCard = (props) => {
         props.selectSubscriptionPlan(props.planName);
     };
 
-    return(
+    let isCardActive = "false";
+    if(props.selectedPlan != ""){
 
-                <div className={`tab-pane fade card-body ${props.showCard === props.planName ? "show active" : null} `} id={`tab${props.planName}`} aria-labelledby={`heading${props.planName}`} data-parent={`#heading${props.planName}`}>
+    } 
+
+    return(
+        
+                <div className={`tab-pane fade card-body ${props.selectedPlan != "" ? props.selectedPlan === props.planName ? "show active" : null : props.planName == "Basic" ? "show active" : null} `} id={`tab${props.planName}`} aria-labelledby={`heading${props.planName}`} data-parent={`#heading${props.planName}`}>
                         <div className="row  ">
                             <div className="col-md-6 ">                
                                 <h3 className="h4">Includes: </h3>
