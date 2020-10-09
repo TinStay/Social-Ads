@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import SubscriptionFormCard from './SubscriptionFormCard';
+import { Button } from "react-bootstrap";
 
 // Redux
 import { connect } from 'react-redux';
@@ -39,7 +40,12 @@ const Subscription = (props) => {
     return(
         <div className="subscription-form">
             <h3 className="border-bottom add-form-label">Choose your your ad campaign plan</h3>
-        
+
+            <div class="subscription-form-heading-plans col-md-10 offset-md-1 text-center">
+                <p>Our subscriptions plans include a lot of helpful services and advices about 
+                    running online adds. Obcaecati magnam eius perferendis vel</p>
+            </div>
+
             <div className="subscription-form-cards ">
               
                 <ul className="nav nav-tabs d-flex justify-content-between border-bottom-0" id="myTab" role="tablist">
@@ -104,6 +110,26 @@ const Subscription = (props) => {
                         selectedPlan={selectedPlan}
                         />  
 
+                </div>
+
+                
+                <div class="only-run-section ">
+                    <p class="or-divider w-100 border-bottom text-center">
+                        OR
+                    </p>
+                    <div class="only-run-section-heading col-md-10 offset-md-1 text-center">
+                        <p>Our subscriptions plans include a lot of helpful services and advices about 
+                            running online adds. Obcaecati magnam eius perferendis vel</p>
+                    </div>
+                </div>
+
+                <div className="d-flex justify-content-end">
+                    <button onClick={() => props.handleBack()} className="btn btn-cancel" type="submit">
+                        Back
+                    </button>
+                    <Button variant="contained" className="btn btn-next">
+                        Go to checkout
+                    </Button>
                 </div>
 
                 

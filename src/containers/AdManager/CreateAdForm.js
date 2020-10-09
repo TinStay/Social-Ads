@@ -101,7 +101,10 @@ class CreateAdForm extends PureComponent{
                 );
             case 4:
                 return(
-                    <Subscription />
+                    <Subscription 
+                    handleBack={() => this.handleBack(activeStep)}
+                    />
+                    
                 )
           default:
             return 'Unknown stepIndex';

@@ -441,7 +441,7 @@ const BudgetAndSchedule = (props) => {
                     Back
                     </button>
                     <Button variant="contained" className="btn btn-next" onClick={(e) => saveData(e)}>
-                        Go to checkout
+                        Continue
                     </Button>
                 </div>
             </form>

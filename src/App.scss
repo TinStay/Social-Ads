@@ -80,7 +80,11 @@ html{
 .navbar{
     // background-color: #ffffff;
     // border-bottom: 1px solid #b7a6f3;
+
+    // Option 1
    background-color: #7f80ec;
+    // Option 2
+    // background-color: $dark-purple;
    border-bottom: 1px solid #7779e6;
    .homeBtn{
     width: 45px;
@@ -637,7 +641,7 @@ html{
             margin: 10px 10px;
             font-size: 1.5rem;
             padding: 7px 25px;
-            background-color: $font-color;
+            background-color: $dark-purple;
             color: $white;
             &:hover{
                 background-color: #614fa3;
@@ -1487,6 +1491,11 @@ html{
 
             .subscription-form{
                 
+                &-heading-plans{
+                    margin: 40px auto;
+                    color: $dark-blue;
+                    font-size: 1.3rem;
+                }
 
                 &-cards{
                     padding: 10px 0px;
@@ -1634,7 +1643,28 @@ html{
                     
 
                 }
+
+                .only-run-section{
+                    font-size: 1.3rem;
+
+                    &-heading{
+                    
+                    }
+                    
+                    .or-divider{
+                        font-weight: bold;
+                        margin: 20px auto;
+
+                        @media screen and (min-width: 1199px){
+                            font-size: 1.5rem;
+                            padding: 7px 0;
+                            
+                        }
+                    }
+                }
             }
+
+            
             
         }
     }
