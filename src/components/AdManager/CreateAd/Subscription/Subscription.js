@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import SubscriptionFormCard from './SubscriptionFormCard';
 import { Button } from "react-bootstrap";
+import Switch from "react-switch";
 
 // Redux
 import { connect } from 'react-redux';
@@ -8,6 +9,7 @@ import * as actionTypes from '../../../../store/actions/actionTypes';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Subscription = (props) => {
+    const [runOnlyAds, setRunOnlyAds] = useState(false);
 
     // Plan Listings
     const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];
@@ -41,10 +43,10 @@ const Subscription = (props) => {
         <div className="subscription-form">
             <h3 className="border-bottom add-form-label">Choose your your ad campaign plan</h3>
 
-            <div class="subscription-form-heading-plans col-md-10 offset-md-1 text-center">
+            {/* <div class="subscription-form-heading-plans col-md-10 offset-md-1 text-center">
                 <p>Our subscriptions plans include a lot of helpful services and advices about 
                     running online adds. Obcaecati magnam eius perferendis vel</p>
-            </div>
+            </div> */}
 
             <div className="subscription-form-cards ">
               
@@ -113,13 +115,29 @@ const Subscription = (props) => {
                 </div>
 
                 
-                <div class="only-run-section ">
-                    <p class="or-divider w-100 border-bottom text-center">
+                <div className="only-run-section ">
+                    <p className="or-divider w-100 border-bottom ">
                         OR
                     </p>
-                    <div class="only-run-section-heading col-md-10 offset-md-1 text-center">
-                        <p>Our subscriptions plans include a lot of helpful services and advices about 
-                            running online adds. Obcaecati magnam eius perferendis vel</p>
+                    <div className="row only-run-section-row text-center">
+                        <div className="content col-6 offset-3 toggle-container ">
+                            <h2 className="only-run-section-heading ">
+                                Only run ads
+                            </h2>
+                            <Switch 
+                                onChange={() => setRunOnlyAds(prevState => !prevState)} 
+                                checked={runOnlyAds}
+                                onColor="#e2b810"
+                                onHandleColor= "#34495e"
+                                width={50} 
+                                checkedIcon={false}
+                                uncheckedIcon={false}
+                                />
+                        </div>
+                        <div class="col-md-8 offset-md-2 ">
+                            <p> With the only-run-ads option your ads will be run on the social media platforms of your choice with a small commission.</p>
+                        </div>
+                        
                     </div>
                 </div>
 

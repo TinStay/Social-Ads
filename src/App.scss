@@ -1646,9 +1646,43 @@ html{
 
                 .only-run-section{
                     font-size: 1.3rem;
+                    color: $dark-blue;
 
-                    &-heading{
+                    &-row{
+                        // background-color: #cadcf7;
+
+                    }
                     
+                    
+                   .content{
+                    display: flex;
+                    justify-content: space-between;
+
+                    @media screen and (min-width: 1199px){
+                        font-size: 1.5rem;
+                        justify-content: space-evenly;
+                    }
+                   }
+
+                   &-heading{
+                    font-size: 1.4rem;
+                    margin-right: 10px;
+
+                        @media screen and (min-width: 1199px){
+                            font-size: 1.5rem;
+                            
+                        }
+                    }
+
+                    .toggle-container{
+                        // margin: 10px 0;
+                        padding: 15px 10px;
+                        width: 60%;
+                        
+                        @media screen and (min-width: 1199px){
+                            font-size: 1.5rem;
+                            padding: 15px 10px;
+                        }
                     }
                     
                     .or-divider{
