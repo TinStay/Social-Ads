@@ -120,21 +120,21 @@ const Subscription = (props) => {
                         OR
                     </p>
                     <div className="row only-run-section-row text-center">
-                        <div className="content col-6 offset-3 toggle-container ">
+                        <div className="content col-8 offset-2 toggle-container ">
                             <h2 className="only-run-section-heading ">
                                 Only run ads
                             </h2>
                             <Switch 
                                 onChange={() => setRunOnlyAds(prevState => !prevState)} 
                                 checked={runOnlyAds}
-                                onColor="#e2b810"
-                                onHandleColor= "#34495e"
+                                onColor="#4971ff"
+                                onHandleColor= "#ffff"
                                 width={50} 
                                 checkedIcon={false}
                                 uncheckedIcon={false}
                                 />
                         </div>
-                        <div class="col-md-8 offset-md-2 ">
+                        <div class="only-run-section-description col-md-8 offset-md-2 ">
                             <p> With the only-run-ads option your ads will be run on the social media platforms of your choice with a small commission.</p>
                         </div>
                         

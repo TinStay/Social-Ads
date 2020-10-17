@@ -1648,43 +1648,6 @@ html{
                     font-size: 1.3rem;
                     color: $dark-blue;
 
-                    &-row{
-                        // background-color: #cadcf7;
-
-                    }
-                    
-                    
-                   .content{
-                    display: flex;
-                    justify-content: space-between;
-
-                    @media screen and (min-width: 1199px){
-                        font-size: 1.5rem;
-                        justify-content: space-evenly;
-                    }
-                   }
-
-                   &-heading{
-                    font-size: 1.4rem;
-                    margin-right: 10px;
-
-                        @media screen and (min-width: 1199px){
-                            font-size: 1.5rem;
-                            
-                        }
-                    }
-
-                    .toggle-container{
-                        // margin: 10px 0;
-                        padding: 15px 10px;
-                        width: 60%;
-                        
-                        @media screen and (min-width: 1199px){
-                            font-size: 1.5rem;
-                            padding: 15px 10px;
-                        }
-                    }
-                    
                     .or-divider{
                         font-weight: bold;
                         margin: 20px auto;
@@ -1695,6 +1658,47 @@ html{
                             
                         }
                     }
+                   
+                    &-row{
+                        margin: 30px 0px;
+                        padding-bottom: 20px;
+                        border-radius: 5px;
+
+                        // background-color: #f1f5ff;
+                        background:  #c6d2ff;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, $bgc-white,  #c6d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to top, $bgc-white, #c6d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    }
+
+                    &-heading{
+                        font-size: 1.4rem;
+                        margin-right: 10px;
+
+                            @media screen and (min-width: 1199px){
+                                font-size: 1.5rem;
+                                
+                            }
+                        }
+
+                    .toggle-container{
+                        margin: 10px auto 20px auto;
+                        display: flex;
+                        justify-content: space-between;
+                        padding:  10px;
+                        border-bottom: 1px solid #a9bdff;
+                        
+                        @media screen and (min-width: 1199px){
+                            font-size: 1.5rem;
+                            
+                        }
+
+                    }
+
+                    &-description{
+                        font-size: 1.2rem;
+                    }
+                    
+                    
                 }
             }
 
