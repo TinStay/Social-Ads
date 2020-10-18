@@ -14,15 +14,15 @@ const SubscriptionFormCard = (props) => {
     };
 
     let activeCardClasses = null ;
-    if(props.selectedPlan != "" && props.shownCard == props.planName){
+    if(props.shownCard == props.planName){
         activeCardClasses = "show active";
     } 
     else if(props.selectedPlan == "onlyRunAds"  && props.shownCard == props.planName){
         activeCardClasses = "show active";
     } 
-    else if (props.planName == "Basic"){
-        activeCardClasses = "show active";
-    }
+    // else if (props.planName == "Basic"){
+    //     activeCardClasses = "show active";
+    // }
 
     return(
         

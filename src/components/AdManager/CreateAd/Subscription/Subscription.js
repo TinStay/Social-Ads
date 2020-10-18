@@ -18,16 +18,22 @@ const Subscription = (props) => {
 
     useEffect(() => {
         if(props.state.subscriptionPlan != ""){
-            if(props.state.subscriptionPlan == "runOnlyAds"){
-                // Set Basic plan to be active when customer has chosen runOnlyAds
-                setShownCard("Basic");
-            }
+
+            if(props.state.subscriptionPlan == "onlyRunAds"){
+                if(shownCard == ""){
+                    // Set Basic plan to be active when customer has chosen runOnlyAds
+                    setShownCard("Basic");
+                }
+                
+            } 
             else{
                 setShownCard(props.state.subscriptionPlan);
             }
-
-            setSelectedPlan(props.state.subscriptionPlan);
+    
+            
         }
+
+        setSelectedPlan(props.state.subscriptionPlan);
     },[props.state.subscriptionPlan]);
 
     // Save to state and to redux state
@@ -41,37 +47,33 @@ const Subscription = (props) => {
             // Update selected plan
             setSelectedPlan("onlyRunAds");
 
-            setShownCard("Basic");
-
             // Update redux state
             props.saveSubscriptionPlan("onlyRunAds");  
         }
         else{
             setSelectedPlan("");
 
-            // Set Basic subscription as default
-            setShownCard("Basic");
-
              // Update redux state
              props.saveSubscriptionPlan("");  
         }
 
-         
+        // Set Basic subscription as default
+        // setShownCard("Basic");
     } 
 
     // Active classes when it is the shown card 
-    let cardLinkBasicClass = `nav-link card-link ${shownCard == "Basic" || selectedPlan == "onlyRunAds" ? "active" : null}`;
+    let cardLinkBasicClass = `nav-link card-link ${shownCard == "Basic"  ? "active" : null}`;
     let cardLinkPremiumClass = `nav-link card-link ${shownCard == "Premium" ? "active" : null}`;
     let cardLinkDeluxeClass = `nav-link card-link ${shownCard == "Deluxe" ? "active" : null}`;
 
-    console.log("shownCard", shownCard, "setSelectedPlan", setSelectedPlan);
+    console.log("shownCard", shownCard);
 
     // Plan Listings
     const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];
 
     return(
         <div className="subscription-form">
-            <h3 className="border-bottom add-form-label">Choose your your ad campaign plan</h3>
+            <h3 className="border-bottom add-form-label">Choose your ad campaign plan</h3>
 
             {/* <div class="subscription-form-heading-plans col-md-10 offset-md-1 text-center">
                 <p>Our subscriptions plans include a lot of helpful services and advices about 
@@ -82,23 +84,25 @@ const Subscription = (props) => {
               
                 <ul className="nav nav-tabs d-flex justify-content-between border-bottom-0" id="myTab" role="tablist">
                         <li className="nav-tab card-tab">
-                            <a className={cardLinkBasicClass} id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
+                            <a className={cardLinkBasicClass}  id={`headingBasic`} data-toggle="tab" href="#tabBasic" role="tab" aria-controls="tabBasic" aria-selected="true">
                                 <div className="d-flex card-heading justify-content-center" >
                                     <i className="fas mr-3 mb-2 fa-star"></i>
                                     <h1 className=" font-weight-bold">Basic</h1>
                                 </div>
                             </a>
                         </li>
+
                         <li className="nav-tab card-tab">
-                            <a className={cardLinkPremiumClass} id={`headingPremium`} data-toggle="tab" href="#tabPremium" role="tab" aria-controls="tabPremium" aria-selected="true">
+                            <a className={cardLinkPremiumClass}  id={`headingPremium`} data-toggle="tab" href="#tabPremium" role="tab" aria-controls="tabPremium" aria-selected="true">
                                 <div className="d-flex card-heading justify-content-center " >
                                     <i className="fas mr-3 mb-2 fa-crown"></i>
                                     <h1 className=" font-weight-bold">Premium</h1>
                                 </div>
                             </a>
                         </li>
+
                         <li className="nav-tab card-tab">
-                            <a className={cardLinkDeluxeClass} id={`headingDeluxe`} data-toggle="tab" href="#tabDeluxe" role="tab" aria-controls="tabDeluxe" aria-selected="true">
+                            <a className={cardLinkDeluxeClass}  id={`headingDeluxe`} data-toggle="tab" href="#tabDeluxe" role="tab" aria-controls="tabDeluxe" aria-selected="true">
                                 <div className="d-flex card-heading justify-content-center " >
                                     <i className="fas mr-3 mb-2 fa-dice-d20"></i>
                                     <h1 className=" font-weight-bold">Deluxe</h1>
