@@ -222,7 +222,7 @@ const BudgetAndSchedule = (props) => {
             }
 
             props.saveBudgetAndSchedule(formData)
-            props.goToCheckout()
+            props.goToSubscriptionPlans()
         }else{
             setShowAlerts(true)
         }

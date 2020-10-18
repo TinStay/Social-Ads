@@ -1513,9 +1513,14 @@ html{
                     
                     .card-tab{
                         border: none;
+                        // background-color: #e2daf8;   /* fallback for old browsers */
+                        // background: -webkit-linear-gradient(to top, $bgc-white, #e2daf8);  /* Chrome 10-25, Safari 5.1-6 */
+                        // background: linear-gradient(to top, $bgc-white, #e2daf8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
                         .active{
                             background-color: #e2daf8; 
-                            transition: 0.5s ease-in-out ;
+                            transition: 0.4s ease-in-out ;
+                            
                         }
                         
                     }

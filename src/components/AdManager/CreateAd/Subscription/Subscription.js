@@ -11,14 +11,21 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 const Subscription = (props) => {
     
     // Currently displayed to the user plan
-    const [showCard, setShowCard]  = useState("Basic");
+    const [shownCard, setShownCard]  = useState("Basic");
 
     // Currently selected plan
     const [selectedPlan, setSelectedPlan] = useState("");
 
     useEffect(() => {
         if(props.state.subscriptionPlan != ""){
-            setShowCard(props.state.subscriptionPlan);
+            if(props.state.subscriptionPlan == "runOnlyAds"){
+                // Set Basic plan to be active when customer has chosen runOnlyAds
+                setShownCard("Basic");
+            }
+            else{
+                setShownCard(props.state.subscriptionPlan);
+            }
+
             setSelectedPlan(props.state.subscriptionPlan);
         }
     },[props.state.subscriptionPlan]);
@@ -30,19 +37,34 @@ const Subscription = (props) => {
     }
 
     const selectOnlyRunAds = isChecked =>{
-        // e.preventDefault();
         if(isChecked){
+            // Update selected plan
             setSelectedPlan("onlyRunAds");
+
+            setShownCard("Basic");
+
+            // Update redux state
+            props.saveSubscriptionPlan("onlyRunAds");  
         }
         else{
             setSelectedPlan("");
+
+            // Set Basic subscription as default
+            setShownCard("Basic");
+
+             // Update redux state
+             props.saveSubscriptionPlan("");  
         }
+
+         
     } 
 
     // Active classes when it is the shown card 
-    let cardLinkBasicClass = `nav-link card-link ${showCard == "Basic" ? "active" : null}`;
-    let cardLinkPremiumClass = `nav-link card-link ${showCard == "Premium" ? "active" : null}`;
-    let cardLinkDeluxeClass = `nav-link card-link ${showCard == "Deluxe" ? "active" : null}`;
+    let cardLinkBasicClass = `nav-link card-link ${shownCard == "Basic" || selectedPlan == "onlyRunAds" ? "active" : null}`;
+    let cardLinkPremiumClass = `nav-link card-link ${shownCard == "Premium" ? "active" : null}`;
+    let cardLinkDeluxeClass = `nav-link card-link ${shownCard == "Deluxe" ? "active" : null}`;
+
+    console.log("shownCard", shownCard, "setSelectedPlan", setSelectedPlan);
 
     // Plan Listings
     const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];
@@ -88,13 +110,14 @@ const Subscription = (props) => {
                 <div className="tab-content subscription-form-cards-body-container " id="myTabContent">
                     <SubscriptionFormCard 
                         planName="Basic" 
-                        price="0"
-                        desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
-                        listing={basicListing}
-                        btnText="Select Basic"
-                        iconClass="fa-star"
+                        price = "0"
+                        desc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
+                        listing = {basicListing}
+                        btnText = "Select Basic"
+                        iconClass = "fa-star"
                         selectSubscriptionPlan = {(planName) => selectPlan(planName)}
-                        selectedPlan={selectedPlan}
+                        selectedPlan = {selectedPlan}
+                        shownCard = {shownCard}
                         />
 
                     <SubscriptionFormCard 
@@ -106,6 +129,7 @@ const Subscription = (props) => {
                         iconClass="fa-crown"
                         selectSubscriptionPlan = {(planName) => selectPlan(planName)}
                         selectedPlan={selectedPlan}
+                        shownCard = {shownCard}
                         />
 
                     <SubscriptionFormCard
@@ -118,6 +142,7 @@ const Subscription = (props) => {
                         iconClass="fa-dice-d20"
                         selectSubscriptionPlan = {(planName) => selectPlan(planName)}
                         selectedPlan={selectedPlan}
+                        shownCard = {shownCard}
                         />  
 
                 </div>
@@ -153,7 +178,7 @@ const Subscription = (props) => {
                     <button onClick={() => props.handleBack()} className="btn btn-cancel" type="submit">
                         Back
                     </button>
-                    <Button variant="contained" className="btn btn-next">
+                    <Button variant="contained" className="btn btn-next" onClick={() => props.goToCheckout()} disabled={selectedPlan == "" ? true : false }>
                         Go to checkout
                     </Button>
                 </div>

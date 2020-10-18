@@ -13,6 +13,7 @@ import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
 import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
 import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
 import Subscription from '../../components/AdManager/CreateAd/Subscription/Subscription';
+import Checkout from '../../components/AdManager/CreateAd/Checkout/Checkout';
 
 //Stepper 
 import Stepper from '@material-ui/core/Stepper';
@@ -67,9 +68,8 @@ class CreateAdForm extends PureComponent{
     }
 
     getStepContent(stepIndex){
-        const adInfo = this.props.adInfo;
+        // const adInfo = this.props.adInfo;
         const activeStep = this.state.activeStep
-        const steps = this.getSteps();
 
 
         switch (stepIndex) {
@@ -96,13 +96,14 @@ class CreateAdForm extends PureComponent{
                 return (
                     <BudgetAndSchedule 
                         handleBack={() => this.handleBack(activeStep)}
-                        goToCheckout={() => this.goToCheckout(activeStep)}
+                        goToSubscriptionPlans={() => this.goToSubscriptionPlans(activeStep)}
                     />
                 );
             case 4:
                 return(
                     <Subscription 
-                    handleBack={() => this.handleBack(activeStep)}
+                        handleBack={() => this.handleBack(activeStep)}
+                        goToCheckout={() => this.goToCheckout(activeStep)}
                     />
                     
                 )
@@ -141,6 +142,15 @@ class CreateAdForm extends PureComponent{
             showErrors: false
         });
     };
+
+    goToSubscriptionPlans = activeStep => {
+        const nextStep = activeStep + 1;
+
+        this.setState({
+            activeStep: nextStep,
+            showErrors: false
+        });
+    }
 
     goToCheckout = (activeStep) => {
         const nextStep = activeStep + 1;
@@ -198,8 +208,9 @@ class CreateAdForm extends PureComponent{
 
             {activeStep === steps.length ? (
                 <div>
-                    <Typography className=''>All steps completed</Typography>
-                    <Button onClick={this.handleReset}>Reset</Button>
+                    <Checkout 
+                        handleBack={() => this.handleBack(activeStep)}
+                    />
                 </div>
                 ) : (
                 <div>
