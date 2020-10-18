@@ -13,14 +13,20 @@ const SubscriptionFormCard = (props) => {
         props.selectSubscriptionPlan(props.planName);
     };
 
-    let isCardActive = "false";
-    if(props.selectedPlan != ""){
-
+    let activeCardClasses = null ;
+    if(props.selectedPlan != "" && props.selectedPlan == props.planName){
+        activeCardClasses = "show active";
     } 
+    else if(props.selectedPlan == "onlyRunAds"  && props.planName == "Basic"){
+        activeCardClasses = "show active";
+    } 
+    else if (props.planName == "Basic"){
+        activeCardClasses = "show active";
+    }
 
     return(
         
-                <div className={`tab-pane fade card-body ${props.selectedPlan != "" ? props.selectedPlan === props.planName ? "show active" : null : props.planName == "Basic" ? "show active" : null} `} id={`tab${props.planName}`} aria-labelledby={`heading${props.planName}`} data-parent={`#heading${props.planName}`}>
+                <div className={`tab-pane fade card-body ${activeCardClasses} `} id={`tab${props.planName}`} aria-labelledby={`heading${props.planName}`} data-parent={`#heading${props.planName}`}>
                         <div className="row  ">
                             <div className="col-md-6 ">                
                                 <h3 className="h4">Includes: </h3>

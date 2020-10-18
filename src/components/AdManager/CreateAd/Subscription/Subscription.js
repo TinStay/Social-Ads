@@ -9,11 +9,7 @@ import * as actionTypes from '../../../../store/actions/actionTypes';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Subscription = (props) => {
-    const [runOnlyAds, setRunOnlyAds] = useState(false);
-
-    // Plan Listings
-    const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];
-
+    
     // Currently displayed to the user plan
     const [showCard, setShowCard]  = useState("Basic");
 
@@ -33,11 +29,23 @@ const Subscription = (props) => {
         props.saveSubscriptionPlan(planName);    
     }
 
+    const selectOnlyRunAds = isChecked =>{
+        // e.preventDefault();
+        if(isChecked){
+            setSelectedPlan("onlyRunAds");
+        }
+        else{
+            setSelectedPlan("");
+        }
+    } 
+
+    // Active classes when it is the shown card 
     let cardLinkBasicClass = `nav-link card-link ${showCard == "Basic" ? "active" : null}`;
     let cardLinkPremiumClass = `nav-link card-link ${showCard == "Premium" ? "active" : null}`;
     let cardLinkDeluxeClass = `nav-link card-link ${showCard == "Deluxe" ? "active" : null}`;
 
-    console.log(cardLinkBasicClass.includes("active"), cardLinkPremiumClass.includes("active"),  cardLinkDeluxeClass.includes("active"));
+    // Plan Listings
+    const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];
 
     return(
         <div className="subscription-form">
@@ -83,7 +91,7 @@ const Subscription = (props) => {
                         price="0"
                         desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit ipsum dolor sit, amet consectetur adipisicing elit \"
                         listing={basicListing}
-                        btnText="Go to ad manager"
+                        btnText="Select Basic"
                         iconClass="fa-star"
                         selectSubscriptionPlan = {(planName) => selectPlan(planName)}
                         selectedPlan={selectedPlan}
@@ -94,7 +102,7 @@ const Subscription = (props) => {
                         price="15"
                         // desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit"
                         listing={basicListing}
-                        btnText="Update to Premium"
+                        btnText="Select Premium"
                         iconClass="fa-crown"
                         selectSubscriptionPlan = {(planName) => selectPlan(planName)}
                         selectedPlan={selectedPlan}
@@ -125,8 +133,8 @@ const Subscription = (props) => {
                                 Only run ads
                             </h2>
                             <Switch 
-                                onChange={() => setRunOnlyAds(prevState => !prevState)} 
-                                checked={runOnlyAds}
+                                onChange={(isChecked) => selectOnlyRunAds(isChecked)} 
+                                checked={selectedPlan === "onlyRunAds" ? true : false}
                                 onColor="#4971ff"
                                 onHandleColor= "#ffff"
                                 width={50} 
