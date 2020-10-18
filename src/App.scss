@@ -1620,12 +1620,16 @@ html{
                                 font-size: 1.4rem;
                                 font-weight: 500;
                                 margin: 20px auto 0 auto;
-                                padding: 14px 30px;
+                                padding: 10px 20px;
                                 background-color: $dark-purple;
                                 border-radius: 50px;
                                 
                                 &:hover{
                                     background-color: #992167;
+                                }
+
+                                @media screen and (min-width: 1199px){
+                                    padding: 14px 30px;
                                 }
 
                                 &:disabled{
@@ -1634,10 +1638,13 @@ html{
                                     font-size: 1.4rem;
                                     font-weight: 500;
                                     margin: 20px auto 0 auto;
-                                    padding: 14px 30px;
+                                    padding: 10px 20px;
                                     background-color: #992167;
                                     border-radius: 50px;
                                     
+                                    @media screen and (min-width: 1199px){
+                                        padding: 14px 30px;
+                                    }
                                 }
                                 
                             }
