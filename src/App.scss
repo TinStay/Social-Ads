@@ -1714,6 +1714,31 @@ html{
                 }
             }
 
+            .checkout-box{
+               background-color: #eaf0ff; 
+               padding: 15px 10px;
+               margin: 0px 5px 20px 5px ;
+               border-radius: 5px;
+               border: 1px solid #c9d4ff;
+
+               &-heading{
+                font-size: 1.6rem;
+                border-bottom: 1px solid #c9d4ff;
+                padding-bottom: 5px;
+               }
+
+               &-info-container{
+                   font-size: 1.2rem;
+                // background-color: red;
+               }
+
+               .smpIcon{
+                   margin: 0 10px;
+                   width: 50px;
+                   height: 50px;
+               }
+            }
+
             
             
         }
