@@ -40,18 +40,18 @@ const Checkout = (props) => {
                         <h3 className="checkout-box-heading">General info</h3>
                         <div className="checkout-box-info-container">
                             <div className="row">
-                                <div className="col-4">
+                                <div className="col-5">
                                     <p>Ad campaign: </p>
                                 </div>
-                                <div className="col-8">
+                                <div className="col-7 ">
                                     <p>{props.adInfo.name}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-4">
+                                <div className="col-5">
                                     <p>Social platforms: </p>
                                 </div>
-                                <div className="col-8">
+                                <div className="col-7">
                                     <p>{runOnPlatformsIcons.map(icon => {
                                         return <img className="smpIcon" src={icon} alt="social media icon"/>
                                     })}
@@ -59,10 +59,10 @@ const Checkout = (props) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-4">
+                                <div className="col-5">
                                     <p>Marketing goal: </p>
                                 </div>
-                                <div className="col-8">
+                                <div className="col-7">
                                     <p>{props.adInfo.marketingGoal}</p>
                                 </div>
                             </div>
@@ -74,7 +74,39 @@ const Checkout = (props) => {
                 </div>
                 <div class="col-md-6">
                     <CheckoutBox>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt molestias optio iure nesciunt, sit accusamus rem dolores ipsum minima!</p>
+                        <h3 className="checkout-box-heading">Audience</h3>
+                        <div className="checkout-box-audience-container">
+                            <div className="row">
+                                <div className="col-5">
+                                    <p>Ad campaign: </p>
+                                </div>
+                                <div className="col-7 ">
+                                    <p>{props.adInfo.name}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-5">
+                                    <p>Social platforms: </p>
+                                </div>
+                                <div className="col-7">
+                                    <p>{runOnPlatformsIcons.map(icon => {
+                                        return <img className="smpIcon" src={icon} alt="social media icon"/>
+                                    })}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-5">
+                                    <p>Marketing goal: </p>
+                                </div>
+                                <div className="col-7">
+                                    <p>{props.adInfo.marketingGoal}</p>
+                                </div>
+                            </div>
+                           
+                            
+                           
+                        </div>
                     </CheckoutBox>
                 </div>
                 <div class="col-md-6">

@@ -1724,7 +1724,8 @@ html{
                &-heading{
                 font-size: 1.6rem;
                 border-bottom: 1px solid #c9d4ff;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
                }
 
                &-info-container{
@@ -1732,6 +1733,7 @@ html{
                 // background-color: red;
                }
 
+               // Social media icon
                .smpIcon{
                    margin: 0 10px;
                    width: 50px;
