@@ -29,29 +29,31 @@ const Checkout = (props) => {
         runOnPlatformsIcons.push(googleAds);
     }
 
-    console.log(runOnPlatformsIcons);
+    let adInfo = props.adInfo;
+    let audience = props.audience;
     
     return(
         <div>
             <h3 className="border-bottom add-form-label">Checkout</h3>
             <div className="row">
+                {/* General Info */}
                 <div className="col-md-6">
                     <CheckoutBox>
                         <h3 className="checkout-box-heading">General info</h3>
                         <div className="checkout-box-info-container">
                             <div className="row">
-                                <div className="col-5">
-                                    <p>Ad campaign: </p>
+                                <div className="col-3">
+                                    <p className="key">Campaign name: </p>
                                 </div>
-                                <div className="col-7 ">
-                                    <p>{props.adInfo.name}</p>
+                                <div className="col-9 ">
+                                    <p>{adInfo.name}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-5">
-                                    <p>Social platforms: </p>
+                                <div className="col-3">
+                                    <p className="key">Social platforms: </p>
                                 </div>
-                                <div className="col-7">
+                                <div className="col-9">
                                     <p>{runOnPlatformsIcons.map(icon => {
                                         return <img className="smpIcon" src={icon} alt="social media icon"/>
                                     })}
@@ -59,11 +61,11 @@ const Checkout = (props) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-5">
-                                    <p>Marketing goal: </p>
+                                <div className="col-3">
+                                    <p className="key">Marketing goal: </p>
                                 </div>
-                                <div className="col-7">
-                                    <p>{props.adInfo.marketingGoal}</p>
+                                <div className="col-9">
+                                    <p>{adInfo.marketingGoal}</p>
                                 </div>
                             </div>
                            
@@ -72,35 +74,57 @@ const Checkout = (props) => {
                         </div>
                     </CheckoutBox>
                 </div>
+                {/* Audience */}
                 <div class="col-md-6">
                     <CheckoutBox>
                         <h3 className="checkout-box-heading">Audience</h3>
                         <div className="checkout-box-audience-container">
                             <div className="row">
-                                <div className="col-5">
-                                    <p>Ad campaign: </p>
+                                <div className="col-3">
+                                    <p className="key">Locations: </p>
                                 </div>
-                                <div className="col-7 ">
-                                    <p>{props.adInfo.name}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-5">
-                                    <p>Social platforms: </p>
-                                </div>
-                                <div className="col-7">
-                                    <p>{runOnPlatformsIcons.map(icon => {
-                                        return <img className="smpIcon" src={icon} alt="social media icon"/>
-                                    })}
+                                <div className="col-9 ">
+                                    <p>
+                                        {audience.location.map(location =>{
+                                        return location.name + "; ";
+                                        })}
                                     </p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-5">
-                                    <p>Marketing goal: </p>
+                                <div className="col-3">
+                                    <p className="key">Gender: </p>
                                 </div>
-                                <div className="col-7">
-                                    <p>{props.adInfo.marketingGoal}</p>
+                                <div className="col-9">
+                                    <p>{audience.gender != null ? audience.gender.label : "All"}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Age from: </p>
+                                </div>
+                                <div className="col-9">
+                                    <p>{audience.ageFrom}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Age to: </p>
+                                </div>
+                                <div className="col-9">
+                                    <p>{audience.ageTo}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Interests: </p>
+                                </div>
+                                <div className="col-9">
+                                    <p>
+                                    {audience.interests.map(interest =>{
+                                        return interest.label + ", ";
+                                    })}
+                                    </p>
                                 </div>
                             </div>
                            
@@ -136,7 +160,7 @@ const Checkout = (props) => {
 const mapStateToProps = state => {
     return{
         adInfo: state.adInfo,
-        state: state
+        audience: state.audience,
     }
 }
 

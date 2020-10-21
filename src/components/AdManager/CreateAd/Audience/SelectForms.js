@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React,{ useEffect, useState} from 'react';
 // import ReactSelectGooglePlaces from "react-select-google-places";
 import PropTypes from 'prop-types'
 import Select from 'react-select'
@@ -90,9 +90,6 @@ export function LocationSelect(props){
 }
 
 
-
-
-
 // Interests, behaviors, demographics
 export const InterestsSelect = (props) => {
 
@@ -100,8 +97,15 @@ export const InterestsSelect = (props) => {
 
     // const [ isLoading, setIsLoading] = useState(false)
     // const [ interests , setInterests] = useState([...interestsData])
-    const [ value , setValue] = useState([...props.selectedInterests])
+    const [ value , setValue] = useState([])
     const [ inputValue , setInputValue] = useState('')
+
+    // Update interests with redux state
+    useEffect(() => {
+        if(props.selectedInterests != []){
+            setValue([...props.selectedInterests])
+        }
+    }, [props.selectedInterests])
 
     
     const createOption = (label) => ({

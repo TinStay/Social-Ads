@@ -1720,6 +1720,11 @@ html{
                margin: 0px 5px 20px 5px ;
                border-radius: 5px;
                border: 1px solid #c9d4ff;
+               font-size: 1.2rem;
+
+               .key{
+                font-weight: 500;
+                }
 
                &-heading{
                 font-size: 1.6rem;
@@ -1729,8 +1734,7 @@ html{
                }
 
                &-info-container{
-                   font-size: 1.2rem;
-                // background-color: red;
+                
                }
 
                // Social media icon
@@ -1738,6 +1742,11 @@ html{
                    margin: 0 10px;
                    width: 50px;
                    height: 50px;
+               }
+
+               &-audience-container{
+                
+                
                }
             }
 
