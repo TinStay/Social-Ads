@@ -86,7 +86,12 @@ const Checkout = (props) => {
                                 <div className="col-9 ">
                                     <p>
                                         {audience.location.map(location =>{
-                                        return location.name + "; ";
+                                            if(location == audience.location[audience.location.length - 1]){
+                                                return location.name;
+                                            }else{
+                                                return location.name + "; ";
+                                            }
+                                       
                                         })}
                                     </p>
                                 </div>
@@ -120,11 +125,19 @@ const Checkout = (props) => {
                                     <p className="key">Interests: </p>
                                 </div>
                                 <div className="col-9">
+
                                     <p>
                                     {audience.interests.map(interest =>{
-                                        return interest.label + ", ";
+                                        if(interest == audience.interests[audience.interests.length - 1]){
+                                            return interest.label;
+                                        }else{
+                                            return interest.label + ", ";
+                                        }
+
+                                       
                                     })}
                                     </p>
+
                                 </div>
                             </div>
                            
