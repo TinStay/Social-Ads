@@ -10,14 +10,14 @@ const AdViewFb = (props) => {
 
     useEffect(() => {
         if(props.runOnPlatforms.includes("runOnInstagram") && !props.runOnPlatforms.includes("runOnFacebook")){
-            setKey("instagram")
+            setKey("instagram");
         }
     }, [])
 
-    let buttonLabel = {value: "Learn more"}
+    let buttonLabel = {value: "Learn more"};
 
     if(props.adDetails[props.adDetails.length-1] != null){
-        buttonLabel = props.adDetails[props.adDetails.length-1]
+        buttonLabel = props.adDetails[props.adDetails.length-1];
     }
 
     return(

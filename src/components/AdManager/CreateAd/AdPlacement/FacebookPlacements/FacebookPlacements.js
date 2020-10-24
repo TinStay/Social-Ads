@@ -124,9 +124,9 @@ const FacebookPlacements = (props) => {
         // Set pictureorVideoUrl in firebase realtime db
         // db.ref("users/" + currentUser.uid + "/orders/"+`/${props.adInfo.name}/adInfo/facebookAd/adDetails/0/value`).set(pictureOrVideoUrl)
 
-        const userName = userData.firstName + userData.lastName
-        const campaignName = props.adInfo.name
-        const fileName = file.name
+        const userName = userData.firstName + userData.lastName;
+        const campaignName = props.adInfo.name;
+        const fileName = file.name;
 
         const uploadTask = storage.ref(`${userName}/${campaignName}/${fileName}`).put(file);
         
@@ -137,8 +137,7 @@ const FacebookPlacements = (props) => {
 
               // progress function ...
               const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              );
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
               setImageUploadProgress(progress)
             },

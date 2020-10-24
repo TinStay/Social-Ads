@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Button } from "react-bootstrap";
 import CheckoutBox from './CheckoutBox';
+import AdViewFb from '../AdPlacement/FacebookPlacements/AdViewFb';
 
 // Icons
 import facebookAds from '../../../../assets/facebookIcon.png';
@@ -148,7 +149,54 @@ const Checkout = (props) => {
                 </div>
                 <div class="col-md-6">
                     <CheckoutBox>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt molestias optio iure nesciunt, sit accusamus rem dolores ipsum minima!</p>
+                    <h3 className="checkout-box-heading">Placements</h3>
+                    <div className="checkout-box-placements-container">
+                        <div className="row">
+                            <AdViewFb 
+                            runOnPlatforms={props.adInfo.runOn}
+                            adDetails={props.adDetails}
+                            pictureOrVideo={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                            headline={props.adDetails[0] ? props.adDetails[0] : "Example headline"}
+                            description={props.adDetails[1] ? props.adDetails[1] : "Example description of your product"}
+                            url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}
+                            />
+                        </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <p className="key">Gender: </p>
+                            </div>
+                            <div className="col-9">
+                                <p>{audience.gender != null ? audience.gender.label : "All"}</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <p className="key">Age from: </p>
+                            </div>
+                            <div className="col-9">
+                                <p>{audience.ageFrom}</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <p className="key">Age to: </p>
+                            </div>
+                            <div className="col-9">
+                                <p>{audience.ageTo}</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <p className="key">Interests: </p>
+                            </div>
+                            <div className="col-9">
+
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
                     </CheckoutBox>
                 </div>
                 <div class="col-md-6">
@@ -174,6 +222,7 @@ const mapStateToProps = state => {
     return{
         adInfo: state.adInfo,
         audience: state.audience,
+        adDetails: state.adInfo.facebookAd.adDetails
     }
 }
 
