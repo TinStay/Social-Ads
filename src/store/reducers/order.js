@@ -9,8 +9,7 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
-                // pictureOrVideo: null,
-                // buttonLabel: null, 
+                pictureOrVideo: null,
                 placements: {
                     automatic: true,
                     custom: []

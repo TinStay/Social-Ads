@@ -968,9 +968,189 @@ html{
                         margin-right: 20px
                     }
                 }
-
-                
             }
+
+
+                    .fb-ad-view{
+                        margin: 30px 0px;
+
+                        @media screen and (min-width: 1199px){
+                            margin: 35px 20px;
+                        }
+
+                        .head{
+                            img{
+                                margin-right: 10px;
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                            }
+
+                            h1{
+                                font-size: 1rem;
+                                font-weight: bold;
+                            }
+
+                            p{
+                                font-size: 0.9rem;
+                                color: #888888;
+                            }
+
+                            .description{
+                                margin: 0 10px;
+                                font-size: 1.2rem;
+                            }
+                        }
+
+                        .ad-image{
+                            // width: 96%;
+
+                            img{
+                                margin-top: 10px;
+                                width: 100%;
+
+                                @media screen and (min-width: 1199px){
+                                    // min-width: 500px;
+                                }
+                            }
+                        }
+
+                        .ad-description{
+                            padding: 0;
+                            margin: 0 auto;
+                            // width: 96%;
+                            background-color: #eeeeee;
+
+                            .url{
+                                color: #595959;
+                                font-size: 1.1rem;
+                                // margin: 10px;
+                            }
+
+                            .headline{
+                                font-size: 1.2rem;
+                            }
+
+                            .desc{
+                                font-size: 1.1rem;
+                                color: #5c6072;
+                            }
+
+                            button{
+                                margin: 10px 0;
+                                padding: 5px 10px;
+                                font-size: 1.1rem;
+                            }
+                        }
+                    }
+
+                    .insta-ad-view{
+                        margin: 20px 0px;
+
+                        @media screen and (min-width: 1199px){
+                            margin: 20px;
+                        }
+
+                        .head{
+                            img{
+                                margin-right: 10px;
+                                width: 45px;
+                                height: 45px;
+                                border-radius: 50%;
+                            }
+
+                            h1{
+                                font-size: 1rem;
+                                font-weight: bold;
+                            }
+
+                            p{
+                                font-size: 0.9rem;
+                                color: #888888;
+                            }
+
+                            .three-dots{
+                                margin-left: -15px;
+                                font-size: 1.5rem;
+                            }
+                        }
+
+                        .ad-image{
+                            // width: 96%;
+
+                            img{
+                                // margin-top: 0px;
+                                width: 100%;
+
+                                @media screen and (min-width: 1199px){
+                                    // min-width: 500px;
+                                }
+                            }
+                        }
+
+                        .ad-description{
+                            padding: 0;
+                            margin: 0 auto;
+                            // width: 96%;
+                            // background-color: #eeeeee;
+
+                            .blue-field{
+                                width: 100%;
+                                // height: 35px;
+                                background-color: #5797ff;
+                                padding: 0px 15px;
+                                color: white;
+
+                                &-title{
+                                    margin: auto 0;
+                                }
+                                &-arrow{
+                                    margin: 0 0;
+                                    font-size: 1.6rem;
+                                }
+                            }
+                        }
+
+                        .ad-icons{
+                            margin-top: 5px;
+                            // margin: 0 2px;
+                            // width: 96%;
+                            // background-color: #eeeeee;
+
+                            .icon{
+                                width: 27%;
+                                margin: 0 5px;
+                            }
+                            .saveIcon{
+                                height: 35px;
+                                margin: 0 5px;
+                            }
+                            
+                        }
+
+                        .views-section{
+                            p{
+                                font-weight: bold;
+                                font-size: 0.9rem;
+                                margin: 5px;
+                            }
+                        }
+                        .description-section{
+                            margin: 5px;   
+
+                            .description{
+                                font-size: 0.9rem;
+                                font-weight: 500;
+                            }
+
+                            .account-name{
+                                font-weight: bold;
+                                font-size: 0.9rem;
+                                
+                            }
+                        }
+                    }
+            
 
             .placement-form{
 
@@ -1099,185 +1279,6 @@ html{
                         }
                     }
 
-                    &-view-facebook{
-                        margin: 30px 0px;
-
-                        @media screen and (min-width: 1199px){
-                            margin: 35px 20px;
-                        }
-
-                        .head{
-                            img{
-                                margin-right: 10px;
-                                width: 50px;
-                                height: 50px;
-                                border-radius: 50%;
-                            }
-
-                            h1{
-                                font-size: 1rem;
-                                font-weight: bold;
-                            }
-
-                            p{
-                                font-size: 0.9rem;
-                                color: #888888;
-                            }
-
-                            .description{
-                                margin: 0 10px;
-                                font-size: 1.2rem;
-                            }
-                        }
-
-                        .ad-image{
-                            // width: 96%;
-
-                            img{
-                                margin-top: 10px;
-                                width: 100%;
-
-                                @media screen and (min-width: 1199px){
-                                    // min-width: 500px;
-                                }
-                            }
-                        }
-
-                        .ad-description{
-                            padding: 0;
-                            margin: 0 auto;
-                            // width: 96%;
-                            background-color: #eeeeee;
-
-                            .url{
-                                color: #595959;
-                                font-size: 1.1rem;
-                                // margin: 10px;
-                            }
-
-                            .headline{
-                                font-size: 1.2rem;
-                            }
-
-                            .desc{
-                                font-size: 1.1rem;
-                                color: #5c6072;
-                            }
-
-                            button{
-                                margin: 10px 0;
-                                padding: 5px 10px;
-                                font-size: 1.1rem;
-                            }
-                        }
-                    }
-
-                    &-view-instagram{
-                        margin: 20px 0px;
-
-                        @media screen and (min-width: 1199px){
-                            margin: 20px;
-                        }
-
-                        .head{
-                            img{
-                                margin-right: 10px;
-                                width: 45px;
-                                height: 45px;
-                                border-radius: 50%;
-                            }
-
-                            h1{
-                                font-size: 1rem;
-                                font-weight: bold;
-                            }
-
-                            p{
-                                font-size: 0.9rem;
-                                color: #888888;
-                            }
-
-                            .three-dots{
-                                margin-left: -15px;
-                                font-size: 1.5rem;
-                            }
-                        }
-
-                        .ad-image{
-                            // width: 96%;
-
-                            img{
-                                // margin-top: 0px;
-                                width: 100%;
-
-                                @media screen and (min-width: 1199px){
-                                    // min-width: 500px;
-                                }
-                            }
-                        }
-
-                        .ad-description{
-                            padding: 0;
-                            margin: 0 auto;
-                            // width: 96%;
-                            // background-color: #eeeeee;
-
-                            .blue-field{
-                                width: 100%;
-                                // height: 35px;
-                                background-color: #5797ff;
-                                padding: 0px 15px;
-                                color: white;
-
-                                &-title{
-                                    margin: auto 0;
-                                }
-                                &-arrow{
-                                    margin: 0 0;
-                                    font-size: 1.6rem;
-                                }
-                            }
-                        }
-
-                        .ad-icons{
-                            margin-top: 5px;
-                            // margin: 0 2px;
-                            // width: 96%;
-                            // background-color: #eeeeee;
-
-                            .icon{
-                                width: 27%;
-                                margin: 0 5px;
-                            }
-                            .saveIcon{
-                                height: 35px;
-                                margin: 0 5px;
-                            }
-                            
-                        }
-
-                        .views-section{
-                            p{
-                                font-weight: bold;
-                                font-size: 0.9rem;
-                                margin: 5px;
-                            }
-                        }
-                        .description-section{
-                            margin: 5px;   
-
-                            .description{
-                                font-size: 0.9rem;
-                                font-weight: 500;
-                            }
-
-                            .account-name{
-                                font-weight: bold;
-                                font-size: 0.9rem;
-                                
-                            }
-                        }
-                    }
 
                    
                 }

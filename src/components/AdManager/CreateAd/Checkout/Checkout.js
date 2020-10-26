@@ -155,43 +155,11 @@ const Checkout = (props) => {
                             <AdViewFb 
                             runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.adDetails}
-                            pictureOrVideo={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                            // pictureOrVideo={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
                             headline={props.adDetails[0] ? props.adDetails[0] : "Example headline"}
                             description={props.adDetails[1] ? props.adDetails[1] : "Example description of your product"}
                             url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}
                             />
-                        </div>
-                        <div className="row">
-                            <div className="col-3">
-                                <p className="key">Gender: </p>
-                            </div>
-                            <div className="col-9">
-                                <p>{audience.gender != null ? audience.gender.label : "All"}</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-3">
-                                <p className="key">Age from: </p>
-                            </div>
-                            <div className="col-9">
-                                <p>{audience.ageFrom}</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-3">
-                                <p className="key">Age to: </p>
-                            </div>
-                            <div className="col-9">
-                                <p>{audience.ageTo}</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-3">
-                                <p className="key">Interests: </p>
-                            </div>
-                            <div className="col-9">
-
-                            </div>
                         </div>
                         
                         

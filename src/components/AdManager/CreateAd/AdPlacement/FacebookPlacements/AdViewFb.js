@@ -28,7 +28,7 @@ const AdViewFb = (props) => {
             >
             {props.runOnPlatforms.includes("runOnFacebook") ? 
                 <Tab eventKey="facebook" title="Facebook view">
-                    <div className="fb-ad-form-view-facebook">
+                    <div className="fb-ad-view">
                         <div className="row head">
                             <div className="col-md-12 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
@@ -61,7 +61,7 @@ const AdViewFb = (props) => {
                 </Tab> : null}
             {props.runOnPlatforms.includes("runOnInstagram") ? 
                 <Tab eventKey="instagram" title="Instagram view">
-                    <div className="fb-ad-form-view-instagram">
+                    <div className="insta-ad-view">
                         <div className="row head">
                             <div className="col-11 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
