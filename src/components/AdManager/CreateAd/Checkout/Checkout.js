@@ -155,10 +155,10 @@ const Checkout = (props) => {
                             <AdViewFb 
                             runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.adDetails}
-                            // pictureOrVideo={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-                            headline={props.adDetails[0] ? props.adDetails[0] : "Example headline"}
-                            description={props.adDetails[1] ? props.adDetails[1] : "Example description of your product"}
-                            url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}
+                            pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                            headline={props.adDetails[0] ? props.adDetails[0] : null}
+                            description={props.adDetails[1] ? props.adDetails[1] : null}
+                            url={props.adInfo.url ? props.adInfo.url : null}
                             />
                         </div>
                         

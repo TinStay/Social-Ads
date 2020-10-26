@@ -154,13 +154,13 @@ const FacebookPlacements = (props) => {
                 .getDownloadURL()
                 .then(url => {
                   setPictureOrVideoUrl(url);
-                  props.savePictureOrVideo(url)     
+                  props.savePictureOrVideo(url);
                 });
             }
           );
     }
 
-    console.log("pictureOrVideo", pictureOrVideo, "pictureOrVideoUrl", pictureOrVideoUrl)
+    // console.log("pictureOrVideo", pictureOrVideo, "pictureOrVideoUrl", pictureOrVideoUrl)
 
     // const uploadPictureHandler = () => {
     //     // Validation
@@ -396,7 +396,7 @@ const FacebookPlacements = (props) => {
                             <AdViewFb 
                             runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.facebookAd.adDetails}
-                            pictureOrVideo={pictureOrVideoUrl}
+                            pictureOrVideoUrl={pictureOrVideoUrl}
                             headline={headline ? headline : "Example headline"}
                             description={description ? description : "Example description of your product"}
                             url={props.adInfo.url ? props.adInfo.url : "www.examplewebsite.com"}
@@ -424,7 +424,7 @@ const mapDispatchToProps = dispatch => {
     return {
         saveDevices: (devices) => dispatch({type: actionTypes.SAVE_DEVICES, devices: devices}),
         saveUrl: (url) => dispatch({type: actionTypes.SAVE_URL, url: url}),
-        savePictureOrVideo: (mediaFile) => dispatch({type: actionTypes.SAVE_PIC_OR_VIDEO, mediaFile: mediaFile}),
+        savePictureOrVideoUrl: (mediaFile) => dispatch({type: actionTypes.SAVE_PIC_OR_VIDEO, mediaFile: mediaFile}),
         saveButtonLabel: (buttonLabel) => dispatch({type: actionTypes.SAVE_BUTTON_LABEL, buttonLabel: buttonLabel}),
         saveFacebookPlacements: (placements) => dispatch({type: actionTypes.SAVE_FACEBOOK_PLACEMENTS, placements: placements}),
         saveFacebookAdInfo: (adDetails) => dispatch({type: actionTypes.SAVE_FACEBOOK_AD_DETAILS, adDetails: adDetails}),

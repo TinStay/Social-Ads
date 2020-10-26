@@ -9,7 +9,7 @@ const initialState = {
             devices: [],
             url: '',
             facebookAd:{
-                pictureOrVideo: null,
+                pictureOrVideoUrl: null,
                 placements: {
                     automatic: true,
                     custom: []
@@ -101,7 +101,7 @@ const updatePicOrVideo = (state, action) => {
     return updateAdInfo(state, {
         facebookAd: {
             ...state.adInfo.facebookAd,
-            pictureOrVideo: action.mediaFile,
+            pictureOrVideoUrl: action.mediaFile,
         }
     })
 }  
