@@ -114,6 +114,8 @@ class Profile extends PureComponent{
                 .then(() => {
                     var updates = {};
                     updates['/users/' + currentUser.uid] = newData;
+                    //to search and replace    
+                    const replaceAll  =(s="",f="",r="")=>  s.replace(new RegExp(f.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), r)
                     
                     db.ref().update(updates);
 

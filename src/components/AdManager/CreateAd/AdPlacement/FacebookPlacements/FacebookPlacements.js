@@ -154,7 +154,7 @@ const FacebookPlacements = (props) => {
                 .getDownloadURL()
                 .then(url => {
                   setPictureOrVideoUrl(url);
-                  props.savePictureOrVideo(url);
+                  props.savePictureOrVideoUrl(url);
                 });
             }
           );
