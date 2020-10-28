@@ -32,6 +32,15 @@ const Checkout = (props) => {
 
     let adInfo = props.adInfo;
     let audience = props.audience;
+
+   
+
+    // runOnPlatforms={props.adInfo.runOn}
+    // adDetails={props.adDetails}
+    // pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+    // headline={props.adDetails[0] ? props.adDetails[0] : null}
+    // description={props.adDetails[1] ? props.adDetails[1] : null}
+    // url={props.adInfo.url ? props.adInfo.url : null}
     
     return(
         <div>
@@ -156,8 +165,8 @@ const Checkout = (props) => {
                             runOnPlatforms={props.adInfo.runOn}
                             adDetails={props.adDetails}
                             pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-                            headline={props.adDetails[0] ? props.adDetails[0] : null}
-                            description={props.adDetails[1] ? props.adDetails[1] : null}
+                            headline={props.adDetails[0] ? props.adDetails[0].value : null}
+                            description={props.adDetails[1] ? props.adDetails[1].value : null}
                             url={props.adInfo.url ? props.adInfo.url : null}
                             />
                         </div>
