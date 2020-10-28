@@ -33,15 +33,6 @@ const Checkout = (props) => {
     let adInfo = props.adInfo;
     let audience = props.audience;
 
-   
-
-    // runOnPlatforms={props.adInfo.runOn}
-    // adDetails={props.adDetails}
-    // pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-    // headline={props.adDetails[0] ? props.adDetails[0] : null}
-    // description={props.adDetails[1] ? props.adDetails[1] : null}
-    // url={props.adInfo.url ? props.adInfo.url : null}
-    
     return(
         <div>
             <h3 className="border-bottom add-form-label">Checkout</h3>
@@ -158,23 +149,52 @@ const Checkout = (props) => {
                 </div>
                 <div class="col-md-6">
                     <CheckoutBox>
-                    <h3 className="checkout-box-heading">Placements</h3>
+                    <h3 className="checkout-box-heading">Placements and design</h3>
                     <div className="checkout-box-placements-container">
+                        <div class="row">
+                            <div className="col-3">
+                                <p className="key">Devices: </p>
+                            </div>
+                            <div className="col-9 gray">
+                                <p>
+                                {adInfo.devices.map(device =>{
+                                    if(device == adInfo.devices[adInfo.devices.length - 1]){
+                                        return device;
+                                    }else{
+                                        return device + ", ";
+                                    }
+                                })}
+                                </p>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div className="col-3">
+                                <p className="key">Website url: </p>
+                            </div>
+                            <div className="col-9 gray">
+                                <p>{adInfo.url}</p>
+                            </div>
+                            
+                        </div>
                         <div className="row">
-                            <AdViewFb 
-                            runOnPlatforms={props.adInfo.runOn}
-                            adDetails={props.adDetails}
-                            pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-                            headline={props.adDetails[0] ? props.adDetails[0].value : null}
-                            description={props.adDetails[1] ? props.adDetails[1].value : null}
-                            url={props.adInfo.url ? props.adInfo.url : null}
-                            />
+                           
                         </div>
                         
                         
                         
                     </div>
                     </CheckoutBox>
+                </div>
+                <div class="col-md-6">
+                    <AdViewFb 
+                        runOnPlatforms={props.adInfo.runOn}
+                        adDetails={props.adDetails}
+                        pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                        headline={props.adDetails[0] ? props.adDetails[0].value : null}
+                        description={props.adDetails[1] ? props.adDetails[1].value : null}
+                        url={props.adInfo.url ? props.adInfo.url : null}
+                    />
                 </div>
                 <div class="col-md-6">
                     <CheckoutBox>

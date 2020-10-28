@@ -192,10 +192,6 @@ class CreateAdForm extends PureComponent{
     const activeStep = this.state.activeStep
     const steps = this.getSteps();
 
-    console.log("headline: ", this.props.adInfo.facebookAd.adDetails[0],
-     "desc: ", this.props.adInfo.facebookAd.adDetails[1],
-     "url: ", this.props.adInfo.url)
-
 
     return (
         <div className="manager-ad-form-row">
