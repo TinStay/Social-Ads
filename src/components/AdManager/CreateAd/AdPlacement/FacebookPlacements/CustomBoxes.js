@@ -16,22 +16,10 @@ const CustomBoxes = (props) => {
         {name:"stories", checked: placements.length > 0 ? placements[4].checked : false,  label: "Stories", id:`custom-fb-stories`},
     ]) 
 
-    // if(props.selectedCustomPlacements.length > 0){
-        
-    // }
-    
 
-    // let customBoxes = [
-    //     {name:"newsFeed", checked: placements.length > 0 ? placements[0].checked : false,  label: "News Feed", id:`custom-fb-newsFeed`},
-    //     {name:"marketplace", checked: placements.length > 0 ? placements[1].checked : false,  label: "Marketplace", id:`custom-fb-checkbox-marketplace`},
-    //     {name:"videoFeeds", checked: placements.length > 0 ? placements[2].checked : false,  label: "Video Feeds", id:`custom-fb-videoFeeds`},
-    //     {name:"rightColumn", checked: placements.length > 0 ? placements[3].checked : false,  label: "Right Column", id:`custom-fb-rightColumn`},
-    //     {name:"stories", checked: placements.length > 0 ? placements[4].checked : false,  label: "Stories", id:`custom-fb-stories`},
-    // ]
-
-    useEffect(() => {
-        console.log("Custom boxes changed")
-    },[customBoxes])
+    // useEffect(() => {
+    //     console.log("Custom boxes changed")
+    // },[customBoxes])
 
     const handleChange = (e) => {
         for(let i = 0; i < customBoxes.length; i++){
@@ -43,15 +31,10 @@ const CustomBoxes = (props) => {
                 
             }
         }
-        // customBoxes = [
-        //     ...customBoxes,
-        //     {name: e.target.name, checked: e.target.checked, label: label, id: `custom-fb-${e.target.name}`}
-        // ]
-
-        
+  
     }
 
-    console.log(customBoxes)
+    // console.log(customBoxes)
 
     return(
         <div className="row customCheckboxes">
@@ -62,6 +45,7 @@ const CustomBoxes = (props) => {
                                 custom
                                 // inline
                                 label=""
+                                aria-label={box.label}
                                 type="checkbox"
                                 id={box.id}
                                 className="customCheckbox"

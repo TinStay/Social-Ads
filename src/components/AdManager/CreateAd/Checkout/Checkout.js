@@ -45,7 +45,25 @@ const Checkout = (props) => {
         // Add all placements names
         selectedPlacements.custom.map(placement => {
             if(placement.checked){
-                placementsToShow.push(placement.name);
+                // Push labels to be displayed
+                switch(placement.name){
+                    case "newsFeed":
+                        placementsToShow.push("News feed");
+                        break;
+                    case "marketplace":
+                        placementsToShow.push("Marketplace");
+                        break;
+                    case "videoFeeds":
+                        placementsToShow.push("Video Feeds");
+                        break;
+                    case "rightColumn":
+                        placementsToShow.push("Right Column");
+                        break;
+                    case "stories":
+                        placementsToShow.push("Stories");
+                        break;
+                }
+               
             }
         })
     }
@@ -203,7 +221,7 @@ const Checkout = (props) => {
                             <div className="col-9 gray">
                                 <p>
                                     {placementsToShow.map(placement =>{
-                                        if(placement == lastPlacement.name){
+                                        if(placement == placementsToShow[placementsToShow.length - 1]){
                                             return <span key={placement}>{placement}</span>
                                         }else{
                                             return <span key={placement}>{placement}; </span>

@@ -229,7 +229,8 @@ const FacebookPlacements = (props) => {
 
         if(customFbPlacements){
             for(let i = 2; i <= 6; i++){
-                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked})
+                // console.log("placements", e.target[i])
+                customPlacements.push({name: e.target[i].name, checked: e.target[i].checked })
             }
 
             // Custom placements add 6 more form fields so i goes from 7 to 9 for ad details
