@@ -33,6 +33,25 @@ const Checkout = (props) => {
     let adInfo = props.adInfo;
     let audience = props.audience;
 
+    let selectedPlacements = {...adInfo.facebookAd.placements};
+    // Array for storing only the chosen placements
+    let placementsToShow = [];
+    const lastPlacement = selectedPlacements.custom[selectedPlacements.custom.length - 1];
+
+    if(selectedPlacements.automatic){
+        // Add only 1 value if placements are automatic
+        placementsToShow.push("Automatic");
+    } else {
+        // Add all placements names
+        selectedPlacements.custom.map(placement => {
+            if(placement.checked){
+                placementsToShow.push(placement.name);
+            }
+        })
+    }
+    
+    console.log("placementsToShow", placementsToShow, "lastPlacement", lastPlacement)
+
     return(
         <div>
             <h3 className="border-bottom add-form-label">Checkout</h3>
@@ -178,7 +197,23 @@ const Checkout = (props) => {
                             
                         </div>
                         <div className="row">
-                           
+                            <div className="col-3">
+                                <p className="key">Placements: </p>
+                            </div>
+                            <div className="col-9 gray">
+                                <p>
+                                    {placementsToShow.map(placement =>{
+                                        if(placement == lastPlacement.name){
+                                            return <span key={placement}>{placement}</span>
+                                        }else{
+                                            return <span key={placement}>{placement}; </span>
+                                        }
+                                        })
+                                    }
+                                </p>
+                                
+                            </div>
+                            
                         </div>
                         
                         
