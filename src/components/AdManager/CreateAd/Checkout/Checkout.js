@@ -184,72 +184,76 @@ const Checkout = (props) => {
                         </div>
                     </CheckoutBox>
                 </div>
-                <div class="col-md-6">
+                <div className="col-md-12">
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Placements and design</h3>
-                    <div className="checkout-box-placements-container">
-                        <div class="row">
-                            <div className="col-3">
-                                <p className="key">Devices: </p>
-                            </div>
-                            <div className="col-9 gray">
-                                <p>
-                                {adInfo.devices.map(device =>{
-                                    if(device == adInfo.devices[adInfo.devices.length - 1]){
-                                        return device;
-                                    }else{
-                                        return device + ", ";
-                                    }
-                                })}
-                                </p>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div className="col-3">
-                                <p className="key">Website url: </p>
-                            </div>
-                            <div className="col-9 gray">
-                                <p>{adInfo.url}</p>
-                            </div>
-                            
-                        </div>
-                        <div className="row">
-                            <div className="col-3">
-                                <p className="key">Placements: </p>
-                            </div>
-                            <div className="col-9 gray">
-                                <p>
-                                    {placementsToShow.map(placement =>{
-                                        if(placement == placementsToShow[placementsToShow.length - 1]){
-                                            return <span key={placement}>{placement}</span>
+                    <div class="row">
+                        <div className="col-md-5 checkout-box-placements-container">
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Devices: </p>
+                                </div>
+                                <div className="col-9 gray">
+                                    <p>
+                                    {adInfo.devices.map(device =>{
+                                        if(device == adInfo.devices[adInfo.devices.length - 1]){
+                                            return device;
                                         }else{
-                                            return <span key={placement}>{placement}; </span>
+                                            return device + ", ";
                                         }
-                                        })
-                                    }
-                                </p>
+                                    })}
+                                    </p>
+                                </div>
+                                
+                            </div>
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Website url: </p>
+                                </div>
+                                <div className="col-9 gray">
+                                    <p>{adInfo.url}</p>
+                                </div>
+                                
+                            </div>
+                            <div className="row">
+                                <div className="col-5 col-md-4">
+                                    <p className="key">Placements: </p>
+                                </div>
+                                <div className="col-7 col-md-8 gray">
+                                    <p>
+                                        {placementsToShow.map(placement =>{
+                                            if(placement == placementsToShow[placementsToShow.length - 1]){
+                                                return <span key={placement}>{placement}</span>
+                                            }else{
+                                                return <span key={placement}>{placement}; </span>
+                                            }
+                                            })
+                                        }
+                                    </p>
+                                    
+                                </div>
                                 
                             </div>
                             
+                            
+                            
                         </div>
-                        
-                        
-                        
+                        <div className=" col-md-6 ">
+                            <AdViewFb 
+                                runOnPlatforms={props.adInfo.runOn}
+                                adDetails={props.adDetails}
+                                pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                                headline={props.adDetails[0] ? props.adDetails[0].value : null}
+                                description={props.adDetails[1] ? props.adDetails[1].value : null}
+                                url={props.adInfo.url ? props.adInfo.url : null}
+                            />
+                        </div>
                     </div>
+                    
                     </CheckoutBox>
                 </div>
-                <div class="col-md-6">
-                    <AdViewFb 
-                        runOnPlatforms={props.adInfo.runOn}
-                        adDetails={props.adDetails}
-                        pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-                        headline={props.adDetails[0] ? props.adDetails[0].value : null}
-                        description={props.adDetails[1] ? props.adDetails[1].value : null}
-                        url={props.adInfo.url ? props.adInfo.url : null}
-                    />
-                </div>
-                <div class="col-md-6">
+                
+                <div className="col-md-6">
                     <CheckoutBox>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt molestias optio iure nesciunt, sit accusamus rem dolores ipsum minima!</p>
                     </CheckoutBox>

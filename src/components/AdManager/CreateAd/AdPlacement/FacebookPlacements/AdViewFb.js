@@ -27,9 +27,9 @@ const AdViewFb = (props) => {
             onSelect={(k) => setKey(k)} 
             >
             {props.runOnPlatforms.includes("runOnFacebook") ? 
-                <Tab eventKey="facebook" title="Facebook view">
+                <Tab className=" fb-ad-view-tab" eventKey="facebook" title="Facebook view">
                     <div className="fb-ad-view">
-                        <div className="row head">
+                        <div className="row head background-white">
                             <div className="col-md-12 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
                                 <div>

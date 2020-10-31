@@ -22,6 +22,10 @@ html{
     color: $white;
 }
 
+.background-white{
+    background-color: $bgc-white;
+}
+
 .purple{
     color: $purple;
 }
@@ -969,18 +973,33 @@ html{
                     }
                 }
             }
-
-
-                    .fb-ad-view{
-                        margin: 30px 0px;
-                        max-width: 450px;
+                    .fb-ad-view-tab{
+                        background-color:$bgc-white;
 
                         @media screen and (min-width: 1199px){
+                            width: 90%;
                             
-                            margin: 35px 20px;
+                        }
+                    }
+
+                    .fb-ad-view{
+                        // margin: 0 auto;
+                        max-width: 450px;
+                        padding: 20px 0px 0 0px ;
+                        border-radius: 10px;
+                        margin: 0;
+
+                        @media screen and (min-width: 1199px){
+                            padding: 20px 0px;
+                            
+                            
                         }
 
                         .head{
+                            margin: 0 auto;
+                            max-width: 450px;
+                            padding: 15px 0;
+
                             img{
                                 margin-right: 10px;
                                 width: 50px;
@@ -1008,7 +1027,7 @@ html{
                             // width: 96%;
 
                             img{
-                                margin-top: 10px;
+                                // margin-top: 10px;
                                 width: 100%;
 
                                 @media screen and (min-width: 1199px){
@@ -1022,6 +1041,7 @@ html{
                             margin: 0 auto;
                             // width: 96%;
                             background-color: #eeeeee;
+                            border: 1px solid #e4e4e4;
 
                             .url{
                                 color: #595959;
@@ -1049,6 +1069,7 @@ html{
                     .insta-ad-view{
                         margin: 20px 0px;
                         max-width: 450px;
+                        // background-color: $bgc-white;
 
                         @media screen and (min-width: 1199px){
                             margin: 20px;
@@ -1732,10 +1753,13 @@ html{
                 }
 
                &-heading{
+                width: 95%;
+                text-align: center;
+                margin: 0px auto 25px auto;
                 font-size: 1.6rem;
                 border-bottom: 1px solid #c9d4ff;
                 padding-bottom: 10px;
-                margin-bottom: 15px;
+                // margin-bottom: 15px;
                }
 
                &-info-container{
