@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { Button } from "react-bootstrap";
 import CheckoutBox from './CheckoutBox';
 import AdViewFb from '../AdPlacement/FacebookPlacements/AdViewFb';
+import AdViewGoogle from '../AdPlacement/GoogleAd/AdViewGoogle'
 
 // Icons
 import facebookAds from '../../../../assets/facebookIcon.png';
@@ -234,7 +235,15 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div>
-                            
+                            <div class="row">
+                                <AdViewGoogle 
+                                headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
+                                headlineTwo={props.googleAd.headlineTwo ? props.googleAd.headlineTwo : "Headline 2 |"}
+                                headlineThree={props.googleAd.headlineThree ? props.googleAd.headlineThree : "Headline 3"}
+                                description={props.googleAd.description ? props.googleAd.description : "Your description will be shown here"}
+                                url={props.adInfo.url ? props.adInfo.url : "yourwebsite.com"}
+                                />
+                            </div>
                             
                             
                         </div>
@@ -276,7 +285,8 @@ const mapStateToProps = state => {
     return{
         adInfo: state.adInfo,
         audience: state.audience,
-        adDetails: state.adInfo.facebookAd.adDetails
+        adDetails: state.adInfo.facebookAd.adDetails,
+        googleAd: state.adInfo.googleAd
     }
 }
 
