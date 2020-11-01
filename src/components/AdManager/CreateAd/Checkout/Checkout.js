@@ -189,7 +189,7 @@ const Checkout = (props) => {
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Placements and design</h3>
                     <div class="row">
-                        <div className="col-md-5 checkout-box-placements-container">
+                        <div className="col-md-6 checkout-box-placements-container">
                             <div className="row">
                                 <div className="col-3">
                                     <p className="key">Devices: </p>
@@ -235,7 +235,8 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div>
-                            <div class="row">
+                            <div className="col-12 mx-auto">
+                                <p className="key">Google ad view: </p>
                                 <AdViewGoogle 
                                 headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
                                 headlineTwo={props.googleAd.headlineTwo ? props.googleAd.headlineTwo : "Headline 2 |"}
