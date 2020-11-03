@@ -235,7 +235,7 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div>
-                            <div className="col-12 mx-auto">
+                            <div className="col-12 ">
                                 <p className="key">Google ad view: </p>
                                 <AdViewGoogle 
                                 headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
@@ -265,7 +265,47 @@ const Checkout = (props) => {
                 
                 <div className="col-md-6">
                     <CheckoutBox>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt molestias optio iure nesciunt, sit accusamus rem dolores ipsum minima!</p>
+                    <h3 className="budget-box-heading">Budget and schedule</h3>
+                    <div class="row">
+                        <div className="col-md-6 checkout-box-budget-container">
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Daily: </p>
+                                </div>
+                                <div className="col-9 gray">
+                                    <p>
+                                    
+                                    </p>
+                                </div>
+                                
+                            </div>
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Lifetime: </p>
+                                </div>
+                                <div className="col-9 gray">
+                                    <p></p>
+                                </div>
+                                
+                            </div>
+                            <div className="row">
+                                <div className="col-5 col-md-4">
+                                    <p className="key">Placements: </p>
+                                </div>
+                                <div className="col-7 col-md-8 gray">
+                                    <p>
+                                       
+                                    </p>
+                                    
+                                </div>
+                                
+                            </div>
+                          
+                            
+                            
+                        </div>
+                       
+                    </div>
                     </CheckoutBox>
                 </div>
             </div>
