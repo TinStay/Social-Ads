@@ -235,8 +235,11 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div>
-                            <div className="col-12 ">
+                            <div>
                                 <p className="key">Google ad view: </p>
+                            </div>
+                            <div className="col-12 ">
+                                
                                 <AdViewGoogle 
                                 headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
                                 headlineTwo={props.googleAd.headlineTwo ? props.googleAd.headlineTwo : "Headline 2 |"}
