@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import CheckoutBox from './CheckoutBox';
 import AdViewFb from '../AdPlacement/FacebookPlacements/AdViewFb';
 import AdViewGoogle from '../AdPlacement/GoogleAd/AdViewGoogle'
+import FbAdViewModal from './FbAdViewModal';
 
 // Icons
 import facebookAds from '../../../../assets/facebookIcon.png';
@@ -14,6 +15,10 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../../../store/actions/actionTypes';
 
 const Checkout = (props) => {
+    // Facebook and Instagram ad view modal
+    const [fbModalShow, setFbModalShow] = useState(false);
+
+
     const runOnPlatform = [...props.adInfo.runOn];
 
     // Array with images
@@ -184,11 +189,11 @@ const Checkout = (props) => {
                         </div>
                     </CheckoutBox>
                 </div>
-                <div className="col-md-12">
+                <div className="col-md-6">
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Placements and design</h3>
                     <div class="row">
-                        <div className="col-md-6 checkout-box-placements-container">
+                        <div className="col-md-12 checkout-box-placements-container">
                             <div className="row">
                                 <div className="col-3">
                                     <p className="key">Devices: </p>
@@ -236,7 +241,7 @@ const Checkout = (props) => {
                             </div>
                             {props.adInfo.runOn.includes("runOnGoogle") ?
                             (<div>
-                                <div>
+                                <div> 
                                     <p className="key">Google ad view: </p>
                                 </div>
                                 <div className="col-12 ">
@@ -250,21 +255,31 @@ const Checkout = (props) => {
                                 </div>
                             </div>)
                             : null}
-                            
-                        </div>
-                        <div className=" col-md-6 ">
-                            <div>
-                                    <p className="key">Ad view:</p>
+
+                            {/* Facebook and Instagram */}
+                            <div className="row">
+                                <div className="col-md-3">
+                                    <p className="key">Facebook ad view:</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#FbAdView">
+                                        View
+                                    </button>
+                                </div>
                             </div>
-                            <AdViewFb 
+                            <FbAdViewModal
+                                show={fbModalShow}
+                                onHide={() => setFbModalShow(false)}
+                                // Ad view specific
                                 runOnPlatforms={props.adInfo.runOn}
                                 adDetails={props.adDetails}
                                 pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
                                 headline={props.adDetails[0] ? props.adDetails[0].value : null}
                                 description={props.adDetails[1] ? props.adDetails[1].value : null}
-                                url={props.adInfo.url ? props.adInfo.url : null}
-                            />
+                                url={props.adInfo.url ? props.adInfo.url : null}>
+                            </FbAdViewModal>
                         </div>
+                        
                     </div>
                     
                     </CheckoutBox>

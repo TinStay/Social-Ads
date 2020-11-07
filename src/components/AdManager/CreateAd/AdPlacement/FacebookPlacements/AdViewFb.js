@@ -25,9 +25,10 @@ const AdViewFb = (props) => {
             id="controlled-tab-example"
             activeKey={key}
             onSelect={(k) => setKey(k)} 
+            className="fb-ad-view-tabs"
             >
             {props.runOnPlatforms.includes("runOnFacebook") ? 
-                <Tab className=" fb-ad-view-tab" eventKey="facebook" title="Facebook view">
+                <Tab className="fb-ad-view-tab" eventKey="facebook" title="Facebook view">
                     <div className="fb-ad-view">
                         <div className="row head background-white">
                             <div className="col-md-12 d-flex">
