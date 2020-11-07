@@ -112,7 +112,7 @@ const GooglelAdForm = (props) => {
 
                         </div>
                         <div className="col-md-6 mt-5">
-                            <h5 className="view-label border-bottom pb-2">Your ad will look like this:</h5> 
+                            <h5 className="view-label border-bottom pb-2">View ad</h5> 
                             <AdViewGoogle 
                             headlineOne={headlineOne ? headlineOne : "Headline 1 |"}
                             headlineTwo={headlineTwo ? headlineTwo : "Headline 2 |"}

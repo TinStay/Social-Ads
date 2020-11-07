@@ -69,7 +69,6 @@ const Checkout = (props) => {
         })
     }
     
-    console.log("placementsToShow", placementsToShow, "lastPlacement", lastPlacement)
 
     return(
         <div>
@@ -235,23 +234,28 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div>
-                            <div>
-                                <p className="key">Google ad view: </p>
-                            </div>
-                            <div className="col-12 ">
-                                
-                                <AdViewGoogle 
-                                headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
-                                headlineTwo={props.googleAd.headlineTwo ? props.googleAd.headlineTwo : "Headline 2 |"}
-                                headlineThree={props.googleAd.headlineThree ? props.googleAd.headlineThree : "Headline 3"}
-                                description={props.googleAd.description ? props.googleAd.description : "Your description will be shown here"}
-                                url={props.adInfo.url ? props.adInfo.url : "yourwebsite.com"}
-                                />
-                            </div>
-                            
+                            {props.adInfo.runOn.includes("runOnGoogle") ?
+                            (<div>
+                                <div>
+                                    <p className="key">Google ad view: </p>
+                                </div>
+                                <div className="col-12 ">
+                                    <AdViewGoogle 
+                                    headlineOne={props.googleAd.headlineOne ? props.googleAd.headlineOne : "Headline 1 |"}
+                                    headlineTwo={props.googleAd.headlineTwo ? props.googleAd.headlineTwo : "Headline 2 |"}
+                                    headlineThree={props.googleAd.headlineThree ? props.googleAd.headlineThree : "Headline 3"}
+                                    description={props.googleAd.description ? props.googleAd.description : "Your description will be shown here"}
+                                    url={props.adInfo.url ? props.adInfo.url : "yourwebsite.com"}
+                                    />                                  
+                                </div>
+                            </div>)
+                            : null}
                             
                         </div>
                         <div className=" col-md-6 ">
+                            <div>
+                                    <p className="key">Ad view:</p>
+                            </div>
                             <AdViewFb 
                                 runOnPlatforms={props.adInfo.runOn}
                                 adDetails={props.adDetails}
