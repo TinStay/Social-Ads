@@ -257,27 +257,31 @@ const Checkout = (props) => {
                             : null}
 
                             {/* Facebook and Instagram */}
-                            <div className="row">
-                                <div className="col-md-3">
-                                    <p className="key">Facebook ad view:</p>
+                            {props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram") ? 
+                            <div>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <p className="key">Facebook ad view:</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#FbAdView">
+                                            View
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-9">
-                                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#FbAdView">
-                                        View
-                                    </button>
-                                </div>
+                                <FbAdViewModal
+                                    show={fbModalShow}
+                                    onHide={() => setFbModalShow(false)}
+                                    // Ad view specific
+                                    runOnPlatforms={props.adInfo.runOn}
+                                    adDetails={props.adDetails}
+                                    pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
+                                    headline={props.adDetails[0] ? props.adDetails[0].value : null}
+                                    description={props.adDetails[1] ? props.adDetails[1].value : null}
+                                    url={props.adInfo.url ? props.adInfo.url : null}>
+                                </FbAdViewModal>
                             </div>
-                            <FbAdViewModal
-                                show={fbModalShow}
-                                onHide={() => setFbModalShow(false)}
-                                // Ad view specific
-                                runOnPlatforms={props.adInfo.runOn}
-                                adDetails={props.adDetails}
-                                pictureOrVideoUrl={props.adInfo.facebookAd.pictureOrVideoUrl ? props.adInfo.facebookAd.pictureOrVideoUrl : null}
-                                headline={props.adDetails[0] ? props.adDetails[0].value : null}
-                                description={props.adDetails[1] ? props.adDetails[1].value : null}
-                                url={props.adInfo.url ? props.adInfo.url : null}>
-                            </FbAdViewModal>
+                            : null}
                         </div>
                         
                     </div>
