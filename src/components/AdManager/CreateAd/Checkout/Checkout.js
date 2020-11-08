@@ -80,18 +80,13 @@ const Checkout = (props) => {
     // String to display 
     let scheduleTypeString = "Schedule not set";
 
-    console.log(schedule)
-    useEffect(() => {
-        
+    if( schedule.asapSchedule){
+        scheduleTypeString = "Run as soon as possible";
+    }else if(schedule.customSchedule){
+        isCustom = true;
+        scheduleTypeString = "From; To;";
+    }
 
-        if( schedule.asapSchedule == true){
-            scheduleTypeString = "Run as soon as possible";
-        }else if( schedule.customSchedule == true){
-            isCustom = true;
-            scheduleTypeString = "From; To;";
-        }
-    
-    })
 
     return(
         <div>
