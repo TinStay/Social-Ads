@@ -18,7 +18,6 @@ const Checkout = (props) => {
     // Facebook and Instagram ad view modal
     const [fbModalShow, setFbModalShow] = useState(false);
 
-
     const runOnPlatform = [...props.adInfo.runOn];
 
     // Array with images
@@ -73,7 +72,26 @@ const Checkout = (props) => {
             }
         })
     }
+
+  
+    // Redux state to variable
+    let schedule = {...props.adInfo.budgetAndSchedule.schedule};
+    let isCustom = false;
+    // String to display 
+    let scheduleTypeString = "Schedule not set";
+
+    console.log(schedule)
+    useEffect(() => {
+        
+
+        if( schedule.asapSchedule == true){
+            scheduleTypeString = "Run as soon as possible";
+        }else if( schedule.customSchedule == true){
+            isCustom = true;
+            scheduleTypeString = "From; To;";
+        }
     
+    })
 
     return(
         <div>
@@ -296,11 +314,11 @@ const Checkout = (props) => {
                         <div className="col-md-6 checkout-box-budget-container">
                             <div className="row">
                                 <div className="col-3">
-                                    <p className="key">Daily: </p>
+                                    <p className="key">Schedule: </p>
                                 </div>
                                 <div className="col-9 gray">
                                     <p>
-                                    
+                                        {scheduleTypeString}
                                     </p>
                                 </div>
                                 
@@ -316,7 +334,7 @@ const Checkout = (props) => {
                             </div>
                             <div className="row">
                                 <div className="col-5 col-md-4">
-                                    <p className="key">Placements: </p>
+                                    <p className="key">Schedule: </p>
                                 </div>
                                 <div className="col-7 col-md-8 gray">
                                     <p>
