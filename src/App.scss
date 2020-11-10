@@ -7,8 +7,15 @@ $navbar-purple:  #7678ed;
 $dark-purple: #7c0bbd;
 $bgc-white: #fafaff;
 $font-color: #7662b6;
-$dark-blue: #273469;
+$dark-blue: #050259;
 $gray-font: #5c6072;
+
+/*
+    Purple and pink button style
+        background: #BF05F2;  
+        background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  
+        background: linear-gradient(to left, #BF05F2, #6805F2); 
+*/
 
 html{
     font-size: 0.9rem;
@@ -131,6 +138,7 @@ html{
 .modal-body{
     background-color: #f1f3ff;
     padding: 10px 20px;
+   
 
     .btn-facebook{
         font-size: 1.5rem;
@@ -152,14 +160,16 @@ html{
 
     .btn-login{
         font-size: 1.3rem;
+        padding: 8px 18px;
         color: $white;
-        background: #DA4453;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 106));  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #89216B, rgb(218, 68, 106)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-size: 23px;
+        background: #BF05F2;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #BF05F2, #6805F2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         &:hover{
-            background: #89216B;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 88));  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #89216B, rgb(218, 68, 88))
+            background: #BF05F2;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #BF05F2, #6805F2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           
         }
     }
@@ -1781,6 +1791,7 @@ html{
                 font-size: 1.6rem;
                 border-bottom: 1px solid #c9d4ff;
                 padding-bottom: 10px;
+                color: $dark-blue;
                 // margin-bottom: 15px;
                }
 
