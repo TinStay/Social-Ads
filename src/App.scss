@@ -34,7 +34,11 @@ html{
 }
 
 .purple{
-    color: $purple;
+    background: #BF05F2;  
+    background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  
+    background: linear-gradient(to left, #BF05F2, #6805F2); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
