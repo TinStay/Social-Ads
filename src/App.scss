@@ -1,6 +1,6 @@
 $white: #f5f6fa;
 $black: #2f3542;
-$purple: #6F1E51;
+$purple: #BF05F2;
 $gray: #576574;
 $dark-gray: #353b48;
 $navbar-purple:  #7678ed;
@@ -9,6 +9,14 @@ $bgc-white: #fafaff;
 $font-color: #7662b6;
 $dark-blue: #050259;
 $gray-font: #5c6072;
+
+
+$purple-to-pink-webkit: -webkit-linear-gradient(to left, #BF05F2, #6805F2);
+$purple-to-pink-linear: linear-gradient(to left, #BF05F2, #6805F2);
+
+$purple-to-pink-webkit-hover: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  
+$purple-to-pink-linear-hover: linear-gradient(to left, #b707e7, #6806f1); 
+
 
 /*
     Purple and pink button style
@@ -34,9 +42,9 @@ html{
 }
 
 .purple{
-    background: #BF05F2;  
-    background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  
-    background: linear-gradient(to left, #BF05F2, #6805F2); 
+    background: $purple;  
+    background: $purple-to-pink-webkit;
+    background: $purple-to-pink-linear;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -167,13 +175,14 @@ html{
         padding: 8px 18px;
         color: $white;
         font-size: 23px;
-        background: #BF05F2;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #BF05F2, #6805F2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: $purple;  
+        background: $purple-to-pink-webkit;
+        background: $purple-to-pink-linear;
+
         &:hover{
-            background: #BF05F2;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to left, #BF05F2, #6805F2);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #BF05F2, #6805F2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: $purple;   /* fallback for old browsers */
+            background: $purple-to-pink-webkit-hover;
+            background: $purple-to-pink-linear-hover;
           
         }
     }
@@ -218,7 +227,7 @@ html{
     }
 
     .btn-signup{
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         margin-top: 30px;
         position: relative;
         bottom: 0;
@@ -226,12 +235,17 @@ html{
         width: 150px;
         color: white;
        
-        background-color: #a53860;
+        background: $purple;
+        background: $purple-to-pink-webkit;
+        background: $purple-to-pink-linear;
+
+
         transition: all 0.2s ease-out;
 
         &:hover{
-            background-color: #99214d;
-            // border: 1px solid #6F1E51;
+            background: $purple;
+            background: $purple-to-pink-webkit-hover;
+            background: $purple-to-pink-linear-hover;
         }
     }
 }
