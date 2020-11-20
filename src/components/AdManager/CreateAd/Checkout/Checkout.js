@@ -5,6 +5,9 @@ import AdViewFb from '../AdPlacement/FacebookPlacements/AdViewFb';
 import AdViewGoogle from '../AdPlacement/GoogleAd/AdViewGoogle'
 import FbAdViewModal from './FbAdViewModal';
 
+// DayJS    
+import dayjs from 'dayjs';
+
 // Icons
 import facebookAds from '../../../../assets/facebookIcon.png';
 import instagramAds from '../../../../assets/instagramIcon.png';
@@ -84,7 +87,23 @@ const Checkout = (props) => {
         scheduleTypeString = "Run as soon as possible";
     }else if(schedule.customSchedule){
         isCustom = true;
-        scheduleTypeString = "From; To;";
+
+        // Custom parse plugin
+        // dayjs.extend(customParseFormat)
+
+        // Format dates from redux state
+        const formattedStartDate = dayjs(schedule.startDate).format('MM-DD-YYYY, HH:mm');
+        const formattedEndDate = dayjs(schedule.endDate).format('MM-DD-YYYY, HH:mm');
+        // const formattedEndDate = dayjs(schedule.EndDate).format('{YYYY} MM-DDTHH:mm:ss SSS [Z] A');
+
+
+
+        // Format dates from redux state
+        // const formattedStartDate = schedule.startDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') 
+        // const formattedEndDate = schedule.endDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') 
+
+
+        scheduleTypeString = `From: ${formattedStartDate} To: ${formattedEndDate}`;
     }
 
 
@@ -304,9 +323,8 @@ const Checkout = (props) => {
                 
                 <div className="col-md-6">
                     <CheckoutBox>
-                    <h3 className="budget-box-heading">Budget and schedule</h3>
-                    <div class="row">
-                        <div className="col-md-6 checkout-box-budget-container">
+                    <h3 className="checkout-box-heading">Budget and schedule</h3>
+                        <div className=" checkout-box-budget-container">
                             <div className="row">
                                 <div className="col-3">
                                     <p className="key">Schedule: </p>
@@ -344,7 +362,6 @@ const Checkout = (props) => {
                             
                         </div>
                        
-                    </div>
                     </CheckoutBox>
                 </div>
             </div>
