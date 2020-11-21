@@ -117,18 +117,18 @@ const Checkout = (props) => {
                         <h3 className="checkout-box-heading">General info</h3>
                         <div className="checkout-box-info-container">
                             <div className="row">
-                                <div className="col-3">
+                                <div className="col-5 key">
                                     <p className="key">Campaign name: </p>
                                 </div>
-                                <div className="col-9 ">
+                                <div className="col-7  value">
                                     <p>{adInfo.name}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-3">
+                                <div className="col-5 key">
                                     <p className="key">Social platforms: </p>
                                 </div>
-                                <div className="col-9">
+                                <div className="col-7 value">
                                     <p>{runOnPlatformsIcons.map(icon => {
                                         return <img className="smpIcon" src={icon} alt="social media icon"/>
                                     })}
@@ -136,10 +136,10 @@ const Checkout = (props) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-3">
+                                <div className="col-5 key">
                                     <p className="key">Marketing goal: </p>
                                 </div>
-                                <div className="col-9">
+                                <div className="col-7 value">
                                     <p>{adInfo.marketingGoal}</p>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@ const Checkout = (props) => {
                                 <div className="col-3">
                                     <p className="key">Devices: </p>
                                 </div>
-                                <div className="col-9 gray">
+                                <div className="col-9 ">
                                     <p>
                                     {adInfo.devices.map(device =>{
                                         if(device == adInfo.devices[adInfo.devices.length - 1]){
@@ -247,7 +247,7 @@ const Checkout = (props) => {
                                 <div className="col-3">
                                     <p className="key">Website url: </p>
                                 </div>
-                                <div className="col-9 gray">
+                                <div className="col-9 ">
                                     <p>{adInfo.url}</p>
                                 </div>
                                 
@@ -256,7 +256,7 @@ const Checkout = (props) => {
                                 <div className="col-5 col-md-4">
                                     <p className="key">Placements: </p>
                                 </div>
-                                <div className="col-7 col-md-8 gray">
+                                <div className="col-7 col-md-8 ">
                                     <p>
                                         {placementsToShow.map(placement =>{
                                             if(placement == placementsToShow[placementsToShow.length - 1]){
@@ -272,9 +272,9 @@ const Checkout = (props) => {
                                 
                             </div>
                             {props.adInfo.runOn.includes("runOnGoogle") ?
-                            (<div>
+                            (<div class="row">
                                 <div> 
-                                    <p className="key">Google ad view: </p>
+                                    <p className="col-12 key">Google ad view: </p>
                                 </div>
                                 <div className="col-12 ">
                                     <AdViewGoogle 
@@ -329,7 +329,7 @@ const Checkout = (props) => {
                                 <div className="col-3">
                                     <p className="key">Schedule: </p>
                                 </div>
-                                <div className="col-9 gray">
+                                <div className="col-9 ">
                                     <p>
                                         {scheduleTypeString}
                                     </p>
@@ -340,7 +340,7 @@ const Checkout = (props) => {
                                 <div className="col-3">
                                     <p className="key">Lifetime: </p>
                                 </div>
-                                <div className="col-9 gray">
+                                <div className="col-9 ">
                                     <p></p>
                                 </div>
                                 
@@ -349,7 +349,7 @@ const Checkout = (props) => {
                                 <div className="col-5 col-md-4">
                                     <p className="key">Schedule: </p>
                                 </div>
-                                <div className="col-7 col-md-8 gray">
+                                <div className="col-7 col-md-8 ">
                                     <p>
                                        
                                     </p>
