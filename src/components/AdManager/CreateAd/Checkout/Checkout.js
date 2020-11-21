@@ -80,30 +80,40 @@ const Checkout = (props) => {
     // Redux state to variable
     let schedule = {...props.adInfo.budgetAndSchedule.schedule};
     let isCustom = false;
-    // String to display 
-    let scheduleTypeString = "Schedule not set";
+    let customSchedule = <div></div>;
 
-    if( schedule.asapSchedule){
-        scheduleTypeString = "Run as soon as possible";
+
+    if(schedule.asapSchedule){
+        // Display message
+        customSchedule = (
+            <div className="row">
+                <div> 
+                    <p className="col-12 key">Schedule: </p>
+                </div>
+                <p className="value">Run as soon as possible</p>
+            </div>
+        )
     }else if(schedule.customSchedule){
+        // Set isCustom to true and display dates
         isCustom = true;
 
-        // Custom parse plugin
-        // dayjs.extend(customParseFormat)
-
         // Format dates from redux state
-        const formattedStartDate = dayjs(schedule.startDate).format('MM-DD-YYYY, HH:mm');
-        const formattedEndDate = dayjs(schedule.endDate).format('MM-DD-YYYY, HH:mm');
-        // const formattedEndDate = dayjs(schedule.EndDate).format('{YYYY} MM-DDTHH:mm:ss SSS [Z] A');
+        const formattedStartDate = dayjs(schedule.startDate).format('DD-MM-YYYY, HH:mm A');
+        const formattedEndDate = dayjs(schedule.endDate).format('DD-MM-YYYY, HH:mm A');
 
-
-
-        // Format dates from redux state
-        // const formattedStartDate = schedule.startDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') 
-        // const formattedEndDate = schedule.endDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') 
-
-
-        scheduleTypeString = `From: ${formattedStartDate} To: ${formattedEndDate}`;
+        customSchedule = (
+            
+            <div className="row">
+                <div> 
+                    <p className="col-5 key">Schedule: </p>
+                </div>
+                <div className="col-7">
+                    <p className="value"><span className="key">From: </span>{formattedStartDate}</p>
+                    <p className="value"><span className="key">To: </span> {formattedEndDate}</p>
+                </div>
+            </div>
+        );
+        // scheduleTypeString = `From: ${formattedStartDate} To: ${formattedEndDate}`;
     }
 
 
@@ -325,17 +335,10 @@ const Checkout = (props) => {
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Budget and schedule</h3>
                         <div className=" checkout-box-budget-container">
-                            <div className="row">
-                                <div className="col-3">
-                                    <p className="key">Schedule: </p>
-                                </div>
-                                <div className="col-9 ">
-                                    <p>
-                                        {scheduleTypeString}
-                                    </p>
-                                </div>
+                            {/* <div className="row"> */}
+                                {customSchedule}
                                 
-                            </div>
+                            {/* </div> */}
                             <div className="row">
                                 <div className="col-3">
                                     <p className="key">Lifetime: </p>
