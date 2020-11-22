@@ -77,7 +77,7 @@ const Checkout = (props) => {
     }
 
   
-    // Redux state to variable
+    // Schedule Redux state to variable
     let schedule = {...props.adInfo.budgetAndSchedule.schedule};
     let isCustom = false;
     let customSchedule = <div></div>;
@@ -115,6 +115,10 @@ const Checkout = (props) => {
         );
         // scheduleTypeString = `From: ${formattedStartDate} To: ${formattedEndDate}`;
     }
+
+    
+    // Budget Redux state to variable
+    let budget = {...props.adInfo.budgetAndSchedule.budget};
 
 
     return(
@@ -339,26 +343,33 @@ const Checkout = (props) => {
                                 {customSchedule}
                                 
                             {/* </div> */}
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-3">
-                                    <p className="key">Lifetime: </p>
+                                    <p className="key">Facebook daily budget:</p>
                                 </div>
                                 <div className="col-9 ">
-                                    <p></p>
+                                    <p>${budget.fbDailyBudget}</p>
                                 </div>
                                 
                             </div>
                             <div className="row">
                                 <div className="col-5 col-md-4">
-                                    <p className="key">Schedule: </p>
+                                    <p className="key">Facebook lifetime budget:</p>
                                 </div>
                                 <div className="col-7 col-md-8 ">
-                                    <p>
-                                       
-                                    </p>
-                                    
+                                    <p>${budget.fbDailyBudget}</p>
                                 </div>
                                 
+                            </div> */}
+
+                            <div className="row">
+                                <div> 
+                                    <p className="col-12 key">Facebook (or Instagram): </p>
+                                </div>
+                                <div className="col-md-7 offset-md-1">
+                                    <p className="value"><span className="key">Daily budget: </span>${budget.fbDailyBudget}</p>
+                                    <p className="value"><span className="key">Lifetime budget: </span> ${budget.fbLifetimeBudget}</p>
+                                </div>
                             </div>
                           
                             
