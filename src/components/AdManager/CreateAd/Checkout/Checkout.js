@@ -371,7 +371,15 @@ const Checkout = (props) => {
                                     <p className="value"><span className="key">Lifetime budget: </span> ${budget.fbLifetimeBudget}</p>
                                 </div>
                             </div>
-                          
+                            <div className="row">
+                                <div> 
+                                    <p className="col-12 key">Google: </p>
+                                </div>
+                                <div className="col-md-7 offset-md-1">
+                                    <p className="value"><span className="key">Daily budget: </span>$</p>
+                                    <p className="value"><span className="key">Lifetime budget: </span> $</p>
+                                </div>
+                            </div>
                             
                             
                         </div>
