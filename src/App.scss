@@ -1805,6 +1805,7 @@ html{
 
                .key{
                     font-weight: 500;
+                    // float: right;
                 }
 
                .value{
@@ -1837,6 +1838,44 @@ html{
                 
                 
                }
+
+                .fb-budget-box{
+                    background-color:  rgb(49, 85, 156);
+                }
+
+                .budget-table-container{
+                    width: 100%;
+                    // border: 1px solid $dark-blue;
+                    padding: 10px 0;        
+
+
+                    th{
+                        font-weight: 500;
+                        padding: 10px ;
+                    }
+
+                    tr{
+                        border: 1px solid #c9d4ff;
+                        border-radius: 5px;
+    
+                    }
+
+                    td{
+                        padding: 10px ;
+                    }
+                }
+
+                .budget-table{
+                    width: 96%;
+                    margin: 0 auto;
+
+                    th{
+                        font-weight: 500;
+                    }
+                }
+
+        
+
             }
 
             

@@ -80,20 +80,22 @@ const Checkout = (props) => {
     // Schedule Redux state to variable
     let schedule = {...props.adInfo.budgetAndSchedule.schedule};
     let isCustom = false;
-    let customSchedule = <div></div>;
+    let scheduleInfo = <div></div>;
 
 
     if(schedule.asapSchedule){
         // Display message
-        customSchedule = (
+        scheduleInfo = (
             <div className="row">
                 <div> 
-                    <p className="col-12 key">Schedule: </p>
+                    <p className="col-5 key">Schedule: </p>
                 </div>
-                <p className="value">Run as soon as possible</p>
+                <div class="col-7">
+                    <p className="value">Run as soon as possible</p>
+                </div>
             </div>
         )
-    }else if(schedule.customSchedule){
+    }else if(schedule.scheduleInfo){
         // Set isCustom to true and display dates
         isCustom = true;
 
@@ -101,7 +103,7 @@ const Checkout = (props) => {
         const formattedStartDate = dayjs(schedule.startDate).format('DD-MM-YYYY, HH:mm A');
         const formattedEndDate = dayjs(schedule.endDate).format('DD-MM-YYYY, HH:mm A');
 
-        customSchedule = (
+        scheduleInfo = (
             
             <div className="row">
                 <div> 
@@ -238,8 +240,7 @@ const Checkout = (props) => {
                 <div className="col-md-6">
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Placements and design</h3>
-                    <div class="row">
-                        <div className="col-md-12 checkout-box-placements-container">
+                        <div className=" checkout-box-placements-container">
                             <div className="row">
                                 <div className="col-3">
                                     <p className="key">Devices: </p>
@@ -330,7 +331,6 @@ const Checkout = (props) => {
                             : null}
                         </div>
                         
-                    </div>
                     
                     </CheckoutBox>
                 </div>
@@ -339,8 +339,53 @@ const Checkout = (props) => {
                     <CheckoutBox>
                     <h3 className="checkout-box-heading">Budget and schedule</h3>
                         <div className=" checkout-box-budget-container">
-                            {/* <div className="row"> */}
-                                {customSchedule}
+
+                        <div className="row">
+                                {/* <div className="col-3">
+                                    <p className="key">Budget:</p>
+                                </div> */}
+                                <div className="col-12 budget-table-container">
+                                    <table className="budget-table" data-toggle="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Platform</th>
+                                                <th>Daily</th>
+                                                <th>Lifetime</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Faceebook</td>
+                                                <td>${budget.fbDailyBudget}</td>
+                                                <td>${budget.fbLifetimeBudget}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Google</td>
+                                                <td>${budget.googleDailyBudget}</td>
+                                                <td>${budget.googleDailyBudget * 30}</td> {/* Calculate monthly budget */}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div> 
+
+
+                            {/* Schedule */}
+                            {scheduleInfo}
+                            
+
+                            <div className="row">
+                                <div className="col-3">
+                                    <p className="key">Period:</p>
+                                </div>
+                                <div className="col-9 ">
+                                    <p>{schedule.period}</p>
+                                </div>
+                                
+                            </div> 
+
+
                                 
                             {/* </div> */}
                             {/* <div className="row">
@@ -362,7 +407,7 @@ const Checkout = (props) => {
                                 
                             </div> */}
 
-                            <div className="row">
+                            {/* <div className="row fb-budget-box">
                                 <div> 
                                     <p className="col-12 key">Facebook (or Instagram): </p>
                                 </div>
@@ -379,7 +424,10 @@ const Checkout = (props) => {
                                     <p className="value"><span className="key">Daily budget: </span>$</p>
                                     <p className="value"><span className="key">Lifetime budget: </span> $</p>
                                 </div>
-                            </div>
+                            </div> */}
+
+                            
+
                             
                             
                         </div>
