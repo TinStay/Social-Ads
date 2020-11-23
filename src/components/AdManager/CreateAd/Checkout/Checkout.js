@@ -87,15 +87,15 @@ const Checkout = (props) => {
         // Display message
         scheduleInfo = (
             <div className="row">
-                <div> 
-                    <p className="col-5 key">Schedule: </p>
+                <div className="col-3 "> 
+                    <p className="key">Schedule: </p>
                 </div>
-                <div class="col-7">
+                <div class="col-9">
                     <p className="value">Run as soon as possible</p>
                 </div>
             </div>
         )
-    }else if(schedule.scheduleInfo){
+    }else if(schedule.customSchedule){
         // Set isCustom to true and display dates
         isCustom = true;
 
@@ -106,16 +106,15 @@ const Checkout = (props) => {
         scheduleInfo = (
             
             <div className="row">
-                <div> 
-                    <p className="col-5 key">Schedule: </p>
+                <div className="col-3"> 
+                    <p className=" key">Schedule: </p>
                 </div>
-                <div className="col-7">
+                <div className="col-9">
                     <p className="value"><span className="key">From: </span>{formattedStartDate}</p>
                     <p className="value"><span className="key">To: </span> {formattedEndDate}</p>
                 </div>
             </div>
         );
-        // scheduleTypeString = `From: ${formattedStartDate} To: ${formattedEndDate}`;
     }
 
     
@@ -350,20 +349,28 @@ const Checkout = (props) => {
                                             <tr>
                                                 <th>Platform</th>
                                                 <th>Daily</th>
+                                                <th>Monthly</th>
                                                 <th>Lifetime</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {props.adInfo.runOn.includes("runOnFacebook") ? 
                                             <tr>
-                                                <td>Faceebook</td>
+                                                <td>Facebook</td>
                                                 <td>${budget.fbDailyBudget}</td>
+                                                <td>${budget.fbDailyBudget * 30}</td>
                                                 <td>${budget.fbLifetimeBudget}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Google</td>
-                                                <td>${budget.googleDailyBudget}</td>
-                                                <td>${budget.googleDailyBudget * 30}</td> {/* Calculate monthly budget */}
-                                            </tr>
+                                            : null}
+                                            {props.adInfo.runOn.includes("runOnGoogle") ? 
+                                                <tr>
+                                                    <td>Google</td>
+                                                    <td>${budget.googleDailyBudget}</td>
+                                                    <td>${budget.googleDailyBudget * 30}</td> {/* Calculate monthly budget */}
+                                                    <td>$ lifetime</td> {/* Calculate lifetime budget */}
+                                                </tr>
+                                            
+                                            : null}
                                         </tbody>
                                     </table>
 
@@ -384,52 +391,6 @@ const Checkout = (props) => {
                                 </div>
                                 
                             </div> 
-
-
-                                
-                            {/* </div> */}
-                            {/* <div className="row">
-                                <div className="col-3">
-                                    <p className="key">Facebook daily budget:</p>
-                                </div>
-                                <div className="col-9 ">
-                                    <p>${budget.fbDailyBudget}</p>
-                                </div>
-                                
-                            </div>
-                            <div className="row">
-                                <div className="col-5 col-md-4">
-                                    <p className="key">Facebook lifetime budget:</p>
-                                </div>
-                                <div className="col-7 col-md-8 ">
-                                    <p>${budget.fbDailyBudget}</p>
-                                </div>
-                                
-                            </div> */}
-
-                            {/* <div className="row fb-budget-box">
-                                <div> 
-                                    <p className="col-12 key">Facebook (or Instagram): </p>
-                                </div>
-                                <div className="col-md-7 offset-md-1">
-                                    <p className="value"><span className="key">Daily budget: </span>${budget.fbDailyBudget}</p>
-                                    <p className="value"><span className="key">Lifetime budget: </span> ${budget.fbLifetimeBudget}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div> 
-                                    <p className="col-12 key">Google: </p>
-                                </div>
-                                <div className="col-md-7 offset-md-1">
-                                    <p className="value"><span className="key">Daily budget: </span>$</p>
-                                    <p className="value"><span className="key">Lifetime budget: </span> $</p>
-                                </div>
-                            </div> */}
-
-                            
-
-                            
-                            
                         </div>
                        
                     </CheckoutBox>

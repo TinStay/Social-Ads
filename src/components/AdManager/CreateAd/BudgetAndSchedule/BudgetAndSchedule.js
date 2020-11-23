@@ -95,7 +95,7 @@ const BudgetAndSchedule = (props) => {
             setPeriod(diffDays); // Difference between the start and end date
 
             if(diffDays < 30){
-                setScheduleError("The period for running your ads should be more than 30 days")
+                setScheduleError("The period for running your ads should be at least 30 days")
                 // setShowAlert(true)
             }else{
                 setScheduleError("")
