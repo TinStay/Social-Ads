@@ -86,8 +86,42 @@ const BudgetAndSchedule = (props) => {
     const [endDate, setEndDate] = useState();
     const [period, setPeriod] = useState(30);
 
-    const state = [isDailyBudget, isLifetimeBudget, dailyBudgetFb, lifetimeBudgetFb, googleDailyBudget, asapSchedule, customSchedule, startDate, endDate, period]
+    // Update form values from redux state 
+    useEffect(() => {
+        if(props.adInfo.budgetAndSchedule != null && props.adInfo.budgetAndSchedule != null){
 
+            let budgetRedux = props.adInfo.budgetAndSchedule.budget ? {...props.adInfo.budgetAndSchedule.budget} : null;
+            let scheduleRedux = props.adInfo.budgetAndSchedule.schedule ? {...props.adInfo.budgetAndSchedule.schedule} : null;
+
+            // Update schedule
+            if(scheduleRedux.asapSchedule == true){
+                setAsapSchedule(true);
+                setCustomSchedule(false);
+
+            }else if(scheduleRedux.custsomSchedule == true){
+                setAsapSchedule(false);
+                setCustomSchedule(true);
+
+                // Set redux dates to form values
+                setStartDate(budgetRedux.startDate);
+                setEndDate(budgetRedux.setEndDate);
+            }else{
+                // Do not update anything
+            }
+        }else{
+            console.log("Redux state missing")
+        }
+        
+    })
+
+
+
+    // Values which will trigger a re-render
+    const state = [isDailyBudget, isLifetimeBudget, dailyBudgetFb, lifetimeBudgetFb, googleDailyBudget, 
+        asapSchedule, customSchedule, startDate, endDate, period]
+
+
+    // Update errors everytime user changes some of the values
     useEffect(()=>{
         if(customSchedule){
             const oneDay = 24 * 60 * 60 * 1000;
@@ -285,7 +319,7 @@ const BudgetAndSchedule = (props) => {
                         <Form.Check
                             custom
                             block
-                            label="Run ads for 1 month"
+                            label="Run for 1 month"
                             type="radio"
                             id="asap-schedule"
                             className="radio-schedule"

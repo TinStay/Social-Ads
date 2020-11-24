@@ -1791,12 +1791,19 @@ html{
             }
 
             .checkout-box{
-               background-color: #eaf0ff; 
+            //    background-color: #eaf0ff; 
+            //    background-color: hsl(224, 100%, 83%); 
+            background:  #c6d2ff;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #c6d2ff,  #c6d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, rgb(221, 229, 253), #cbd6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            //    background-color: $dark-purple; 
                padding: 15px 10px;
                margin: 0px 5px 20px 5px ;
                border-radius: 5px;
                border: 1px solid #c9d4ff;
                font-size: 1.2rem;
+            //    color: white;
 
 
                .row{
@@ -1819,7 +1826,7 @@ html{
                 font-size: 1.6rem;
                 border-bottom: 1px solid #c9d4ff;
                 padding-bottom: 10px;
-                color: $dark-blue;
+                // color: $dark-blue;
                 // margin-bottom: 15px;
                }
 
