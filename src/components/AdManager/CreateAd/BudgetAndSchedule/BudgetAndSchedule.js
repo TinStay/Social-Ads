@@ -316,8 +316,7 @@ const BudgetAndSchedule = (props) => {
                                     selected={startDate}
                                     onChange={(date) => setStartDate(date)}
                                     minDate={new Date()}
-                                    showTimeSelect
-                                    dateFormat="dd/MM/yyyy h:mm aa"
+                                    dateFormat="dd-MM-yyyy"
                                     className="date-picker"
                                     placeholderText="Click to select a date"
                                     />
@@ -328,8 +327,7 @@ const BudgetAndSchedule = (props) => {
                                     selected={endDate}
                                     onChange={(date) => setEndDate(date)}
                                     minDate={endDateMin}
-                                    showTimeSelect
-                                    dateFormat="dd/MM/yyyy h:mm aa"
+                                    dateFormat="dd-MM-yyyy"
                                     className="date-picker"
                                     placeholderText="Click to select a date"
                                     />

@@ -100,8 +100,8 @@ const Checkout = (props) => {
         isCustom = true;
 
         // Format dates from redux state
-        const formattedStartDate = dayjs(schedule.startDate).format('DD-MM-YYYY, HH:mm A');
-        const formattedEndDate = dayjs(schedule.endDate).format('DD-MM-YYYY, HH:mm A');
+        const formattedStartDate = dayjs(schedule.startDate).format('DD-MM-YYYY');
+        const formattedEndDate = dayjs(schedule.endDate).format('DD-MM-YYYY');
 
         scheduleInfo = (
             
