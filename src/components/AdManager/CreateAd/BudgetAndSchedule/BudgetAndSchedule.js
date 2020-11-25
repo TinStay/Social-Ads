@@ -36,39 +36,48 @@ const BudgetAndSchedule = (props) => {
     const setDailyAndLifetimeBudget = e => {
 
         if(e.target.name === "daily"){
-            const dailyBud = parseFloat(e.target.value).toFixed(2)
+            // Float value from form
+            const dailyBud = parseFloat(e.target.value).toFixed(2);
+
+            // Integer value from form
+            // const dailyBud = e.target.value;
+            // dailyBud.toFixed(2);
 
             // Checks if dailyBudget > 1 else => shows error
             if(dailyBud > 1){
                 // setShowAlert(false)
                 setFbBudgetError("")
-                setDailyBudgetFb(dailyBud)
+                setDailyBudgetFb(dailyBud);
             }else{
                 // setShowAlert(true)
                 // setAlertType("DailyBudgetTooSmall")
                 setFbBudgetError("Facebook or instagram daily budget is too small")
-                setDailyBudgetFb(dailyBud)
+                setDailyBudgetFb(dailyBud);
             }
             
+            // For float value
             setLifetimeBudgetFb((dailyBud * period).toFixed(2))
+
+            // For integer value
+            // setLifetimeBudgetFb(dailyBud * period);
         }
 
 
         if(e.target.name === "lifetime"){
-            const lifetimeBud = parseFloat(e.target.value).toFixed(2)
+            const lifetimeBud = parseFloat(e.target.value).toFixed(2);
 
             // Checks if dailyBudget > 1 else => shows error
             if(lifetimeBud / period >= 1){
-                // setShowAlert(false)
-                setFbBudgetError("")
-                const priceDaily = (lifetimeBud / period).toFixed(2)
-                setDailyBudgetFb(priceDaily)
+                // setShowAlert(false);
+                setFbBudgetError("");
+                const priceDaily = (lifetimeBud / period).toFixed(2);
+                setDailyBudgetFb(priceDaily);
             }else{
-                setFbBudgetError("Facebook or instagram daily budget is too small")
-                // setShowAlert(true)
-                // setAlertType("DailyBudgetTooSmall")
+                setFbBudgetError("Facebook or instagram daily budget is too small");
+                // setShowAlert(true);
+                // setAlertType("DailyBudgetTooSmall");
             }
-            setLifetimeBudgetFb(lifetimeBud)
+            setLifetimeBudgetFb(lifetimeBud);
         }
     }
 
@@ -76,8 +85,6 @@ const BudgetAndSchedule = (props) => {
     // Schedule type
     const [asapSchedule, setAsapSchedule] = useState(true);
     const [customSchedule, setCustomSchedule] = useState(false);
-    // const [asapSchedule, setAsapSchedule] = useState(props.adInfo.budgetAndSchedule != null ? props.adInfo.budgetAndSchedule.schedule.asapSchedule : true);
-    // const [customSchedule, setCustomSchedule] = useState(props.adInfo.budgetAndSchedule != null ? props.adInfo.budgetAndSchedule.schedule.customSchedule : false);
 
     // Schedule dates
     const [startDate, setStartDate] = useState();
@@ -151,20 +158,25 @@ const BudgetAndSchedule = (props) => {
             const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
             setPeriod(diffDays); // Difference between the start and end date
 
+            // Update lifetime value for facebook ads
+            if(props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram")){
+                setLifetimeBudgetFb(dailyBudgetFb * period);
+            }
+
             if(diffDays < 30){
                 setScheduleError("The period for running your ads should be at least 30 days")
                 // setShowAlert(true)
             }else{
-                setScheduleError("")
+                setScheduleError("");
 
                 if((lifetimeBudgetFb / diffDays) < 1){
-                    setFbBudgetError("Facebook or instagram daily budget is too small")
+                    setFbBudgetError("Facebook or instagram daily budget is too small");
                     // setShowAlert(true)
                 }else{
-                    setFbBudgetError("")
+                    setFbBudgetError("");
                     // setShowAlert(false)
                 }
-            }  
+            }
         }
 
         if(asapSchedule){
@@ -187,7 +199,6 @@ const BudgetAndSchedule = (props) => {
         }else{
             setGoogleBudgetError("")
         }
-
         
 
     },[state])
@@ -317,7 +328,7 @@ const BudgetAndSchedule = (props) => {
 
     // Budget info box
     let budgetInfo;
-    budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {customSchedule ? period + " days" : "1 month"}  and around <b>{dailyBudgetFb}$</b>/day.</span>
+    budgetInfo = <span><b>{lifetimeBudgetFb}$</b> for the period of {customSchedule ? period + " days" : "30 days"}  and around <b>{dailyBudgetFb}$</b>/day.</span>
 
     let budgetTitleFb = "";
     if(props.adInfo.runOn.includes("runOnFacebook") && props.adInfo.runOn.includes("runOnInstagram")){
@@ -423,7 +434,7 @@ const BudgetAndSchedule = (props) => {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="basic-addon1">USD</span>
                                     </div>
-                                    <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" min="0" max="20000" step="0.5"/>
+                                    <input type="number" name="daily" value={dailyBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Daily budget" min="1.00" max="500" step="1"/>
                                 </div> : null }
                             </div>
                             <div className="lifetime-budget-field d-flex">
@@ -445,7 +456,7 @@ const BudgetAndSchedule = (props) => {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="basic-addon1">USD</span>
                                     </div>
-                                    <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" min="0" max="20000" step="0.5"/>
+                                    <input type="number" name="lifetime" value={lifetimeBudgetFb} onChange={(e) => setDailyAndLifetimeBudget(e)} className="form-control" placeholder="Lifetime budget" min="30.00" max="2000000" step="1"/>
                                 </div> : null }
                             </div>
                             </div>
@@ -474,7 +485,7 @@ const BudgetAndSchedule = (props) => {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="basic-addon1">USD</span>
                                         </div>
-                                        <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="0" max="20000" step="0.5"/>
+                                        <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="1" max="2000000" step="1.00"/>
                                     </div>
                                 </div>
 
