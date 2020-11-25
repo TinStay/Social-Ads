@@ -92,13 +92,11 @@ const BudgetAndSchedule = (props) => {
     useEffect(() => {
         if(props.adInfo.budgetAndSchedule != null && props.adInfo.budgetAndSchedule != null){
 
-            // let budgetRedux = props.adInfo.budgetAndSchedule.budget ? {...props.adInfo.budgetAndSchedule.budget} : null;
-            // let scheduleRedux = props.adInfo.budgetAndSchedule.schedule ? {...props.adInfo.budgetAndSchedule.schedule} : null;
             let budgetRedux = {...props.adInfo.budgetAndSchedule.budget};
             let scheduleRedux = {...props.adInfo.budgetAndSchedule.schedule};
 
-            console.log("budgetRedux", budgetRedux);
-            console.log("scheduleRedux", scheduleRedux);
+            // console.log("budgetRedux", budgetRedux);
+            // console.log("scheduleRedux", scheduleRedux);
 
             // Update schedule
             if(scheduleRedux.asapSchedule == true || scheduleRedux.asapSchedule != undefined){
@@ -115,9 +113,27 @@ const BudgetAndSchedule = (props) => {
             }else{
                 // Do not update anything
             }
+
+            // Update budget values 
+            if(budgetRedux.fbDailyBudget != (null || undefined) && budgetRedux.fbLifetimeBudget != (null || undefined)){
+                setDailyBudgetFb(budgetRedux.fbDailyBudget);
+                setLifetimeBudgetFb(budgetRedux.fbLifetimeBudget);
+            }else{
+                console.log("Facebook budget missing from redux state");
+            }
+
+            if(budgetRedux.googleDailyBudget != (null || undefined)){
+                setGoogleDailyBudget(budgetRedux.googleDailyBudget);
+            }else{
+                console.log("Google daily budget missing from redux state");
+            }
+
+
         }else{
             console.log("Redux state missing")
         }
+
+        
         
     }, [])
 
@@ -326,7 +342,7 @@ const BudgetAndSchedule = (props) => {
                         <Form.Check
                             custom
                             block
-                            label="Run for 1 month"
+                            label="Run as soon as possible "
                             type="radio"
                             id="asap-schedule"
                             className="radio-schedule"
