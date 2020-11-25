@@ -65,12 +65,13 @@ const BudgetAndSchedule = (props) => {
 
         if(e.target.name === "lifetime"){
             const lifetimeBud = parseFloat(e.target.value).toFixed(2);
+            console.log("lifetimeBud",lifetimeBud)
 
             // Checks if dailyBudget > 1 else => shows error
             if(lifetimeBud / period >= 1){
                 // setShowAlert(false);
                 setFbBudgetError("");
-                const priceDaily = (lifetimeBud / period).toFixed(2);
+                const priceDaily = parseFloat(lifetimeBud / period).toFixed(2);
                 setDailyBudgetFb(priceDaily);
             }else{
                 setFbBudgetError("Facebook or instagram daily budget is too small");
@@ -160,7 +161,7 @@ const BudgetAndSchedule = (props) => {
 
             // Update lifetime value for facebook ads
             if(props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram")){
-                setLifetimeBudgetFb(dailyBudgetFb * period);
+                setLifetimeBudgetFb((dailyBudgetFb * period).toFixed(2));
             }
 
             if(diffDays < 30){
@@ -485,7 +486,7 @@ const BudgetAndSchedule = (props) => {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="basic-addon1">USD</span>
                                         </div>
-                                        <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="1" max="2000000" step="1.00"/>
+                                        <input type="number" name="gglBudget" value={googleDailyBudget} onChange={(e) => setGoogleDailyBudget(e.target.value)} className="form-control" placeholder="Google budget" min="1" max="2000000" step="1"/>
                                     </div>
                                 </div>
 
