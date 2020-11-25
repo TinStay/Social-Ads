@@ -76,6 +76,8 @@ const BudgetAndSchedule = (props) => {
     // Schedule type
     const [asapSchedule, setAsapSchedule] = useState(true);
     const [customSchedule, setCustomSchedule] = useState(false);
+    // const [asapSchedule, setAsapSchedule] = useState(props.adInfo.budgetAndSchedule != null ? props.adInfo.budgetAndSchedule.schedule.asapSchedule : true);
+    // const [customSchedule, setCustomSchedule] = useState(props.adInfo.budgetAndSchedule != null ? props.adInfo.budgetAndSchedule.schedule.customSchedule : false);
 
     // Schedule dates
     const [startDate, setStartDate] = useState();
@@ -90,21 +92,26 @@ const BudgetAndSchedule = (props) => {
     useEffect(() => {
         if(props.adInfo.budgetAndSchedule != null && props.adInfo.budgetAndSchedule != null){
 
-            let budgetRedux = props.adInfo.budgetAndSchedule.budget ? {...props.adInfo.budgetAndSchedule.budget} : null;
-            let scheduleRedux = props.adInfo.budgetAndSchedule.schedule ? {...props.adInfo.budgetAndSchedule.schedule} : null;
+            // let budgetRedux = props.adInfo.budgetAndSchedule.budget ? {...props.adInfo.budgetAndSchedule.budget} : null;
+            // let scheduleRedux = props.adInfo.budgetAndSchedule.schedule ? {...props.adInfo.budgetAndSchedule.schedule} : null;
+            let budgetRedux = {...props.adInfo.budgetAndSchedule.budget};
+            let scheduleRedux = {...props.adInfo.budgetAndSchedule.schedule};
+
+            console.log("budgetRedux", budgetRedux);
+            console.log("scheduleRedux", scheduleRedux);
 
             // Update schedule
-            if(scheduleRedux.asapSchedule == true){
+            if(scheduleRedux.asapSchedule == true || scheduleRedux.asapSchedule != undefined){
                 setAsapSchedule(true);
                 setCustomSchedule(false);
 
-            }else if(scheduleRedux.custsomSchedule == true){
+            }else if(scheduleRedux.customSchedule == true || scheduleRedux.customSchedule != undefined){
                 setAsapSchedule(false);
                 setCustomSchedule(true);
 
                 // Set redux dates to form values
-                setStartDate(budgetRedux.startDate);
-                setEndDate(budgetRedux.setEndDate);
+                setStartDate(scheduleRedux.startDate);
+                setEndDate(scheduleRedux.endDate);
             }else{
                 // Do not update anything
             }
@@ -112,7 +119,7 @@ const BudgetAndSchedule = (props) => {
             console.log("Redux state missing")
         }
         
-    })
+    }, [])
 
 
 
