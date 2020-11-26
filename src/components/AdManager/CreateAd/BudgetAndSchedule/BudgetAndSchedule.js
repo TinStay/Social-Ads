@@ -122,7 +122,7 @@ const BudgetAndSchedule = (props) => {
                 // Do not update anything
             }
 
-            // Update budget values 
+            // Update budget values for facebook and instagram
             if(budgetRedux.fbDailyBudget != (null || undefined) && budgetRedux.fbLifetimeBudget != (null || undefined)){
                 setDailyBudgetFb(budgetRedux.fbDailyBudget);
                 setLifetimeBudgetFb(budgetRedux.fbLifetimeBudget);
@@ -130,6 +130,7 @@ const BudgetAndSchedule = (props) => {
                 console.log("Facebook budget missing from redux state");
             }
 
+            // Update budget values for google
             if(budgetRedux.googleDailyBudget != (null || undefined)){
                 setGoogleDailyBudget(budgetRedux.googleDailyBudget);
             }else{
@@ -159,10 +160,18 @@ const BudgetAndSchedule = (props) => {
             const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
             setPeriod(diffDays); // Difference between the start and end date
 
-            // Update lifetime value for facebook ads
+
+            // Update lifetime value for facebook ads when period changes
             if(props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram")){
-                setLifetimeBudgetFb((dailyBudgetFb * period).toFixed(2));
+                // Update lifetime budget when changing state
+                if(isDailyBudget){
+                    setLifetimeBudgetFb((dailyBudgetFb * period).toFixed(2));
+                }else if(isLifetimeBudget){
+                    // Update daily budget when changing state
+                    setDailyBudgetFb((lifetimeBudgetFb / period).toFixed(2));
+                }
             }
+
 
             if(diffDays < 30){
                 setScheduleError("The period for running your ads should be at least 30 days")
@@ -203,6 +212,15 @@ const BudgetAndSchedule = (props) => {
         
 
     },[state])
+    
+    
+    // Update lifetime value for facebook ads when period changes
+    // useEffect(() => {
+    //         // Update lifetime value for facebook ads when period changes
+    //         if(props.adInfo.runOn.includes("runOnFacebook") || props.adInfo.runOn.includes("runOnInstagram")){
+    //             setLifetimeBudgetFb((dailyBudgetFb * period).toFixed(2));
+    //         }
+    // }, [startDate, endDate])
 
 
     const changeToDaily = (e) => {
