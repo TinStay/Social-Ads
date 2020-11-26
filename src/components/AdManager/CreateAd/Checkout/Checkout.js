@@ -262,7 +262,7 @@ const Checkout = (props) => {
                                     <p className="key">Website url: </p>
                                 </div>
                                 <div className="col-9 ">
-                                    <p>{adInfo.url}</p>
+                                    <p><a href={adInfo.url} target="_blank">{adInfo.url}</a></p>
                                 </div>
                                 
                             </div>

@@ -30,7 +30,7 @@ const AdViewFb = (props) => {
             {props.runOnPlatforms.includes("runOnFacebook") ? 
                 <Tab className="fb-ad-view-tab" eventKey="facebook" title="Facebook view">
                     <div className="fb-ad-view">
-                        <div className="row head background-white">
+                        <div className="row head my-0 background-white">
                             <div className="col-md-12 d-flex">
                                 <img src={pagePhoto} alt="pagePhoto"/>
                                 <div>
@@ -46,7 +46,7 @@ const AdViewFb = (props) => {
                         <div className="ad-image">
                             <img src={props.pictureOrVideoUrl != null ? props.pictureOrVideoUrl : jsAd} alt="Ad picture"/>
                         </div>
-                        <div className=" row ad-description pt-2">
+                        <div className=" row ad-description my-0">
                             <div className="col-md-8 ">
                                 <p className="url">{props.url}</p>
                                 <h1 className="headline">{props.headline}</h1>
