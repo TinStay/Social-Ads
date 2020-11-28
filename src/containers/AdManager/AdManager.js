@@ -56,7 +56,7 @@ class AdManager extends PureComponent{
         <div className="manager">
             
             <div className="manager-jumbotron d-md-flex justify-content-between">
-                <h1 className="manager-jumbotron-title purple ">Ad Dashboard</h1>
+                <h1 className="manager-jumbotron-title dark-purple-font ">Ad Dashboard</h1>
                 
             </div>
             <div className="manager-ad-form">

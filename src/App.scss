@@ -3,8 +3,10 @@ $black: #2f3542;
 $purple: #BF05F2;
 $gray: #576574;
 $dark-gray: #353b48;
-$navbar-purple:  #7678ed;
+$navbar-purple:  #8c3cfd;
+// $navbar-purple:  #7678ed;
 $dark-purple: #7c0bbd;
+$dark-purple-hover: #720aad;
 $bgc-white: #fafaff;
 $font-color: #7662b6;
 $dark-blue: #050259;
@@ -41,7 +43,7 @@ html{
     background-color: $bgc-white;
 }
 
-.purple{
+.purple-gradient{
     background: $purple;  
     background: $purple-to-pink-webkit;
     background: $purple-to-pink-linear;
@@ -51,7 +53,11 @@ html{
 
 
 .navbar-purple{
-    background-color: #7678ed;
+    background-color: $navbar-purple;
+}
+
+.dark-purple-font{
+    color: $dark-purple;
 }
 
 .font-color{
@@ -105,7 +111,9 @@ html{
     // border-bottom: 1px solid #b7a6f3;
 
     // Option 1
-   background-color: #7f80ec;
+    background:  #8c3cfd;
+    // background: $purple-to-pink-linear;
+    // background: $purple-to-pink-webkit;
     // Option 2
     // background-color: $dark-purple;
    border-bottom: 1px solid #7779e6;
@@ -659,13 +667,15 @@ html{
 
         .btn-cancel{
             margin: 10px 10px;
+            padding: 7px 20px;
+            background-color: #a53860;
+            color: $white;
             font-size: 1.4rem;
-            color: #a53860;
-            border-radius: 0;
-            border-bottom: 2px solid #a53860;
+            border-radius: 3px;
+            // border-bottom: 2px solid #a53860;
             &:hover{
-                background-color: #a53860;
-                color: $white;
+                background-color: #8d3052;
+               
             }
         }
 
@@ -673,10 +683,11 @@ html{
             margin: 10px 10px;
             font-size: 1.5rem;
             padding: 7px 25px;
+            border-radius: 3px;
             background-color: $dark-purple;
             color: $white;
             &:hover{
-                background-color: #614fa3;
+                background-color: $dark-purple-hover;
                 // color: $white;
             }
         }
@@ -704,8 +715,8 @@ html{
             
             h2{
                 margin: 20px auto 10px auto;
-                font-size: 1.8rem;
-                color: $font-color;
+                font-size: 1.5rem;
+                color: $dark-purple;
             }
 
             .button-container{
