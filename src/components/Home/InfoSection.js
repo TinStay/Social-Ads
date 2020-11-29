@@ -35,7 +35,7 @@ const InfoSection = props =>{
                         <p  className="info-text-container-paragraph">Social Ads allows you to choose your target audience, your budget, in which country you want your advertisement to be run and many more.</p>
 
                    </div>
-                   <button className="btn btn-lg info-text-container-button-border">Check out how its done</button>
+                   <button className="btn btn-lg info-text-container-button-border">Check out how</button>
                        
                    </div>
             </div>

@@ -47,13 +47,13 @@ const Navbar = () =>{
         navbarItems = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to='/how-does-it-work' className="nav-link">How to run ads?</Link>
+                    <NavLink to='/how-does-it-work' className="nav-link" activeClassName='is-active'>How to run ads?</NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to='/ad-manager' className="nav-link">Ad manager</Link>
+                    <NavLink to='/ad-manager'  className="nav-link" activeClassName='is-active'>Ad manager</NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to='/profile' className="nav-link">Profile</Link>
+                    <NavLink to='/profile' className="nav-link" activeClassName='is-active'>Profile</NavLink>
                 </li>
                 <li className="nav-item">
                     <a onClick={() => app.auth().signOut()} className="nav-link" >Log out</a>
