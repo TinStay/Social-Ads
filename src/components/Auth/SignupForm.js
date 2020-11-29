@@ -51,37 +51,43 @@ const SignupForm = ({history, ...props}) =>{
           <Modal className="" show={props.show} onHide={props.handleClose}>
                 <div className="modal-body ">
                 <Modal.Header >
-                    <h1 className="mx-auto purple">Sign up</h1>
+                    <h1 className="mx-auto  font-color">Sign up</h1>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={handleSignUp}>
+                    <form className="auth-form" onSubmit={handleSignUp}>
                         {error ? <p className="errorMsg">{error}</p> : null}
-                        <div className="form-group mt-3">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputPassword1">First Name</label>
                             <input name="firstName" type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter your first name" />
                         </div>
-                        <div className="form-group mt-3">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputPassword1">Last Name</label>
                             <input name="lastName" type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter your last name" />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputEmail1">Email address</label>
                             <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         
-                        <div className="form-group mt-3">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputPassword1">Password</label>
                             <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                        </div>
-                        <button type="submit" className="btn btn-lg btn-login mt-3">Sign up</button>
-                        <a href="" className="small align-bottom ml-2 mb-4"><h7 onClick={props.changeToLogin}>Already have an account?</h7></a>
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email or password with anyone.</small>
 
+                        </div>
+                        <div class="auth-form-submit">
+                          <button type="submit" className="btn btn-lg btn-login ">Sign up</button>
+                          <a href="" className="small align-bottom ml-3"><h7 onClick={props.changeToLogin}>Already have an account?</h7></a>
+                        </div>
                     </form>
-                    <p className="border-bottom mt-4 text-center purple">Sign up via social media</p>
-                    <div className="d-flex justify-content-center">
-                        <button className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
-                        <button className="btn btn-lg btn-google mt-3 ml-3">Google</button>
+                    
+
+                    <div className="auth-form-social-buttons">
+                      <p className="border-bottom auth-form-social-label text-center font-color">Sign up via social media</p>
+                      <div className="d-flex justify-content-center">
+                          <button className="btn btn-lg btn-facebook  ">Facebook</button>
+                          <button className="btn btn-lg btn-google ">Google</button>
+                      </div>
                     </div>
                 </Modal.Body> 
                 </div>

@@ -113,14 +113,6 @@ body{
 // }
 
 
-.errorMsg{
-    background-color: rgb(246, 140, 158);
-    border: 1px solid #ED4C67;
-    padding: 5px;
-    border-radius: 7px;
-}
-
-
 ////////////////////
 //// Navigation ////
 ////////////////////
@@ -197,13 +189,49 @@ body{
 }
 
 
+////////////////////////
+//// Authentication ////
+////////////////////////
+
+.errorMsg{
+    background-color: rgb(246, 140, 158);
+    border: 1px solid #ED4C67;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.auth-form{
+    // padding: 0 10px;
+
+    &-field{
+        margin: 10px auto 30px auto;
+    }
+
+    &-social-buttons{
+        margin: 30px auto 20px auto;
+    }
+
+    &-social-label{
+        margin: 10px auto;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    small{
+        font-size: 1rem;
+    }
+
+}
+
+
 .modal-body{
     background-color: #f1f3ff;
     padding: 10px 20px;
    
 
     .btn-facebook{
-        font-size: 1.5rem;
+        margin: 10px 5px;
+        font-size: 1.4rem;
         color: $white;
         background-color: #4267B2;
         &:hover{
@@ -212,7 +240,8 @@ body{
     }
 
     .btn-google{
-        font-size: 1.5rem;
+        margin: 10px 5px;
+        font-size: 1.4rem;
         color: $white;
         background-color: #DB4437;
         &:hover{
@@ -221,24 +250,23 @@ body{
     }
 
     .btn-login{
-        font-size: 1.3rem;
-        padding: 8px 18px;
+        font-size: 1.5rem;
+        padding: 7px 20px;
         color: $white;
-        font-size: 23px;
-        background: $purple;  
-        background: $purple-to-pink-webkit;
-        background: $purple-to-pink-linear;
+        background: $purple-navbar;  
+        // background: $purple-to-pink-webkit;
+        // background: $purple-to-pink-linear;
 
         &:hover{
-            background: $purple;   /* fallback for old browsers */
-            background: $purple-to-pink-webkit-hover;
-            background: $purple-to-pink-linear-hover;
+            background: $purple-navbar-hover;    /* fallback for old browsers */
+            // background: $purple-to-pink-webkit-hover;
+            // background: $purple-to-pink-linear-hover;
           
         }
     }
 
     input[type="email"], input[type="password"], input[type="text"]{
-        font-size: 20px;
+        font-size: 1.1rem;
     }
 }
 

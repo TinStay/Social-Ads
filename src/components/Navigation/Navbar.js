@@ -84,7 +84,7 @@ const Navbar = () =>{
         // sticky-navbar class
         <div className="sticky-navbar"> 
             <nav className="navbar navbar-expand-lg navbar-light ">
-            <Link to='/'  className="nav-link"><img src={homePic} className="homeBtn" alt="homePic"/></Link>
+            <NavLink to='/'  className="nav-link"><img src={homePic} className="homeBtn" alt="homePic"/></NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

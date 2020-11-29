@@ -73,29 +73,35 @@ const LoginForm = ({history, ...props}) =>{
             <Modal className="" show={props.show} onHide={props.handleClose}>
                 <div className="modal-body ">
                 <Modal.Header >
-                    <h1 className="mx-auto purple">Login</h1>
+                    <h1 className="mx-auto font-color">Login</h1>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={handleSignIn}>
+                    <form className="auth-form" onSubmit={handleSignIn}>
                         {error ? <p className="errorMsg">{error}</p> : null}
-                        <div className="form-group">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputEmail1">Email address</label>
                             <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                            <small id="emailHelp" className="form-text text-muted small">We'll never share your email with anyone else.</small>
                         </div>
                         
-                        <div className="form-group mt-3">
+                        <div className="form-group auth-form-field">
                             <label for="exampleInputPassword1">Password</label>
                             <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password" />
+                            <small id="emailHelp" className="form-text text-muted small">We'll never share your email or password with anyone.</small>
+
                         </div>
-                        <button type="submit" className="btn btn-lg btn-login mt-3">Login</button>
-                        <a href="" className="small align-bottom ml-2"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a>
+
+                        <div class="auth-form-submit">
+                          <button type="submit" className="btn btn-lg btn-login">Login</button>
+                          <a href="" className="small align-bottom ml-3"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a>
+                        </div>
 
                     </form>
-                    <p className="border-bottom mt-4 text-center purple">Login via social media</p>
-                    <div className="d-flex justify-content-center">
-                        <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook mt-3 ">Facebook</button>
-                        <button className="btn btn-lg btn-google mt-3 ml-3">Google</button>
+                    <div className="auth-form-social-buttons">
+                      <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p>
+                      <div className="d-flex justify-content-center">
+                          <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button>
+                          <button className="btn btn-lg btn-google">Google</button>
+                      </div>
                     </div>
                 </Modal.Body> 
                 </div>
