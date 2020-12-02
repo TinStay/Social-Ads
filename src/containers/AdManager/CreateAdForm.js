@@ -58,9 +58,6 @@ class CreateAdForm extends PureComponent{
         // showErrors: false
     }
 
-
-    
-
     // Stepper
     getSteps() {
         return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule', "Choose subscription plan"];
@@ -74,7 +71,9 @@ class CreateAdForm extends PureComponent{
         switch (stepIndex) {
             case 0:
                 return (
-                    <GeneralInfo goToAudience={() => this.goToAudience(activeStep)} />
+                    <GeneralInfo 
+                    goToAdManger={() => this.props.goToAdManger()}
+                    goToAudience={() => this.goToAudience(activeStep)} />
                 );
             case 1:
                 return (

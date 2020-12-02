@@ -57,7 +57,7 @@ const Navbar = () =>{
     let navbarItems = (
         <ul className="navbar-nav">
             <li className="nav-item">
-                <NavLink to='/' className="nav-link" onClick={() => closeNavbarWhenClicked()}>Contact us</NavLink>
+                <NavLink to='/contact' className="nav-link" onClick={() => closeNavbarWhenClicked()}>Contact us</NavLink>
             </li>
             <li className="nav-item">
                 <a onClick={openLoginModal} className="nav-link">Login</a>
@@ -78,7 +78,7 @@ const Navbar = () =>{
                     <NavLink to='/profile' className="nav-link" onClick={() => closeNavbarWhenClicked()} activeClassName='is-active'>Profile</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to='/how-does-it-work' className="nav-link" onClick={() => closeNavbarWhenClicked()} activeClassName='is-active'>Contact us</NavLink>
+                    <NavLink to='/contact' className="nav-link" onClick={() => closeNavbarWhenClicked()} activeClassName='is-active'>Contact us</NavLink>
                 </li>
                 <li className="nav-item">
                     <a onClick={() => handleSignOut()} className="nav-link" >Log out</a>

@@ -26,7 +26,7 @@ class AdManager extends PureComponent{
   render(){
     //   console.log("order", this.state.order)
         
-    let path = this.props.match.path + '/create-ad';
+    // let path = this.props.match.path + '/create-ad';
     
     let adSection = (
             <div className="manager-ad-form-row text-center">
@@ -49,7 +49,7 @@ class AdManager extends PureComponent{
     let createAdForm = null;
 
     if(this.state.showForm){
-        createAdForm = <CreateAdForm/>
+        createAdForm = <CreateAdForm goToAdManger={() => this.setState({showForm: false})}/>
     }
 
     return (

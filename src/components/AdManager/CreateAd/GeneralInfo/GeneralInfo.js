@@ -157,10 +157,19 @@ const GeneralInfo = (props) => {
                 <MarketingGoal selectGoal={selectMarketingGoal} goal={props.adInfo.marketingGoal}/>
 
                 <div className="d-flex justify-content-end">
+                    <button
+                        onClick={() => props.goToAdManger()}
+                        className="btn btn-cancel"
+                    >
+                    Back
+                    </button>
                     <button type="submit"  className="btn btn-next" >
                         Continue
                     </button>
                 </div>
+        
+
+
             </form>
         </div>
     );
