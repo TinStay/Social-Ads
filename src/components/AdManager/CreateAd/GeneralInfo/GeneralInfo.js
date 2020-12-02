@@ -35,6 +35,7 @@ const GeneralInfo = (props) => {
 
         // Validation
         const value = e.target.value
+
         if(value.length < 2){
             newErrors.name = "Name should be at least 2 symbols."
         }else{
@@ -86,8 +87,6 @@ const GeneralInfo = (props) => {
             setErrors(newErrors)
             
         }
-
-        
         
     }
 
@@ -126,11 +125,13 @@ const GeneralInfo = (props) => {
             {errors.name}
         </Alert>
     )
+
     const socialPlatformsAlert = (
         <Alert className="alert-danger" variant='danger'>
             {errors.socialPlatforms}
         </Alert>
     )
+
     const marketingGoalAlert = (
         <Alert className="alert-danger" variant='danger'>
             {errors.marketingGoal}
@@ -141,7 +142,7 @@ const GeneralInfo = (props) => {
 
 
     return(
-        <div >
+        <div>
             <form onSubmit={(e) => goToAudience(e)}>
                 <Form.Group className="add-form-group text-center" controlId="formGroupEmail">
                     <h3 className="add-form-label">Name your ad campaign</h3>

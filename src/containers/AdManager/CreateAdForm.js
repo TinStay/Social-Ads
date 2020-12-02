@@ -60,7 +60,7 @@ class CreateAdForm extends PureComponent{
 
     // Stepper
     getSteps() {
-        return ['General ad information', 'Choose your audience', 'Choose ad design and placements' , 'Choose budget and schedule', "Choose subscription plan"];
+        return ['General ad information', 'Audience', 'Design and placements' , 'Budget and schedule', "Subscription plan"];
     }
 
     getStepContent(stepIndex){
@@ -181,6 +181,19 @@ class CreateAdForm extends PureComponent{
             activeStep: 0
         });
     };
+
+
+    // selectStep = (label) => {
+    //     const steps = this.getSteps();
+
+    //     const idxSelectedStep = steps.indexOf(label);
+
+    //     console.log(label);
+
+    //     this.setState({
+    //         activeStep: idxSelectedStep
+    //     })
+    // };
    
 
 
