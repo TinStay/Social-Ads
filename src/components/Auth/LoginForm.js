@@ -76,10 +76,21 @@ const LoginForm = ({history, ...props}) =>{
         <div className="container">
             <Modal className="" show={props.show} onHide={props.handleClose}>
                 <div className="modal-body ">
-                <Modal.Header >
-                    <h1 className="mx-auto font-color">Login</h1>
+                <Modal.Header className="modal-header text-center">
+                    <h1 className="modal-header-label font-color">Login</h1>
                 </Modal.Header>
                 <Modal.Body>
+                    <div className="auth-form-social-buttons">
+                      {/* <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p> */}
+                      <div className="d-flex justify-content-center">
+                          {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
+                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
+                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={googleIcon} alt="google icon" /></a>
+                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={twitterIcon} alt="twitter icon" /></a>
+                          {/* <button className="btn btn-lg btn-google">Google</button> */}
+                      </div>
+                    </div>
+                    <p className="auth-form-social-label border-bottom text-center font-color">or</p>
                     <form className="auth-form" onSubmit={handleSignIn}>
                         {error ? <p className="errorMsg">{error}</p> : null}
                         <div className="form-group auth-form-field">
@@ -94,22 +105,13 @@ const LoginForm = ({history, ...props}) =>{
 
                         </div>
 
-                        <div class="auth-form-submit">
-                          <button type="submit" className="btn btn-lg btn-login">Login</button>
-                          <a href="" className="small align-bottom ml-3"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a>
+                        <div class="auth-form-submit ">
+                          <button type="submit" className="btn btn-login w-100">Login</button>
+                          {/* <a href="" className="small align-bottom ml-3"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a> */}
                         </div>
 
                     </form>
-                    <div className="auth-form-social-buttons">
-                      <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p>
-                      <div className="d-flex justify-content-center">
-                          {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
-                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
-                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={googleIcon} alt="google icon" /></a>
-                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={twitterIcon} alt="twitter icon" /></a>
-                          {/* <button className="btn btn-lg btn-google">Google</button> */}
-                      </div>
-                    </div>
+                    
                 </Modal.Body> 
                 </div>
         </Modal>   

@@ -21,6 +21,7 @@ $gray-font: #5c6072;
 // $cherry-red: #992c71;
 $cherry-red: #9e0059;
 $cherry-red-hover: #8b014f;
+$gray-border: rgb(223, 219, 231);
 
 
 $purple-to-pink-webkit: -webkit-linear-gradient(to left, #BF05F2, #6805F2);
@@ -216,28 +217,41 @@ body{
     border-radius: 7px;
 }
 
+
+
 .auth-form{
     // padding: 0 10px;
 
+
     &-field{
-        margin: 10px auto 30px auto;
+        margin: 25px auto 30px auto;
     }
 
     &-social-buttons{
-        margin: 30px auto 20px auto;
+        margin: 10px auto 20px auto;
     }
 
     &-social-label{
         margin: 10px auto;
+        padding-bottom: -5px;
         font-size: 1.5rem;
         font-weight: 500;
+    }
+
+    .text-muted{
+        margin-top: 0.7rem;
+      
     }
 
     &-social-icon{
         margin: 5px 15px;
         height: 65px;
         width:  65px;
+        transition: all 0.1s ease-in-out;
         
+        &:hover{
+            opacity: 95%;
+        }
     }
         small{
         font-size: 1rem;
@@ -250,6 +264,20 @@ body{
     background-color: #f1f3ff;
     padding: 10px 20px;
    
+    .modal-header{
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid $gray-border;
+        padding: 13px 20px;
+        // text-align: center;
+        // align-content: center;
+        // text-align: center;
+        // text-align: center;
+    
+        &-label{
+            margin: 0px auto;
+        }
+    }
 
     .btn-facebook{
         margin: 10px 5px;
@@ -272,10 +300,13 @@ body{
     }
 
     .btn-login{
+        width: 96%;
+        margin: 10px auto 20px auto;
+        padding: 7px 25px;
         font-size: 1.5rem;
-        padding: 7px 20px;
-        color: $white;
+        border-radius: 60px;
         background: $purple-navbar;  
+        color: $white;
         // background: $purple-to-pink-webkit;
         // background: $purple-to-pink-linear;
 
@@ -1139,7 +1170,7 @@ body{
                 margin: 60px auto;
                 padding: 20px;
                 border-radius: 20px;
-                border: 1px solid rgb(223, 219, 231);
+                border: 1px solid $gray-border;
 
                 &-form{
                     margin: 10px 20px;
