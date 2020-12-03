@@ -6,6 +6,9 @@ import app,{ db } from "../../base";
 import axios from '../../axios';
 import { doSignInWithFacebook } from '../../base';
 
+import facebookIcon from "../../assets/facebookIcon.png";
+import googleIcon from "../../assets/googleIcon.png";
+
 const LoginForm = ({history, ...props}) =>{
 
     const { currentUser } = useContext(AuthContext)
@@ -99,8 +102,10 @@ const LoginForm = ({history, ...props}) =>{
                     <div className="auth-form-social-buttons">
                       <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p>
                       <div className="d-flex justify-content-center">
-                          <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button>
-                          <button className="btn btn-lg btn-google">Google</button>
+                          {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
+                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
+                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={googleIcon} alt="facebook icon" /></a>
+                          {/* <button className="btn btn-lg btn-google">Google</button> */}
                       </div>
                     </div>
                 </Modal.Body> 

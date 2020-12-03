@@ -109,9 +109,9 @@ const Navbar = () =>{
         // sticky-navbar class
         <div className="sticky-navbar"> 
             <nav className="navbar navbar-expand-lg navbar-light " >
-                <NavLink to='/'  className="nav-link" onClick={() => closeNavbarWhenClicked()}>
+                <NavLink to='/'  className="nav-link logo-text" onClick={() => closeNavbarWhenClicked()}>
                     {/* <img src={homePic} className="homeBtn" alt="homePic"/> */}
-                    <span className="logo-text">AWD</span>
+                    AWD
                 </NavLink>
                 <button className="navbar-toggler" id="navbarBtn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

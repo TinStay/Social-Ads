@@ -123,13 +123,15 @@ body{
     position: sticky;
     top: 0;
     z-index: 100;
+    
 }
 
 
 .navbar{
     // background-color: #ffffff;
     // border-bottom: 1px solid #b7a6f3;
- 
+    
+    // margin: 0 auto;
     
     // Option 1
     background:  $purple-navbar;
@@ -144,11 +146,15 @@ body{
     }
 
     .logo-text{
-        font-size: 1.7rem;
+        margin-left: 20px;
+        padding: 0px 0;
+        font-size: 2.9rem;
+        line-height: 2rem;
+        height:2.5rem;
         color: white;
         font-weight: 500;
-        font-style: italic;
-        font-style: "Argio", sans-serif;
+        // font-style: italic;
+        font-family:  "Argio", serif;;
     }
 }
 
@@ -225,6 +231,11 @@ body{
         margin: 10px auto;
         font-size: 1.5rem;
         font-weight: 500;
+    }
+
+    &-social-icon{
+        width: 70px;
+        height: 70px;
     }
 
     small{
