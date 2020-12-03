@@ -8,11 +8,12 @@ import { doSignInWithFacebook } from '../../base';
 
 import facebookIcon from "../../assets/facebookIcon.png";
 import googleIcon from "../../assets/googleIcon.png";
+import twitterIcon from "../../assets/twitterIcon.png";
 
 const LoginForm = ({history, ...props}) =>{
 
-    const { currentUser } = useContext(AuthContext)
-    const [error, setError] = useState(null)
+    const { currentUser } = useContext(AuthContext);
+    const [error, setError] = useState(null);
     
  
     const handleSignIn = useCallback(async event => {
@@ -104,7 +105,8 @@ const LoginForm = ({history, ...props}) =>{
                       <div className="d-flex justify-content-center">
                           {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
                           <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
-                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={googleIcon} alt="facebook icon" /></a>
+                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={googleIcon} alt="google icon" /></a>
+                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={twitterIcon} alt="twitter icon" /></a>
                           {/* <button className="btn btn-lg btn-google">Google</button> */}
                       </div>
                     </div>
