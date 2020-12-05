@@ -2,10 +2,13 @@ import React, { useContext, useCallback, useState } from 'react';
 import { withRouter, Redirect } from "react-router";
 import { Modal } from 'react-bootstrap';
 import { AuthContext } from './Auth';
+
+// Firebase
 import app,{ db } from "../../base";
 import axios from '../../axios';
 import { doSignInWithFacebook } from '../../base';
 
+// Social media icons
 import facebookIcon from "../../assets/facebookIcon.png";
 import googleIcon from "../../assets/googleIcon.png";
 import twitterIcon from "../../assets/twitterIcon.png";
@@ -76,43 +79,43 @@ const LoginForm = ({history, ...props}) =>{
         <div className="container">
             <Modal className="" show={props.show} onHide={props.handleClose}>
                 <div className="modal-body ">
-                <Modal.Header className="modal-header text-center">
-                    <h1 className="modal-header-label font-color">Login</h1>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="auth-form-social-buttons">
-                      {/* <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p> */}
-                      <div className="d-flex justify-content-center">
-                          {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
-                          <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
-                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={googleIcon} alt="google icon" /></a>
-                          <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={twitterIcon} alt="twitter icon" /></a>
-                          {/* <button className="btn btn-lg btn-google">Google</button> */}
+                  <Modal.Header className="modal-header text-center">
+                      <h1 className="modal-header-label font-color">Login</h1>
+                  </Modal.Header>
+                  <Modal.Body>
+                      <div className="auth-form-social-buttons">
+                        {/* <p className="auth-form-social-label border-bottom text-center font-color">Login via social media</p> */}
+                        <div className="d-flex justify-content-center">
+                            {/* <button onClick={signInWithFacebook} className="btn btn-lg btn-facebook">Facebook</button> */}
+                            <a onClick={signInWithFacebook} href=""><img className="auth-form-social-icon" src={facebookIcon} alt="facebook icon" /></a>
+                            <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={googleIcon} alt="google icon" /></a>
+                            <a onClick={() => {}} href=""><img className="auth-form-social-icon" src={twitterIcon} alt="twitter icon" /></a>
+                            {/* <button className="btn btn-lg btn-google">Google</button> */}
+                        </div>
                       </div>
-                    </div>
-                    <p className="auth-form-social-label border-bottom text-center font-color">or</p>
-                    <form className="auth-form" onSubmit={handleSignIn}>
-                        {error ? <p className="errorMsg">{error}</p> : null}
-                        <div className="form-group auth-form-field">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        </div>
-                        
-                        <div className="form-group auth-form-field">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password" />
-                            <small id="emailHelp" className="form-text text-muted small">We'll never share your email or password with anyone.</small>
+                      <p className="auth-form-social-label border-bottom text-center font-color">or</p>
+                      <form className="auth-form" onSubmit={handleSignIn}>
+                          {error ? <p className="errorMsg">{error}</p> : null}
+                          <div className="form-group auth-form-field">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                          </div>
+                          
+                          <div className="form-group auth-form-field">
+                              <label for="exampleInputPassword1">Password</label>
+                              <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password" />
+                              <small id="emailHelp" className="form-text text-muted small">We'll never share your email or password with anyone.</small>
 
-                        </div>
+                          </div>
 
-                        <div class="auth-form-submit ">
-                          <button type="submit" className="btn btn-login w-100">Login</button>
-                          {/* <a href="" className="small align-bottom ml-3"><p className="d-inline " onClick={props.changeToSignup}>Don't have an account?</p></a> */}
-                        </div>
+                          <div class="auth-form-submit text-center">
+                            <button type="submit" className="btn btn-login ">Login</button>
+                            <a href="" className="small align-bottom "><p className="d-inline" onClick={props.changeToSignup}>Don't have an account?</p></a>
+                          </div>
 
-                    </form>
-                    
-                </Modal.Body> 
+                      </form>
+                      
+                  </Modal.Body> 
                 </div>
         </Modal>   
         </div>
