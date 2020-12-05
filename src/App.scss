@@ -691,10 +691,9 @@ body{
     }
 
     .subscription-card{
-        padding: 20px 20px 35px 20px;
+        padding: 20px 15px 35px 15px;
         margin: 20px 0;
         font-size: 1.3rem;
-        
         border-radius: 5px;
         background-color: $white;
         color: $purple-navbar;
@@ -720,9 +719,11 @@ body{
             margin-top: 30px;
             color: $dark-blue;
         }
+
         &-list{
-            width: 90%;
+            width: 100%;
             margin: 50px auto;
+            padding: 0 20px;
             font-size: 1.3rem;
             color: $dark-blue;
             list-style-type: none;
