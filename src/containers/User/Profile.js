@@ -227,7 +227,7 @@ class Profile extends PureComponent{
                                     </div>
                                 </div>
                                 <div className="text-center mt-4">
-                                <button type="submit" className="btn btn-save-changes ">Save changes</button>
+                                <button type="submit" className="btn btn-block btn-save-changes ">Save changes</button>
                                 </div>
                             </form>
                             <div className="col-lg-6 mb-4 mx-none">
