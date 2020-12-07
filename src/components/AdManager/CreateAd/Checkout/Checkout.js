@@ -145,7 +145,7 @@ const Checkout = (props) => {
                                 </div>
                                 <div className="col-7 value">
                                     <p>{runOnPlatformsIcons.map(icon => {
-                                        return <img className="smpIcon" src={icon} alt="social media icon"/>
+                                        return <img className="smpIcon" src={icon} key={icon} alt="social media icon"/>
                                     })}
                                     </p>
                                 </div>

@@ -66,7 +66,6 @@ const Subscription = (props) => {
     let cardLinkPremiumClass = `nav-link card-link ${shownCard == "Premium" ? "active" : null}`;
     let cardLinkDeluxeClass = `nav-link card-link ${shownCard == "Deluxe" ? "active" : null}`;
 
-    console.log("shownCard", shownCard);
 
     // Plan Listings
     const basicListing = ["Run your ads with your budget", "Ad design and message is up to you", "Run multiple ad campaigns", "Get 1 post in our social media account", "Choose when to run your ads", "Get notifications for your ad campaigns"];

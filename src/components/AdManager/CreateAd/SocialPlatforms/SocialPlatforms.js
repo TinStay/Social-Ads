@@ -23,7 +23,7 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-facebook`}
                         className="checkbox-big"
                         name="runOnFacebook"
-                        checked={props.platforms.includes('runOnFacebook') ? true : false}
+                        defaultChecked={props.platforms.includes('runOnFacebook') ? true : false}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-slim" src={facebookAds} alt="Facebook ads"/>
@@ -37,7 +37,7 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-insta`}
                         className="checkbox-big"
                         name="runOnInstagram"
-                        checked={props.platforms.includes('runOnInstagram') ? true : false}
+                        defaultChecked={props.platforms.includes('runOnInstagram') ? true : false}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-slim" src={instagramAds} alt="Instagram Ads"/>
@@ -51,7 +51,7 @@ const SocialPlatforms = (props) => {
                         id={`custom-inline-checkbox-google`}
                         className="checkbox-big"
                         name="runOnGoogle"
-                        checked={props.platforms.includes('runOnGoogle') ? true : false}
+                        defaultChecked={props.platforms.includes('runOnGoogle') ? true : false}
                         onClick={(e) => props.changeSMPInfo(e)}
                     />
                     <img className="img-box" src={googleAds} alt="Google Ads"/>

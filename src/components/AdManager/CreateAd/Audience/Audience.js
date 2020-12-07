@@ -169,7 +169,7 @@ function Audience(props){
                     <div className="audience-form-location col-md-12">
                         
                         <i class="fas fa-globe-europe"></i>
-                        <label  for="gender">Locations targeted by your ads: </label>
+                        <label>Locations targeted by your ads: </label>
                         <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>

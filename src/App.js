@@ -11,7 +11,6 @@ import LoginForm from './components/Auth/LoginForm';
 // Containers
 import PrivateRoute from './containers/User/PrivateRoute';
 import AdManager from './containers/AdManager/AdManager';
-import CreateAdForm from './containers/AdManager/CreateAdForm' 
 
 // Router
 import { BrowserRouter, Route } from 'react-router-dom'

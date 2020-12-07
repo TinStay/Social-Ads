@@ -32,7 +32,7 @@ const SubscriptionFormCard = (props) => {
                                 <h3 className="h4">Includes: </h3>
                                 <ul className="list text-left"> 
                                     {props.listing.map( li =>{
-                                        return <li><i className="fas fa-check"></i> {li}</li>
+                                        return <li key={li}><i className="fas fa-check"></i> {li}</li>
                                     })}
                                 </ul>
                             </div>

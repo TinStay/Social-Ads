@@ -11,7 +11,6 @@ const GooglelAdForm = (props) => {
     const [headlineTwo, setHeadlineTwo] = useState("");
     const [headlineThree, setHeadlineThree] = useState("");
     const [description, setDescription] = useState("");
-    const [url, setUrl] = useState("");
 
 
     useEffect(() => {
