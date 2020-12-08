@@ -128,6 +128,26 @@ const Checkout = (props) => {
     // Budget Redux state to variable
     let budget = {...props.adInfo.budgetAndSchedule.budget};
 
+    // Subscription plans icon classes
+    let subscriptionPlanText = null;
+
+    switch(props.subscriptionPlan){
+        case "Basic":
+            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-star mr-2"></i>{props.subscriptionPlan}</p>
+            break;
+
+        case "Premium":
+            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-crown mr-2"></i>{props.subscriptionPlan}</p>
+            break;
+
+        case "Deluxe":
+            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-dice-d20 mr-2"></i>{props.subscriptionPlan}</p>
+            break;
+
+        case "onlyRunAds":
+            subscriptionPlanText = <p>Only run ads</p>
+            break;
+    }
 
     return(
         <div>
@@ -402,6 +422,22 @@ const Checkout = (props) => {
                        
                     </CheckoutBox>
                 </div>
+                <div class="col-12">
+                    <CheckoutBox>
+                        <h3 className="checkout-box-heading">Subscription</h3>
+                        <div class="checkout-box-subscription-container">
+                            <div className="d-flex justify-content-start">
+                                <div className=" ">
+                                    <p className="key  mr-4">Subscription plan: </p>
+                                </div>
+                                <div className="">
+                                    {subscriptionPlanText}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </CheckoutBox>
+                </div>
             </div>
 
             <div className="d-flex justify-content-end">
@@ -421,7 +457,8 @@ const mapStateToProps = state => {
         adInfo: state.adInfo,
         audience: state.audience,
         adDetails: state.adInfo.facebookAd.adDetails,
-        googleAd: state.adInfo.googleAd
+        googleAd: state.adInfo.googleAd,
+        subscriptionPlan: state.subscriptionPlan
     }
 }
 

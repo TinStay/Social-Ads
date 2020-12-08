@@ -2050,7 +2050,19 @@ body{
 
                 }
 
-        
+                &-subscription-container{
+                    width: 95%;
+                    margin: 0 auto;
+                    
+                    .subscription-value{
+                        margin: auto;
+                        vertical-align:text-top;
+                        font-size: 1.4rem;
+                        color: $purple-navbar;
+
+                        
+                    }
+                }
 
             }
 
