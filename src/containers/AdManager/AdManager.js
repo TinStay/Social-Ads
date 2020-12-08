@@ -11,6 +11,10 @@ import PrivateRoute from '../../containers/User/PrivateRoute';
 class AdManager extends PureComponent{
 //   const {currentUser} = this.context;
 //   static contextType = AuthContext;
+    constructor(props) {
+        super(props);
+        this.headingRef = React.createRef();
+    }
 
     state = {
         showForm: false
@@ -49,14 +53,18 @@ class AdManager extends PureComponent{
     let createAdForm = null;
 
     if(this.state.showForm){
-        createAdForm = <CreateAdForm goToAdManger={() => this.setState({showForm: false})}/>
+        createAdForm = (
+            <CreateAdForm 
+            goToAdManger={() => this.setState({showForm: false})}
+            headingRef={this.headingRef}
+        />)
     }
 
     return (
         <div className="manager">
             
             <div className="manager-jumbotron d-md-flex justify-content-between">
-            <h1 className="manager-jumbotron-title dark-purple-font ">{this.state.showForm ? "Create ad campaign" : "Ad Dashboard"}</h1>
+            <h1 className="manager-jumbotron-title dark-purple-font " ref={this.headingRef}>{this.state.showForm ? "Create ad campaign" : "Ad Dashboard"}</h1>
                 
             </div>
             <div className="manager-ad-form">

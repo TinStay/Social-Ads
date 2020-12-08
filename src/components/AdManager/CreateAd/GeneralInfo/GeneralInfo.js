@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect, useRef } from 'react';
 import { Form, Alert, Button } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import * as actionTypes from '../../../../store/actions/actionTypes'
@@ -9,6 +9,12 @@ import MarketingGoal from '../MarketingGoal/MarketingGoal'
 
 
 const GeneralInfo = (props) => {
+
+    // Scroll to the top of the page on render
+    useEffect(() => {
+        // window.scrollTo(0, 0)
+        props.headingRef.current.scrollIntoView();
+    }, [])
 
     const [showErrors, setShowErrors] = useState(false)
    

@@ -28,6 +28,15 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 
 class CreateAdForm extends PureComponent{
+    constructor(props) {
+        super(props);
+        // this.myRef = React.createRef();
+    }
+
+    // componentDidMount(){
+    //     this.myRef.current.scrollIntoView();
+    // }
+
     static contextType = AuthContext;
    
 
@@ -73,7 +82,9 @@ class CreateAdForm extends PureComponent{
                 return (
                     <GeneralInfo 
                     goToAdManger={() => this.props.goToAdManger()}
-                    goToAudience={() => this.goToAudience(activeStep)} />
+                    goToAudience={() => this.goToAudience(activeStep)} 
+                    headingRef={this.props.headingRef}
+                    />
                 );
             case 1:
                 return (
@@ -204,10 +215,11 @@ class CreateAdForm extends PureComponent{
     const activeStep = this.state.activeStep
     const steps = this.getSteps();
 
+    // console.log("myRef", this.myRef)
 
     return (
-        <div className="manager-ad-form-row">
-            <div className="ad-container">
+        <div  className="manager-ad-form-row">
+            <div  className="ad-container">
 
             <Stepper className="ad-stepper" activeStep={this.state.activeStep} alternativeLabel>
                 {steps.map((label) => (
