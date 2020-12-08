@@ -524,12 +524,12 @@ const BudgetAndSchedule = (props) => {
                 <div className="d-flex justify-content-end">
                     <button
                         onClick={() => props.handleBack()}
-                        className="btn btn-cancel"
+                        className="btn btn-back"
                         type="submit"
                     >
                     Back
                     </button>
-                    <Button variant="contained" className="btn btn-next" onClick={(e) => saveData(e)}>
+                    <Button variant="contained" className="btn btn-continue" onClick={(e) => saveData(e)}>
                         Continue
                     </Button>
                 </div>

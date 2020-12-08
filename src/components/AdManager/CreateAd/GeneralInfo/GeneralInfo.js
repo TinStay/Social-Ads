@@ -166,11 +166,11 @@ const GeneralInfo = (props) => {
                 <div className="d-flex justify-content-end">
                     <button
                         onClick={() => props.goToAdManger()}
-                        className="btn btn-cancel"
+                        className="btn btn-back"
                     >
                     Back
                     </button>
-                    <button type="submit"  className="btn btn-next" >
+                    <button type="submit"  className="btn btn-continue" >
                         Continue
                     </button>
                 </div>

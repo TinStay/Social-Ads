@@ -405,10 +405,10 @@ const Checkout = (props) => {
             </div>
 
             <div className="d-flex justify-content-end">
-                <button onClick={() => props.handleBack()} className="btn btn-cancel" type="submit">
+                <button onClick={() => props.handleBack()} className="btn btn-back" type="submit">
                     Back
                 </button>
-                <Button variant="contained" className="btn btn-next">
+                <Button variant="contained" className="btn btn-continue">
                     Continue
                 </Button>
             </div>

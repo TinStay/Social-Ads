@@ -182,10 +182,10 @@ const Subscription = (props) => {
                 </div>
 
                 <div className="d-flex justify-content-end">
-                    <button onClick={() => props.handleBack()} className="btn btn-cancel" type="submit">
+                    <button onClick={() => props.handleBack()} className="btn btn-back" type="submit">
                         Back
                     </button>
-                    <Button variant="contained" className="btn btn-next" onClick={() => props.goToCheckout()} disabled={selectedPlan == "" ? true : false }>
+                    <Button variant="contained" className="btn btn-continue" onClick={() => props.goToCheckout()} disabled={selectedPlan == "" ? true : false }>
                         Go to checkout
                     </Button>
                 </div>

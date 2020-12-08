@@ -40,6 +40,7 @@ $purple-to-pink-linear-hover: linear-gradient(to left, #b707e7, #6806f1);
 
 html{
     font-size: 0.9rem;
+    scroll-behavior: smooth;
 
     @media screen and (min-width: 1199px){
         font-size: 1rem;
@@ -810,7 +811,7 @@ body{
             width: 86%;
         }
 
-        .btn-cancel{
+        .btn-back{
             margin: 10px 10px;
             padding: 7px 20px;
             background-color: #a53860;
@@ -824,7 +825,7 @@ body{
             }
         }
 
-        .btn-next{
+        .btn-continue{
             margin: 10px 10px;
             font-size: 1.4rem;
             padding: 7px 25px;

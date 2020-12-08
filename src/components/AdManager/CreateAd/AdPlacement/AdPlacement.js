@@ -256,11 +256,11 @@ const AdPlacement = (props) => {
             <div className="d-flex justify-content-end">
                 <button
                     onClick={() => props.handleBack()}
-                    className="btn btn-cancel"
+                    className="btn btn-back"
                 >
                 Back
                 </button>
-                <Button variant="contained" disabled={isNextDisabled} className="btn btn-next" onClick={() => goToBudgetAndSchedule()}>
+                <Button variant="contained" disabled={isNextDisabled} className="btn btn-continue" onClick={() => goToBudgetAndSchedule()}>
                     Continue
                 </Button>
             </div>

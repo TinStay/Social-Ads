@@ -269,11 +269,11 @@ function Audience(props){
             <div className="d-flex justify-content-end">
                 <button
                     onClick={() => props.handleBack()}
-                    className="btn btn-cancel"
+                    className="btn btn-back"
                 >
                 Back
                 </button>
-                <Button variant="contained" className="btn btn-next" onClick={() => goToAdPlacements()}>
+                <Button variant="contained" className="btn btn-continue" onClick={() => goToAdPlacements()}>
                     Continue
                 </Button>
             </div>
