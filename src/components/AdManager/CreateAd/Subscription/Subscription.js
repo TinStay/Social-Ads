@@ -16,7 +16,11 @@ const Subscription = (props) => {
     // Currently selected plan
     const [selectedPlan, setSelectedPlan] = useState("");
 
+    // Initial render
     useEffect(() => {
+        // Scroll to the top of the form
+        props.headingRef.current.scrollIntoView(); 
+        
         if(props.state.subscriptionPlan != ""){
 
             if(props.state.subscriptionPlan == "onlyRunAds"){
@@ -34,7 +38,7 @@ const Subscription = (props) => {
         }
 
         setSelectedPlan(props.state.subscriptionPlan);
-    },[props.state.subscriptionPlan]);
+    },[]);
 
     // Save to state and to redux state
     const selectPlan = (planName) => {

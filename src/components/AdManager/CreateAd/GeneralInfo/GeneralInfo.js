@@ -10,9 +10,9 @@ import MarketingGoal from '../MarketingGoal/MarketingGoal'
 
 const GeneralInfo = (props) => {
 
-    // Scroll to the top of the page on render
+    // Initial render
     useEffect(() => {
-        // window.scrollTo(0, 0)
+        // Scroll to the top of the form 
         props.headingRef.current.scrollIntoView();
     }, [])
 

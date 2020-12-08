@@ -52,7 +52,11 @@ const AdPlacement = (props) => {
 
     const runOnPlatforms = [...props.adInfo.runOn]
 
+    // Initial render
     useEffect(() => {
+        // Scroll to the top of the form 
+        props.headingRef.current.scrollIntoView();
+
         // Show placements form for platforms chosen by the customer
         if(runOnPlatforms.includes("runOnFacebook")){
             setShowFbPlacements(true)
@@ -65,11 +69,9 @@ const AdPlacement = (props) => {
         if(runOnPlatforms.includes("runOnGoogle")){
             setShowGooglePlacements(true)
         }
-
-        
         
 
-    }, [errors])
+    }, [])
 
     const validateDevices = devicesData => {
         

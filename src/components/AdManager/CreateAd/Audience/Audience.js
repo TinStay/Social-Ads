@@ -42,11 +42,16 @@ function Audience(props){
 
     const [showErrors, setShowErrors] = useState(false)
 
-    // Load locationList if already saved in redux state
+    // Initial render
     useEffect(() => {
+        // Scroll to the top of the form 
+        props.headingRef.current.scrollIntoView();
+
+        // Load locationList if already saved in redux state
         if(props.audience.location !== null){
-            setLocationList(props.audience.location)    
+            setLocationList(props.audience.location)     
         }
+       
     }, [])
 
     

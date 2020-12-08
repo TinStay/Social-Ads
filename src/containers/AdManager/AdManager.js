@@ -64,7 +64,7 @@ class AdManager extends PureComponent{
         <div className="manager">
             
             <div className="manager-jumbotron d-md-flex justify-content-between">
-            <h1 className="manager-jumbotron-title dark-purple-font " ref={this.headingRef}>{this.state.showForm ? "Create ad campaign" : "Ad Dashboard"}</h1>
+            <h1 ref={this.headingRef} className="manager-jumbotron-title dark-purple-font">{this.state.showForm ? "Create new ad campaign" : "Ad Dashboard"}</h1>
                 
             </div>
             <div className="manager-ad-form">

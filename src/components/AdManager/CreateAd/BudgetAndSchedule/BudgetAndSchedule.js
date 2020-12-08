@@ -96,8 +96,12 @@ const BudgetAndSchedule = (props) => {
     const [endDate, setEndDate] = useState();
     const [period, setPeriod] = useState(30);
 
-    // Update form values from redux state 
+    // Initial render
     useEffect(() => {
+        // Scroll to the top of the form 
+        props.headingRef.current.scrollIntoView();
+        
+        // Update form values from redux state 
         if(props.adInfo.budgetAndSchedule != null && props.adInfo.budgetAndSchedule != null){
 
             let budgetRedux = {...props.adInfo.budgetAndSchedule.budget};

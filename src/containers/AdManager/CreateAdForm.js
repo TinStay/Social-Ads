@@ -91,6 +91,7 @@ class CreateAdForm extends PureComponent{
                     <Audience 
                     handleBack={() => this.handleBack(activeStep)}
                     goToAdPlacements={() => this.goToAdPlacements(activeStep)}
+                    headingRef={this.props.headingRef}
                     />
                 );
             
@@ -99,6 +100,7 @@ class CreateAdForm extends PureComponent{
                     <AdPlacement 
                         handleBack={() => this.handleBack(activeStep)}
                         goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
+                        headingRef={this.props.headingRef}
                     />
                     );
             case 3:
@@ -106,6 +108,7 @@ class CreateAdForm extends PureComponent{
                     <BudgetAndSchedule 
                         handleBack={() => this.handleBack(activeStep)}
                         goToSubscriptionPlans={() => this.goToSubscriptionPlans(activeStep)}
+                        headingRef={this.props.headingRef}
                     />
                 );
             case 4:
@@ -113,6 +116,7 @@ class CreateAdForm extends PureComponent{
                     <Subscription 
                         handleBack={() => this.handleBack(activeStep)}
                         goToCheckout={() => this.goToCheckout(activeStep)}
+                        headingRef={this.props.headingRef}
                     />
                     
                 )
@@ -144,7 +148,6 @@ class CreateAdForm extends PureComponent{
     goToBudgetAndSchedule = (activeStep) => {
         const nextStep = activeStep + 1;
 
-        
 
         this.setState({
             activeStep: nextStep,
@@ -233,6 +236,7 @@ class CreateAdForm extends PureComponent{
                 <div>
                     <Checkout 
                         handleBack={() => this.handleBack(activeStep)}
+                        headingRef={this.props.headingRef}
                     />
                 </div>
                 ) : (

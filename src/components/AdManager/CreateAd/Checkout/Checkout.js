@@ -18,6 +18,13 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../../../store/actions/actionTypes';
 
 const Checkout = (props) => {
+
+    // Initial render
+    useEffect(() => {
+        // Scroll to the top of the form 
+        props.headingRef.current.scrollIntoView();
+    }, [])
+
     // Facebook and Instagram ad view modal
     const [fbModalShow, setFbModalShow] = useState(false);
 
