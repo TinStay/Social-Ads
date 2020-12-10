@@ -13,6 +13,8 @@ import facebookAds from '../../../../assets/facebookIcon.png';
 import instagramAds from '../../../../assets/instagramIcon.png';
 import googleAds from '../../../../assets/googleIcon.png';
 
+import NumberCircle from '../../../../shared/NumberCircle';
+
 // Redux
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../../store/actions/actionTypes';
@@ -156,7 +158,7 @@ const Checkout = (props) => {
                 {/* General Info */}
                 <div className="col-md-6">
                     <CheckoutBox>
-                        <h3 className="checkout-box-heading">General info</h3>
+                        <h3 className="checkout-box-heading"><NumberCircle number="1"/> General info</h3>
                         <div className="checkout-box-info-container">
                             <div className="row">
                                 <div className="col-5 key">
@@ -194,7 +196,7 @@ const Checkout = (props) => {
                 {/* Audience */}
                 <div class="col-md-6">
                     <CheckoutBox>
-                        <h3 className="checkout-box-heading">Audience</h3>
+                        <h3 className="checkout-box-heading"><NumberCircle number="2"/> Audience</h3>
                         <div className="checkout-box-audience-container">
                             <div className="row">
                                 <div className="col-3">
@@ -265,7 +267,7 @@ const Checkout = (props) => {
                 </div>
                 <div className="col-md-6">
                     <CheckoutBox>
-                    <h3 className="checkout-box-heading">Placements and design</h3>
+                    <h3 className="checkout-box-heading"><NumberCircle number="3"/> Placements and design</h3>
                         <div className=" checkout-box-placements-container">
                             <div className="row">
                                 <div className="col-3">
@@ -363,7 +365,7 @@ const Checkout = (props) => {
                 
                 <div className="col-md-6">
                     <CheckoutBox>
-                    <h3 className="checkout-box-heading">Budget and schedule</h3>
+                    <h3 className="checkout-box-heading"><NumberCircle number="4"/> Budget and schedule</h3>
                         <div className=" checkout-box-budget-container">
 
                         <div className="row">
@@ -422,13 +424,13 @@ const Checkout = (props) => {
                        
                     </CheckoutBox>
                 </div>
-                <div class="col-12">
+                <div class="subscription-box col-md-6 offset-md-3">
                     <CheckoutBox>
-                        <h3 className="checkout-box-heading">Subscription</h3>
+                        <h3 className="checkout-box-heading"><NumberCircle number="5"/> Subscription</h3>
                         <div class="checkout-box-subscription-container">
                             <div className="d-flex justify-content-start">
                                 <div className=" ">
-                                    <p className="key  mr-4">Subscription plan: </p>
+                                    <p className="key mr-4">Subscription plan: </p>
                                 </div>
                                 <div className="">
                                     {subscriptionPlanText}

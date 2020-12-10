@@ -1967,6 +1967,17 @@ body{
             //    color: white;
 
 
+                .number-circle{
+                    display: inline;
+                    height: 55px;
+                    width: 55px;
+                    padding: 3px 10px;
+                    font-size: 1.2rem;
+                    color: white;
+                    border-radius: 50%;
+                    background-color: $dark-purple;
+                }
+
                .row{
                     margin: 10px 0;    
                }
@@ -2049,6 +2060,12 @@ body{
                     }
 
                 }
+
+                // .subscription-box{
+                //     // width: 80px;
+                //     background-color: #fff;
+                //     margin: 0 auto;
+                // }
 
                 &-subscription-container{
                     width: 95%;
