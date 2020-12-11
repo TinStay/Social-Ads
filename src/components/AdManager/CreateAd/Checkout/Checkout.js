@@ -99,7 +99,7 @@ const Checkout = (props) => {
                 <div className="col-3 "> 
                     <p className="key">Schedule: </p>
                 </div>
-                <div class="col-9">
+                <div className="col-9">
                     <p className="value">Run as soon as possible</p>
                 </div>
             </div>
@@ -136,22 +136,22 @@ const Checkout = (props) => {
 
     switch(props.subscriptionPlan){
         case "Basic":
-            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-star mr-2"></i>{props.subscriptionPlan}</p>
+            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-star mr-2"></i>{props.subscriptionPlan}</p>
             break;
 
         case "Premium":
-            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-crown mr-2"></i>{props.subscriptionPlan}</p>
+            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-crown mr-2"></i>{props.subscriptionPlan}</p>
             break;
 
         case "Deluxe":
-            subscriptionPlanText = <p className="subscription-value"><i class="fas fa-dice-d20 mr-2"></i>{props.subscriptionPlan}</p>
+            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-dice-d20 mr-2"></i>{props.subscriptionPlan}</p>
             break;
 
         case "onlyRunAds":
-            subscriptionPlanText = <p>Only run ads</p>;
+            subscriptionPlanText = <p className="subscription-value">Only run ads</p>;
 
             subscriptionPlanDescription = (
-                <div class="only-run-ads-description">
+                <div className="only-run-ads-description">
                     <p>This is the basic option for running your ads and it doesn't include any additional ad packages.
                     Ad campaigns with this plan will not be liable to earning any special AdWeDo points, which could be used for discounts.</p>
                 </div>
@@ -202,7 +202,7 @@ const Checkout = (props) => {
                     </CheckoutBox>
                 </div>
                 {/* Audience */}
-                <div class="col-md-6">
+                <div className="col-md-6">
                     <CheckoutBox>
                         <h3 className="checkout-box-heading"><NumberCircle number="2"/> Audience</h3>
                         <div className="checkout-box-audience-container">
@@ -323,7 +323,7 @@ const Checkout = (props) => {
                                 
                             </div>
                             {props.adInfo.runOn.includes("runOnGoogle") ?
-                            (<div class="row">
+                            (<div className="row">
                                 <div> 
                                     <p className="col-12 key">Google ad view: </p>
                                 </div>
@@ -346,7 +346,7 @@ const Checkout = (props) => {
                                     <div className="col-md-4">
                                         <p className="key">Facebook ad view:</p>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div className="col-md-8">
                                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#FbAdView">
                                             View
                                         </button>
@@ -432,14 +432,14 @@ const Checkout = (props) => {
                        
                     </CheckoutBox>
                 </div>
-                <div class="subscription-box col-md-6 offset-md-3">
+                <div className="subscription-box col-md-8 offset-md-2">
                     <CheckoutBox>
                         <h3 className="checkout-box-heading"><NumberCircle number="5"/> Subscription</h3>
-                        <div class="checkout-box-subscription-container">
-                            <div className="d-flex justify-content-start">
-                                <div className=" ">
+                        <div className="checkout-box-subscription-container">
+                            <div className="text-center">
+                                {/* <div className=" ">
                                     <p className="key mr-4">Subscription plan: </p>
-                                </div>
+                                </div> */}
                                 <div className="">
                                     {subscriptionPlanText}
                                 </div>

@@ -2072,9 +2072,11 @@ body{
                     margin: 0 auto;
                     
                     .subscription-value{
-                        margin: auto;
-                        vertical-align:text-top;
-                        font-size: 1.4rem;
+                        // margin: auto;
+                        // vertical-align:text-top;
+                       
+                        font-size: 1.8rem;
+                        font-weight: 600;
                         color: $purple-navbar;
 
                         
