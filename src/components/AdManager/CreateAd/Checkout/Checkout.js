@@ -130,8 +130,9 @@ const Checkout = (props) => {
     // Budget Redux state to variable
     let budget = {...props.adInfo.budgetAndSchedule.budget};
 
-    // Subscription plans icon classes
+    // Subscription plans checkout box content
     let subscriptionPlanText = null;
+    let subscriptionPlanDescription = null;
 
     switch(props.subscriptionPlan){
         case "Basic":
@@ -147,7 +148,14 @@ const Checkout = (props) => {
             break;
 
         case "onlyRunAds":
-            subscriptionPlanText = <p>Only run ads</p>
+            subscriptionPlanText = <p>Only run ads</p>;
+
+            subscriptionPlanDescription = (
+                <div class="only-run-ads-description">
+                    <p>This is the basic option for running your ads and it doesn't include any additional ad packages.
+                    Ad campaigns with this plan will not be liable to earning any special AdWeDo points, which could be used for discounts.</p>
+                </div>
+            )
             break;
     }
 
@@ -436,6 +444,9 @@ const Checkout = (props) => {
                                     {subscriptionPlanText}
                                 </div>
                                 
+                            </div>
+                            <div className="subscription-plan-description">
+                                {subscriptionPlanDescription}
                             </div>
                         </div>
                     </CheckoutBox>
