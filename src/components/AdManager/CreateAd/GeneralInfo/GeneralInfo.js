@@ -13,7 +13,10 @@ const GeneralInfo = (props) => {
     // Initial render
     useEffect(() => {
         // Scroll to the top of the form 
-        props.headingRef.current.scrollIntoView();
+        // props.headingRef.current.scrollIntoView();
+        
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
     }, [])
 
     const [showErrors, setShowErrors] = useState(false)
