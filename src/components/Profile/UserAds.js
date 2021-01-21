@@ -13,7 +13,7 @@ const UserAds = (props) => {
         <h4>You don't have any ads</h4>
         <button onClick={() => props.history.push('/ad-manager')} className="btn ads-add-button btn-lg mt-3">Create new ad campaign</button>
       </div>
-    </div>
+    </div> 
     );
 
     console.log("history", props.history)
