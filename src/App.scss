@@ -15,6 +15,7 @@ $purple-navbar-hover:  #7f33e9;
 $dark-purple: #7c0bbd;
 $dark-purple-hover: #720aad;
 $bgc-white: #fafaff;
+$bgc-white-hover:#efeff5;
 $font-color: #7662b6;
 $dark-blue: #050259;
 $gray-font: #5c6072;
@@ -616,7 +617,7 @@ body{
         
 
         .ads-profile-container{
-            border: 2px solid $purple-navbar;
+            border: 2px solid $bgc-white-hover;
             height: 100%;
            
 
@@ -1067,7 +1068,7 @@ body{
                 &-location-container{
                     // width: 80%;
                     margin-top: 20px;  
-                    margin-bottom: 1000px;  
+                    margin-bottom: 1000px;
                     // border: 1px solid black;  
     
                 }
@@ -1090,7 +1091,9 @@ body{
                 }
 
                 &-location-list{
-                    margin-top: 20px;
+                    // margin-top: 20px;
+                    margin: 20px auto;
+
                     .title{
                         font-size: 1.2rem;
                     }

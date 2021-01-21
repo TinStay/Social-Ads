@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { Modal } from 'react-bootstrap';
 import axios from '../../axios';
 
-// Firebase
+// Firebase 
 import * as firebase from 'firebase/app';
 import app,{ db } from "../../base";
 import 'firebase/firestore'

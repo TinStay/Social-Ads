@@ -102,9 +102,11 @@ export const InterestsSelect = (props) => {
 
     // Update interests with redux state
     useEffect(() => {
-        if(props.selectedInterests != []){
-            setValue([...props.selectedInterests])
-        }
+        console.log(props.selectedInterests)
+        // if(props.selectedInterests.length !== 0){
+        //     const newInterests = [...props.selectedInterests]
+        //     setValue(newInterests)
+        // }
     }, [props.selectedInterests])
 
     

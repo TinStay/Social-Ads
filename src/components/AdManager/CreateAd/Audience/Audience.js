@@ -173,8 +173,8 @@ function Audience(props){
                 <div className="row audience-form-location-container ">
                     <div className="audience-form-location col-md-12">
                         
-                        <i class="fas fa-globe-europe"></i>
-                        <label>Locations targeted by your ads: </label>
+                        
+                        <label><i class="fas fa-globe-europe"></i> Locations targeted by your ads: </label>
                         <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onLocationSelect}>
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
@@ -216,11 +216,11 @@ function Audience(props){
                         <div class="col-12">
                             <h1 className="title my-4">Selected locations:</h1>
                         </div>
-                           <div class="row row-cols-3 mx-3 w-100 mb-0">
+                           <div class="row mx-auto w-100 mb-0">
                                 {locationList.length !== 0 ? locationList.map((location, index) => {
 
                                 return(
-                                    <div class="col-md-4 p-0">
+                                    <div class="col-12 col-md-4 p-0">
                                         <div class="location-box d-flex justify-content-between">
                                             {location.name}
                                             {/* <button className="remove-btn btn " onClick={(e) => removeLocation(e, index)}>X</button> */}
@@ -229,7 +229,7 @@ function Audience(props){
                                         </div>
                                     </div>
                                 )
-                                }) : <p>You haven't selected a location.</p> }
+                                }) : <p >You haven't selected any locations yet.</p> }
                            </div>
                     </div>
                 </div>

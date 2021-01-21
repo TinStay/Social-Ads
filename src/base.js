@@ -19,14 +19,13 @@ const app = firebase.initializeApp({
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const db = firebase.database();
-// console.log("db",db)
 
 export const storage = firebase.storage()
 
 export const doSignInWithFacebook = () =>
     app.auth().signInWithPopup(facebookProvider)
     .then( registeredUser => {
-        console.log("registeredUser", registeredUser)
+        // console.log("registeredUser", registeredUser)
         return registeredUser
     })
 

@@ -18,7 +18,7 @@ import Axios from 'axios';
 const FacebookPlacements = (props) => {
     // Auth context
     const { currentUser } = useContext(AuthContext);
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState()
 
     const runOnPlatforms = [...props.adInfo.runOn]
 
@@ -110,7 +110,7 @@ const FacebookPlacements = (props) => {
     }, [props.adInfo.facebookAd.adDetails])
 
     const pictureChangeHandler = (event) => {
-
+        // Get image file
         const file = event.target.files[0];
         // console.log(event.target.files[0])
 
@@ -124,11 +124,12 @@ const FacebookPlacements = (props) => {
         // Set pictureorVideoUrl in firebase realtime db
         // db.ref("users/" + currentUser.uid + "/orders/"+`/${props.adInfo.name}/adInfo/facebookAd/adDetails/0/value`).set(pictureOrVideoUrl)
 
-        const userName = userData.firstName + userData.lastName;
+        const username = userData.firstName + userData.lastName;
         const campaignName = props.adInfo.name;
         const fileName = file.name;
 
-        const uploadTask = storage.ref(`${userName}/${campaignName}/${fileName}`).put(file);
+        // Firebase Storage 
+        const uploadTask = storage.ref(`${username}/${campaignName}/${fileName}`).put(file);
         
         uploadTask.on(
             "state_changed",
@@ -149,7 +150,7 @@ const FacebookPlacements = (props) => {
                 setIsUploading(false)
               // complete function ...
               storage
-                .ref(userName)
+                .ref(username)
                 .child(`${campaignName}/${fileName}`)
                 .getDownloadURL()
                 .then(url => {
