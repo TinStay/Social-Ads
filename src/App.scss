@@ -27,6 +27,20 @@ body{
     
 }
 
+.no-active-outline{
+    &:active, &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.btn{
+    &:active, &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+}
+
 ////////////////
 //// Colors ////
 ////////////////
@@ -331,7 +345,7 @@ body{
 
     p{
         margin: 40px auto;
-        width: 80%;
+        width: 60%;
         font-size: 1.5rem;
     }
 
@@ -341,6 +355,7 @@ body{
         position: relative;
         bottom: 0;
         padding: 10px;
+        border: none;
         width: 150px;
         color: white;
        
@@ -349,7 +364,7 @@ body{
         background: $purple-to-pink-linear;
 
 
-        transition: all 0.2s ease-out;
+        transition: all 0.3s ease-out;
 
         &:hover{
             background: $purple;
