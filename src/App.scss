@@ -172,11 +172,13 @@ body{
             border-bottom: 3px solid transparent;
             color: $white;
             letter-spacing: 1px;
-            transition: all 0.2s ease-in-out;  
+            transition: all 0.2s ease-in-out; 
+             
 
             &:hover{
                 color: $cherry-red;
                 border-bottom: 3px solid $cherry-red;
+                cursor: pointer;
             }
 
             &:focus{

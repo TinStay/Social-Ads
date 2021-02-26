@@ -1,5 +1,5 @@
 import React, { useContext, useCallback, useState } from 'react';
-import { withRouter, Redirect } from "react-router";
+import { withRouter, Redirect } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 import { AuthContext } from './Auth';
 
