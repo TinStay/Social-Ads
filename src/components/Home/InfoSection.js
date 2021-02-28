@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import phone from '../../assets/phone.jpg'
 import facebookIcon from '../../assets/facebookIcon.png'
 import instagramIcon from '../../assets/instagramIcon.png'
@@ -49,7 +50,7 @@ const InfoSection = props =>{
                         <h2 className="info-text-container-heading">Keep track of your running ads</h2>
                         <p className="info-text-container-paragraph col-lg-8">With the online Ad Manager you can create, run and track your social media advertising. 
                         We believe we have a reliable, convenient and robust tracking system which main aim is to simplify the proccess of running online ads.</p>
-                        <button className="btn btn-lg info-text-container-button">Go to Ad Manager</button>
+                        <Link to="ad-manager" className="btn btn-lg info-text-container-button">Go to Ad Manager</Link>
                    </div>
                 </div>
                 

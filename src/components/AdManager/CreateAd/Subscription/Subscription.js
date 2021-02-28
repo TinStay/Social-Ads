@@ -6,7 +6,6 @@ import Switch from "react-switch";
 // Redux
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../../store/actions/actionTypes';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Subscription = (props) => {
     
