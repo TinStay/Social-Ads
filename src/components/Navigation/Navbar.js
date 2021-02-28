@@ -89,22 +89,22 @@ const Navbar = () => {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/profile"
-            className="nav-link"
-            onClick={() => closeNavbarWhenClicked()}
-            activeClassName="is-active"
-          >
-            Profile
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
             to="/contact"
             className="nav-link"
             onClick={() => closeNavbarWhenClicked()}
             activeClassName="is-active"
           >
             Contact us
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/profile"
+            className="nav-link"
+            onClick={() => closeNavbarWhenClicked()}
+            activeClassName="is-active"
+          >
+            Profile
           </NavLink>
         </li>
         <li className="nav-item">
