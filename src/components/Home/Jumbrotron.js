@@ -22,7 +22,7 @@ const Jumbotron = props =>{
     return(
         <div className="jumbotron container text-center">
             <h1>Welcome to AdWeDo</h1>
-            <p className="">We run and Facebook, Instagram and Google ads for you. Sign up, choose your audience and run your ads.</p>
+            <p className="">We run Facebook, Instagram and Google ads for you. Sign up, choose your audience and run your ads.</p>
             <button onClick={() => setShowSignupForm(true)}  className="btn btn-signup ">Sign Up</button>
             <SignupForm show={showSignupForm} handleClose={(e) => setShowSignupForm(false)} changeToLogin={changeToLogin}/>
             <LoginForm show={showLoginForm} handleClose={(e) => setShowLoginForm(false)} changeToSignup={changeToSignup}/>

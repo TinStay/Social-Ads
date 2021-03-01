@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import { AuthContext } from "../Auth/Auth";
 import app from "../../base";
@@ -15,7 +15,8 @@ const Navbar = () => {
   const handleShow = () => setShow(true);
 
   const { currentUser } = useContext(AuthContext);
-  // console.log(currentUser)
+
+  const history = useHistory();
 
   const openSignUpModal = () => {
     // Hide navbar in mobile view
@@ -39,6 +40,8 @@ const Navbar = () => {
 
     // Sign out from firebase auth
     app.auth().signOut();
+
+    history.push("/")
   };
 
   // Hide collapse when a nav link is clicked in mobile view

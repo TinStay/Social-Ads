@@ -7,7 +7,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { AuthProvider } from "../components/Auth/Auth";
 import "@testing-library/jest-dom/extend-expect";
 
-test("opens sign up/log in modal from jumbotron", () => {
+test("open sign up/log in modal from jumbotron", () => {
   const history = createMemoryHistory();
   const { getByText } = render(
     <AuthProvider>
@@ -28,7 +28,7 @@ test("opens sign up/log in modal from jumbotron", () => {
   expect(getByText("Don't have an account?")).toBeInTheDocument();
 });
 
-test("opens sign up/log in modal from navnar", () => {
+test("open sign up/log in modal from navbar", () => {
   const history = createMemoryHistory();
 
   const { getByText } = render(
