@@ -4,6 +4,7 @@ import CheckoutBox from './CheckoutBox';
 import AdViewFb from '../AdPlacement/FacebookPlacements/AdViewFb';
 import AdViewGoogle from '../AdPlacement/GoogleAd/AdViewGoogle'
 import FbAdViewModal from './FbAdViewModal';
+import SubscriptionPlanInfo from './SubscriptionPlanInfo'
 
 // DayJS    
 import dayjs from 'dayjs';
@@ -130,34 +131,6 @@ const Checkout = (props) => {
     // Budget Redux state to variable
     let budget = {...props.adInfo.budgetAndSchedule.budget};
 
-    // Subscription plans checkout box content
-    let subscriptionPlanText = null;
-    let subscriptionPlanDescription = null;
-
-    switch(props.subscriptionPlan){
-        case "Basic":
-            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-star mr-2"></i>{props.subscriptionPlan}</p>
-            break;
-
-        case "Premium":
-            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-crown mr-2"></i>{props.subscriptionPlan}</p>
-            break;
-
-        case "Deluxe":
-            subscriptionPlanText = <p className="subscription-value"><i className="fas fa-dice-d20 mr-2"></i>{props.subscriptionPlan}</p>
-            break;
-
-        case "onlyRunAds":
-            subscriptionPlanText = <p className="subscription-value">Only run ads</p>;
-
-            subscriptionPlanDescription = (
-                <div className="only-run-ads-description">
-                    <p>This is the basic option for running your ads and it doesn't include any additional ad packages.
-                    Ad campaigns with this plan will not be liable to earning any special AdWeDo points, which could be used for discounts.</p>
-                </div>
-            )
-            break;
-    }
 
     return(
         <div>
@@ -432,22 +405,11 @@ const Checkout = (props) => {
                        
                     </CheckoutBox>
                 </div>
-                <div className="subscription-box col-md-8 offset-md-2">
+                <div className="checkout-subscription col-md-8 offset-md-2">
                     <CheckoutBox>
                         <h3 className="checkout-box-heading"><NumberCircle number="5"/> Subscription</h3>
                         <div className="checkout-box-subscription-container">
-                            <div className="text-center">
-                                {/* <div className=" ">
-                                    <p className="key mr-4">Subscription plan: </p>
-                                </div> */}
-                                <div className="">
-                                    {subscriptionPlanText}
-                                </div>
-                                
-                            </div>
-                            <div className="subscription-plan-description">
-                                {subscriptionPlanDescription}
-                            </div>
+                            <SubscriptionPlanInfo subscriptionPlan={props.subscriptionPlan}/>
                         </div>
                     </CheckoutBox>
                 </div>
