@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @import "./variables";
-
-
 
 /*
     Purple and pink button style
@@ -11,2089 +9,1985 @@
         background: linear-gradient(to left, #BF05F2, #6805F2); 
 */
 
-html{
-    font-size: 0.9rem;
-    scroll-behavior: smooth;
+html {
+  font-size: 0.9rem;
+  scroll-behavior: smooth;
 
-    @media screen and (min-width: 1199px){
-        font-size: 1rem;
-    }
+  @media screen and (min-width: 1199px) {
+    font-size: 1rem;
+  }
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
 ////////////////
 //// Common ////
 ////////////////
 
-.text-decoration-none{
-    text-decoration: none;
+.text-decoration-none {
+  text-decoration: none;
 }
 
-.list-style-none{
-    list-style: none;
+.list-style-none {
+  list-style: none;
 }
 
-.no-active-outline{
-    &:active, &:focus{
-        outline: none;
-        box-shadow: none;
-    }
+.no-active-outline {
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
-.btn{
-    &:active, &:focus{
-        outline: none;
-        box-shadow: none;
-    }
+.btn {
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
-
-
-
 
 ////////////////
 //// Colors ////
 ////////////////
 
-.white{
-    color: $white;
+.white {
+  color: $white;
 }
 
-.background-white{
-    background-color: $bgc-white;
+.background-white {
+  background-color: $bgc-white;
 }
 
-.purple-gradient{
-    background: $purple;  
-    background: $purple-to-pink-webkit;
-    background: $purple-to-pink-linear;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.purple-gradient {
+  background: $purple;
+  background: $purple-to-pink-webkit;
+  background: $purple-to-pink-linear;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-
-.purple-navbar{
-    background-color: $purple-navbar;
+.purple-navbar {
+  background-color: $purple-navbar;
 }
 
-.dark-purple-font{
-    color: $dark-purple;
+.dark-purple-font {
+  color: $dark-purple;
 }
 
-.font-color{
-    color: $dark-blue;
+.font-color {
+  color: $dark-blue;
 }
 
-.gray{
-    color: $gray;
+.gray {
+  color: $gray;
 }
 
-.dark-gray{
-    color: $dark-gray;
+.dark-gray {
+  color: $dark-gray;
 }
 
-.gray-font{
-    color: #5c6072;;
+.gray-font {
+  color: #5c6072;
 }
-
 
 ////////////////////
 //// Navigation ////
 ////////////////////
- 
-.sticky-navbar{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    
+
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+.navbar {
+  // background-color: #ffffff;
+  // border-bottom: 1px solid #b7a6f3;
 
-.navbar{
-    // background-color: #ffffff;
-    // border-bottom: 1px solid #b7a6f3;
-    
-    // margin: 0 auto;
-    
-    // Option 1
-    background:  $purple-navbar;
-    // background: $purple-to-pink-linear;
-    // background: $purple-to-pink-webkit;
-    // Option 2
-    // background-color: $dark-purple;
-   border-bottom: 1px solid $purple-navbar-hover;
-   .homeBtn{
+  // margin: 0 auto;
+
+  // Option 1
+  background: $purple-navbar;
+  // background: $purple-to-pink-linear;
+  // background: $purple-to-pink-webkit;
+  // Option 2
+  // background-color: $dark-purple;
+  border-bottom: 1px solid $purple-navbar-hover;
+  .homeBtn {
     width: 45px;
     height: 40px;
-    }
+  }
 
-    .logo-text{
-        margin-left: 20px;
-        padding: 0px 0;
-        font-size: 2.9rem;
-        line-height: 2rem;
-        height:2.5rem;
-        color: white;
-        font-weight: 500;
-        // font-style: italic;
-        font-family:  "Argio", serif;;
-    }
+  .logo-text {
+    margin-left: 20px;
+    padding: 0px 0;
+    font-size: 2.9rem;
+    line-height: 2rem;
+    height: 2.5rem;
+    color: white;
+    font-weight: 500;
+    // font-style: italic;
+    font-family: "Argio", serif;
+  }
 }
 
-.navbar-nav{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    transition: all 0.3s ease-in-out;
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
 
-    .nav-item{
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        margin: 5px auto;
+  .nav-item {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 5px auto;
 
-        @media screen and (min-width: 1199px){
-            margin: 5px 20px;
-        }
-
-        .nav-link{
-            // width: 50%;
-            margin: 0 10px;
-            padding: 4px 0;
-            border-bottom: 3px solid transparent;
-            color: $white;
-            letter-spacing: 1px;
-            transition: all 0.2s ease-in-out; 
-             
-
-            &:hover{
-                color: $cherry-red;
-                border-bottom: 3px solid $cherry-red;
-                cursor: pointer;
-            }
-
-            &:focus{
-                color: $white;
-                // border-bottom: 3px solid $cherry-red;
-            }
-
-            
-        }
-
-        .is-active{
-            // border-bottom: 2px solid $cherry-red;
-            // color: $cherry-red;
-            border-bottom: 3px solid $cherry-red;
-        }
+    @media screen and (min-width: 1199px) {
+      margin: 5px 20px;
     }
-}
 
+    .nav-link {
+      // width: 50%;
+      margin: 0 10px;
+      padding: 4px 0;
+      border-bottom: 3px solid transparent;
+      color: $white;
+      letter-spacing: 1px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $cherry-red;
+        border-bottom: 3px solid $cherry-red;
+        cursor: pointer;
+      }
+
+      &:focus {
+        color: $white;
+        // border-bottom: 3px solid $cherry-red;
+      }
+    }
+
+    .is-active {
+      // border-bottom: 2px solid $cherry-red;
+      // color: $cherry-red;
+      border-bottom: 3px solid $cherry-red;
+    }
+  }
+}
 
 ////////////////////////
 //// Authentication ////
 ////////////////////////
 
-.errorMsg{
-    background-color: rgb(246, 140, 158);
-    border: 1px solid #ED4C67;
-    padding: 5px;
-    border-radius: 7px;
+.errorMsg {
+  background-color: rgb(246, 140, 158);
+  border: 1px solid #ed4c67;
+  padding: 5px;
+  border-radius: 7px;
 }
 
+.auth-form {
+  // padding: 0 10px;
 
+  &-field {
+    margin: 25px auto 30px auto;
+  }
 
-.auth-form{
-    // padding: 0 10px;
+  &-social-buttons {
+    margin: 10px auto 20px auto;
+  }
 
+  &-social-label {
+    margin: 10px auto;
+    padding-bottom: -5px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 
-    &-field{
-        margin: 25px auto 30px auto;
+  .text-muted {
+    margin-top: 0.7rem;
+  }
+
+  &-social-icon {
+    margin: 5px 15px;
+    height: 65px;
+    width: 65px;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      opacity: 95%;
+    }
+  }
+  small {
+    font-size: 1rem;
+  }
+}
+
+.modal-body {
+  background-color: #f1f3ff;
+  padding: 10px 20px;
+
+  .modal-header {
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid $gray-border;
+    padding: 13px 20px;
+    // text-align: center;
+    // align-content: center;
+    // text-align: center;
+    // text-align: center;
+
+    &-label {
+      margin: 0px auto;
+    }
+  }
+
+  .btn-facebook {
+    margin: 10px 5px;
+    font-size: 1.4rem;
+    color: $white;
+    background-color: #4267b2;
+    &:hover {
+      background-color: rgb(49, 85, 156);
+    }
+  }
+
+  .btn-google {
+    margin: 10px 5px;
+    font-size: 1.4rem;
+    color: $white;
+    background-color: #db4437;
+    &:hover {
+      background-color: rgb(177, 51, 39);
+    }
+  }
+
+  .btn-login {
+    width: 100%;
+    margin: 10px auto 20px auto;
+    padding: 7px 0;
+    font-size: 1.5rem;
+    border-radius: 60px;
+    background: $purple-navbar;
+    color: $white;
+    // background: $purple-to-pink-webkit;
+    // background: $purple-to-pink-linear;
+
+    &:hover {
+      background: $purple-navbar-hover; /* fallback for old browsers */
+      // background: $purple-to-pink-webkit-hover;
+      // background: $purple-to-pink-linear-hover;
+    }
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    font-size: 1.1rem;
+  }
+}
+
+.jumbotron-bg {
+  height: 100vh;
+  background: url("./assets/bgImgBlurred.jpg") no-repeat center;
+}
+
+.gradient-bgc {
+  padding: 20px 0 50px 0;
+  background: #c33764; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(39, 71, 134, 0.486),
+    #88205b6e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    rgba(39, 71, 134, 0.486),
+    #88205b6e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-box-shadow: 0px 12px 36px -17px rgba(29, 38, 114, 1);
+  -moz-box-shadow: 0px 12px 36px -17px rgba(29, 38, 114, 1);
+  box-shadow: 0px 12px 36px -17px rgba(29, 38, 114, 1);
+}
+
+.jumbotron {
+  height: 100vh;
+  background-color: transparent;
+  color: white;
+  padding: 45px 0 25px 0;
+  margin: none;
+
+  h1 {
+    font-weight: bold;
+    margin: 20px 0 60px 0;
+    font-size: 4rem;
+    letter-spacing: 2px;
+  }
+
+  p {
+    margin: 40px auto;
+    width: 60%;
+    font-size: 1.5rem;
+  }
+
+  .btn-signup {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    position: relative;
+    bottom: 0;
+    padding: 10px;
+    border: none;
+    width: 150px;
+    color: white;
+
+    background: $purple;
+    background: $purple-to-pink-webkit;
+    background: $purple-to-pink-linear;
+
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background: $purple;
+      background: $purple-to-pink-webkit-hover;
+      background: $purple-to-pink-linear-hover;
+    }
+  }
+}
+
+.info-section {
+  // width: 90%;
+  padding: 10px 0;
+  // margin: 50px auto;
+  // height: 50vh;
+  background: url("./assets/phone.jpg") no-repeat left;
+  background-size: cover;
+
+  &-row {
+    margin: 0 auto 80px auto;
+
+    .social-pic {
+      width: 350px;
     }
 
-    &-social-buttons{
-        margin: 10px auto 20px auto;
+    @media screen and (min-width: 1199px) {
+      margin: 50px auto 100px auto;
+
+      .social-pic {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .info-text-container {
+    width: 100%;
+    margin: 0 auto;
+
+    // background-color: red;
+    @media screen and (min-width: 1199px) {
+      width: 90%;
     }
 
-    &-social-label{
-        margin: 10px auto;
-        padding-bottom: -5px;
+    &-heading {
+      color: $dark-blue;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    &-paragraph {
+      color: $dark-blue;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 40px auto;
+    }
+
+    &-button {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 20px;
+      padding: 13px;
+      background-color: $purple-navbar;
+      border-radius: 5px;
+      color: white;
+      &:hover {
+        background-color: $purple-navbar-hover;
+      }
+
+      &-border {
         font-size: 1.5rem;
         font-weight: 500;
-    }
-
-    .text-muted{
-        margin-top: 0.7rem;
-      
-    }
-
-    &-social-icon{
-        margin: 5px 15px;
-        height: 65px;
-        width:  65px;
-        transition: all 0.1s ease-in-out;
-        
-        &:hover{
-            opacity: 95%;
-        }
-    }
-        small{
-        font-size: 1rem;
-    }
-
-}
-
-
-.modal-body{
-    background-color: #f1f3ff;
-    padding: 10px 20px;
-   
-    .modal-header{
-        width: 90%;
-        margin: 0 auto;
-        border-bottom: 1px solid $gray-border;
-        padding: 13px 20px;
-        // text-align: center;
-        // align-content: center;
-        // text-align: center;
-        // text-align: center;
-    
-        &-label{
-            margin: 0px auto;
-        }
-    }
-
-    .btn-facebook{
-        margin: 10px 5px;
-        font-size: 1.4rem;
-        color: $white;
-        background-color: #4267B2;
-        &:hover{
-            background-color: rgb(49, 85, 156);
-        }
-    }
-
-    .btn-google{
-        margin: 10px 5px;
-        font-size: 1.4rem;
-        color: $white;
-        background-color: #DB4437;
-        &:hover{
-            background-color: rgb(177, 51, 39);
-        }
-    }
-
-    .btn-login{
-        width: 100%;
-        margin: 10px auto 20px auto;
-        padding: 7px 0;
-        font-size: 1.5rem;
-        border-radius: 60px;
-        background: $purple-navbar;  
-        color: $white;
-        // background: $purple-to-pink-webkit;
-        // background: $purple-to-pink-linear;
-
-        &:hover{
-            background: $purple-navbar-hover;    /* fallback for old browsers */
-            // background: $purple-to-pink-webkit-hover;
-            // background: $purple-to-pink-linear-hover;
-          
-        }
-    }
-
-    input[type="email"], input[type="password"], input[type="text"]{
-        font-size: 1.1rem;
-    }
-}
-
-.jumbotron-bg{
-    height: 100vh;
-    background: url('./assets/bgImgBlurred.jpg') no-repeat center;
-}
-
-.gradient-bgc{
-    padding: 20px 0 50px 0;
-    background: #C33764;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, rgba(39, 71, 134, 0.486),  #88205b6e);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, rgba(39, 71, 134, 0.486),  #88205b6e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    -webkit-box-shadow: 0px 12px 36px -17px rgba(29,38,114,1);
-    -moz-box-shadow: 0px 12px 36px -17px rgba(29,38,114,1);
-    box-shadow: 0px 12px 36px -17px rgba(29,38,114,1);
-}
-
-.jumbotron{
-    height: 100vh;
-    background-color: transparent;
-    color: white;
-    padding: 45px 0 25px 0;
-    margin: none;
-
-    h1{
-        font-weight: bold;
-        margin: 20px 0 60px 0;
-        font-size: 4rem;
-        letter-spacing: 2px ;
-    }
-
-    p{
-        margin: 40px auto;
-        width: 60%;
-        font-size: 1.5rem;
-    }
-
-    .btn-signup{
-        font-size: 1.5rem;
-        margin-top: 30px;
-        position: relative;
-        bottom: 0;
-        padding: 10px;
-        border: none;
-        width: 150px;
-        color: white;
-       
-        background: $purple;
-        background: $purple-to-pink-webkit;
-        background: $purple-to-pink-linear;
-
-
-        transition: all 0.3s ease-out;
-
-        &:hover{
-            background: $purple;
-            background: $purple-to-pink-webkit-hover;
-            background: $purple-to-pink-linear-hover;
-        }
-    }
-}
-
-.info-section{
-    // width: 90%;
-    padding: 10px 0;
-    // margin: 50px auto;
-    // height: 50vh;
-    background: url('./assets/phone.jpg') no-repeat left;
-    background-size: cover;
-
-    &-row{
-        margin: 0 auto 80px auto;
-       
-        
-        .social-pic{
-            width: 350px;
-            
-        }
-
-        @media screen and (min-width: 1199px){
-            margin: 50px auto 100px auto;
-
-            .social-pic{
-                
-                margin-top: 40px;
-            }
-        }
-    }
-
-    .info-text-container{
-        width: 100%;
-        margin: 0 auto;
-
-        // background-color: red;
-        @media screen and (min-width: 1199px){
-            width: 90%;
-        }
-
-        &-heading{
-            color: $dark-blue;
-            font-size: 3rem;
-            font-weight: 600;
-            margin-top: 20px;            
-            margin-bottom: 40px;
-        }
-
-        &-paragraph{
-            color: $dark-blue;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin: 40px auto;
-        }
-
-        &-button{
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-top: 20px;
-            padding: 13px;
-            background-color: $purple-navbar;
-            border-radius: 5px;
-            color: white;
-            &:hover{
-                background-color: $purple-navbar-hover;
-            }
-
-            &-border{
-                font-size: 1.5rem;
-                font-weight: 500;
-                margin-top: 20px;
-                padding: 13px;
-                border: 2px solid $purple-navbar;
-                border-radius: 5px;
-                color:  $purple-navbar;
-                &:hover{
-                    background-color: $purple-navbar;
-                    color: $white;
-                }
-            }
-        }
-
-        &-icons{
-            display: flex;
-            list-style-type: none;
-            justify-content: space-evenly;
-            padding: 0;
-
-            img{
-                width: 65px;
-                // margin-right: 60%;
-
-                @media screen and (min-width: 1199px){
-                    width: 100px;
-                }
-        
-            }
-        }
-        
-    }
-
-    .info-image{
-        margin: 0 auto;
-        width: 90%;
-    }
-}
-
-
-.profile-page{
-    // height: 90vh;
-     padding: 20px 0 50px 0;
-    //  background-color: #8f90eb;
-    background: #642B73;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, $dark-purple-hover, $purple-navbar);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, $dark-purple-hover, $purple-navbar); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-   
-    .profile-card{
-        
-        position: relative;
-        background-color: white;
-        width: 97%;
-        margin: 50px auto;
-        padding: 120px 30px 40px 30px;
+        margin-top: 20px;
+        padding: 13px;
+        border: 2px solid $purple-navbar;
         border-radius: 5px;
-        -webkit-box-shadow: -2px 5px 10px -1px rgba(140,140,140,1);
-        -moz-box-shadow: -10px 5px 10px -1px rgba(140,140,140,1);
-        box-shadow: 0px 2px 10px -1px rgba(140,140,140,1);
-        
-        @media screen and (min-width: 1199px){
-            width: 90%;
-        }
-
-
-        .profile-pic{
-            &-bubble{
-                position: absolute;
-                left: 50%;
-                top: -60px;
-                margin-left: -85px;
-                border-radius: 50%;
-                width: 170px;
-                height: 170px;
-                background-color: $white;
-                z-index: 5;   
-                &:hover{
-                   
-                    
-                    .profile-pic-change{
-                        
-                        opacity: 1;
-                    }
-                    .profile-pic-img{
-                        background-color: rgb(255, 255, 255);
-                        filter: blur(4px);
-                    }
-                    
-                }
-            }
-
-            &-change{
-                opacity: 0;
-                position: absolute;
-                left: 50%;
-                top: 30px; 
-                margin-left: -32px;
-                border-radius: 50%;
-                width: 70px;
-                height: 70px;
-                z-index: 100;
-                transition: all 0.3s ease-out;
-            }
-
-            &-img{
-                position: absolute;
-                left: 50%;
-                // top: 0;
-                margin-left: -85px;
-                border-radius: 50%;
-                width: 170px;
-                height: 170px;
-                z-index: 10;
-                transition: all 0.2s ease-out;
-            }
-        }
-        
-
-    .profile-info{
-        width: 90%;
-        margin: 0 auto;
-        color: $dark-blue;
-
-
-        .profile-heading{
-            display: inline;
-            font-size: 3.1rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            vertical-align: middle;
-            
-        }
-        .profile-form{
-            margin: 20px 0;
-            padding: 50px 0;
-            border-top: 1px solid #a5b1c2;
-            border-bottom: 1px solid #a5b1c2;
-
-        }
-        .btn-save-changes{
-            margin: 10px auto 20px auto;
-            padding: 10px;
-            width: 100%;
-            border-radius: 60px;
-            background-color: $purple-navbar;
-            // border: 2px solid $purple-navbar;
-            font-weight: 500;
-            font-size: 1.2rem;
-            color: $white;
-            transition: all 0.2s ease-in-out;
-
-            &:hover{
-                color: $white;
-                background-color: $purple-navbar-hover;
-            }
-        }
-    
-    } 
-    }
-    .Ads-profile{
-        width: inherit;
-        height: 100%;
-        margin: 30px 0;
-        padding-bottom: 55px;
-        
-
-        .ads-profile-container{
-            border: 2px solid $bgc-white-hover;
-            height: 100%;
-           
-
-            .ads-profile-content{
-                height: inherit;
-                margin: auto auto;
-                background-color: $bgc-white;
-                &-noads{
-                    position: relative;
-                    padding: 40px 0;
-                }
-            }
-        }
-
-        .ads-heading{
-            font-size: 3.1rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-        }
-        .ads-add-button{
-            color: white;
-            padding: 15px;
-            position: relative;
-            bottom: 0;
-            background: #DA4453; 
-            background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 106));  
-            background: linear-gradient(to right, #89216B, rgb(218, 68, 106));
-            transition: all 0.3s ease-out;
-            &:hover{
-                background: #89216B;  
-                background: -webkit-linear-gradient(to right, #89216B, rgb(218, 68, 88));
-                background: linear-gradient(to right, rgb(137, 33, 97), rgb(218, 68, 88))
-              
-            }
-        }
-    }
-    
-
-}
-
-.subscription-section{
-    background-color: $purple-navbar;
-    color: $white;
-    padding: 20px;
-    
-
-    @media screen and (min-width: 1199px){
-        padding: 50px;
-        // height: 650px;
-    }
-
-    .subscription-jumbotron{
-        width: 96%;
-        margin: 0 auto;
-
-        h1{
-            font-size: 3.5rem;
-            font-weight: 500;
-        }
-        h2{
-            font-size: 2.5rem;
-            font-weight: 500;
-        }
-
-        @media screen and (min-width: 1199px){
-            width: 60%;
-            margin: 0 auto;
-        }
-    }
-
-}
-
-
-.subscription-row{
-    display: flex;
-    justify-content: space-evenly;
-    
-    margin: 60px auto 90px auto;
-
-    &-standout{
-        @media screen and (min-width: 1199px){
-            margin-top: -25px;
-        }   
-    }
-
-    .subscription-card{
-        padding: 20px 15px 35px 15px;
-        margin: 20px 0;
-        font-size: 1.3rem;
-        border-radius: 5px;
-        background-color: $white;
         color: $purple-navbar;
-        transition: all 0.2s ease-in-out;
-        -webkit-box-shadow: -2px 5px 10px -1px rgba(140,140,140,1);
-        -moz-box-shadow: -2px 5px 10px -1px rgba(140,140,140,1);
-        box-shadow: -2px 5px 10px -1px rgba(140,140,140,1);
-        @media screen and (min-width: 1199px){
-            // padding: 35px 20px;
-            margin: 20px 10px;
-
-            &:hover{
-                @media screen and (min-width: 1199px){
-                    margin-top: 5px;
-                }
-               
-            }
+        &:hover {
+          background-color: $purple-navbar;
+          color: $white;
         }
-       
-        
-
-        &-p{
-            margin-top: 30px;
-            color: $dark-blue;
-        }
-
-        &-list{
-            width: 100%;
-            margin: 50px auto;
-            padding: 0 20px;
-            font-size: 1.3rem;
-            color: $dark-blue;
-            list-style-type: none;
-            li{
-                margin: 25px auto;
-                .fa-check{
-                    font-size: 1.2rem;
-                }
-            }
-        }
-
-        &-button{
-            color: white;
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 0 auto;
-            padding: 14px;
-            background-color: #6c03a8;
-            border-radius: 50px;
-            transition: all 0.3s ease-out;
-            &:hover{
-                background-color: #992167;
-            }
-            
-        }
-
-        .fas{
-            font-size: 2.8rem;
-        }
+      }
     }
+
+    &-icons {
+      display: flex;
+      list-style-type: none;
+      justify-content: space-evenly;
+      padding: 0;
+
+      img {
+        width: 65px;
+        // margin-right: 60%;
+
+        @media screen and (min-width: 1199px) {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .info-image {
+    margin: 0 auto;
+    width: 90%;
+  }
 }
 
-.manager{
+.profile-page {
+  // height: 90vh;
+  padding: 20px 0 50px 0;
+  //  background-color: #8f90eb;
+  background: #642b73; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    $dark-purple-hover,
+    $purple-navbar
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    $dark-purple-hover,
+    $purple-navbar
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    &-jumbotron{
-        width: 96%;
-        margin: 20px auto;
-        // display: flex;
-        // justify-content: space-between;
-        border-bottom: 1px solid rgb(219, 219, 219);
+  .profile-card {
+    position: relative;
+    background-color: white;
+    width: 97%;
+    margin: 50px auto;
+    padding: 120px 30px 40px 30px;
+    border-radius: 5px;
+    -webkit-box-shadow: -2px 5px 10px -1px rgba(140, 140, 140, 1);
+    -moz-box-shadow: -10px 5px 10px -1px rgba(140, 140, 140, 1);
+    box-shadow: 0px 2px 10px -1px rgba(140, 140, 140, 1);
 
-        @media screen and (min-width: 1199px){
-            width: 86%;
-        }
-        
-
-        &-title{
-            padding-bottom: 10px;
-            font-size: 3rem;
-            text-align: center;
-            
-            @media screen and (min-width: 1199px){
-                font-size: 3.5rem;
-            }
-        }
-        
+    @media screen and (min-width: 1199px) {
+      width: 90%;
     }
 
-    &-ad-form{
+    .profile-pic {
+      &-bubble {
+        position: absolute;
+        left: 50%;
+        top: -60px;
+        margin-left: -85px;
+        border-radius: 50%;
+        width: 170px;
+        height: 170px;
+        background-color: $white;
+        z-index: 5;
+        &:hover {
+          .profile-pic-change {
+            opacity: 1;
+          }
+          .profile-pic-img {
+            background-color: rgb(255, 255, 255);
+            filter: blur(4px);
+          }
+        }
+      }
+
+      &-change {
+        opacity: 0;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        margin-left: -32px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        z-index: 100;
+        transition: all 0.3s ease-out;
+      }
+
+      &-img {
+        position: absolute;
+        left: 50%;
+        // top: 0;
+        margin-left: -85px;
+        border-radius: 50%;
+        width: 170px;
+        height: 170px;
+        z-index: 10;
+        transition: all 0.2s ease-out;
+      }
+    }
+
+    .profile-info {
+      width: 90%;
+      margin: 0 auto;
+      color: $dark-blue;
+
+      .profile-heading {
+        display: inline;
+        font-size: 3.1rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        vertical-align: middle;
+      }
+      .profile-form {
+        margin: 20px 0;
+        padding: 50px 0;
+        border-top: 1px solid #a5b1c2;
+        border-bottom: 1px solid #a5b1c2;
+      }
+      .btn-save-changes {
+        margin: 10px auto 20px auto;
+        padding: 10px;
         width: 100%;
-        min-height: 300px;
-        margin: 30px auto;
-        background-color: $bgc-white;
-        padding: 5px 10px 20px 10px;
-        border-radius: 4px;
-        
+        border-radius: 60px;
+        background-color: $purple-navbar;
+        // border: 2px solid $purple-navbar;
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: $white;
+        transition: all 0.2s ease-in-out;
 
-        -webkit-box-shadow: -2px 5px 10px -1px rgba(140,140,140,1);
-        -moz-box-shadow: -10px 5px 10px -1px rgba(140,140,140,1);
-        box-shadow: 5px 5px 15px 1px rgb(175, 175, 175);
-
-        @media screen and (min-width: 1199px){
-            width: 86%;
+        &:hover {
+          color: $white;
+          background-color: $purple-navbar-hover;
         }
-
-        .btn-back{
-            margin: 10px 10px;
-            padding: 7px 20px;
-            background-color: #a53860;
-            color: $white;
-            font-size: 1.4rem;
-            border-radius: 3px;
-            // border-bottom: 2px solid #a53860;
-            &:hover{
-                background-color: #8d3052;
-               
-            }
-        }
-
-        .btn-continue{
-            margin: 10px 10px;
-            font-size: 1.4rem;
-            padding: 7px 25px;
-            border-radius: 3px;
-            background-color: $dark-purple;
-            color: $white;
-            &:hover{
-                background-color: $dark-purple-hover;
-                // color: $white;
-            }
-        }
-
-        .alert-danger{
-            font-size: 1.1rem;
-            margin: 15px 5px;
-        }
-
-        
-
-        &-row{
-            width: 100%;
-            margin: 0 auto;
-            @media screen and (min-width: 1199px){
-                // width: 88%;
-            }
-
-            
-        }
-        
-        .first{
-            margin: 20px auto 60px auto;
-            // height: 100%;
-            
-            h2{
-                margin: 20px auto 10px auto;
-                font-size: 1.5rem;
-                color: $dark-purple;
-            }
-
-            .button-container{
-                height: 100%;
-            }
-
-            .btn-add{
-                
-                margin: 50px 20px;
-                padding: 13px;
-                font-size: 1.5rem;
-                font-weight: 500;
-                background-color: $purple-navbar;
-                color: white;
-                // text-align: center;
-                // line-height: 60px;
-               
-
-                i{
-                    font-size: 2.3rem;
-                    margin: auto 10px;
-                }
-            }
-
-            .btn-watch-tutorial{
-                margin: 50px 20px;  
-                padding: 15px;
-                font-size: 1.3rem;
-                font-weight: 500;
-                border-radius: 40px;
-                // background-color: white;
-                color: #992167;
-                border: 2px solid #992167;
-
-                i{
-                    font-size: 2.3rem;
-                    margin: auto 10px;
-                }
-
-                &:hover{
-                    background-color: #992167;
-                    color: white;
-                }
-            }
-            
-        }
-        .second{
-            margin: 20px auto 10px auto;    
-            
-
-            // h3{
-            //     margin: 20px auto 30px auto;
-            //     font-size: 1.3rem;
-            //     color: rgb(128, 14, 80);
-            // }
-            
-        }
-
-        .ad-container{
-            width: 100%;
-            margin: 0 auto;
-            @media screen and (min-width: 1199px){
-                width: 88%;
-            }
-
-            .ad-stepper{
-                margin: 20px auto;
-                background-color: inherit;
-                transform: scale(1.2);
-                -ms-transform: scale(1.2); /* IE */
-                -moz-transform: scale(1.2); /* FF */
-                -webkit-transform: scale(1.2); /* Safari and Chrome */
-                -o-transform: scale(125); /* Opera */
-                
-                .ad-step{
-                    font-size: 1.9rem;
-                }
-
-                .ad-step-label{
-                    font-size: 1.1rem;
-                }
-                
-            }
-
-            
-
-            
-           
-            .add-form{
-                margin: 0 auto;
-                width: 90%;
-
-                &-group{
-                    margin: 30px auto 125px auto;
-                }
-
-                &-label{
-                    color: $dark-blue;
-                    font-weight: 600;
-                    font-size: 2rem;
-                    padding-bottom: 20px;
-                    margin: 20px auto 30px auto;
-                    // text-align: center;
-                    // letter-spacing: 1px;
-                    
-                    @media screen and (min-width: 1199px){
-                        font-size: 2.3rem;
-                    }
-                }
-
-                &-input-name{
-                    width: 100%;
-                    margin: 0 auto;
-                    @media screen and (min-width: 1199px){
-                        width: 60%;
-                    }
-                }
-            }
-
-            .social-media-selection{
-                margin: 10px auto 30px auto;
-
-                .social-media-box{
-                    margin: 0 20px;
-                    .checkbox-big{
-                        transform: scale(1.5);
-                        -ms-transform: scale(1.5); /* IE */
-                        -moz-transform: scale(1.5); /* FF */
-                        -webkit-transform: scale(1.5); /* Safari and Chrome */
-                        -o-transform: scale(1.5); /* Opera */
-                    }
-                    .img-slim{
-                        width: 170px;
-                        // height: 80px;
-                        margin: 20px auto;
-                    }
-                    .img-box{
-                        max-width: 150px;
-                        max-height: 110px;
-                        // height: 80px;
-                        margin: 20px auto;
-                    }
-                }
-            }
-
-            .goals{
-                border-radius: 5px;
-                
-                padding: 20px;
-                color: $dark-gray;
-                font-size: 2rem;
-                // border: 1px solid #5c687554;
-
-                &-row{
-                    margin: 25px auto 60px auto;
-
-                    .active{
-                        border: 1px solid #d0d6fd;
-                        background-color: #d7dcff;
-                    }
-                }
-                &-card{
-                    color: $gray;
-                    margin: 15px 10px;
-                    padding: 15px 20px;
-                    border-radius: 3px;
-                    background-color: #e8eafb;
-                    border: 1px solid #e6e8fb;
-                    transition: all 0.1s ease-out;
-                    cursor: pointer;
-
-                    
-                    
-                    &:hover{
-                        border: 1px solid #d0d6fd;
-                        background-color: #d7dcff;
-                    }
-                }
-
-                .active{
-                    background-color: #d0d7fd;
-                }
-               
-            }
-
-            .audience-form{
-                color: $dark-gray;
-                font-size: 1.2rem;
-                
-                .row{
-                    margin-bottom: 65px;
-                }
-
-                label{
-                    margin: 15px 0;
-                    font-size: 1.6rem;
-                    font-weight: 500;
-                }
-
-                
-
-                &-location-container{
-                    // width: 80%;
-                    margin-top: 20px;  
-                    margin-bottom: 1000px;
-                    // border: 1px solid black;  
-    
-                }
-
-                &-location{
-                    // width: 80%;
-                    // margin: 5px 10px;
-    
-                    .dropdown{
-                        position: absolute;
-                        height: 70px;
-                        z-index: 10
-    
-                        // display: inline-block;
-                    }
-
-                    @media screen and (min-width: 1199px){
-                        width: 60%;
-                    }
-                }
-
-                &-location-list{
-                    // margin-top: 20px;
-                    margin: 20px auto;
-
-                    .title{
-                        font-size: 1.2rem;
-                    }
-
-                    .location-box{
-                        margin: 5px;
-                        padding: 7px 6px;
-                        border: 1.3px solid #5e60ce;
-                        background-color: #deebff;
-                        border-radius: 7px;
-                        // width: 60%;
-
-                        
-                    }
-                    .remove-btn{
-                        // background-color: #f94144;
-                        
-                        padding: 1px;
-                        width: 32px;
-                        height: 32px;
-
-                    }
-
-                    @media screen and (min-width: 1199px){
-                        width: 60%;
-                    }
-                }
-
-                &-select{
-                    margin: 5px 10px;
-                    
-                    &-age{
-                        width: 200px;
-                        margin: 5px 10px;
-                        @media screen and (min-width: 1199px){
-                            width: 180px;
-                        }
-
-                        
-                    }
-                }
-
-                &-gender{
-                    margin: 20px 0px;
-                    // width: 40%;
-                    .audience-form-select{
-                        margin: 5px 0px;
-                    }
-
-                    @media screen and (min-width: 1199px){
-                        margin-right: 20px
-                    }
-                }
-
-                &-age{
-                    margin: 20px 0px;
-
-                    p{
-                        font-size: 1.3rem;
-                        margin: auto 7px;
-                    }
-
-                    @media screen and (min-width: 1199px){
-                        margin-right: 20px
-                    }
-                }
-            }
-                    
-            
-
-            .placement-form{
-
-                .devices-field{
-                    position: relative;
-                    margin: 20px 0;
-
-                    .alert-devices{
-                        // position: absolute;
-                        // bottom: 0;
-                        margin: auto 0 0 0;
-                    }
-                }
-
-                .url-field{
-                    margin: 20px 0;
-                }
-            }
-
-            .fb-placements{
-                margin: 60px auto;
-                padding: 20px;
-                border-radius: 20px;
-                border: 1px solid $gray-border;
-
-                &-form{
-                    margin: 10px 20px;
-                }
-
-                &-radioBtns{
-                    padding: 20px 0;
-                }
-
-
-                &-label{
-                    padding: 0 35px;
-                    
-                }
-
-                // &-control{
-                //     margin: 0 20px;
-                // }
-
-                .radio-fb{
-                    margin: 40px 0 20px 0;
-                    padding: 0 60px;
-                    font-size: 1.2rem;
-                    width: 100px;
-                    // background-color: red;
-                    color: $dark-gray;
-                    transform: scale(1.3);
-                    -ms-transform: scale(1.3); /* IE */
-                    -moz-transform: scale(1.3); /* FF */
-                    -webkit-transform: scale(1.3); /* Safari and Chrome */
-                    -o-transform: scale(1.3); /* Opera */
-                }
-
-                .customCheckboxes{
-                    margin-bottom: 30px;
-
-                    @media screen and (min-width: 1199px){
-                        margin-top: 70px;
-                        margin-bottom: 0px;
-                    }
-
-                    .customCheckbox{
-                        margin: 20px 10px;
-                        text-align: center;
-                        transform: scale(1.2);
-                        -ms-transform: scale(1.2); /* IE */
-                        -moz-transform: scale(1.2); /* FF */
-                        -webkit-transform: scale(1.2); /* Safari and Chrome */
-                        -o-transform: scale(1.2); /* Opera */
-
-                        
-                    }
-
-
-                    i{
-                        color: $font-color;
-                        margin-left: 10px;
-                        margin-bottom: 5px;  
-                    }
-
-                    
-                }
-
-               
-
-                
-
-                .fb-ad-form{
-                    margin: 20px auto;
-                    color: $dark-gray;
-                    font-size: 1.1rem;
-
-                    .alert{
-                        padding: 8px 20px;
-                        margin: 10px auto;
-                        width: 100%;
-                    }
-
-                    &-field{
-                        margin: 45px 10px;
-
-                        &-label{
-                            margin: 10px 0;
-                            font-size: 1.4rem;
-                            font-weight: 500;
-                            color: rgb(60, 96, 167);
-                        }
-
-                        .media-box{
-                            border: 2px solid #4267B2;
-                            color: #4267B2;
-                            border-radius: 5px;
-                            margin: 10px 10px;
-                            padding: 10px;
-                            font-weight: 500;
-                            cursor: pointer;
-
-                            i{
-                                font-size: 4rem;
-                                // color: $purple-navbar;
-                            }
-                        }
-                    }
-
-
-                   
-                }
-
-                .details-btn{
-                    // width: 80%;
-                    font-size: 1.1rem;
-                    color: white;
-                    background-color: #4267B2;
-                    padding: 8px 15px;
-                    transition: all 0.2s ease-in-out;
-                }
-
-            }
-
-            .fb-ad-view-tabs{
-                margin: 40px 10px 0 10px;
-
-                @media screen and (min-width: 1199px){
-                    max-width: 450px;
-                    padding: 0px 0px; 
-                    margin: 0 20px 0 20px;
-                }
-            }
-
-            .fb-ad-view-tab{
-                background-color:none;
-                height: inherit;
-                margin: 0px 0 0px 0;
-
-                @media screen and (min-width: 1199px){
-                    margin-right: 20px;
-                    
-                }
-            }
-
-            .fb-view-modal{
-                margin: 0 auto;
-            }
-
-            .fb-ad-view{
-                margin: 0 auto;
-                max-width: 450px;
-                padding: 0px 0px 0 0px ;
-                border-radius: 10px;
-                margin: 0 10px 20px 10px;
-                // background-color:$bgc-white;
-
-                @media screen and (min-width: 1199px){
-                    padding: 0px 0px; 
-                    margin: 0 0 20px 20px;
-                }
-
-                .head{
-                    margin: 0 0;
-                    max-width: 450px;
-                    padding: 15px 0;
-                    background-color:$bgc-white;
-                    border-left: 1px solid rgb(224, 224, 224);
-                    border-right: 1px solid rgb(224, 224, 224);
-
-                    img{
-                        margin-right: 10px;
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                    }
-
-                    h1{
-                        font-size: 1rem;
-                        font-weight: bold;
-                    }
-
-                    p{
-                        font-size: 0.9rem;
-                        color: #888888;
-                    }
-
-                    .description{
-                        margin: 0 10px;
-                        font-size: 1.2rem;
-                    }
-                }
-
-                .ad-image{
-                    // width: 96%;
-                    margin: 0;
-
-                    img{
-                        // margin-top: 10px;
-                        width: 100%;
-
-                        @media screen and (min-width: 1199px){
-                            // min-width: 500px;
-                        }
-                    }
-                }
-
-                .ad-description{
-                    padding: 0;
-                    margin: 0 auto;
-                    // width: 96%;
-                    background-color: #eeeeee;
-                    border: 1px solid #e4e4e4;
-
-                    .url{
-                        color: #595959;
-                        font-size: 1.1rem;
-                        // margin: 10px;
-                    }
-
-                    .headline{
-                        font-size: 1.2rem;
-                    }
-
-                    .desc{
-                        font-size: 1.1rem;
-                        color: #5c6072;
-                    }
-
-                    button{
-                        margin: 10px 0;
-                        padding: 5px 10px;
-                        font-size: 1.1rem;
-                    }
-                }
-            }
-
-            .insta-ad-view{
-                margin: 20px 0px;
-                max-width: 450px;
-                
-                // background-color: $bgc-white;
-
-                @media screen and (min-width: 1199px){
-                    margin: 20px;
-                    
-                }
-
-                .head{
-                    img{
-                        margin-right: 10px;
-                        width: 45px;
-                        height: 45px;
-                        border-radius: 50%;
-                    }
-
-                    h1{
-                        font-size: 1rem;
-                        font-weight: bold;
-                    }
-
-                    p{
-                        font-size: 0.9rem;
-                        color: #888888;
-                    }
-
-                    .three-dots{
-                        margin-left: -15px;
-                        font-size: 1.5rem;
-                    }
-                }
-
-                .ad-image{
-                    // width: 96%;
-
-                    img{
-                        // margin-top: 0px;
-                        width: 100%;
-
-                        @media screen and (min-width: 1199px){
-                            // min-width: 500px;
-                        }
-                    }
-                }
-
-                .ad-description{
-                    padding: 0;
-                    margin: 0 auto;
-                    // width: 96%;
-                    // background-color: #eeeeee;
-
-                    .blue-field{
-                        width: 100%;
-                        // height: 35px;
-                        background-color: #5797ff;
-                        padding: 0px 15px;
-                        color: white;
-
-                        &-title{
-                            margin: auto 0;
-                            font-size: 1.1rem;
-                        }
-                        &-arrow{
-                            margin: 0 0;
-                            font-size: 1.6rem;
-                        }
-                    }
-                }
-
-                .ad-icons{
-                    margin-top: 5px;
-                    // margin: 0 2px;
-                    // width: 96%;
-                    // background-color: #eeeeee;
-
-                    .icon{
-                        width: 27%;
-                        margin: 0 5px;
-                    }
-                    .saveIcon{
-                        height: 35px;
-                        margin: 0 5px;
-                    }
-                    
-                }
-
-                .views-section{
-                    p{
-                        font-weight: bold;
-                        font-size: 0.9rem;
-                        margin: 5px;
-                    }
-                }
-                .description-section{
-                    margin: 5px;   
-
-                    .description{
-                        font-size: 0.9rem;
-                        font-weight: 500;
-                    }
-
-                    .account-name{
-                        font-weight: bold;
-                        font-size: 0.9rem;
-                        
-                    }
-                }
-            }
-
-
-            .ggl-ad{
-                margin: 60px auto;
-                padding: 10px;
-                // width: 100%;
-                border-radius: 5px;
-                border: 1px solid rgb(206, 206, 206);
-                
-
-                @media screen and (min-width: 1199px){
-                    
-                }
-
-                &-form{
-                    margin: 10px auto;
-
-                    .confirm-details{
-                        font-size: 1.1rem;
-                        color: white;
-                        background-color: #4267B2;
-                        padding: 8px 15px;
-                        margin-bottom: 30px;
-                        transition: all 0.2s ease-in-out;
-                    }
-
-                    @media screen and (min-width: 1199px){
-                        
-                    }
-                    
-
-                    &-field{
-                        margin: 35px 10px;
-                        
-
-                        &-label{
-                            margin: 15px 0;
-                            font-size: 1.4rem;
-                            font-weight: 500;
-                            color: rgb(60, 96, 167);
-                        }
-                }
-
-                .view-label{
-                    color: $dark-blue;
-                    font-size: 1.4rem;
-                    // margin: 0 10px;
-                }
-
-                &-view{
-                    margin: 15px auto;
-                    background-color: #ffffff;
-                    padding: 10px 15px;
-                    border: 1px solid  #e4e4e4;
-
-                    @media screen and (min-width: 1199px){
-                        margin: 0px auto;
-                    }
-
-                    .headlines{
-                        color: #0645AD;
-                        word-break: break-all;
-                       
-                    }
-
-                    .url{
-                        color:  #006621;
-                        font-size: 1.1rem;
-
-                        p{
-                            margin: 5px 0;
-                        }
-
-                        .ad-box{
-                            border: 1px solid #006621;
-                            padding: 1px;
-                            border-radius: 4px;
-                            margin-right: 6px;
-                        }
-                    }
-
-                    .description{
-                        font-size: 1.1rem;
-                        color: #5c6072;
-                    }
-                }
-                }
-            }
-
-            .budget-form{
-                &-schedule{
-                    font-size: 1rem;
-                    margin-bottom: 60px;
-
-                    .radio-schedule{
-                        margin: 30px 40px;
-                        transform: scale(1.3);
-                        -ms-transform: scale(1.3); /* IE */
-                        -moz-transform: scale(1.3); /* FF */
-                        -webkit-transform: scale(1.3); /* Safari and Chrome */
-                        -o-transform: scale(1.3); /* Opera */
-
-                        @media screen and (min-width: 1199px){
-                            margin: 30px 70px;
-                        }
-                    }
-
-                    .custom-schedule-field{
-                        
-                        .start-date {
-                            margin: 20px 20px;
-                            font-size: 1.2rem;
-                        }
-                        .end-date {
-                            margin: 20px 20px;
-                            font-size: 1.2rem;
-                        }
-
-                        .date-picker{
-                            width: 80%;
-                        }
-                    }
-
-                    
-                    
-                }
-
-                &-budget{
-                    font-size: 1rem;
-                    margin-bottom: 30px;
-
-                    .fb-budget{
-                        margin: 40px 0;
-
-                        .fb-budget-box{
-                            padding: 20px;
-                        }
-                    }
-
-                    .ggl-budget{
-                        margin: 40px 0;
-
-                        .ggl-budget-box{
-                            padding: 20px;
-                        }
-                    }
-
-                    .daily-budget-field{
-                        margin: 15px 0;
-                    }
-
-                    .lifetime-budget-field{
-                        margin: 15px 0;
-                    }
-
-                    .input-group{
-                        width: 40%;
-                    }
-        
-                        .radio-budget{
-                            margin: 5px 20px;
-                            // width: 150px;
-
-                            color: $dark-gray;
-                            transform: scale(1.3);
-                            -ms-transform: scale(1.3); /* IE */
-                            -moz-transform: scale(1.3); /* FF */
-                            -webkit-transform: scale(1.3); /* Safari and Chrome */
-                            -o-transform: scale(1.3); /* Opera */
-
-                        }
-                    }
-
-                    
-
-                    .spending{
-                        border: 1px solid rgb(200, 200, 200);
-                        border-radius: 10px;
-                        background-color: rgb(238, 238, 238);
-                        padding: 15px 20px;
-                        margin: 15px 10px;
-                        color: $dark-blue;
-                    }
-
-                    .ggl-budget-box{
-                        padding: 20px 0;
-                        label{
-                            margin: auto 10px;
-                            font-size: 1.3rem;
-                            color: $dark-gray
-                        }
-
-                        .ggl-budget-field{
-                            width: 40%;
-                            margin: auto 10px;
-                        }
-                    }
-            }
-
-            .subscription-form{
-                
-                &-heading-plans{
-                    margin: 40px auto;
-                    color: $dark-blue;
-                    font-size: 1.3rem;
-                }
-
-                &-cards{
-                    padding: 10px 0px;
-                    // margin: 20px 0;
-                    font-size: 1.1rem;
-                    color: $dark-purple;
-                    
-
-                    @media screen and (min-width: 1199px){
-                        padding: 10px 15px;
-                        font-size: 1.3rem;
-                        
-                    }
-
-                    
-                    .card-tab{
-                        border: none;
-                        // background-color: #e2daf8;   /* fallback for old browsers */
-                        // background: -webkit-linear-gradient(to top, $bgc-white, #e2daf8);  /* Chrome 10-25, Safari 5.1-6 */
-                        // background: linear-gradient(to top, $bgc-white, #e2daf8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-                        .active{
-                            background-color: #e2daf8; 
-                            transition: 0.4s ease-in-out ;
-                            
-                        }
-                        
-                    }
-
-                    .card-link{
-                        border-bottom: none;
-                        // background: #D3CCE3;
-                        border:none;
-                        
-                    } 
-                    
-
-                    // Icons + titles
-                    .card-heading{
-                        color: $dark-purple;
-                        margin: auto auto;
-                        font-size: 1.3rem;
-                        transition: 0.5s ease-in-out ;
-                        // padding: 2px 0;
-                        
-                        &:hover{
-                            color: #6800a5;
-                            
-                        }
-
-                        @media screen and (min-width: 1199px){
-                            font-size: 2.2rem;
-                            padding: 7px 0;
-                            
-                        }
-      
-                        h1{
-                            font-size: inherit;
-                           
-                        } 
-                    }
-                    
-
-                    &-body-container{
-                        // border-radius: 0 0 5px 5px;
-                        background: #D3CCE3;  /* fallback for old browsers */
-                        background: -webkit-linear-gradient(to top, $bgc-white, #e2daf8);  /* Chrome 10-25, Safari 5.1-6 */
-                        background: linear-gradient(to top, $bgc-white, #e2daf8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                    }
-
-                    
-                    
-                    .card-body{
-                        transition: 0.5s ease-in-out ;
-                        
-                                                                        
-                        
-                        h3{
-                            font-size: 1.3rem;
-                            color: $dark-purple;
-                            margin: 0px auto 25px auto ;
-    
-                            @media screen and (min-width: 1199px){
-                                font-size: 1.7rem;
-                                margin: 0px auto 35px auto ;
-                            }
-                        }
-    
-                        .list{
-                            
-                            // width: 100%;
-                            margin: 5px 0;
-                            padding: 0;
-                            font-size: 1.2rem;
-                            color: $dark-blue;
-                            list-style-type: none;
-                            li{
-                                margin: 22px 0;
-                                font-size: 1.1rem;
-                                .fa-check{
-                                    font-size: 1.2rem;
-                                    margin-right: 10px;
-                                }
-                            }
-                        }
-    
-                        .description{
-                            line-height: 35px;
-                            color: $dark-blue;
-                            margin: 20px auto 65px auto;
-                        }
-    
-                
-                        .select-btn{
-                            position: absolute;
-                            bottom: 0;
-                            left: 0;
-                            transition: all 0.5s ease-out;
-
-                            .button{
-                                color: white;
-                                font-size: 1.4rem;
-                                font-weight: 500;
-                                margin: 20px auto 0 auto;
-                                padding: 10px 20px;
-                                background-color: $dark-purple;
-                                border-radius: 50px;
-                                
-                                &:hover{
-                                    background-color: #992167;
-                                }
-
-                                @media screen and (min-width: 1199px){
-                                    padding: 14px 30px;
-                                }
-
-                                &:disabled{
-                                    cursor: context-menu;
-                                    color: white;
-                                    font-size: 1.4rem;
-                                    font-weight: 500;
-                                    margin: 20px auto 0 auto;
-                                    padding: 10px 20px;
-                                    background-color: #992167;
-                                    border-radius: 50px;
-                                    
-                                    @media screen and (min-width: 1199px){
-                                        padding: 14px 30px;
-                                    }
-                                }
-                                
-                            }
-
-                        }
-                    }
-
-                    
-
-                }
-
-                .only-run-section{
-                    font-size: 1.3rem;
-                    color: $dark-blue;
-
-                    .or-divider{
-                        font-weight: bold;
-                        margin: 20px auto;
-
-                        @media screen and (min-width: 1199px){
-                            font-size: 1.5rem;
-                            padding: 7px 0;
-                            
-                        }
-                    }
-                   
-                    &-row{
-                        margin: 30px 0px;
-                        padding-bottom: 20px;
-                        border-radius: 5px;
-
-                        // background-color: #f1f5ff;
-                        background:  #c6d2ff;  /* fallback for old browsers */
-                        background: -webkit-linear-gradient(to right, $bgc-white,  #c6d2ff);  /* Chrome 10-25, Safari 5.1-6 */
-                        background: linear-gradient(to top, $bgc-white, #c6d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                    }
-
-                    &-heading{
-                        font-size: 1.4rem;
-                        margin-right: 10px;
-
-                            @media screen and (min-width: 1199px){
-                                font-size: 1.5rem;
-                                
-                            }
-                        }
-
-                    .toggle-container{
-                        margin: 10px auto 20px auto;
-                        display: flex;
-                        justify-content: space-between;
-                        padding:  10px;
-                        border-bottom: 1px solid #b8c8fc;
-                        
-                        @media screen and (min-width: 1199px){
-                            font-size: 1.5rem;
-                            
-                        }
-
-                    }
-
-                    &-description{
-                        font-size: 1.2rem;
-                    }
-                    
-                    
-                }
-            }
-
-            .checkout-box{
-            //    background-color: #eaf0ff; 
-            //    background-color: hsl(224, 100%, 83%); 
-            background:  #c6d2ff;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to top, #c6d2ff,  #c6d2ff);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to bottom, #dfe2ff, #dce1ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-            //    background-color: $dark-purple; 
-               padding: 15px 10px;
-               margin: 0px 5px 20px 5px ;
-               border-radius: 5px;
-               border: 1px solid  #d7dcff;
-               font-size: 1.2rem;
-            //    color: white;
-
-
-                .number-circle{
-                    display: inline;
-                    height: 55px;
-                    width: 55px;
-                    padding: 3px 10px;
-                    font-size: 1.2rem;
-                    color: white;
-                    border-radius: 50%;
-                    background-color: $dark-purple;
-                }
-
-               .row{
-                    margin: 10px 0;    
-               }
-
-               .key{
-                    font-weight: 500;
-                    // float: right;
-                }
-
-               .value{
-                    padding: 0px 0 ;
-                }
-
-               &-heading{
-                width: 95%;
-                // text-align: center;
-                margin: 0px auto 25px auto;
-                font-size: 1.6rem;
-                // border-bottom: 1px solid #c9d4ff;
-                border-bottom: 1px solid #b9bbfa;
-                padding-bottom: 13px;
-                // color: $dark-blue;
-                // margin-bottom: 15px;
-               }
-
-               &-info-container{
-                
-               }
-
-               // Social media icon
-               .smpIcon{
-                   margin: 0 10px;
-                   width: 50px;
-                   height: 50px;
-               }
-
-               &-audience-container{
-                
-                
-               }
-
-                .fb-budget-box{
-                    background-color:  rgb(49, 85, 156);
-                }
-
-                .budget-table-container{
-                    margin-bottom: 20px;    
-                    padding: 0 0px;   
-                    // background-color:  rgb(152, 226, 248); 
-                }
-                
-                .budget-table{
-                    width: 96%;
-                    font-size: 1rem;
-                    margin: 0 auto;
-                    border-bottom: 1px solid #b9bbfa;
-
-                    @media screen and (min-width: 1199px){
-                        font-size: 1rem;
-                    }
-
-                    th{
-                        font-weight: 500;
-                        padding: 0px 10px 10px 10px;
-                    }
-                    
-                    
-                    tbody{
-                        tr{
-                            margin: 0px 0;
-                            border-top: 1px solid #b9bbfa;
-                            border-radius: 5px;
-        
-                        }
-    
-                    }
-
-                    td{
-                        padding: 10px ;
-                    }
-
-                }
-
-
-                &-subscription-container{
-                    width: 95%;
-                    margin: 0 auto;
-                    
-                    .subscription-info{
-                        .subscription-name{
-                            margin: 1rem auto;
-                            text-align: center;
-                            font-size: 2.4rem;
-                            color: $purple-navbar;
-                            font-weight: 600;
-                        }
-    
-                        .subscription-options{
-                            margin: 20px auto;
-                            .list-heading{
-                                font-size: 1.6rem;
-                                font-weight: 500;
-                            }
-
-                            ul{
-                                width: 100%;
-                                margin: 10px auto;
-                                padding: 0 20px;
-                                font-size: 1.3rem;
-                                color: $dark-blue;
-                                list-style-type: none;
-                                li{
-                                    margin: 10px auto 25px auto;
-                                    .fa-check{
-                                        font-size: 1.2rem;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    
-                }
-
-            }
-
-            
-            
-        }
+      }
     }
+  }
+  .Ads-profile {
+    width: inherit;
+    height: 100%;
+    margin: 30px 0;
+    padding-bottom: 55px;
+
+    .ads-profile-container {
+      border: 2px solid $bgc-white-hover;
+      height: 100%;
+
+      .ads-profile-content {
+        height: inherit;
+        margin: auto auto;
+        background-color: $bgc-white;
+        &-noads {
+          position: relative;
+          padding: 40px 0;
+        }
+      }
+    }
+
+    .ads-heading {
+      font-size: 3.1rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+    .ads-add-button {
+      color: white;
+      padding: 15px;
+      position: relative;
+      bottom: 0;
+      background: #da4453;
+      background: -webkit-linear-gradient(to right, #89216b, rgb(218, 68, 106));
+      background: linear-gradient(to right, #89216b, rgb(218, 68, 106));
+      transition: all 0.3s ease-out;
+      &:hover {
+        background: #89216b;
+        background: -webkit-linear-gradient(
+          to right,
+          #89216b,
+          rgb(218, 68, 88)
+        );
+        background: linear-gradient(
+          to right,
+          rgb(137, 33, 97),
+          rgb(218, 68, 88)
+        );
+      }
+    }
+  }
+}
+
+.subscription-section {
+  background-color: $purple-navbar;
+  color: $white;
+  padding: 20px;
+
+  @media screen and (min-width: 1199px) {
+    padding: 50px;
+    // height: 650px;
+  }
+
+  .subscription-jumbotron {
+    width: 96%;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+
+    @media screen and (min-width: 1199px) {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.subscription-row {
+  display: flex;
+  justify-content: space-evenly;
+
+  margin: 60px auto 90px auto;
+
+  &-standout {
+    @media screen and (min-width: 1199px) {
+      margin-top: -25px;
+    }
+  }
+
+  .subscription-card {
+    padding: 20px 15px 35px 15px;
+    margin: 20px 0;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    background-color: $white;
+    color: $purple-navbar;
+    transition: all 0.2s ease-in-out;
+    -webkit-box-shadow: -2px 5px 10px -1px rgba(140, 140, 140, 1);
+    -moz-box-shadow: -2px 5px 10px -1px rgba(140, 140, 140, 1);
+    box-shadow: -2px 5px 10px -1px rgba(140, 140, 140, 1);
+    @media screen and (min-width: 1199px) {
+      // padding: 35px 20px;
+      margin: 20px 10px;
+
+      &:hover {
+        @media screen and (min-width: 1199px) {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &-p {
+      margin-top: 30px;
+      color: $dark-blue;
+    }
+
+    &-list {
+      width: 100%;
+      margin: 50px auto;
+      padding: 0 20px;
+      font-size: 1.3rem;
+      color: $dark-blue;
+      list-style-type: none;
+      li {
+        margin: 25px auto;
+        .fa-check {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &-button {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0 auto;
+      padding: 14px;
+      background-color: #6c03a8;
+      border-radius: 50px;
+      transition: all 0.3s ease-out;
+      &:hover {
+        background-color: #992167;
+      }
+    }
+
+    .fas {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+.manager {
+  &-jumbotron {
+    width: 96%;
+    margin: 20px auto;
+    // display: flex;
+    // justify-content: space-between;
+    border-bottom: 1px solid rgb(219, 219, 219);
+
+    @media screen and (min-width: 1199px) {
+      width: 86%;
+    }
+
+    &-title {
+      padding-bottom: 10px;
+      font-size: 3rem;
+      text-align: center;
+
+      @media screen and (min-width: 1199px) {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  &-ad-form {
+    width: 100%;
+    min-height: 300px;
+    margin: 30px auto;
+    background-color: $bgc-white;
+    padding: 5px 10px 20px 10px;
+    border-radius: 4px;
+
+    -webkit-box-shadow: -2px 5px 10px -1px rgba(140, 140, 140, 1);
+    -moz-box-shadow: -10px 5px 10px -1px rgba(140, 140, 140, 1);
+    box-shadow: 5px 5px 15px 1px rgb(175, 175, 175);
+
+    @media screen and (min-width: 1199px) {
+      width: 86%;
+    }
+
+    .btn-back {
+      margin: 10px 10px;
+      padding: 7px 20px;
+      background-color: #a53860;
+      color: $white;
+      font-size: 1.4rem;
+      border-radius: 3px;
+      // border-bottom: 2px solid #a53860;
+      &:hover {
+        background-color: #8d3052;
+      }
+    }
+
+    .btn-continue {
+      margin: 10px 10px;
+      font-size: 1.4rem;
+      padding: 7px 25px;
+      border-radius: 3px;
+      background-color: $dark-purple;
+      color: $white;
+      &:hover {
+        background-color: $dark-purple-hover;
+        // color: $white;
+      }
+    }
+
+    .alert-danger {
+      font-size: 1.1rem;
+      margin: 15px 5px;
+    }
+
+    &-row {
+      width: 100%;
+      margin: 0 auto;
+      @media screen and (min-width: 1199px) {
+        // width: 88%;
+      }
+    }
+
+    .first {
+      margin: 20px auto 60px auto;
+      // height: 100%;
+
+      h2 {
+        margin: 20px auto 10px auto;
+        font-size: 1.5rem;
+        color: $dark-purple;
+      }
+
+      .button-container {
+        height: 100%;
+      }
+
+      .btn-add {
+        margin: 50px 20px;
+        padding: 13px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        background-color: $purple-navbar;
+        color: white;
+        // text-align: center;
+        // line-height: 60px;
+
+        i {
+          font-size: 2.3rem;
+          margin: auto 10px;
+        }
+      }
+
+      .btn-watch-tutorial {
+        margin: 50px 20px;
+        padding: 15px;
+        font-size: 1.3rem;
+        font-weight: 500;
+        border-radius: 40px;
+        // background-color: white;
+        color: #992167;
+        border: 2px solid #992167;
+
+        i {
+          font-size: 2.3rem;
+          margin: auto 10px;
+        }
+
+        &:hover {
+          background-color: #992167;
+          color: white;
+        }
+      }
+    }
+    .second {
+      margin: 20px auto 10px auto;
+
+      // h3{
+      //     margin: 20px auto 30px auto;
+      //     font-size: 1.3rem;
+      //     color: rgb(128, 14, 80);
+      // }
+    }
+
+    .ad-container {
+      width: 100%;
+      margin: 0 auto;
+      @media screen and (min-width: 1199px) {
+        width: 88%;
+      }
+
+      .ad-stepper {
+        margin: 20px auto;
+        background-color: inherit;
+        transform: scale(1.2);
+        -ms-transform: scale(1.2); /* IE */
+        -moz-transform: scale(1.2); /* FF */
+        -webkit-transform: scale(1.2); /* Safari and Chrome */
+        -o-transform: scale(125); /* Opera */
+
+        .ad-step {
+          font-size: 1.9rem;
+        }
+
+        .ad-step-label {
+          font-size: 1.1rem;
+        }
+      }
+
+      .add-form {
+        margin: 0 auto;
+        width: 90%;
+
+        &-group {
+          margin: 30px auto 125px auto;
+        }
+
+        &-label {
+          color: $dark-blue;
+          font-weight: 600;
+          font-size: 2rem;
+          padding-bottom: 20px;
+          margin: 20px auto 30px auto;
+          // text-align: center;
+          // letter-spacing: 1px;
+
+          @media screen and (min-width: 1199px) {
+            font-size: 2.3rem;
+          }
+        }
+
+        &-input-name {
+          width: 100%;
+          margin: 0 auto;
+          @media screen and (min-width: 1199px) {
+            width: 60%;
+          }
+        }
+      }
+
+      .social-media-selection {
+        margin: 10px auto 30px auto;
+
+        .social-media-box {
+          margin: 0 20px;
+          .checkbox-big {
+            transform: scale(1.5);
+            -ms-transform: scale(1.5); /* IE */
+            -moz-transform: scale(1.5); /* FF */
+            -webkit-transform: scale(1.5); /* Safari and Chrome */
+            -o-transform: scale(1.5); /* Opera */
+          }
+          .img-slim {
+            width: 170px;
+            // height: 80px;
+            margin: 20px auto;
+          }
+          .img-box {
+            max-width: 150px;
+            max-height: 110px;
+            // height: 80px;
+            margin: 20px auto;
+          }
+        }
+      }
+
+      .goals {
+        border-radius: 5px;
+
+        padding: 20px;
+        color: $dark-gray;
+        font-size: 2rem;
+        // border: 1px solid #5c687554;
+
+        &-row {
+          margin: 25px auto 60px auto;
+
+          .active {
+            border: 1px solid #d0d6fd;
+            background-color: #d7dcff;
+          }
+        }
+        &-card {
+          color: $gray;
+          margin: 15px 10px;
+          padding: 15px 20px;
+          border-radius: 3px;
+          background-color: #e8eafb;
+          border: 1px solid #e6e8fb;
+          transition: all 0.1s ease-out;
+          cursor: pointer;
+
+          &:hover {
+            border: 1px solid #d0d6fd;
+            background-color: #d7dcff;
+          }
+        }
+
+        .active {
+          background-color: #d0d7fd;
+        }
+      }
+
+      .audience-form {
+        color: $dark-gray;
+        font-size: 1.2rem;
+
+        .row {
+          margin-bottom: 65px;
+        }
+
+        label {
+          margin: 15px 0;
+          font-size: 1.6rem;
+          font-weight: 500;
+        }
+
+        &-location-container {
+          // width: 80%;
+          margin-top: 20px;
+          margin-bottom: 1000px;
+          // border: 1px solid black;
+        }
+
+        &-location {
+          // width: 80%;
+          // margin: 5px 10px;
+
+          .dropdown {
+            position: absolute;
+            height: 70px;
+            z-index: 10;
+
+            // display: inline-block;
+          }
+
+          @media screen and (min-width: 1199px) {
+            width: 60%;
+          }
+        }
+
+        &-location-list {
+          // margin-top: 20px;
+          margin: 20px auto;
+
+          .title {
+            font-size: 1.2rem;
+          }
+
+          .location-box {
+            margin: 5px;
+            padding: 10px 15px;
+            border: 1.3px solid #d7dafc;
+            border-radius: 7px;
+            background-color: #dfe2ff;
+
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-all;
+
+            -webkit-box-shadow: 1px 6px 14px -6px rgba(99,100,113,0.34); 
+            box-shadow: 1px 6px 14px -6px rgba(99,100,113,0.34);          }
+          .remove-btn {
+            // padding: 1px;
+            margin: auto 6px;
+            cursor: pointer;
+            color: $dark-purple;
+          }
+
+          @media screen and (min-width: 1199px) {
+            // width: 60%;
+          }
+        }
+
+        &-select {
+          margin: 5px 10px;
+
+          &-age {
+            width: 200px;
+            margin: 5px 10px;
+            @media screen and (min-width: 1199px) {
+              width: 180px;
+            }
+          }
+        }
+
+        &-gender {
+          margin: 20px 0px;
+          // width: 40%;
+          .audience-form-select {
+            margin: 5px 0px;
+          }
+
+          @media screen and (min-width: 1199px) {
+            margin-right: 20px;
+          }
+        }
+
+        &-age {
+          margin: 20px 0px;
+
+          p {
+            font-size: 1.3rem;
+            margin: auto 7px;
+          }
+
+          @media screen and (min-width: 1199px) {
+            margin-right: 20px;
+          }
+        }
+      }
+
+      .placement-form {
+        .devices-field {
+          position: relative;
+          margin: 20px 0;
+
+          .alert-devices {
+            // position: absolute;
+            // bottom: 0;
+            margin: auto 0 0 0;
+          }
+        }
+
+        .url-field {
+          margin: 20px 0;
+        }
+      }
+
+      .fb-placements {
+        margin: 60px auto;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid $gray-border;
+
+        &-form {
+          margin: 10px 20px;
+        }
+
+        &-radioBtns {
+          padding: 20px 0;
+        }
+
+        &-label {
+          padding: 0 35px;
+        }
+
+        // &-control{
+        //     margin: 0 20px;
+        // }
+
+        .radio-fb {
+          margin: 40px 0 20px 0;
+          padding: 0 60px;
+          font-size: 1.2rem;
+          width: 100px;
+          // background-color: red;
+          color: $dark-gray;
+          transform: scale(1.3);
+          -ms-transform: scale(1.3); /* IE */
+          -moz-transform: scale(1.3); /* FF */
+          -webkit-transform: scale(1.3); /* Safari and Chrome */
+          -o-transform: scale(1.3); /* Opera */
+        }
+
+        .customCheckboxes {
+          margin-bottom: 30px;
+
+          @media screen and (min-width: 1199px) {
+            margin-top: 70px;
+            margin-bottom: 0px;
+          }
+
+          .customCheckbox {
+            margin: 20px 10px;
+            text-align: center;
+            transform: scale(1.2);
+            -ms-transform: scale(1.2); /* IE */
+            -moz-transform: scale(1.2); /* FF */
+            -webkit-transform: scale(1.2); /* Safari and Chrome */
+            -o-transform: scale(1.2); /* Opera */
+          }
+
+          i {
+            color: $font-color;
+            margin-left: 10px;
+            margin-bottom: 5px;
+          }
+        }
+
+        .fb-ad-form {
+          margin: 20px auto;
+          color: $dark-gray;
+          font-size: 1.1rem;
+
+          .alert {
+            padding: 8px 20px;
+            margin: 10px auto;
+            width: 100%;
+          }
+
+          &-field {
+            margin: 45px 10px;
+
+            &-label {
+              margin: 10px 0;
+              font-size: 1.4rem;
+              font-weight: 500;
+              color: rgb(60, 96, 167);
+            }
+
+            .media-box {
+              border: 2px solid #4267b2;
+              color: #4267b2;
+              border-radius: 5px;
+              margin: 10px 10px;
+              padding: 10px;
+              font-weight: 500;
+              cursor: pointer;
+
+              i {
+                font-size: 4rem;
+                // color: $purple-navbar;
+              }
+            }
+          }
+        }
+
+        .details-btn {
+          // width: 80%;
+          font-size: 1.1rem;
+          color: white;
+          background-color: #4267b2;
+          padding: 8px 15px;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+
+      .fb-ad-view-tabs {
+        margin: 40px 10px 0 10px;
+
+        @media screen and (min-width: 1199px) {
+          max-width: 450px;
+          padding: 0px 0px;
+          margin: 0 20px 0 20px;
+        }
+      }
+
+      .fb-ad-view-tab {
+        background-color: none;
+        height: inherit;
+        margin: 0px 0 0px 0;
+
+        @media screen and (min-width: 1199px) {
+          margin-right: 20px;
+        }
+      }
+
+      .fb-view-modal {
+        margin: 0 auto;
+      }
+
+      .fb-ad-view {
+        margin: 0 auto;
+        max-width: 450px;
+        padding: 0px 0px 0 0px;
+        border-radius: 10px;
+        margin: 0 10px 20px 10px;
+        // background-color:$bgc-white;
+
+        @media screen and (min-width: 1199px) {
+          padding: 0px 0px;
+          margin: 0 0 20px 20px;
+        }
+
+        .head {
+          margin: 0 0;
+          max-width: 450px;
+          padding: 15px 0;
+          background-color: $bgc-white;
+          border-left: 1px solid rgb(224, 224, 224);
+          border-right: 1px solid rgb(224, 224, 224);
+
+          img {
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+
+          h1 {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+
+          p {
+            font-size: 0.9rem;
+            color: #888888;
+          }
+
+          .description {
+            margin: 0 10px;
+            font-size: 1.2rem;
+          }
+        }
+
+        .ad-image {
+          // width: 96%;
+          margin: 0;
+
+          img {
+            // margin-top: 10px;
+            width: 100%;
+
+            @media screen and (min-width: 1199px) {
+              // min-width: 500px;
+            }
+          }
+        }
+
+        .ad-description {
+          padding: 0;
+          margin: 0 auto;
+          // width: 96%;
+          background-color: #eeeeee;
+          border: 1px solid #e4e4e4;
+
+          .url {
+            color: #595959;
+            font-size: 1.1rem;
+            // margin: 10px;
+          }
+
+          .headline {
+            font-size: 1.2rem;
+          }
+
+          .desc {
+            font-size: 1.1rem;
+            color: #5c6072;
+          }
+
+          button {
+            margin: 10px 0;
+            padding: 5px 10px;
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .insta-ad-view {
+        margin: 20px 0px;
+        max-width: 450px;
+
+        // background-color: $bgc-white;
+
+        @media screen and (min-width: 1199px) {
+          margin: 20px;
+        }
+
+        .head {
+          img {
+            margin-right: 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+          }
+
+          h1 {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+
+          p {
+            font-size: 0.9rem;
+            color: #888888;
+          }
+
+          .three-dots {
+            margin-left: -15px;
+            font-size: 1.5rem;
+          }
+        }
+
+        .ad-image {
+          // width: 96%;
+
+          img {
+            // margin-top: 0px;
+            width: 100%;
+
+            @media screen and (min-width: 1199px) {
+              // min-width: 500px;
+            }
+          }
+        }
+
+        .ad-description {
+          padding: 0;
+          margin: 0 auto;
+          // width: 96%;
+          // background-color: #eeeeee;
+
+          .blue-field {
+            width: 100%;
+            // height: 35px;
+            background-color: #5797ff;
+            padding: 0px 15px;
+            color: white;
+
+            &-title {
+              margin: auto 0;
+              font-size: 1.1rem;
+            }
+            &-arrow {
+              margin: 0 0;
+              font-size: 1.6rem;
+            }
+          }
+        }
+
+        .ad-icons {
+          margin-top: 5px;
+          // margin: 0 2px;
+          // width: 96%;
+          // background-color: #eeeeee;
+
+          .icon {
+            width: 27%;
+            margin: 0 5px;
+          }
+          .saveIcon {
+            height: 35px;
+            margin: 0 5px;
+          }
+        }
+
+        .views-section {
+          p {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 5px;
+          }
+        }
+        .description-section {
+          margin: 5px;
+
+          .description {
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+
+          .account-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .ggl-ad {
+        margin: 60px auto;
+        padding: 10px;
+        // width: 100%;
+        border-radius: 5px;
+        border: 1px solid rgb(206, 206, 206);
+
+        @media screen and (min-width: 1199px) {
+        }
+
+        &-form {
+          margin: 10px auto;
+
+          .confirm-details {
+            font-size: 1.1rem;
+            color: white;
+            background-color: #4267b2;
+            padding: 8px 15px;
+            margin-bottom: 30px;
+            transition: all 0.2s ease-in-out;
+          }
+
+          @media screen and (min-width: 1199px) {
+          }
+
+          &-field {
+            margin: 35px 10px;
+
+            &-label {
+              margin: 15px 0;
+              font-size: 1.4rem;
+              font-weight: 500;
+              color: rgb(60, 96, 167);
+            }
+          }
+
+          .view-label {
+            color: $dark-blue;
+            font-size: 1.4rem;
+            // margin: 0 10px;
+          }
+
+          &-view {
+            margin: 15px auto;
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border: 1px solid #e4e4e4;
+
+            @media screen and (min-width: 1199px) {
+              margin: 0px auto;
+            }
+
+            .headlines {
+              color: #0645ad;
+              word-break: break-all;
+            }
+
+            .url {
+              color: #006621;
+              font-size: 1.1rem;
+
+              p {
+                margin: 5px 0;
+              }
+
+              .ad-box {
+                border: 1px solid #006621;
+                padding: 1px;
+                border-radius: 4px;
+                margin-right: 6px;
+              }
+            }
+
+            .description {
+              font-size: 1.1rem;
+              color: #5c6072;
+            }
+          }
+        }
+      }
+
+      .budget-form {
+        &-schedule {
+          font-size: 1rem;
+          margin-bottom: 60px;
+
+          .radio-schedule {
+            margin: 30px 40px;
+            transform: scale(1.3);
+            -ms-transform: scale(1.3); /* IE */
+            -moz-transform: scale(1.3); /* FF */
+            -webkit-transform: scale(1.3); /* Safari and Chrome */
+            -o-transform: scale(1.3); /* Opera */
+
+            @media screen and (min-width: 1199px) {
+              margin: 30px 70px;
+            }
+          }
+
+          .custom-schedule-field {
+            .start-date {
+              margin: 20px 20px;
+              font-size: 1.2rem;
+            }
+            .end-date {
+              margin: 20px 20px;
+              font-size: 1.2rem;
+            }
+
+            .date-picker {
+              width: 80%;
+            }
+          }
+        }
+
+        &-budget {
+          font-size: 1rem;
+          margin-bottom: 30px;
+
+          .fb-budget {
+            margin: 40px 0;
+
+            .fb-budget-box {
+              padding: 20px;
+            }
+          }
+
+          .ggl-budget {
+            margin: 40px 0;
+
+            .ggl-budget-box {
+              padding: 20px;
+            }
+          }
+
+          .daily-budget-field {
+            margin: 15px 0;
+          }
+
+          .lifetime-budget-field {
+            margin: 15px 0;
+          }
+
+          .input-group {
+            width: 40%;
+          }
+
+          .radio-budget {
+            margin: 5px 20px;
+            // width: 150px;
+
+            color: $dark-gray;
+            transform: scale(1.3);
+            -ms-transform: scale(1.3); /* IE */
+            -moz-transform: scale(1.3); /* FF */
+            -webkit-transform: scale(1.3); /* Safari and Chrome */
+            -o-transform: scale(1.3); /* Opera */
+          }
+        }
+
+        .spending {
+          border: 1px solid rgb(200, 200, 200);
+          border-radius: 10px;
+          background-color: rgb(238, 238, 238);
+          padding: 15px 20px;
+          margin: 15px 10px;
+          color: $dark-blue;
+        }
+
+        .ggl-budget-box {
+          padding: 20px 0;
+          label {
+            margin: auto 10px;
+            font-size: 1.3rem;
+            color: $dark-gray;
+          }
+
+          .ggl-budget-field {
+            width: 40%;
+            margin: auto 10px;
+          }
+        }
+      }
+
+      .subscription-form {
+        &-heading-plans {
+          margin: 40px auto;
+          color: $dark-blue;
+          font-size: 1.3rem;
+        }
+
+        &-cards {
+          padding: 10px 0px;
+          // margin: 20px 0;
+          font-size: 1.1rem;
+          color: $dark-purple;
+
+          @media screen and (min-width: 1199px) {
+            padding: 10px 15px;
+            font-size: 1.3rem;
+          }
+
+          .card-tab {
+            border: none;
+            // background-color: #e2daf8;   /* fallback for old browsers */
+            // background: -webkit-linear-gradient(to top, $bgc-white, #e2daf8);  /* Chrome 10-25, Safari 5.1-6 */
+            // background: linear-gradient(to top, $bgc-white, #e2daf8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            .active {
+              background-color: #e2daf8;
+              transition: 0.4s ease-in-out;
+            }
+          }
+
+          .card-link {
+            border-bottom: none;
+            // background: #D3CCE3;
+            border: none;
+          }
+
+          // Icons + titles
+          .card-heading {
+            color: $dark-purple;
+            margin: auto auto;
+            font-size: 1.3rem;
+            transition: 0.5s ease-in-out;
+            // padding: 2px 0;
+
+            &:hover {
+              color: #6800a5;
+            }
+
+            @media screen and (min-width: 1199px) {
+              font-size: 2.2rem;
+              padding: 7px 0;
+            }
+
+            h1 {
+              font-size: inherit;
+            }
+          }
+
+          &-body-container {
+            // border-radius: 0 0 5px 5px;
+            background: #d3cce3; /* fallback for old browsers */
+            background: -webkit-linear-gradient(
+              to top,
+              $bgc-white,
+              #e2daf8
+            ); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(
+              to top,
+              $bgc-white,
+              #e2daf8
+            ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          }
+
+          .card-body {
+            transition: 0.5s ease-in-out;
+
+            h3 {
+              font-size: 1.3rem;
+              color: $dark-purple;
+              margin: 0px auto 25px auto;
+
+              @media screen and (min-width: 1199px) {
+                font-size: 1.7rem;
+                margin: 0px auto 35px auto;
+              }
+            }
+
+            .list {
+              // width: 100%;
+              margin: 5px 0;
+              padding: 0;
+              font-size: 1.2rem;
+              color: $dark-blue;
+              list-style-type: none;
+              li {
+                margin: 22px 0;
+                font-size: 1.1rem;
+                .fa-check {
+                  font-size: 1.2rem;
+                  margin-right: 10px;
+                }
+              }
+            }
+
+            .description {
+              line-height: 35px;
+              color: $dark-blue;
+              margin: 20px auto 65px auto;
+            }
+
+            .select-btn {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              transition: all 0.5s ease-out;
+
+              .button {
+                color: white;
+                font-size: 1.4rem;
+                font-weight: 500;
+                margin: 20px auto 0 auto;
+                padding: 10px 20px;
+                background-color: $dark-purple;
+                border-radius: 50px;
+
+                &:hover {
+                  background-color: #992167;
+                }
+
+                @media screen and (min-width: 1199px) {
+                  padding: 14px 30px;
+                }
+
+                &:disabled {
+                  cursor: context-menu;
+                  color: white;
+                  font-size: 1.4rem;
+                  font-weight: 500;
+                  margin: 20px auto 0 auto;
+                  padding: 10px 20px;
+                  background-color: #992167;
+                  border-radius: 50px;
+
+                  @media screen and (min-width: 1199px) {
+                    padding: 14px 30px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .only-run-section {
+          font-size: 1.3rem;
+          color: $dark-blue;
+
+          .or-divider {
+            font-weight: bold;
+            margin: 20px auto;
+
+            @media screen and (min-width: 1199px) {
+              font-size: 1.5rem;
+              padding: 7px 0;
+            }
+          }
+
+          &-row {
+            margin: 30px 0px;
+            padding-bottom: 20px;
+            border-radius: 5px;
+
+            // background-color: #f1f5ff;
+            background: #c6d2ff; /* fallback for old browsers */
+            background: -webkit-linear-gradient(
+              to right,
+              $bgc-white,
+              #c6d2ff
+            ); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(
+              to top,
+              $bgc-white,
+              #c6d2ff
+            ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          }
+
+          &-heading {
+            font-size: 1.4rem;
+            margin-right: 10px;
+
+            @media screen and (min-width: 1199px) {
+              font-size: 1.5rem;
+            }
+          }
+
+          .toggle-container {
+            margin: 10px auto 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #b8c8fc;
+
+            @media screen and (min-width: 1199px) {
+              font-size: 1.5rem;
+            }
+          }
+
+          &-description {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .checkout-box {
+        //    background-color: #eaf0ff;
+        //    background-color: hsl(224, 100%, 83%);
+        background: #c6d2ff; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to top,
+          #c6d2ff,
+          #c6d2ff
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          #dfe2ff,
+          #dce1ff
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        //    background-color: $dark-purple;
+        padding: 15px 10px;
+        margin: 0px 5px 20px 5px;
+        border-radius: 5px;
+        border: 1px solid #d7dcff;
+        font-size: 1.2rem;
+        //    color: white;
+
+        .number-circle {
+          display: inline;
+          height: 55px;
+          width: 55px;
+          padding: 3px 10px;
+          font-size: 1.2rem;
+          color: white;
+          border-radius: 50%;
+          background-color: $dark-purple;
+        }
+
+        .row {
+          margin: 10px 0;
+        }
+
+        .key {
+          font-weight: 500;
+          // float: right;
+        }
+
+        .value {
+          padding: 0px 0;
+        }
+
+        &-heading {
+          width: 95%;
+          // text-align: center;
+          margin: 0px auto 25px auto;
+          font-size: 1.6rem;
+          // border-bottom: 1px solid #c9d4ff;
+          border-bottom: 1px solid #b9bbfa;
+          padding-bottom: 13px;
+          // color: $dark-blue;
+          // margin-bottom: 15px;
+        }
+
+        &-info-container {
+        }
+
+        // Social media icon
+        .smpIcon {
+          margin: 0 10px;
+          width: 50px;
+          height: 50px;
+        }
+
+        &-audience-container {
+        }
+
+        .fb-budget-box {
+          background-color: rgb(49, 85, 156);
+        }
+
+        .budget-table-container {
+          margin-bottom: 20px;
+          padding: 0 0px;
+          // background-color:  rgb(152, 226, 248);
+        }
+
+        .budget-table {
+          width: 96%;
+          font-size: 1rem;
+          margin: 0 auto;
+          border-bottom: 1px solid #b9bbfa;
+
+          @media screen and (min-width: 1199px) {
+            font-size: 1rem;
+          }
+
+          th {
+            font-weight: 500;
+            padding: 0px 10px 10px 10px;
+          }
+
+          tbody {
+            tr {
+              margin: 0px 0;
+              border-top: 1px solid #b9bbfa;
+              border-radius: 5px;
+            }
+          }
+
+          td {
+            padding: 10px;
+          }
+        }
+
+        &-subscription-container {
+          width: 95%;
+          margin: 0 auto;
+
+          .subscription-info {
+            .subscription-name {
+              margin: 1rem auto;
+              text-align: center;
+              font-size: 2.4rem;
+              color: $purple-navbar;
+              font-weight: 600;
+            }
+
+            .subscription-options {
+              margin: 20px auto;
+              .list-heading {
+                font-size: 1.6rem;
+                font-weight: 500;
+              }
+
+              ul {
+                width: 100%;
+                margin: 10px auto;
+                padding: 0 20px;
+                font-size: 1.3rem;
+                color: $dark-blue;
+                list-style-type: none;
+                li {
+                  margin: 10px auto 25px auto;
+                  .fa-check {
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
