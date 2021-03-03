@@ -221,7 +221,7 @@ function Audience(props) {
                 locationList.map((location, index) => {
                   return (
                     <div class="col-12 col-md-4 p-0">
-                      <div class="location-box d-flex justify-content-between">
+                      <div class="location-box mx-lg-2 mb-3 d-flex justify-content-between">
                         {location.name}
                         {/* <button className="remove-btn btn " onClick={(e) => removeLocation(e, index)}>X</button> */}
                         <i
