@@ -41,8 +41,14 @@ const FacebookPlacements = (props) => {
     const [description, setDescription] = useState("")
 
     // Errors
-    // const [showErrors, setShowErrors] = useState(false)
+    // Development
+    const [errors, setErrors] = useState({
+        headline: "",
+        description: "",
+    })
+
     // Production
+    // const [showErrors, setShowErrors] = useState(false)
     // const [errors, setErrors] = useState({
     //     // url: "URL is invalid. Check if you have 'https' or 'http' in your URL.",
     //     // devices: "You must select at least 1 type of device",
@@ -54,11 +60,7 @@ const FacebookPlacements = (props) => {
     //     descriptionGgl: "You have to fill this field"
     // })
 
-    // Development
-    const [errors, setErrors] = useState({
-        headline: "",
-        description: "",
-    })
+    
 
     
 

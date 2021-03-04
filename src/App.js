@@ -11,6 +11,7 @@ import LoginForm from "./components/Auth/LoginForm";
 // Containers
 import PrivateRoute from "./containers/User/PrivateRoute";
 import AdManager from "./containers/AdManager/AdManager";
+import CreateAdForm from './containers/AdManager/CreateAdForm'
 
 // Router
 import { BrowserRouter, Route } from "react-router-dom";
@@ -27,6 +28,7 @@ function App() {
           {/* <Route exact path="/signup" component={SignupForm} /> */}
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/ad-manager" component={AdManager} />
+          <PrivateRoute exact path="/ad-manager/new-campaign" component={CreateAdForm} />
         </div>
       </AuthProvider>
     </BrowserRouter>

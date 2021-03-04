@@ -1,275 +1,253 @@
-import React, {  PureComponent } from "react";
+import React, { PureComponent } from "react";
 // Auth
-import { db } from '../../base'
-import { AuthContext } from '../../components/Auth/Auth';
+import { db } from "../../base";
+import { AuthContext } from "../../components/Auth/Auth";
 
 // import { Route, Redirect } from "react-router-dom";
 // import { AuthContext } from "../../components/Auth/Auth";
-import { Form,Alert } from 'react-bootstrap';
+import { Form, Alert } from "react-bootstrap";
 
 // Components
-import GeneralInfo from '../../components/AdManager/CreateAd/GeneralInfo/GeneralInfo';
-import Audience from '../../components/AdManager/CreateAd/Audience/Audience';
-import AdPlacement from '../../components/AdManager/CreateAd/AdPlacement/AdPlacement';
-import BudgetAndSchedule from '../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule';
-import Subscription from '../../components/AdManager/CreateAd/Subscription/Subscription';
-import Checkout from '../../components/AdManager/CreateAd/Checkout/Checkout';
+import GeneralInfo from "../../components/AdManager/CreateAd/GeneralInfo/GeneralInfo";
+import Audience from "../../components/AdManager/CreateAd/Audience/Audience";
+import AdPlacement from "../../components/AdManager/CreateAd/AdPlacement/AdPlacement";
+import BudgetAndSchedule from "../../components/AdManager/CreateAd/BudgetAndSchedule/BudgetAndSchedule";
+import Subscription from "../../components/AdManager/CreateAd/Subscription/Subscription";
+import Checkout from "../../components/AdManager/CreateAd/Checkout/Checkout";
 
-//Stepper 
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+//Stepper
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 // Redux
-import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions/actionTypes';
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions/actionTypes";
 
-
-class CreateAdForm extends PureComponent{
+class CreateAdForm extends PureComponent {
     constructor(props) {
         super(props);
-        // this.myRef = React.createRef();
-    }
-
-    // componentDidMount(){
-    //     this.myRef.current.scrollIntoView();
-    // }
-
-    static contextType = AuthContext;
-   
-
-    state = {
-    //     ads: {},
-        activeStep: 0,
-    //     // No validation during development
-        // errors: {
-        //     name: "",
-        //     socialPlatforms: "",
-        //     marketingGoal: "",
-        // },
-
-        // errors: {
-        //     name: "Name should be at least 2 symbols.",
-        //     socialPlatforms: "You have to select at least 1 social media platform to continue.",
-        //     marketingGoal: "You have to select a marketing goal for your campaign.",
-        //     location: "You have to select at least 1 location of targeting",
-        //     ageFrom: "You have to select an age",
-        //     ageTo: "You have to select an age",
-        //     devices: "You must select at least 1 type of devices",
-        //     primaryText: "You have to fill this field",
-        //     headline: "You have to fill this field",
-        //     description: "You have to fill this field",
-        //     url: "You have to fill this field"
-            
-        // },
-        // showErrors: false
-    }
-
-    // Stepper
-    getSteps() {
-        return ['General ad information', 'Audience', 'Design and placements' , 'Budget and schedule', "Subscription plan"];
-    }
-
-    getStepContent(stepIndex){
-        // const adInfo = this.props.adInfo;
-        const activeStep = this.state.activeStep
-
-
-        switch (stepIndex) {
-            case 0:
-                return (
-                    <GeneralInfo 
-                    goToAdManger={() => this.props.goToAdManger()}
-                    goToAudience={() => this.goToAudience(activeStep)} 
-                    headingRef={this.props.headingRef}
-                    />
-                );
-            case 1:
-                return (
-                    <Audience 
-                    handleBack={() => this.handleBack(activeStep)}
-                    goToAdPlacements={() => this.goToAdPlacements(activeStep)}
-                    headingRef={this.props.headingRef}
-                    />
-                );
-            
-            case 2:
-                return (
-                    <AdPlacement 
-                        handleBack={() => this.handleBack(activeStep)}
-                        goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
-                        headingRef={this.props.headingRef}
-                    />
-                    );
-            case 3:
-                return (
-                    <BudgetAndSchedule 
-                        handleBack={() => this.handleBack(activeStep)}
-                        goToSubscriptionPlans={() => this.goToSubscriptionPlans(activeStep)}
-                        headingRef={this.props.headingRef}
-                    />
-                );
-            case 4:
-                return(
-                    <Subscription 
-                        handleBack={() => this.handleBack(activeStep)}
-                        goToCheckout={() => this.goToCheckout(activeStep)}
-                        headingRef={this.props.headingRef}
-                    />
-                    
-                )
-          default:
-            return 'Unknown stepIndex';
-        }
+        this.headingRef = React.createRef();
       }
 
-    goToAudience = (activeStep) => {
-        const nextStep = activeStep + 1;
 
-        this.setState({
-            activeStep: nextStep,
-            showErrors: false
-        });
+  static contextType = AuthContext;
 
-      };
+  state = {
+    activeStep: 0,
+  };
 
-    goToAdPlacements = (activeStep) => {
-        const nextStep = activeStep + 1;
+  // Stepper
+  getSteps() {
+    return [
+      "General ad information",
+      "Audience",
+      "Design and placements",
+      "Budget and schedule",
+      "Subscription plan",
+    ];
+  }
 
-        this.setState({
-            activeStep: nextStep,
-            showErrors: false
-        });
+  getStepContent(stepIndex) {
+    const activeStep = this.state.activeStep;
 
-    };
+    switch (stepIndex) {
+      case 0:
+        return (
+          <GeneralInfo
+            goToAdManager={() => this.goToAdManager()}
+            goToAudience={() => this.goToAudience(activeStep)}
+            headingRef={this.headingRef}
+          />
+        );
+      case 1:
+        return (
+          <Audience
+            handleBack={() => this.handleBack(activeStep)}
+            goToAdPlacements={() => this.goToAdPlacements(activeStep)}
+            headingRef={this.headingRef}
+          />
+        );
 
-    goToBudgetAndSchedule = (activeStep) => {
-        const nextStep = activeStep + 1;
-
-
-        this.setState({
-            activeStep: nextStep,
-            showErrors: false
-        });
-    };
-
-    goToSubscriptionPlans = activeStep => {
-        const nextStep = activeStep + 1;
-
-        this.setState({
-            activeStep: nextStep,
-            showErrors: false
-        });
+      case 2:
+        return (
+          <AdPlacement
+            handleBack={() => this.handleBack(activeStep)}
+            goToBudgetAndSchedule={() => this.goToBudgetAndSchedule(activeStep)}
+            headingRef={this.headingRef}
+          />
+        );
+      case 3:
+        return (
+          <BudgetAndSchedule
+            handleBack={() => this.handleBack(activeStep)}
+            goToSubscriptionPlans={() => this.goToSubscriptionPlans(activeStep)}
+            headingRef={this.headingRef}
+          />
+        );
+      case 4:
+        return (
+          <Subscription
+            handleBack={() => this.handleBack(activeStep)}
+            goToCheckout={() => this.goToCheckout(activeStep)}
+            headingRef={this.headingRef}
+          />
+        );
+      default:
+        return "Unknown stepIndex";
     }
+  }
 
-    goToCheckout = (activeStep) => {
-        const nextStep = activeStep + 1;
+  goToAdManager = () => {
+      this.props.history.push('/ad-manager')
+  }
 
-        const { currentUser } = this.context;
+  goToAudience = (activeStep) => {
+    const nextStep = activeStep + 1;
 
-        let orderData = {
-            ...this.props.state,
-            orderStatus: "Uncompleted"
-        }
+    this.setState({
+      activeStep: nextStep,
+      showErrors: false,
+    });
+  };
 
-        db.ref("users/" + currentUser.uid + "/orders/"+`/${this.props.adInfo.name}`).set(orderData)
+  goToAdPlacements = (activeStep) => {
+    const nextStep = activeStep + 1;
 
-        this.setState({
-            activeStep: nextStep,
-            showErrors: false
-        });
+    this.setState({
+      activeStep: nextStep,
+      showErrors: false,
+    });
+  };
+
+  goToBudgetAndSchedule = (activeStep) => {
+    const nextStep = activeStep + 1;
+
+    this.setState({
+      activeStep: nextStep,
+      showErrors: false,
+    });
+  };
+
+  goToSubscriptionPlans = (activeStep) => {
+    const nextStep = activeStep + 1;
+
+    this.setState({
+      activeStep: nextStep,
+      showErrors: false,
+    });
+  };
+
+  goToCheckout = (activeStep) => {
+    const nextStep = activeStep + 1;
+
+    const { currentUser } = this.context;
+
+    let orderData = {
+      ...this.props.state,
+      orderStatus: "Uncompleted",
     };
-    
-    handleBack = (activeStep) => {
-        const prevStep = activeStep - 1;
 
-        this.setState({
-            activeStep: prevStep
-        });
-    };
+    db.ref(
+      "users/" + currentUser.uid + "/campaigns/" + `/${this.props.adInfo.name}`
+    ).set(orderData);
 
-    handleReset = () => {
-        this.setState({
-            activeStep: 0
-        });
-    };
+    this.setState({
+      activeStep: nextStep,
+      showErrors: false,
+    });
+  };
 
+  handleBack = (activeStep) => {
+    const prevStep = activeStep - 1;
 
-    // selectStep = (label) => {
-    //     const steps = this.getSteps();
+    this.setState({
+      activeStep: prevStep,
+    });
+  };
 
-    //     const idxSelectedStep = steps.indexOf(label);
+  handleReset = () => {
+    this.setState({
+      activeStep: 0,
+    });
+  };
 
-    //     console.log(label);
+  // selectStep = (label) => {
+  //     const steps = this.getSteps();
 
-    //     this.setState({
-    //         activeStep: idxSelectedStep
-    //     })
-    // };
-   
+  //     const idxSelectedStep = steps.indexOf(label);
 
+  //     console.log(label);
 
-  render(){
+  //     this.setState({
+  //         activeStep: idxSelectedStep
+  //     })
+  // };
 
-    // Stepper 
-    // const classes = styleStepper();
-    const activeStep = this.state.activeStep
+  render() {
+    // Stepper
+    const activeStep = this.state.activeStep;
     const steps = this.getSteps();
 
-    // console.log("myRef", this.myRef)
-
     return (
-        <div  className="manager-ad-form-row">
-            <div  className="ad-container">
-
-            <Stepper className="ad-stepper" activeStep={this.state.activeStep} alternativeLabel>
-                {steps.map((label) => (
-                <Step className="ad-step" key={label}>
-                    <StepLabel className="ad-step-label">{label}</StepLabel>
-                </Step>
-                ))}
-            </Stepper>
-
-            {activeStep === steps.length ? (
-                <div>
-                    <Checkout 
-                        handleBack={() => this.handleBack(activeStep)}
-                        headingRef={this.props.headingRef}
-                    />
-                </div>
-                ) : (
-                <div>
-                    <Form className="add-form">
-                    {this.getStepContent(activeStep)}
-                    
-                    </Form>
-                    
-                </div>
-                )}
-
-                
-
-            </div>
+      <div class="manager">
+        <div className="manager-jumbotron d-md-flex justify-content-between">
+          <h1
+            ref={this.headingRef}
+            className="manager-jumbotron-title dark-purple-font"
+          >
+            Create new campaign
+          </h1>
         </div>
-       );
+        <div className="manager-ad-form">
+          <div className="manager-ad-form-row">
+            <div className="ad-container">
+              <Stepper
+                className="ad-stepper"
+                activeStep={this.state.activeStep}
+                alternativeLabel
+              >
+                {steps.map((label) => (
+                  <Step className="ad-step" key={label}>
+                    <StepLabel className="ad-step-label">{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+
+              {activeStep === steps.length ? (
+                <div>
+                  <Checkout
+                    handleBack={() => this.handleBack(activeStep)}
+                    headingRef={this.headingRef}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Form className="add-form">
+                    {this.getStepContent(activeStep)}
+                  </Form>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    adInfo: state.adInfo,
+    audience: state.audience,
+    state: { ...state },
+  };
 };
 
-const mapStateToProps = state => {
-    return{
-        adInfo: state.adInfo,
-        audience: state.audience,
-        state: {...state}
-
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAdForm);

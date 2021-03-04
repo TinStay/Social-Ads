@@ -168,7 +168,7 @@ const GeneralInfo = (props) => {
 
                 <div className="d-flex justify-content-end">
                     <button
-                        onClick={() => props.goToAdManger()}
+                        onClick={() => props.goToAdManager()}
                         className="btn btn-back"
                     >
                     Back
