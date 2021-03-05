@@ -299,16 +299,16 @@ body {
 
 .gradient-bgc {
   padding: 20px 0 50px 0;
-  background: #c33764; /* fallback for old browsers */
+  background: rgba(39, 71, 134, 0.580); /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    rgba(39, 71, 134, 0.486),
+    rgba(39, 71, 134, 0.580),
     #88205b6e
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    rgba(39, 71, 134, 0.486),
-    #88205b6e
+    rgba(39, 71, 134, 0.580),
+    #751c4e8a
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   -webkit-box-shadow: 0px 12px 36px -17px rgba(29, 38, 114, 1);
@@ -341,21 +341,23 @@ body {
     margin-top: 30px;
     position: relative;
     bottom: 0;
-    padding: 10px;
+    padding: 10px 40px;
     border: none;
-    width: 150px;
+    border-radius: 50px;
     color: white;
-
-    background: $purple;
-    background: $purple-to-pink-webkit;
-    background: $purple-to-pink-linear;
+    background-color: $dark-purple;
+    // background: $purple;
+    // background: $purple-to-pink-webkit;
+    // background: $purple-to-pink-linear;
 
     transition: all 0.3s ease-out;
 
     &:hover {
-      background: $purple;
-      background: $purple-to-pink-webkit-hover;
-      background: $purple-to-pink-linear-hover;
+      background-color: $cherry-red;
+
+      // background: $purple;
+      // background: $purple-to-pink-webkit-hover;
+      // background: $purple-to-pink-linear-hover;
     }
   }
 }
@@ -715,12 +717,12 @@ body {
       font-size: 1.4rem;
       font-weight: 500;
       margin: 0 auto;
-      padding: 14px;
-      background-color: #6c03a8;
+      padding: 10px 30px;
+      background-color:$dark-purple;
       border-radius: 50px;
       transition: all 0.3s ease-out;
       &:hover {
-        background-color: #992167;
+        background-color: $cherry-red;
       }
     }
 
