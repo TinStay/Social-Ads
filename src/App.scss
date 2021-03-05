@@ -156,26 +156,26 @@ body {
       margin: 0 10px;
       padding: 4px 0;
       border-bottom: 3px solid transparent;
-      color: $white;
+      color: rgba(243, 243, 243, 0.883);
       letter-spacing: 1px;
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        color: $cherry-red;
-        border-bottom: 3px solid $cherry-red;
+        color: #fff;
+        // border-bottom: 3px solid #fff;
         cursor: pointer;
       }
 
       &:focus {
-        color: $white;
+        color: #fff;
         // border-bottom: 3px solid $cherry-red;
       }
     }
 
     .is-active {
-      // border-bottom: 2px solid $cherry-red;
-      // color: $cherry-red;
-      border-bottom: 3px solid $cherry-red;
+      // border-top: 2px solid $cherry-red;
+      color: white;
+      // border-bottom: 3px solid $cherry-red;
     }
   }
 }
